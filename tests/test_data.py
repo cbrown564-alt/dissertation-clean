@@ -1,5 +1,10 @@
-from epilepsy_extraction.data import iter_records, select_fixed_slice
+from pathlib import Path
+
+from epilepsy_extraction.data import load_synthetic_subset, iter_records, select_fixed_slice
 from epilepsy_extraction.schemas import GoldRecord
+
+
+FIXTURE_PATH = Path(__file__).parent / "fixtures" / "synthetic_subset_fixture.json"
 
 
 def _record(index: int, row_ok: bool = True) -> GoldRecord:
@@ -35,3 +40,12 @@ def test_select_fixed_slice_keeps_requested_row_order_from_source() -> None:
     result = select_fixed_slice(records, row_ids=["3", "1"])
 
     assert [record.row_id for record in result] == ["1", "3"]
+
+
+def test_load_synthetic_subset_fixture_shape() -> None:
+    records = load_synthetic_subset(FIXTURE_PATH)
+
+    assert len(records) == 3
+    assert records[0].row_id == "1"
+    assert records[0].gold_label == "2 per month"
+    assert records[2].row_ok is False

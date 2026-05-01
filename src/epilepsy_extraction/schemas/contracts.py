@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from enum import Enum
+from collections.abc import Iterable
 
 
 SCHEMA_VERSION = "1.0.0"
@@ -62,3 +63,36 @@ def empty_field_coverage() -> dict[str, str]:
         field.value: FieldCoverageStatus.NOT_IMPLEMENTED.value
         for field in FieldFamily
     }
+
+
+def field_coverage(
+    implemented: Iterable[FieldFamily | str] = (),
+    partial: Iterable[FieldFamily | str] = (),
+    failed: Iterable[FieldFamily | str] = (),
+) -> dict[str, str]:
+    coverage = empty_field_coverage()
+    for field in implemented:
+        coverage[_field_value(field)] = FieldCoverageStatus.IMPLEMENTED.value
+    for field in partial:
+        coverage[_field_value(field)] = FieldCoverageStatus.PARTIAL.value
+    for field in failed:
+        coverage[_field_value(field)] = FieldCoverageStatus.FAILED.value
+    return coverage
+
+
+def full_contract_coverage() -> dict[str, str]:
+    return field_coverage(implemented=FieldFamily)
+
+
+def partial_contract_coverage(fields: Iterable[FieldFamily | str]) -> dict[str, str]:
+    return field_coverage(partial=fields)
+
+
+def failed_component_coverage(fields: Iterable[FieldFamily | str]) -> dict[str, str]:
+    return field_coverage(failed=fields)
+
+
+def _field_value(field: FieldFamily | str) -> str:
+    value = field.value if isinstance(field, FieldFamily) else field
+    FieldFamily(value)
+    return value

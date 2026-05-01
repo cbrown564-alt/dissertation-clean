@@ -38,6 +38,26 @@ def monthly_rate_match(
     return abs(gold - predicted) <= abs(gold) * tolerance
 
 
+def parse_validity_summary(component_results: Iterable[tuple[str, bool]]) -> dict[str, object]:
+    totals: dict[str, Counter[str]] = defaultdict(Counter)
+    for component, is_valid in component_results:
+        totals[component]["total"] += 1
+        if is_valid:
+            totals[component]["valid"] += 1
+        else:
+            totals[component]["invalid"] += 1
+
+    return {
+        component: {
+            "valid": counts["valid"],
+            "invalid": counts["invalid"],
+            "total": counts["total"],
+            "valid_rate": counts["valid"] / counts["total"] if counts["total"] else 0.0,
+        }
+        for component, counts in sorted(totals.items())
+    }
+
+
 def evaluate_prediction(
     source_row_index: int,
     gold_label: str,

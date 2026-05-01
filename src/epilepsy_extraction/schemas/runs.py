@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import subprocess
 from dataclasses import asdict, dataclass, field
 from datetime import UTC, datetime
 from enum import Enum
@@ -79,3 +80,32 @@ def write_run_record(record: RunRecord, path: str | Path) -> Path:
         encoding="utf-8",
     )
     return output_path
+
+
+def git_code_version(cwd: str | Path = ".") -> str | None:
+    try:
+        commit = subprocess.check_output(
+            ["git", "rev-parse", "--short", "HEAD"],
+            cwd=Path(cwd),
+            stderr=subprocess.DEVNULL,
+            text=True,
+        ).strip()
+        dirty = subprocess.call(
+            ["git", "diff", "--quiet"],
+            cwd=Path(cwd),
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+    except (OSError, subprocess.CalledProcessError):
+        return None
+    return f"{commit}-dirty" if dirty else commit
+
+
+def resolve_code_version(
+    explicit: str | None = None,
+    cwd: str | Path = ".",
+    fallback: str = "unknown",
+) -> str:
+    if explicit:
+        return explicit
+    return git_code_version(cwd) or fallback

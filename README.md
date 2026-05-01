@@ -84,3 +84,60 @@ The repo currently contains the documentation spine plus the first foundation
 code batch: data loading, fixed-slice helpers, schema definitions, anchor label
 metrics, and run metadata writing. No LLM harness should be treated as canonical
 until these foundations are exercised on a fixed slice.
+
+## Developer Setup
+
+Create and activate a virtual environment, then install the package with test
+dependencies:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -e ".[dev]"
+```
+
+Run the test suite:
+
+```powershell
+python -m pytest
+```
+
+Or run the local check wrapper:
+
+```powershell
+python scripts/check.py
+```
+
+## Smoke Run
+
+The committed fixture under `tests/fixtures/` is intentionally tiny and does not
+require network access, secrets, or an LLM provider. Use it to verify the
+metadata-only run path from a fresh checkout:
+
+```powershell
+python scripts/run_experiment.py tests/fixtures/synthetic_subset_fixture.json --limit 2 --run-id fixture_smoke --output results/runs/fixture_smoke.json
+python scripts/summarize_results.py results/runs/fixture_smoke.json
+```
+
+Run the deterministic baseline harness against the same fixture:
+
+```powershell
+python scripts/run_experiment.py tests/fixtures/synthetic_subset_fixture.json --harness deterministic_baseline --limit 2 --run-id deterministic_fixture --output results/runs/deterministic_fixture.json
+python scripts/summarize_results.py results/runs/deterministic_fixture.json
+```
+
+Prompt and schema assets are versioned as normal files under `prompts/` and
+`schemas/`. Loader utilities in `epilepsy_extraction.assets` return the asset
+path, version ID, and content so LLM harnesses can record them in run records.
+
+Provider-backed anchor harnesses can run from replayed JSON responses:
+
+```powershell
+python scripts/run_experiment.py tests/fixtures/synthetic_subset_fixture.json --harness single_prompt_anchor --limit 1 --replay path/to/replay.json --output results/runs/anchor_replay.json
+```
+
+The full-contract single-prompt baseline uses the same replay mechanism:
+
+```powershell
+python scripts/run_experiment.py tests/fixtures/synthetic_subset_fixture.json --harness single_prompt_full_contract --limit 1 --replay path/to/replay.json --output results/runs/full_contract_replay.json
+```
