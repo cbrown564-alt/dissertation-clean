@@ -1,0 +1,15 @@
+[project]
+name = "epilepsy-extraction"
+version = "0.1.0"
+description = "Contract-first training-free extraction and evaluation for epilepsy clinic letters."
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=9.0.3",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
