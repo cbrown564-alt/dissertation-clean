@@ -17,7 +17,6 @@ _SECTION_FAMILY_AFFINITY: dict[str, list[FieldFamily]] = {
     "background history": [FieldFamily.SEIZURE_CLASSIFICATION, FieldFamily.EPILEPSY_CLASSIFICATION],
     "background": [FieldFamily.SEIZURE_CLASSIFICATION, FieldFamily.EPILEPSY_CLASSIFICATION],
     "history": [FieldFamily.SEIZURE_CLASSIFICATION, FieldFamily.EPILEPSY_CLASSIFICATION],
-    "body": list(FieldFamily),
     "preamble": [],
 }
 

@@ -1,8 +1,12 @@
+import json
+
 from epilepsy_extraction.modules.aggregation import aggregate_field_results
 from epilepsy_extraction.modules.chunking import chunk_letter, select_chunks_for_family
+from epilepsy_extraction.modules.field_extractors import extract_field_family
 from epilepsy_extraction.modules.normalization import enrich_seizure_frequency, normalize_frequency
 from epilepsy_extraction.modules.status_temporality import infer_status
 from epilepsy_extraction.modules.verification import verify_evidence_deterministic, verify_field_extraction
+from epilepsy_extraction.providers import MockProvider
 from epilepsy_extraction.schemas.contracts import EvidenceGrade, FieldFamily
 
 
@@ -48,6 +52,21 @@ def test_select_chunks_returns_at_most_max_chunks() -> None:
     chunks = chunk_letter(_LETTER)
     selected, _ = select_chunks_for_family(chunks, FieldFamily.CURRENT_MEDICATIONS, max_chunks=2)
     assert len(selected) <= 2
+
+
+def test_select_chunks_uses_keyword_scoring_for_unsectioned_body() -> None:
+    letter = (
+        "This opening paragraph has administrative background only. "
+        "There are no target medication terms here. "
+        "Later she is taking lamotrigine 100 mg twice daily."
+    )
+    chunks = chunk_letter(letter, max_chunk_chars=70)
+
+    selected, warnings = select_chunks_for_family(chunks, FieldFamily.CURRENT_MEDICATIONS, max_chunks=1)
+
+    assert warnings == []
+    assert len(selected) == 1
+    assert "lamotrigine" in selected[0].text.lower()
 
 
 def test_chunk_token_estimate_positive() -> None:
@@ -151,6 +170,80 @@ def test_verify_field_extraction_no_citations() -> None:
     artifact, results = verify_field_extraction(field_data, "context")
     assert artifact["grade"] == EvidenceGrade.MISSING_EVIDENCE.value
     assert results == []
+
+
+# --- Field extraction parsing ---
+
+def test_extract_field_family_promotes_nested_evidence_to_citations() -> None:
+    provider = MockProvider([
+        json.dumps(
+            {
+                "seizure_frequency": {
+                    "value": "2 per month",
+                    "evidence": "two seizures per month",
+                    "status": "current",
+                }
+            }
+        )
+    ])
+    schema = {
+        "properties": {
+            "seizure_frequency": {"type": "object"},
+        }
+    }
+
+    result = extract_field_family(
+        provider,
+        "prompt",
+        schema,
+        FieldFamily.SEIZURE_FREQUENCY,
+        "She has two seizures per month.",
+        "mock-model",
+        0.0,
+    )
+
+    assert result.valid is True
+    assert result.data["citations"] == [
+        {"field": "seizure_frequency", "quote": "two seizures per month"}
+    ]
+
+
+def test_extract_field_family_uses_schema_properties_for_target_schema() -> None:
+    provider = MockProvider([json.dumps({"seizure_frequency": {}})])
+    schema = {
+        "properties": {
+            "seizure_frequency": {"type": "object", "additionalProperties": False},
+        }
+    }
+
+    extract_field_family(
+        provider,
+        "prompt",
+        schema,
+        FieldFamily.SEIZURE_FREQUENCY,
+        "context",
+        "mock-model",
+        0.0,
+    )
+
+    content = provider.requests[0].messages[0].content
+    assert '"seizure_frequency": {"additionalProperties": false, "type": "object"}' in content
+
+
+def test_extract_field_family_empty_response_remains_invalid() -> None:
+    provider = MockProvider([json.dumps({})])
+
+    result = extract_field_family(
+        provider,
+        "prompt",
+        {"properties": {}},
+        FieldFamily.SEIZURE_FREQUENCY,
+        "context",
+        "mock-model",
+        0.0,
+    )
+
+    assert result.valid is False
 
 
 # --- Aggregation ---

@@ -42,7 +42,8 @@ def extract_field_family(
 ) -> FieldExtractionResult:
     """Extract one field family from section-aware context using the provider."""
     keys = FIELD_FAMILY_KEYS.get(family, [])
-    field_schema = {k: schema.get(k, {}) for k in keys}
+    schema_properties = schema.get("properties", {})
+    field_schema = {k: schema_properties.get(k, {}) for k in keys}
     content = (
         f"{prompt_text}\n\n"
         f"Field family: {family.value}\n"
@@ -78,13 +79,57 @@ def extract_field_family(
             response=response,
         )
     parsed: dict[str, Any] = {k: data[k] for k in keys if k in data}
+    valid = bool(parsed)
     for shared_key in ("citations", "confidence", "warnings"):
         if shared_key in data:
             parsed[shared_key] = data[shared_key]
+    parsed["citations"] = _normalize_citations(parsed)
     return FieldExtractionResult(
         family=family,
         data=parsed,
-        valid=bool(parsed),
+        valid=valid,
         warnings=[],
         response=response,
     )
+
+
+def _normalize_citations(parsed: dict[str, Any]) -> list[dict[str, Any]]:
+    citations: list[dict[str, Any]] = []
+    existing = parsed.get("citations")
+    if isinstance(existing, list):
+        citations.extend(c for c in existing if isinstance(c, dict))
+
+    for field_name, value in parsed.items():
+        if field_name in {"citations", "confidence", "warnings"}:
+            continue
+        citations.extend(_evidence_citations(field_name, value))
+
+    deduped: list[dict[str, Any]] = []
+    seen: set[tuple[str | None, str | None]] = set()
+    for citation in citations:
+        key = (citation.get("field"), citation.get("quote"))
+        if key in seen:
+            continue
+        seen.add(key)
+        deduped.append(citation)
+    return deduped
+
+
+def _evidence_citations(field_name: str, value: Any) -> list[dict[str, Any]]:
+    if isinstance(value, dict):
+        quote = value.get("evidence")
+        return [_citation(field_name, quote)] if isinstance(quote, str) and quote.strip() else []
+    if isinstance(value, list):
+        citations: list[dict[str, Any]] = []
+        for item in value:
+            if not isinstance(item, dict):
+                continue
+            quote = item.get("evidence")
+            if isinstance(quote, str) and quote.strip():
+                citations.append(_citation(field_name, quote))
+        return citations
+    return []
+
+
+def _citation(field_name: str, quote: str) -> dict[str, Any]:
+    return {"field": field_name, "quote": quote}
