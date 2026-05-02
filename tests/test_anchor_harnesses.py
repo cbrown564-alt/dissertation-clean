@@ -134,3 +134,49 @@ def test_anchor_cli_runs_from_replay_file(tmp_path) -> None:
     data = json.loads(output.read_text(encoding="utf-8"))
     assert data["harness"] == "single_prompt_anchor"
     assert data["budget"]["total_tokens"] == 26
+
+
+def test_retrieval_anchor_makes_single_provider_call() -> None:
+    records = _records()
+    provider = MockProvider(['{"label":"2 per month","evidence":"two seizures per month","confidence":0.9}'])
+
+    run = run_anchor_harness(records, _dataset(records), "anchor", "test", provider, harness="retrieval_anchor")
+
+    assert run.harness == "retrieval_anchor"
+    assert run.budget.llm_calls_per_row == 1
+    assert len(provider.requests) == 1
+
+
+def test_retrieval_anchor_records_retrieval_artifacts() -> None:
+    records = _records()
+    provider = MockProvider(['{"label":"2 per month","evidence":"two seizures per month","confidence":0.9}'])
+
+    run = run_anchor_harness(records, _dataset(records), "anchor", "test", provider, harness="retrieval_anchor")
+
+    assert "retrieval_artifacts" in run.rows[0]
+    assert "candidate_spans" in run.rows[0]["retrieval_artifacts"]
+
+
+def test_retrieval_anchor_warns_on_recall_loss_for_bare_letter() -> None:
+    records = _records()
+    # Override the letter with something that has no seizure-frequency keywords
+    from dataclasses import replace
+    no_keyword_records = [replace(records[0], letter="General review. Patient attended clinic.")]
+    provider = MockProvider(['{"label":"unknown","evidence":"","confidence":0.0}'])
+
+    run = run_anchor_harness(
+        no_keyword_records, _dataset(records), "anchor", "test", provider, harness="retrieval_anchor"
+    )
+
+    warnings = run.rows[0]["prediction"]["warnings"]
+    assert "retrieval_recall_loss_fallback_full" in warnings
+
+
+def test_retrieval_anchor_uses_retrieval_prompt_version() -> None:
+    records = _records()
+    provider = MockProvider(['{"label":"seizure-free","evidence":"no seizures","confidence":1.0}'])
+
+    run = run_anchor_harness(records, _dataset(records), "anchor", "test", provider, harness="retrieval_anchor")
+
+    assert run.prompt_version == "anchor_retrieval_v1"
+    assert run.artifact_paths["prompt"] == "prompts/anchor/retrieval_v1.md"

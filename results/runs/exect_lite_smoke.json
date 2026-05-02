@@ -1,0 +1,299 @@
+{
+  "architecture_family": "clinical_nlp_baseline",
+  "artifact_paths": {},
+  "budget": {
+    "input_tokens": 0,
+    "latency_ms": 0,
+    "llm_calls_per_row": 0,
+    "output_tokens": 0,
+    "total_tokens": 0
+  },
+  "code_version": "test",
+  "complexity": {},
+  "created_at": "2026-05-02T12:20:46.358752+00:00",
+  "dataset": {
+    "data_hash": "7508b52c614b63ea1bae406e7482dec3a419ea141ba45a444d6c59d7a84adc0a",
+    "dataset_id": "synthetic_subset_fixture",
+    "dataset_path": "tests\\fixtures\\synthetic_subset_fixture.json",
+    "inclusion_criteria": "row_ok_only=true; limit=2",
+    "n": 2,
+    "random_seed": null,
+    "row_ids": [
+      "1",
+      "2"
+    ],
+    "row_order": "source"
+  },
+  "external_baseline": false,
+  "field_coverage": {
+    "associated_symptoms": "not_attempted",
+    "comorbidities": "not_attempted",
+    "current_medications": "partial",
+    "epilepsy_classification": "partial",
+    "investigations": "partial",
+    "other_therapies": "not_attempted",
+    "rescue_medication": "not_attempted",
+    "seizure_classification": "partial",
+    "seizure_frequency": "implemented"
+  },
+  "harness": "exect_lite_cleanroom_baseline",
+  "mapping_version": "exect_lite_v1",
+  "metrics": {
+    "exact_label_accuracy": 1.0,
+    "monthly_rate_accuracy_tolerance_15pct": 1.0,
+    "n": 2,
+    "pragmatic": {
+      "macro_f1": 1.0,
+      "micro_f1": 1.0,
+      "per_class": {
+        "NS": {
+          "f1": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "support": 1
+        },
+        "frequent": {
+          "f1": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "support": 1
+        }
+      },
+      "weighted_f1": 1.0
+    },
+    "pragmatic_confusion": {
+      "NS": {
+        "NS": 1
+      },
+      "frequent": {
+        "frequent": 1
+      }
+    },
+    "purist": {
+      "macro_f1": 1.0,
+      "micro_f1": 1.0,
+      "per_class": {
+        "(1/M,1/W)": {
+          "f1": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "support": 1
+        },
+        "NS": {
+          "f1": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "support": 1
+        }
+      },
+      "weighted_f1": 1.0
+    }
+  },
+  "model": "none",
+  "model_registry_entry": null,
+  "parse_validity": {
+    "seizure_frequency": {
+      "invalid": 0,
+      "total": 2,
+      "valid": 2,
+      "valid_rate": 1.0
+    }
+  },
+  "prompt_version": "exect_lite_rules_v1",
+  "provider": "deterministic",
+  "rows": [
+    {
+      "evaluation": {
+        "confidence": 0.65,
+        "exact_match": true,
+        "gold_label": "2 per month",
+        "gold_monthly_rate": 2.0,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": "(1/M,1/W)",
+        "monthly_rate_match": true,
+        "predicted_label": "2 per month",
+        "predicted_monthly_rate": 2.0,
+        "predicted_pragmatic_class": "frequent",
+        "predicted_purist_class": "(1/M,1/W)",
+        "source_row_index": 1
+      },
+      "payload": {
+        "artifacts": {},
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "partial",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [
+            {
+              "char_end": null,
+              "char_start": null,
+              "quote": "two seizures per month",
+              "section": null,
+              "span_id": null
+            }
+          ],
+          "confidence": {
+            "seizure_frequency": 0.65
+          },
+          "current_medications": [
+            {
+              "dose": "100",
+              "evidence": "lamotrigine 100 mg twice daily",
+              "frequency": "twice",
+              "name": "lamotrigine",
+              "unit": "mg"
+            }
+          ],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 2.0,
+            "pragmatic_class": "frequent",
+            "purist_class": "(1/M,1/W)",
+            "value": "2 per month"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": []
+        },
+        "invalid_output": false,
+        "metadata": {
+          "source_row_index": 1
+        },
+        "pipeline_id": "exect_lite_cleanroom_baseline",
+        "schema_version": "1.0.0",
+        "warnings": []
+      },
+      "prediction": {
+        "confidence": 0.65,
+        "evidence": [
+          {
+            "char_end": null,
+            "char_start": null,
+            "quote": "two seizures per month",
+            "section": null,
+            "span_id": null
+          }
+        ],
+        "label": "2 per month",
+        "metadata": {},
+        "parsed_monthly_rate": 2.0,
+        "pragmatic_class": "frequent",
+        "purist_class": "(1/M,1/W)",
+        "warnings": []
+      },
+      "row_id": "1",
+      "source_row_index": 1
+    },
+    {
+      "evaluation": {
+        "confidence": 0.7,
+        "exact_match": true,
+        "gold_label": "seizure free for 12 month",
+        "gold_monthly_rate": 0.0,
+        "gold_pragmatic_class": "NS",
+        "gold_purist_class": "NS",
+        "monthly_rate_match": true,
+        "predicted_label": "seizure free for 12 month",
+        "predicted_monthly_rate": 0.0,
+        "predicted_pragmatic_class": "NS",
+        "predicted_purist_class": "NS",
+        "source_row_index": 2
+      },
+      "payload": {
+        "artifacts": {},
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "partial",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [
+            {
+              "char_end": null,
+              "char_start": null,
+              "quote": "seizure free for 12 month",
+              "section": null,
+              "span_id": null
+            }
+          ],
+          "confidence": {
+            "seizure_frequency": 0.7
+          },
+          "current_medications": [
+            {
+              "dose": null,
+              "evidence": "levetiracetam",
+              "frequency": null,
+              "name": "levetiracetam",
+              "unit": null
+            }
+          ],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 0.0,
+            "pragmatic_class": "NS",
+            "purist_class": "NS",
+            "value": "seizure free for 12 month"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": []
+        },
+        "invalid_output": false,
+        "metadata": {
+          "source_row_index": 2
+        },
+        "pipeline_id": "exect_lite_cleanroom_baseline",
+        "schema_version": "1.0.0",
+        "warnings": []
+      },
+      "prediction": {
+        "confidence": 0.7,
+        "evidence": [
+          {
+            "char_end": null,
+            "char_start": null,
+            "quote": "seizure free for 12 month",
+            "section": null,
+            "span_id": null
+          }
+        ],
+        "label": "seizure free for 12 month",
+        "metadata": {},
+        "parsed_monthly_rate": 0.0,
+        "pragmatic_class": "NS",
+        "purist_class": "NS",
+        "warnings": []
+      },
+      "row_id": "2",
+      "source_row_index": 2
+    }
+  ],
+  "run_id": "exect_lite_smoke",
+  "schema_version": "1.0.0",
+  "status": "smoke",
+  "temperature": 0.0,
+  "warnings": [
+    "exect_lite_cleanroom_independently_authored"
+  ]
+}

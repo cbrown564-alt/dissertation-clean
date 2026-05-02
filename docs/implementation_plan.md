@@ -192,7 +192,7 @@ Acceptance criteria:
   `not_attempted` fields.
 - No benchmark path reads gold labels as input.
 
-## Phase 5: Anchor Seizure-Frequency Harnesses
+## Phase 5: Anchor Seizure-Frequency Harnesses ✓ COMPLETE
 
 Goal: rebuild the compact reliability microcosm around the new architecture
 ladder.
@@ -225,7 +225,7 @@ Acceptance criteria:
 - Self-consistency reports extra cost explicitly.
 - Retrieval failures are visible as retrieval recall or candidate-span warnings.
 
-## Phase 6: Direct Full-Contract LLM Baselines
+## Phase 6: Direct Full-Contract LLM Baselines ✓ COMPLETE
 
 Goal: create strong direct-prompt comparators.
 
@@ -254,7 +254,7 @@ Acceptance criteria:
 - Invalid output is measurable by component, not only globally.
 - Evidence-contract behavior is separately measurable from direct prompting.
 
-## Phase 7: Retrieval-Plus-Field Extraction
+## Phase 7: Retrieval-Plus-Field Extraction ✓ COMPLETE
 
 Goal: test whether candidate-span selection and local-context extraction improve
 output quality before the full modular pipeline.
@@ -437,6 +437,12 @@ The cockpit should be a supervisor/examiner-facing visual narrative, not just a
 JSON dump. It should make the research arc legible at a glance: architecture
 ladder, baselines, model registry, decisions, linked records, current claims,
 uncertainties, timelines, example rows, and budget/performance tradeoffs.
+
+Design reference screenshots and notes from the previous unified simplified
+view are preserved in `docs/visibility_cockpit_reference/`. They should inspire
+the interaction model and information hierarchy, while the clean repo rebuilds
+the content model around benchmark comparison, wider field coverage, evidence
+support, adjudication, and model registry governance.
 
 Tasks:
 

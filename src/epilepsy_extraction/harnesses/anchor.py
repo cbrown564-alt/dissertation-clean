@@ -14,6 +14,7 @@ from epilepsy_extraction.providers import (
     ProviderResponse,
     budget_from_provider_responses,
 )
+from epilepsy_extraction.retrieval.candidates import build_retrieval_context
 from epilepsy_extraction.schemas import (
     DatasetSlice,
     EvidenceSpan,
@@ -29,6 +30,7 @@ from epilepsy_extraction.schemas.contracts import FieldFamily
 
 AnchorHarnessName = Literal[
     "single_prompt_anchor",
+    "retrieval_anchor",
     "multi_agent_anchor",
     "multi_agent_anchor_sc3",
     "multi_agent_anchor_sc5",
@@ -53,7 +55,9 @@ def run_anchor_harness(
     record_list = list(records)
 
     for record in record_list:
-        prediction, row_responses = _predict_anchor(record.letter, provider, harness, model, temperature)
+        prediction, row_responses, retrieval_artifacts = _predict_anchor(
+            record.letter, provider, harness, model, temperature
+        )
         responses.extend(row_responses)
         parsed_ok = prediction.parsed_monthly_rate is not None
         parse_results.append(("seizure_frequency", parsed_ok))
@@ -68,6 +72,7 @@ def run_anchor_harness(
                 "payload": payload.to_dict(),
                 "evaluation": asdict(evaluation),
                 "provider_responses": [asdict(response) for response in row_responses],
+                "retrieval_artifacts": retrieval_artifacts,
             }
         )
 
@@ -97,10 +102,26 @@ def _predict_anchor(
     harness: AnchorHarnessName,
     model: str,
     temperature: float,
-) -> tuple[Prediction, list[ProviderResponse]]:
+) -> tuple[Prediction, list[ProviderResponse], dict[str, Any]]:
+    if harness == "retrieval_anchor":
+        context, span_artifacts, retrieval_warnings = build_retrieval_context(
+            letter, FieldFamily.SEIZURE_FREQUENCY
+        )
+        response = _call_provider(
+            provider,
+            "anchor_retrieval",
+            letter,
+            model,
+            temperature,
+            context=context,
+            context_label="Retrieved context",
+        )
+        prediction = _merge_warnings(_prediction_from_response(response, letter), retrieval_warnings)
+        return prediction, [response], {"candidate_spans": span_artifacts}
+
     if harness == "single_prompt_anchor":
         response = _call_provider(provider, "anchor_single", letter, model, temperature)
-        return _prediction_from_response(response, letter), [response]
+        return _prediction_from_response(response, letter), [response], {}
 
     if harness == "multi_agent_anchor":
         extractor = _call_provider(provider, "anchor_multi_extractor", letter, model, temperature)
@@ -112,7 +133,7 @@ def _predict_anchor(
             temperature,
             context=extractor.content,
         )
-        return _prediction_from_response(verifier, letter), [extractor, verifier]
+        return _prediction_from_response(verifier, letter), [extractor, verifier], {}
 
     samples = 3 if harness == "multi_agent_anchor_sc3" else 5
     sample_predictions: list[Prediction] = []
@@ -121,7 +142,7 @@ def _predict_anchor(
         response = _call_provider(provider, "anchor_single", letter, model, temperature)
         responses.append(response)
         sample_predictions.append(_prediction_from_response(response, letter))
-    return _majority_prediction(sample_predictions), responses
+    return _majority_prediction(sample_predictions), responses, {}
 
 
 def _call_provider(
@@ -132,11 +153,12 @@ def _call_provider(
     temperature: float,
     *,
     context: str | None = None,
+    context_label: str = "Prior agent output",
 ) -> ProviderResponse:
     prompt = load_prompt(prompt_id)
     content = f"{prompt.content}\n\nClinic letter:\n{letter}"
     if context:
-        content = f"{content}\n\nPrior agent output:\n{context}"
+        content = f"{prompt.content}\n\n{context_label}:\n{context}\n\nClinic letter:\n{letter}"
     return provider.complete(
         ProviderRequest(
             messages=[ProviderMessage(role="user", content=content)],
@@ -145,6 +167,21 @@ def _call_provider(
             response_format="json",
             metadata={"prompt_id": prompt_id, "prompt_version": prompt.version},
         )
+    )
+
+
+def _merge_warnings(prediction: Prediction, extra: list[str]) -> Prediction:
+    if not extra:
+        return prediction
+    return Prediction(
+        label=prediction.label,
+        evidence=prediction.evidence,
+        confidence=prediction.confidence,
+        parsed_monthly_rate=prediction.parsed_monthly_rate,
+        pragmatic_class=prediction.pragmatic_class,
+        purist_class=prediction.purist_class,
+        warnings=prediction.warnings + extra,
+        metadata=prediction.metadata,
     )
 
 
@@ -229,4 +266,6 @@ def _payload_from_prediction(prediction: Prediction, harness: str, record: GoldR
 def _prompt_for_harness(harness: AnchorHarnessName):
     if harness == "multi_agent_anchor":
         return load_prompt("anchor_multi_verifier")
+    if harness == "retrieval_anchor":
+        return load_prompt("anchor_retrieval")
     return load_prompt("anchor_single")

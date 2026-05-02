@@ -27,6 +27,7 @@ class VersionedJsonAsset:
 
 PROMPT_REGISTRY = {
     "anchor_single": ("anchor/single_prompt_v1.md", "anchor_single_prompt_v1"),
+    "anchor_retrieval": ("anchor/retrieval_v1.md", "anchor_retrieval_v1"),
     "anchor_multi_extractor": ("anchor/multi_agent_v1/extractor.md", "anchor_multi_agent_v1"),
     "anchor_multi_verifier": ("anchor/multi_agent_v1/verifier.md", "anchor_multi_agent_v1"),
     "full_contract_single": ("full_contract/single_prompt_v1.md", "full_contract_single_prompt_v1"),
@@ -46,6 +47,8 @@ PROMPT_REGISTRY = {
         "full_contract/multi_agent_v1/aggregation.md",
         "full_contract_multi_agent_v1",
     ),
+    "direct_evidence_contract": ("direct/evidence_contract_v1.md", "direct_evidence_contract_v1"),
+    "retrieval_field_extractor": ("retrieval/field_extractor_v1.md", "retrieval_field_extractor_v1"),
 }
 
 SCHEMA_REGISTRY = {

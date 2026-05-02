@@ -10,7 +10,9 @@ from epilepsy_extraction.data import compute_file_sha256, load_synthetic_subset,
 from epilepsy_extraction.harnesses import (
     run_anchor_harness,
     run_deterministic_baseline,
+    run_direct_evidence_contract,
     run_exect_lite_baseline,
+    run_retrieval_field_extractors,
     run_single_prompt_full_contract,
 )
 from epilepsy_extraction.providers import ReplayProvider
@@ -30,10 +32,13 @@ def main() -> None:
             "deterministic_baseline",
             "exect_lite_cleanroom_baseline",
             "single_prompt_anchor",
+            "retrieval_anchor",
             "multi_agent_anchor",
             "multi_agent_anchor_sc3",
             "multi_agent_anchor_sc5",
             "single_prompt_full_contract",
+            "direct_evidence_contract",
+            "retrieval_field_extractors",
         ],
         default="metadata_smoke",
     )
@@ -77,6 +82,28 @@ def main() -> None:
         if args.replay is None:
             raise SystemExit("--replay is required for provider-backed full-contract harnesses")
         record = run_single_prompt_full_contract(
+            selected,
+            dataset,
+            args.run_id,
+            code_version,
+            ReplayProvider(args.replay),
+            model=args.model,
+        )
+    elif args.harness == "direct_evidence_contract":
+        if args.replay is None:
+            raise SystemExit("--replay is required for provider-backed harnesses")
+        record = run_direct_evidence_contract(
+            selected,
+            dataset,
+            args.run_id,
+            code_version,
+            ReplayProvider(args.replay),
+            model=args.model,
+        )
+    elif args.harness == "retrieval_field_extractors":
+        if args.replay is None:
+            raise SystemExit("--replay is required for provider-backed harnesses")
+        record = run_retrieval_field_extractors(
             selected,
             dataset,
             args.run_id,
