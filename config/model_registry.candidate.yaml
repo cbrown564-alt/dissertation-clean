@@ -1,0 +1,80 @@
+# Candidate model registry — freeze a dated copy before canonical experiment runs.
+# Format: see docs/model_registry_protocol.md
+# Tiers: frontier, medium, small, open_frontier, open_medium, open_small
+# Costs: USD per 1,000 tokens (input/output) as of registry creation date.
+# frozen_at: leave blank until the registry is frozen for a canonical run.
+
+registry_version: "0.1"
+created: "2026-05-02"
+frozen_at: ""
+
+models:
+  - model_id: claude-3-5-sonnet-20241022
+    display_name: Claude 3.5 Sonnet (Oct 2024)
+    provider: anthropic
+    family: claude-3
+    tier: frontier
+    context_window: 200000
+    cost_per_1k_input: 0.003
+    cost_per_1k_output: 0.015
+    notes: "Stable frontier model; preferred for canonical runs requiring strong instruction following."
+
+  - model_id: claude-3-5-haiku-20241022
+    display_name: Claude 3.5 Haiku (Oct 2024)
+    provider: anthropic
+    family: claude-3
+    tier: medium
+    context_window: 200000
+    cost_per_1k_input: 0.0008
+    cost_per_1k_output: 0.004
+    notes: "Fast medium-tier model; use for cost-sensitive sweeps."
+
+  - model_id: claude-3-haiku-20240307
+    display_name: Claude 3 Haiku (Mar 2024)
+    provider: anthropic
+    family: claude-3
+    tier: small
+    context_window: 200000
+    cost_per_1k_input: 0.00025
+    cost_per_1k_output: 0.00125
+    notes: "Small-tier baseline for model-capacity ablation."
+
+  - model_id: gpt-4o-2024-11-20
+    display_name: GPT-4o (Nov 2024)
+    provider: openai
+    family: gpt-4o
+    tier: frontier
+    context_window: 128000
+    cost_per_1k_input: 0.0025
+    cost_per_1k_output: 0.010
+    notes: "Cross-provider frontier comparator."
+
+  - model_id: gpt-4o-mini-2024-07-18
+    display_name: GPT-4o mini (Jul 2024)
+    provider: openai
+    family: gpt-4o
+    tier: medium
+    context_window: 128000
+    cost_per_1k_input: 0.00015
+    cost_per_1k_output: 0.0006
+    notes: "Cross-provider medium comparator."
+
+  - model_id: meta-llama/Llama-3.1-70B-Instruct
+    display_name: Llama 3.1 70B Instruct
+    provider: meta
+    family: llama-3.1
+    tier: open_frontier
+    context_window: 131072
+    cost_per_1k_input: 0.0
+    cost_per_1k_output: 0.0
+    notes: "Open frontier; run locally or via inference API. Zero cost when self-hosted."
+
+  - model_id: meta-llama/Llama-3.1-8B-Instruct
+    display_name: Llama 3.1 8B Instruct
+    provider: meta
+    family: llama-3.1
+    tier: open_small
+    context_window: 131072
+    cost_per_1k_input: 0.0
+    cost_per_1k_output: 0.0
+    notes: "Open small-tier; use to assess model-capacity floor for modular pipeline."

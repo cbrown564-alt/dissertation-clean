@@ -10,6 +10,7 @@ from epilepsy_extraction.data import compute_file_sha256, load_synthetic_subset,
 from epilepsy_extraction.harnesses import (
     run_anchor_harness,
     run_deterministic_baseline,
+    run_exect_lite_baseline,
     run_single_prompt_full_contract,
 )
 from epilepsy_extraction.providers import ReplayProvider
@@ -27,6 +28,7 @@ def main() -> None:
         choices=[
             "metadata_smoke",
             "deterministic_baseline",
+            "exect_lite_cleanroom_baseline",
             "single_prompt_anchor",
             "multi_agent_anchor",
             "multi_agent_anchor_sc3",
@@ -55,7 +57,9 @@ def main() -> None:
     )
 
     code_version = resolve_code_version(args.code_version, cwd=Path.cwd(), fallback="uncommitted")
-    if args.harness == "deterministic_baseline":
+    if args.harness == "exect_lite_cleanroom_baseline":
+        record = run_exect_lite_baseline(selected, dataset, args.run_id, code_version)
+    elif args.harness == "deterministic_baseline":
         record = run_deterministic_baseline(selected, dataset, args.run_id, code_version)
     elif args.harness.endswith("_anchor") or "_anchor_sc" in args.harness:
         if args.replay is None:

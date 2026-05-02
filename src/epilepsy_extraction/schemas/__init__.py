@@ -1,5 +1,6 @@
 from .contracts import (
     CORE_FIELD_FAMILIES,
+    ArchitectureFamily,
     EvidenceGrade,
     FieldCoverageStatus,
     FieldFamily,
@@ -7,6 +8,7 @@ from .contracts import (
     failed_component_coverage,
     field_coverage,
     full_contract_coverage,
+    not_attempted_coverage,
     partial_contract_coverage,
 )
 from .extraction import (
@@ -33,6 +35,7 @@ from .runs import (
 
 __all__ = [
     "CORE_FIELD_FAMILIES",
+    "ArchitectureFamily",
     "BudgetMetadata",
     "DatasetSlice",
     "EvidenceGrade",
@@ -51,6 +54,7 @@ __all__ = [
     "field_coverage",
     "full_contract_coverage",
     "git_code_version",
+    "not_attempted_coverage",
     "missing_final_payload_keys",
     "partial_contract_coverage",
     "read_extraction_payload",

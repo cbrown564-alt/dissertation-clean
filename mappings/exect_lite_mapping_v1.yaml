@@ -1,0 +1,42 @@
+# ExECT-lite cleanroom baseline mapping — v1
+# Maps output fields from the independently-authored ExECT-lite harness to the
+# final extraction schema. This mapping is not derived from ExECTv2 source code.
+mapping_version: exect_lite_v1
+description: >
+  Maps cleanroom ExECT-lite rule-based output fields to the shared final
+  extraction schema. Coverage is explicitly partial: fields not extracted by
+  ExECT-lite are marked not_attempted rather than wrong.
+architecture_family: clinical_nlp_baseline
+field_mappings:
+  seizure_frequency:
+    source_field: seizure_frequency
+    coverage: implemented
+    notes: "Regex extraction from letter text; matches pragmatic frequency patterns."
+  current_medications:
+    source_field: medications
+    coverage: partial
+    notes: "Drug name and dose extracted; route and frequency are partial only."
+  investigations:
+    source_field: investigations
+    coverage: partial
+    notes: "Investigation type extracted; result status is partial."
+  seizure_types:
+    source_field: seizure_types
+    coverage: partial
+    notes: "Raw keyword match for focal/generalized/absence/tonic-clonic; no normalization."
+  seizure_features:
+    source_field: null
+    coverage: not_attempted
+    notes: "Semiology features not extracted by ExECT-lite."
+  seizure_pattern_modifiers:
+    source_field: null
+    coverage: not_attempted
+    notes: "Pattern modifiers not extracted by ExECT-lite."
+  epilepsy_type:
+    source_field: epilepsy_type
+    coverage: partial
+    notes: "Keyword match for focal/generalized epilepsy; no syndrome classification."
+  epilepsy_syndrome:
+    source_field: null
+    coverage: not_attempted
+    notes: "Syndrome classification not extracted by ExECT-lite."

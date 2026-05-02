@@ -1,0 +1,48 @@
+# ExECTv2 external baseline mapping — v1
+# Maps field names from ExECTv2 GATE pipeline outputs to the final extraction schema.
+# ExECTv2 must be run externally; its outputs are ingested by the adapter harness.
+# See docs/implementation_plan.md Phase 4 for ExECTv2 setup assumptions.
+mapping_version: exect_v2_v1
+description: >
+  Maps ExECTv2 GATE pipeline output fields to the shared final extraction schema.
+  ExECTv2 outputs must be pre-generated outside this repository and supplied as
+  a JSON file per the adapter's documented format.
+architecture_family: clinical_nlp_baseline
+source_notes: >
+  ExECTv2 is a GATE-based NLP pipeline for epilepsy clinical letter extraction.
+  Refer to the published system paper and the source repository for setup
+  instructions, GATE version requirements, and licensing terms.
+  Record the source repository commit hash and GATE version in the run record notes.
+field_mappings:
+  seizure_frequency:
+    source_field: SeizureFrequency
+    coverage: implemented
+    notes: "Fine-grained frequency value from ExECTv2 annotation."
+  current_medications:
+    source_field: Medication
+    coverage: implemented
+    notes: "Drug name, dose, and frequency from ExECTv2 prescription annotations."
+  investigations:
+    source_field: Investigation
+    coverage: implemented
+    notes: "Investigation type and result from ExECTv2 test/investigation annotations."
+  seizure_types:
+    source_field: SeizureType
+    coverage: implemented
+    notes: "Seizure type from ExECTv2 classification annotations."
+  seizure_features:
+    source_field: null
+    coverage: not_attempted
+    notes: "Semiology features not in ExECTv2 public annotation scope."
+  seizure_pattern_modifiers:
+    source_field: null
+    coverage: not_attempted
+    notes: "Pattern modifiers not in ExECTv2 public annotation scope."
+  epilepsy_type:
+    source_field: EpilepsyType
+    coverage: implemented
+    notes: "Epilepsy type and diagnosis from ExECTv2 diagnosis annotations."
+  epilepsy_syndrome:
+    source_field: EpilepsySyndrome
+    coverage: partial
+    notes: "Syndrome where present in ExECTv2 output; may not always be populated."

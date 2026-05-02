@@ -65,6 +65,11 @@ class RunRecord:
     parse_validity: dict[str, Any] = field(default_factory=dict)
     warnings: list[str] = field(default_factory=list)
     artifact_paths: dict[str, str] = field(default_factory=dict)
+    architecture_family: str = ""
+    model_registry_entry: str | None = None
+    complexity: dict[str, Any] = field(default_factory=dict)
+    external_baseline: bool = False
+    mapping_version: str = ""
 
     def to_dict(self) -> dict[str, Any]:
         data = asdict(self)

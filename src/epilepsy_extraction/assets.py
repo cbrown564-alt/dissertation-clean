@@ -52,12 +52,28 @@ SCHEMA_REGISTRY = {
     "final_extraction": ("final_extraction_v1.json", "final_extraction_v1"),
 }
 
+MAPPING_REGISTRY = {
+    "exect_lite": ("exect_lite_mapping_v1.yaml", "exect_lite_v1"),
+    "exect_v2": ("exect_v2_mapping_v1.yaml", "exect_v2_v1"),
+}
+
 
 def load_prompt(prompt_id: str) -> VersionedTextAsset:
     relative_path, version = PROMPT_REGISTRY[prompt_id]
     path = REPO_ROOT / "prompts" / relative_path
     return VersionedTextAsset(
         asset_id=prompt_id,
+        version=version,
+        path=path.relative_to(REPO_ROOT).as_posix(),
+        content=path.read_text(encoding="utf-8"),
+    )
+
+
+def load_mapping(mapping_id: str) -> VersionedTextAsset:
+    relative_path, version = MAPPING_REGISTRY[mapping_id]
+    path = REPO_ROOT / "mappings" / relative_path
+    return VersionedTextAsset(
+        asset_id=mapping_id,
         version=version,
         path=path.relative_to(REPO_ROOT).as_posix(),
         content=path.read_text(encoding="utf-8"),
