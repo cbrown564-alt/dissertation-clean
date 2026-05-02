@@ -166,6 +166,8 @@ Each adjudication sheet should include:
 
 - row ID;
 - harness ID;
+- architecture family;
+- model registry entry, where applicable;
 - model/provider;
 - field family;
 - emitted value;
@@ -189,5 +191,7 @@ For final reporting, adjudicate a matched slice containing:
 - seizure semiology and pattern-modifier examples;
 - epilepsy type/syndrome examples with uncertainty language.
 
-The same rows should be used across the single-prompt and multi-agent
-comparators whenever possible.
+The same rows should be used across the architecture ladder whenever possible:
+clinical NLP baselines, direct LLM baselines, retrieval-field pipelines,
+CLINES-inspired modular pipelines, verifier variants, and model-family
+sensitivity runs.

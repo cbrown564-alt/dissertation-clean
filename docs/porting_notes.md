@@ -44,18 +44,22 @@ Port or reimplement:
 
 Reason: the clean repo still needs controlled, training-free experiments.
 
-### h013 Architecture Ideas
+### h013 And Modular Architecture Ideas
 
-Port the design idea:
+Port the useful design ideas, but adapt them to the revised CLINES-inspired
+architecture ladder:
 
-- section/timeline role;
-- field extractor roles;
-- verification role;
-- aggregation role;
+- document sectioning and timeline extraction;
+- candidate span and evidence-span artifacts;
+- field-specific extraction;
+- verification beyond quote presence;
+- aggregation without inventing clinical facts;
 - confidence/citation/warning output pattern.
 
-Reason: this is the closest existing implementation of the original research
-architecture.
+Reason: this is the closest existing implementation of the older modular
+research architecture, but it should now feed `retrieval_field_extractors`,
+`clines_epilepsy_modular`, and `clines_epilepsy_verified` rather than define
+the whole dissertation system.
 
 ### h012 Design Lesson
 
@@ -64,6 +68,31 @@ Port the lesson, not necessarily the code:
 - separate seizure-frequency extraction from broader-field extraction where
   useful;
 - compare task framing rather than assuming one joint prompt is best.
+- use the lesson as part of model-family and architecture-sensitivity work.
+
+### ExECT And Baseline Lessons
+
+Port or recreate:
+
+- deterministic clinical NLP floor;
+- ExECT-lite clean-room baseline based on published field definitions;
+- ExECTv2 external-output mapping if GATE outputs are generated separately.
+
+Reason: the revised proposal needs serious clinical NLP baselines, not only LLM
+comparators. Do not copy ExECTv2 rules or gazetteers into this repo unless
+licensing is clarified.
+
+### Model Registry Discipline
+
+Port or implement:
+
+- provider metadata capture;
+- token/cost/latency accounting;
+- exact model ID recording;
+- frozen model registry snapshots for canonical runs.
+
+Reason: latest-model comparisons must be reproducible and interpretable across
+open and closed model families.
 
 ## Summarize, Do Not Maintain As Main Code
 
@@ -148,7 +177,9 @@ The first implementation batch should add only:
 1. data loading and fixed-slice selection;
 2. schema definitions for final payloads, evidence grades, field coverage, and
    run metadata;
-3. run-record writing and deterministic metadata capture.
+3. architecture-family and model-registry metadata;
+4. baseline mapping support;
+5. run-record writing and deterministic metadata capture.
 
 No LLM harness should become canonical until the contract and run metadata layer
 exist.

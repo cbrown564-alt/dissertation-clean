@@ -3,8 +3,15 @@
 ## Purpose
 
 Experiments should be small, comparable, and reproducible. The clean repo should
-answer the research question with fixed slices, explicit budgets, and
-machine-readable run records.
+answer the revised research question with fixed slices, explicit budgets,
+architecture ablations, model registry entries, and machine-readable run
+records.
+
+The main comparison is no longer a binary single-prompt versus multi-agent
+test. The study should evaluate an architecture ladder: clinical NLP baselines,
+direct LLM prompting, evidence-required prompting, retrieval-plus-extraction,
+CLINES-inspired modular extraction, verification variants, and costed
+reliability interventions.
 
 ## Harness Names
 
@@ -13,70 +20,119 @@ Use descriptive clean harness names rather than inheriting every exploratory
 
 | Clean harness | Historical reference | Purpose |
 | --- | --- | --- |
-| `deterministic_baseline` | `h001`/`h002` | Reproducible floor. |
-| `single_prompt_anchor` | `h003` | Seizure-frequency anchor baseline. |
-| `multi_agent_anchor` | `h004` | Role-separated anchor comparator. |
-| `multi_agent_anchor_sc3` | `h006` | Self-consistency k=3. |
-| `multi_agent_anchor_sc5` | `h007` | Self-consistency k=5. |
-| `single_prompt_full_contract` | new | Full-schema single-prompt comparator. |
-| `multi_agent_full_contract` | `h013` reference | Main role-separated system. |
-| `medium_sensitivity` | `h012` | Optional bounded sensitivity harness. |
+| `deterministic_baseline` | `h001`/`h002` | Reproducible rule floor. |
+| `exect_v2_external_baseline` | new | Published epilepsy NLP comparator, run as external GATE baseline where feasible. |
+| `exect_lite_cleanroom_baseline` | new | Transparent local epilepsy-rule baseline written from published definitions. |
+| `direct_anchor` | `h003` | Seizure-frequency direct-prompt anchor. |
+| `retrieval_anchor` | new / `h004` reference | Candidate-span seizure-frequency anchor. |
+| `anchor_sc3` | `h006` | Self-consistency k=3 on anchor task. |
+| `anchor_sc5` | `h007` | Self-consistency k=5 on anchor task. |
+| `direct_full_contract` | new | Full-schema direct-prompt comparator. |
+| `direct_evidence_contract` | new | Full-schema direct prompt with stricter evidence and abstention contract. |
+| `retrieval_field_extractors` | new | Candidate retrieval plus field-specific extraction. |
+| `clines_epilepsy_modular` | `h013` reference | Main CLINES-inspired modular system. |
+| `clines_epilepsy_verified` | new | Modular system with explicit verifier/downgrade pass. |
+| `model_family_sensitivity` | `h012` reference | Bounded model-family and model-capacity sensitivity runs. |
 
-## Required Harnesses
+## Required Harness Families
 
-### Full-Contract Single-Prompt Baseline
-
-One LLM call reads the letter and emits the full output schema.
+### Clinical NLP Baselines
 
 Purpose:
 
-- main baseline against the role-separated system;
-- tests whether architecture adds reliability beyond a strong direct prompt.
+- establish reproducible non-LLM floors;
+- avoid comparing LLM systems against a straw man;
+- identify fields where conventional rules remain competitive.
+
+Required baselines:
+
+- `deterministic_baseline`;
+- `exect_lite_cleanroom_baseline`;
+- `exect_v2_external_baseline`, if GATE setup and licensing constraints allow
+  external execution.
+
+ExECTv2 should be treated as an external baseline unless licensing is clarified.
+Record repository URL, commit hash, GATE version, input documents, output
+mapping, and validation scripts used. Do not copy ExECTv2 source logic into
+this repo without permission.
+
+### Direct LLM Baselines
+
+`direct_full_contract` is one LLM call that reads the letter and emits the full
+output schema.
+
+`direct_evidence_contract` uses the same direct architecture but stricter
+evidence, abstention, and warning requirements.
 
 Requirements:
 
-- same final schema as the multi-agent pipeline;
+- same final schema as modular pipelines;
 - evidence spans required;
 - invalid-output recovery logged;
 - field-family validity metrics emitted;
-- budget metadata emitted.
+- call/token/latency/cost metadata emitted.
 
-### Full-Contract Role-Separated Multi-Agent Pipeline
+### Retrieval-Plus-Field Extraction
 
-This is the clean implementation of the original research idea.
+This harness tests whether candidate-span retrieval and field-specific local
+context improve output quality before adopting the full modular pipeline.
 
 Requirements:
 
-- section/timeline artifact;
+- candidate span artifact;
+- field-family extractor outputs;
+- evidence spans;
+- recall-loss warnings where candidate spans appear incomplete;
+- same final schema as direct and modular systems.
+
+### CLINES-Inspired Modular Pipeline
+
+This is the clean implementation of the revised research architecture.
+
+Requirements:
+
+- document normalization and sectioning artifact;
+- semantic chunking or candidate-span artifact;
 - field extractor artifacts;
-- verification artifact;
+- status/temporality artifact;
+- normalization artifact, where implemented;
+- verification artifact for `clines_epilepsy_verified`;
 - aggregation artifact;
-- final schema identical to the single-prompt baseline;
-- explicit call/token budget.
+- final schema identical to the direct-prompt baseline;
+- explicit call/token/latency/cost budget.
+
+Do not label this as a CLINES replication unless the original CLINES code,
+prompts, annotations, and evaluation scripts are public and used.
 
 ### Anchor Seizure-Frequency Harnesses
 
 Keep the anchor-task line as a compact reliability microcosm:
 
-- single-prompt anchor;
-- role-separated anchor;
+- direct anchor;
+- retrieval anchor;
+- CLINES-style anchor if separable;
 - self-consistency k=3;
 - self-consistency k=5.
 
 Purpose:
 
 - preserve a controlled reliability study;
-- show same-budget role separation may be parity;
-- show self-consistency as a costed reliability intervention.
+- stress-test temporality and ambiguity;
+- show whether self-consistency is worth its cost;
+- keep a low-cost place to test new model families before full-contract runs.
 
-### Sensitivity Harnesses
+### Model-Family Sensitivity Harnesses
 
-Sensitivity runs are optional and bounded. They should answer specific questions
-such as whether a stronger model changes conclusions or whether task framing
-affects broader-field utility.
+Sensitivity runs should answer specific questions:
 
-Closed-provider sensitivity runs are synthetic-only and must not become the main
-evidence spine.
+- does a stronger model reduce the benefit of modular architecture?
+- do smaller open models benefit more from retrieval and verification?
+- which models are cost-efficient per evidence-supported extraction?
+- do frontier closed models improve correctness enough to justify cost or
+  governance constraints?
+
+Closed-provider sensitivity runs on synthetic data must not become the main
+clinical evidence spine.
 
 ## Fixed-Slice Discipline
 
@@ -89,32 +145,49 @@ Every experiment should specify:
 - `n`;
 - row IDs;
 - random seed, if sampling;
-- model/provider;
+- model registry entry ID;
+- model/provider/backend;
 - prompt/schema version;
 - run timestamp;
-- code version or commit hash.
+- code version or commit hash;
+- external baseline version or commit hash, if applicable.
 
 Comparisons should use matched rows whenever possible.
 
-## Budget Matching
+## Model Registry Discipline
 
-For single-prompt vs multi-agent comparison, define budget explicitly:
+Experiments must use frozen model registry entries rather than vague labels such
+as "latest GPT" or "latest Qwen." Each entry should identify the exact model ID,
+provider, release date or snapshot date, context window, pricing source,
+inference backend, quantization, decoding settings, and hardware.
+
+Latest-release scouting can happen before the freeze date, but canonical runs
+must use frozen entries.
+
+## Budget And Complexity Metrics
+
+For architecture comparisons, define budget explicitly:
 
 - same call count where possible;
-- same maximum token budget; or
-- deliberately unequal budgets reported as an intervention.
+- same maximum token budget where meaningful;
+- deliberately unequal budgets reported as part of the intervention.
 
-Do not compare a one-call baseline against a multi-call role pipeline without
-making the budget difference central to interpretation.
+Do not compare a one-call baseline against a multi-call modular pipeline without
+making call count, token use, latency, cost, and harness complexity central to
+interpretation.
 
-Recommended primary comparisons:
+Every run should emit:
 
-1. one-call full-contract single prompt vs one-call constrained role variant, if
-   feasible;
-2. one-call full-contract single prompt vs production multi-agent with budget
-   reported;
-3. production multi-agent vs self-consistency or verifier variants as costed
-   improvements.
+- number of LLM calls per row;
+- mean input tokens;
+- mean output tokens;
+- mean total tokens;
+- latency;
+- estimated cost;
+- parse repair count;
+- number of modules invoked;
+- number and size of intermediate artifacts;
+- external tool/runtime requirements.
 
 ## Run Record Contract
 
@@ -122,19 +195,24 @@ Each run record should include:
 
 - `run_id`;
 - `harness`;
+- `architecture_family`;
 - `schema_version`;
 - `field_coverage`;
 - `dataset`;
 - `slice`;
+- `model_registry_entry`;
 - `model`;
 - `provider`;
+- `backend`;
 - `budget`;
+- `complexity`;
 - `metrics`;
 - `rows`;
 - `parse_validity`;
 - `warnings`;
 - `artifact_paths`;
 - path to prompt/schema definitions;
+- path to model registry snapshot;
 - path to adjudication if available.
 
 ## Promotion Gates
@@ -144,29 +222,41 @@ Before a harness becomes canonical:
 1. one-row smoke validates output shape;
 2. small fixed-slice run validates parse stability;
 3. `n=25` or `n=50` matched run gives preliminary metrics;
-4. matched adjudication confirms value/status/evidence correctness;
-5. only then promote to canonical result.
+4. matched adjudication confirms value/status/temporality/normalization/evidence
+   correctness;
+5. budget and complexity metrics are complete;
+6. only then promote to canonical result.
 
 ## Minimum Dissertation Experiment Set
 
 The repo should produce:
 
 1. deterministic baseline run;
-2. anchor single-prompt vs anchor multi-agent run;
-3. anchor self-consistency run;
-4. full-contract single-prompt run;
-5. full-contract multi-agent run;
-6. matched adjudication for the full-contract comparison;
-7. optional h012/frontier sensitivity run on synthetic data only.
+2. ExECT-lite clean-room baseline run;
+3. ExECTv2 external baseline run if feasible;
+4. seizure-frequency anchor direct vs retrieval/modular run;
+5. anchor self-consistency run;
+6. direct full-contract run;
+7. direct evidence-contract run;
+8. retrieval-plus-field-extraction run;
+9. CLINES-inspired modular run;
+10. CLINES-inspired verified run;
+11. matched adjudication for the full-contract architecture ladder;
+12. model-family sensitivity runs across frozen open and closed model entries;
+13. optional frontier sensitivity run on synthetic data only.
 
 ## Result Families
 
 Maintain simple structured outputs for:
 
 - harness coverage;
+- baseline comparison;
+- architecture ablation ladder;
+- model-family and model-tier comparison;
+- budget, latency, token, and complexity comparison;
 - anchor reliability results;
-- full-contract comparison;
 - clinical adjudication results;
+- evidence-support results;
 - sensitivity results.
 
 Use `canonical`, `supporting`, and `archive` labels so the visibility cockpit

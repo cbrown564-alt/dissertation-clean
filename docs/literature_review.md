@@ -23,9 +23,10 @@ to transformer models and LLMs. It narrows into epilepsy, where there is now a
 recognizable literature on extracting seizure frequency, epilepsy type, seizure
 type, medications, and investigations from clinic letters. It then broadens
 again to ask what recent LLM extraction systems and coding-agent harnesses teach
-about the dissertation's central design choice: whether a training-free,
-role-separated, evidence-grounded pipeline can be evaluated as a serious
-alternative to a strong single-prompt baseline.
+about the dissertation's central design choice: how training-free, modular,
+evidence-grounded extraction architectures should be evaluated against strong
+direct-prompt LLM baselines, clinical NLP baselines, and different model
+families.
 
 The emphasis is deliberately methodological. The question is not only which
 model performs best, but what should count as a good extraction system. Recent
@@ -413,7 +414,7 @@ organization. It is part of the method. The dissertation can borrow the
 software-agent lesson without overclaiming: good harnesses do not make models
 magical, but they make behaviour more observable, reproducible, and evaluable.
 
-## 8. Single Prompt Versus Role Separation
+## 8. Direct Prompting, Modular Architecture, And Ablations
 
 The literature does not support the claim that multi-agent systems are
 inherently better. It supports a narrower and more interesting claim:
@@ -438,20 +439,25 @@ can remove a meaningful fraction of unsupported LLM-positive claims. Gero et
 al.'s self-verification work similarly supports the idea that extraction and
 verification should be separated when provenance matters.
 
-The present dissertation should therefore make role separation a hypothesis,
-not a belief. It should ask:
+The present dissertation should therefore make modular clinical architecture a
+hypothesis, not a belief. It should ask:
 
-- Does role separation improve field-level correctness?
+- Does modularization improve field-level correctness?
 - Does it improve evidence-support grades?
 - Does it improve warning quality and error discoverability?
 - Does it preserve recall, or does it lose facts through segmentation and
   summarization?
-- Are any improvements worth additional calls, tokens, and latency?
+- Which modules help: chunking, candidate retrieval, field extraction,
+  status/temporality enrichment, normalization, verification, or aggregation?
+- Are any improvements worth additional calls, tokens, latency, implementation
+  complexity, and governance burden?
 
 The strongest possible outcome is not necessarily "multi-agent beats single
-prompt on every metric." A more credible outcome may be: the role-separated
+prompt on every metric." A more credible outcome may be: a CLINES-inspired
 pipeline is similar in value accuracy but produces better evidence support,
-more useful warnings, and more inspectable failure modes at higher cost.
+more useful warnings, and more inspectable failure modes at higher cost; or
+that smaller open models benefit more from modular scaffolding than frontier
+closed models.
 
 ## 9. Output Representation: The Label Is Part Of The Method
 
@@ -580,13 +586,13 @@ about what the evidence supports.
 
 The literature now suggests a sharper position than the first draft.
 
-This dissertation is not trying to prove that LLMs are better than clinical
-NLP, or that multi-agent systems are inherently better than direct prompting.
-It is testing a specific proposition: for epilepsy clinic-letter extraction,
-can a training-free, contract-constrained, role-separated LLM harness produce
-more reliable, evidence-supported, and auditable structured outputs than a
-strong single-prompt harness, when both are evaluated under the same schema,
-fixed slices, explicit budgets, and clinical adjudication rules?
+This dissertation is not trying to prove that LLMs are better than clinical NLP,
+or that modular systems are inherently better than direct prompting. It is
+testing a broader design proposition: for epilepsy clinic-letter extraction, how
+do clinical NLP baselines, direct LLM prompting, CLINES-inspired modular
+architecture, verification, and model capacity interact to shape correctness,
+evidence support, auditability, cost, latency, token use, and harness
+complexity?
 
 The main contribution can be methodological even if the performance result is
 mixed. ExECT shows that epilepsy clinic-letter extraction is feasible but
@@ -604,14 +610,19 @@ Taken together, these papers argue for a dissertation that is careful, not
 grandiose. The key design principles should be:
 
 - Treat seizure frequency as the anchor, but evaluate field families separately.
-- Keep the single-prompt baseline strong.
-- Treat role separation as an empirical intervention.
+- Keep the direct-prompt baseline strong.
+- Treat CLINES-inspired modularization as an empirical intervention.
+- Benchmark against clinical NLP baselines, including ExECT-style baselines
+  where feasible.
+- Evaluate architecture through ablations rather than a single binary
+  comparison.
+- Compare frozen open and closed model-family snapshots where budget allows.
 - Avoid lossy summarization unless it is evaluated.
 - Use structured outputs, but never confuse schema validity with clinical
   correctness.
 - Require evidence and grade whether it supports value, status, temporality,
   and normalization.
-- Report budget as a result.
+- Report budget, latency, token use, and harness complexity as results.
 - Discuss fine-tuning and synthetic supervision as serious alternatives.
 - Make auditability operational through artifacts, warnings, and adjudication.
 
@@ -625,10 +636,12 @@ axes are:
 | Task scope | Seizure frequency only; broader field families | ExECT and Fang et al. show uneven field difficulty; seizure frequency alone is too narrow | Keep seizure frequency as anchor and report field families separately |
 | Frequency representation | Numeric rate; categories; structured status object | Holgate struggles with fine categories; Gan finds structured labels beat numeric regression | Use structured status/evidence object; add numeric only when supported |
 | Model strategy | Training-free; few-shot; fine-tuned; synthetic-supervised | Agrawal supports few-shot IE; Xie and Gan show fine-tuning can work | Main study training-free, with fine-tuning/synthetic supervision as explicit alternative |
-| Architecture | Single prompt; pipeline; role-separated agents | Fang warns direct extraction can be best; CLINES supports modular extraction for long notes | Compare strong single prompt with role-separated pipeline; do not assume improvement |
+| Architecture | Direct prompt; retrieval-field pipeline; CLINES-inspired modular pipeline; verifier variants | Fang warns direct extraction can be best; CLINES supports modular extraction for long notes | Compare an architecture ladder; do not assume modular improvement |
 | Evidence | Optional citation; required quote; verifier-graded support | Gan, Mahbub, Gero support evidence and grounding | Require evidence and score support quality |
 | Harness | Prompt only; schema harness; full artifact harness | SWE-agent, Pi, Flue, CLINES show harness design matters | Treat harness as part of the method and log artifacts/budget |
 | Evaluation | Aggregate accuracy; field metrics; adjudication | ExECT, Holgate, and clinical LLM reviews show aggregate metrics mislead | Use layered evaluation and matched adjudication |
+| Clinical baselines | LLM-only comparison; deterministic rules; ExECTv2 external baseline; ExECT-lite clean-room baseline | ExECT shows epilepsy NLP is a serious prior comparator | Include clinical NLP floors and map partial outputs explicitly |
+| Model strategy | One model; open only; closed only; model-family matrix | Recent studies show model and harness both matter | Freeze exact open/closed model snapshots and report cost/token/latency |
 | Claim | Deployment readiness; model superiority; curation support | Governance and reporting standards caution against overclaiming | Claim retrospective extraction/auditability evidence only |
 
 ## References
