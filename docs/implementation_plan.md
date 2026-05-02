@@ -285,7 +285,7 @@ Acceptance criteria:
 - Candidate-span recall failures are observable and not collapsed into generic
   wrong-answer errors.
 
-## Phase 8: CLINES-Inspired Modular Pipeline
+## Phase 8: CLINES-Inspired Modular Pipeline ✓ COMPLETE
 
 Goal: implement the main revised architecture as a clinical modular pipeline,
 not as a claimed CLINES replication.

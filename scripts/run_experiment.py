@@ -9,6 +9,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from epilepsy_extraction.data import compute_file_sha256, load_synthetic_subset, select_fixed_slice
 from epilepsy_extraction.harnesses import (
     run_anchor_harness,
+    run_clines_epilepsy_modular,
+    run_clines_epilepsy_verified,
     run_deterministic_baseline,
     run_direct_evidence_contract,
     run_direct_full_contract,
@@ -41,6 +43,8 @@ def main() -> None:
             "single_prompt_full_contract",
             "direct_evidence_contract",
             "retrieval_field_extractors",
+            "clines_epilepsy_modular",
+            "clines_epilepsy_verified",
         ],
         default="metadata_smoke",
     )
@@ -117,6 +121,28 @@ def main() -> None:
         if args.replay is None:
             raise SystemExit("--replay is required for provider-backed harnesses")
         record = run_retrieval_field_extractors(
+            selected,
+            dataset,
+            args.run_id,
+            code_version,
+            ReplayProvider(args.replay),
+            model=args.model,
+        )
+    elif args.harness == "clines_epilepsy_modular":
+        if args.replay is None:
+            raise SystemExit("--replay is required for provider-backed harnesses")
+        record = run_clines_epilepsy_modular(
+            selected,
+            dataset,
+            args.run_id,
+            code_version,
+            ReplayProvider(args.replay),
+            model=args.model,
+        )
+    elif args.harness == "clines_epilepsy_verified":
+        if args.replay is None:
+            raise SystemExit("--replay is required for provider-backed harnesses")
+        record = run_clines_epilepsy_verified(
             selected,
             dataset,
             args.run_id,

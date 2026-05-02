@@ -49,6 +49,8 @@ PROMPT_REGISTRY = {
     ),
     "direct_evidence_contract": ("direct/evidence_contract_v1.md", "direct_evidence_contract_v1"),
     "retrieval_field_extractor": ("retrieval/field_extractor_v1.md", "retrieval_field_extractor_v1"),
+    "clines_field_extractor": ("clines_inspired/field_extractor_v1.md", "clines_inspired_field_extractor_v1"),
+    "clines_verifier": ("clines_inspired/verification_v1.md", "clines_inspired_verification_v1"),
 }
 
 SCHEMA_REGISTRY = {
