@@ -58,6 +58,7 @@ def _response_from_dict(data: dict[str, Any]) -> ProviderResponse:
         usage=ProviderUsage(
             input_tokens=int(usage_data.get("input_tokens", 0)),
             output_tokens=int(usage_data.get("output_tokens", 0)),
+            cost_usd=float(usage_data.get("cost_usd", 0.0)),
         ),
         latency_ms=int(data.get("latency_ms", 0)),
         raw=data.get("raw", {}),

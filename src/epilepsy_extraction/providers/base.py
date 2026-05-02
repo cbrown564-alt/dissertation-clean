@@ -27,6 +27,7 @@ class ProviderRequest:
 class ProviderUsage:
     input_tokens: int = 0
     output_tokens: int = 0
+    cost_usd: float = 0.0
 
     @property
     def total_tokens(self) -> int:
@@ -97,4 +98,5 @@ def budget_from_provider_responses(
         output_tokens=sum(response.usage.output_tokens for response in response_list),
         total_tokens=sum(response.usage.total_tokens for response in response_list),
         latency_ms=sum(response.latency_ms for response in response_list),
+        estimated_cost_usd=sum(response.usage.cost_usd for response in response_list),
     )

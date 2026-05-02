@@ -175,6 +175,9 @@ def _parse_field_response(
         return {}, [(family.value, False)]
     keys = FIELD_FAMILY_KEYS[family]
     parsed = {k: data[k] for k in keys if k in data}
+    for shared_key in ("citations", "confidence", "warnings"):
+        if shared_key in data:
+            parsed[shared_key] = data[shared_key]
     return parsed, [(family.value, bool(parsed))]
 
 
@@ -182,10 +185,20 @@ def _aggregate_fields(
     field_results: dict[FieldFamily, dict[str, Any]],
 ) -> tuple[FinalExtraction, bool]:
     merged: dict[str, Any] = {}
+    citations: list[dict[str, Any]] = []
+    confidence: dict[str, float] = {}
+    warnings: list[str] = []
     any_invalid = False
     for family, data in field_results.items():
         if not data:
             any_invalid = True
+            continue
+        if isinstance(data.get("citations"), list):
+            citations.extend(data["citations"])
+        if isinstance(data.get("confidence"), dict):
+            confidence.update(data["confidence"])
+        if isinstance(data.get("warnings"), list):
+            warnings.extend(str(warning) for warning in data["warnings"])
         merged.update(data)
 
     return (
@@ -198,9 +211,9 @@ def _aggregate_fields(
             seizure_pattern_modifiers=merged.get("seizure_pattern_modifiers", []),
             epilepsy_type=merged.get("epilepsy_type"),
             epilepsy_syndrome=merged.get("epilepsy_syndrome"),
-            citations=merged.get("citations", []),
-            confidence=merged.get("confidence", {}),
-            warnings=merged.get("warnings", []),
+            citations=citations,
+            confidence=confidence,
+            warnings=warnings,
         ),
         any_invalid,
     )

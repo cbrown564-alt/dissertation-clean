@@ -4,9 +4,10 @@ import sys
 from pathlib import Path
 
 from epilepsy_extraction.data import compute_file_sha256, load_synthetic_subset, select_fixed_slice
-from epilepsy_extraction.harnesses import run_single_prompt_full_contract
+from epilepsy_extraction.harnesses import run_direct_full_contract, run_single_prompt_full_contract
 from epilepsy_extraction.providers import MockProvider
 from epilepsy_extraction.schemas import DatasetSlice
+from epilepsy_extraction.schemas.contracts import ArchitectureFamily
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -47,9 +48,10 @@ def test_single_prompt_full_contract_parses_final_schema() -> None:
     records = _records()
     provider = MockProvider([json.dumps({"final": _final_payload()})])
 
-    run = run_single_prompt_full_contract(records, _dataset(records), "full", "test", provider)
+    run = run_direct_full_contract(records, _dataset(records), "full", "test", provider)
 
-    assert run.harness == "single_prompt_full_contract"
+    assert run.harness == "direct_full_contract"
+    assert run.architecture_family == ArchitectureFamily.DIRECT_LLM.value
     assert run.schema_version == "final_extraction_v1"
     assert run.budget.llm_calls_per_row == 1
     assert run.rows[0]["payload"]["final"]["seizure_frequency"]["value"] == "2 per month"
@@ -67,6 +69,18 @@ def test_single_prompt_full_contract_invalid_json_is_component_measurable() -> N
     assert run.rows[0]["payload"]["invalid_output"] is True
     assert "invalid_json" in run.rows[0]["payload"]["warnings"]
     assert run.parse_validity["final_output"]["valid_rate"] == 0.0
+    assert run.parse_validity["current_medications"]["valid_rate"] == 0.0
+
+
+def test_direct_full_contract_flags_malformed_component_shape() -> None:
+    records = _records()
+    malformed = _final_payload()
+    malformed["current_medications"] = {"value": "lamotrigine"}
+    provider = MockProvider([json.dumps({"final": malformed})])
+
+    run = run_direct_full_contract(records, _dataset(records), "full", "test", provider)
+
+    assert run.rows[0]["payload"]["invalid_output"] is True
     assert run.parse_validity["current_medications"]["valid_rate"] == 0.0
 
 
@@ -103,7 +117,7 @@ def test_single_prompt_full_contract_cli_runs_from_replay(tmp_path) -> None:
             str(ROOT / "scripts" / "run_experiment.py"),
             str(FIXTURE_PATH),
             "--harness",
-            "single_prompt_full_contract",
+            "direct_full_contract",
             "--limit",
             "1",
             "--run-id",
@@ -120,6 +134,6 @@ def test_single_prompt_full_contract_cli_runs_from_replay(tmp_path) -> None:
     )
 
     data = json.loads(output.read_text(encoding="utf-8"))
-    assert data["harness"] == "single_prompt_full_contract"
+    assert data["harness"] == "direct_full_contract"
     assert data["budget"]["total_tokens"] == 50
     assert data["rows"][0]["payload"]["invalid_output"] is False

@@ -24,7 +24,7 @@ from epilepsy_extraction.schemas import (
     field_coverage,
     validate_final_payload_keys,
 )
-from epilepsy_extraction.schemas.contracts import FieldFamily
+from epilepsy_extraction.schemas.contracts import ArchitectureFamily, FieldFamily
 
 
 FIELD_TO_FINAL_KEYS = {
@@ -40,7 +40,7 @@ FIELD_TO_FINAL_KEYS = {
 }
 
 
-def run_single_prompt_full_contract(
+def run_direct_full_contract(
     records: Iterable[GoldRecord],
     dataset: DatasetSlice,
     run_id: str,
@@ -76,7 +76,7 @@ def run_single_prompt_full_contract(
 
     return RunRecord(
         run_id=run_id,
-        harness="single_prompt_full_contract",
+        harness="direct_full_contract",
         schema_version=schema.version,
         dataset=dataset,
         model=model,
@@ -89,6 +89,28 @@ def run_single_prompt_full_contract(
         rows=rows,
         parse_validity=parse_validity_summary(parse_results),
         artifact_paths={"prompt": prompt.path, "schema": schema.path},
+        architecture_family=ArchitectureFamily.DIRECT_LLM.value,
+    )
+
+
+def run_single_prompt_full_contract(
+    records: Iterable[GoldRecord],
+    dataset: DatasetSlice,
+    run_id: str,
+    code_version: str,
+    provider: ChatProvider,
+    *,
+    model: str = "mock-model",
+    temperature: float = 0.0,
+) -> RunRecord:
+    return run_direct_full_contract(
+        records,
+        dataset,
+        run_id,
+        code_version,
+        provider,
+        model=model,
+        temperature=temperature,
     )
 
 
@@ -147,7 +169,7 @@ def _payload_from_response(
     payload_warnings = [str(warning) for warning in final.warnings] + warnings
     return (
         ExtractionPayload(
-            pipeline_id="single_prompt_full_contract",
+            pipeline_id="direct_full_contract",
             final=final,
             field_coverage=field_coverage(implemented=CORE_FIELD_FAMILIES),
             artifacts={"raw_provider": decoded},
@@ -165,7 +187,7 @@ def _invalid_payload(
     raw: dict[str, Any] | None = None,
 ) -> ExtractionPayload:
     return ExtractionPayload(
-        pipeline_id="single_prompt_full_contract",
+        pipeline_id="direct_full_contract",
         final=FinalExtraction(warnings=warnings),
         field_coverage=failed_component_coverage(CORE_FIELD_FAMILIES),
         artifacts={"raw_provider": raw} if raw is not None else {},
@@ -177,13 +199,41 @@ def _invalid_payload(
 
 def _component_validity(final: FinalExtraction) -> list[tuple[str, bool]]:
     validity = [("final_output", True)]
-    final_dict = final.to_dict()
-    for field_family, keys in FIELD_TO_FINAL_KEYS.items():
+    for field_family in FIELD_TO_FINAL_KEYS:
         if field_family == FieldFamily.SEIZURE_FREQUENCY:
-            value = final.seizure_frequency.get("value") or final.seizure_frequency.get("label")
-            validity.append((field_family.value, bool(value and parse_label(str(value)).monthly_rate is not None)))
-        else:
-            validity.append((field_family.value, all(key in final_dict for key in keys)))
+            if not isinstance(final.seizure_frequency, dict):
+                validity.append((field_family.value, False))
+            else:
+                value = final.seizure_frequency.get("value") or final.seizure_frequency.get("label")
+                validity.append((field_family.value, bool(value and parse_label(str(value)).monthly_rate is not None)))
+        elif field_family == FieldFamily.CURRENT_MEDICATIONS:
+            validity.append((field_family.value, isinstance(final.current_medications, list)))
+        elif field_family == FieldFamily.INVESTIGATIONS:
+            validity.append((field_family.value, isinstance(final.investigations, list)))
+        elif field_family == FieldFamily.SEIZURE_CLASSIFICATION:
+            validity.append(
+                (
+                    field_family.value,
+                    all(
+                        isinstance(value, list)
+                        for value in (
+                            final.seizure_types,
+                            final.seizure_features,
+                            final.seizure_pattern_modifiers,
+                        )
+                    ),
+                )
+            )
+        elif field_family == FieldFamily.EPILEPSY_CLASSIFICATION:
+            validity.append(
+                (
+                    field_family.value,
+                    all(
+                        value is None or isinstance(value, dict)
+                        for value in (final.epilepsy_type, final.epilepsy_syndrome)
+                    ),
+                )
+            )
     return validity
 
 

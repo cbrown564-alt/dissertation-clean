@@ -11,6 +11,7 @@ from epilepsy_extraction.harnesses import (
     run_anchor_harness,
     run_deterministic_baseline,
     run_direct_evidence_contract,
+    run_direct_full_contract,
     run_exect_lite_baseline,
     run_retrieval_field_extractors,
     run_single_prompt_full_contract,
@@ -36,6 +37,7 @@ def main() -> None:
             "multi_agent_anchor",
             "multi_agent_anchor_sc3",
             "multi_agent_anchor_sc5",
+            "direct_full_contract",
             "single_prompt_full_contract",
             "direct_evidence_contract",
             "retrieval_field_extractors",
@@ -76,6 +78,17 @@ def main() -> None:
             code_version,
             ReplayProvider(args.replay),
             harness=args.harness,
+            model=args.model,
+        )
+    elif args.harness == "direct_full_contract":
+        if args.replay is None:
+            raise SystemExit("--replay is required for provider-backed full-contract harnesses")
+        record = run_direct_full_contract(
+            selected,
+            dataset,
+            args.run_id,
+            code_version,
+            ReplayProvider(args.replay),
             model=args.model,
         )
     elif args.harness == "single_prompt_full_contract":

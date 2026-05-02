@@ -78,14 +78,14 @@ def test_budget_from_provider_responses_accumulates_usage() -> None:
                 content="a",
                 model="m",
                 provider="p",
-                usage=ProviderUsage(input_tokens=10, output_tokens=5),
+                usage=ProviderUsage(input_tokens=10, output_tokens=5, cost_usd=0.02),
                 latency_ms=100,
             ),
             ProviderResponse(
                 content="b",
                 model="m",
                 provider="p",
-                usage=ProviderUsage(input_tokens=7, output_tokens=3),
+                usage=ProviderUsage(input_tokens=7, output_tokens=3, cost_usd=0.03),
                 latency_ms=80,
             ),
         ],
@@ -97,3 +97,4 @@ def test_budget_from_provider_responses_accumulates_usage() -> None:
     assert budget.output_tokens == 8
     assert budget.total_tokens == 25
     assert budget.latency_ms == 180
+    assert budget.estimated_cost_usd == 0.05

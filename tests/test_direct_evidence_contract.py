@@ -110,6 +110,18 @@ def test_direct_evidence_contract_invalid_json_marks_invalid_output() -> None:
     assert run.rows[0]["payload"]["invalid_output"] is True
 
 
+def test_direct_evidence_contract_flags_malformed_component_shape() -> None:
+    records = _records()
+    malformed = json.loads(_VALID_RESPONSE)
+    malformed["investigations"] = {"value": "normal EEG"}
+    provider = MockProvider([json.dumps(malformed)])
+
+    run = run_direct_evidence_contract(records, _dataset(records), "dec", "test", provider)
+
+    assert run.rows[0]["payload"]["invalid_output"] is True
+    assert run.parse_validity["investigations"]["valid_rate"] == 0.0
+
+
 def test_direct_evidence_contract_cli_from_replay_file(tmp_path) -> None:
     replay = tmp_path / "replay.json"
     replay.write_text(

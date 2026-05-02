@@ -23,6 +23,9 @@ _FULL_RESPONSE = json.dumps(
         "seizure_pattern_modifiers": [],
         "epilepsy_type": None,
         "epilepsy_syndrome": None,
+        "citations": [{"quote": "two seizures per month"}],
+        "confidence": {"seizure_frequency": 0.9},
+        "warnings": ["field_warning"],
     }
 )
 
@@ -70,6 +73,18 @@ def test_retrieval_field_extractors_records_retrieval_artifacts() -> None:
     assert isinstance(artifacts, dict)
     for family in CORE_FIELD_FAMILIES:
         assert family.value in artifacts
+
+
+def test_retrieval_field_extractors_preserves_evidence_confidence_and_warnings() -> None:
+    records = _records()
+    provider = MockProvider([_FULL_RESPONSE] * len(CORE_FIELD_FAMILIES))
+
+    run = run_retrieval_field_extractors(records, _dataset(records), "rfe", "test", provider)
+
+    final = run.rows[0]["payload"]["final"]
+    assert final["citations"]
+    assert final["confidence"]["seizure_frequency"] == 0.9
+    assert "field_warning" in final["warnings"]
 
 
 def test_retrieval_field_extractors_architecture_family() -> None:

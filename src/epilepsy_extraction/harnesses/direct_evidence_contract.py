@@ -202,13 +202,41 @@ def _aggregate_evidence_support(rows: list[dict[str, Any]]) -> dict[str, Any]:
 
 def _component_validity(final: FinalExtraction) -> list[tuple[str, bool]]:
     validity = [("final_output", True)]
-    final_dict = final.to_dict()
-    for field_family, keys in FIELD_TO_FINAL_KEYS.items():
+    for field_family in FIELD_TO_FINAL_KEYS:
         if field_family == FieldFamily.SEIZURE_FREQUENCY:
-            value = final.seizure_frequency.get("value") or final.seizure_frequency.get("label")
-            validity.append((field_family.value, bool(value and parse_label(str(value)).monthly_rate is not None)))
-        else:
-            validity.append((field_family.value, all(key in final_dict for key in keys)))
+            if not isinstance(final.seizure_frequency, dict):
+                validity.append((field_family.value, False))
+            else:
+                value = final.seizure_frequency.get("value") or final.seizure_frequency.get("label")
+                validity.append((field_family.value, bool(value and parse_label(str(value)).monthly_rate is not None)))
+        elif field_family == FieldFamily.CURRENT_MEDICATIONS:
+            validity.append((field_family.value, isinstance(final.current_medications, list)))
+        elif field_family == FieldFamily.INVESTIGATIONS:
+            validity.append((field_family.value, isinstance(final.investigations, list)))
+        elif field_family == FieldFamily.SEIZURE_CLASSIFICATION:
+            validity.append(
+                (
+                    field_family.value,
+                    all(
+                        isinstance(value, list)
+                        for value in (
+                            final.seizure_types,
+                            final.seizure_features,
+                            final.seizure_pattern_modifiers,
+                        )
+                    ),
+                )
+            )
+        elif field_family == FieldFamily.EPILEPSY_CLASSIFICATION:
+            validity.append(
+                (
+                    field_family.value,
+                    all(
+                        value is None or isinstance(value, dict)
+                        for value in (final.epilepsy_type, final.epilepsy_syndrome)
+                    ),
+                )
+            )
     return validity
 
 
