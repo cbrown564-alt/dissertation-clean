@@ -1,0 +1,527 @@
+{
+  "architecture_family": "clines_inspired_modular",
+  "artifact_paths": {
+    "manifest": "config\\harnesses\\multi_agent_anchor.yaml",
+    "prompt": "prompts/anchor/multi_agent_v1/verifier.md"
+  },
+  "budget": {
+    "estimated_cost_usd": 0.0,
+    "input_tokens": 40,
+    "latency_ms": 2,
+    "llm_calls_per_row": 2,
+    "output_tokens": 14,
+    "total_tokens": 54
+  },
+  "code_version": "18d7b36-dirty",
+  "complexity": {
+    "manifest": {
+      "aggregation_policy": {
+        "enabled": false
+      },
+      "allowed_modules": [
+        "anchor_extractor",
+        "anchor_verifier"
+      ],
+      "architecture_family": "clines_inspired_modular",
+      "artifact_retention": {
+        "payload": true,
+        "provider_response": true,
+        "verification": true
+      },
+      "budget_limits": {
+        "llm_calls_per_row": 2
+      },
+      "context_policy": {
+        "input": "full_letter_text",
+        "uses_document_interface": false
+      },
+      "gold_label_isolation": {
+        "evaluation_only": true,
+        "model_visible": false
+      },
+      "harness_id": "multi_agent_anchor",
+      "manifest_hash": "7134c1cc47119df91063522260573c52820fff2d91760dea05a49593ef942ee8",
+      "manifest_id": "multi_agent_anchor.v1",
+      "model_registry_entry": "",
+      "output_contract": {
+        "payload": "anchor_seizure_frequency"
+      },
+      "prompt_versions": {
+        "extractor": "multi_agent_v1/extractor",
+        "verifier": "multi_agent_v1/verifier"
+      },
+      "provider": "configurable",
+      "repair_policy": {
+        "enabled": false,
+        "invalid_json": "record_invalid_output"
+      },
+      "schema_version": "1.0.0",
+      "source_path": "config\\harnesses\\multi_agent_anchor.yaml",
+      "verifier_policy": {
+        "enabled": true,
+        "scope": "seizure_frequency_evidence"
+      },
+      "version": "1"
+    }
+  },
+  "created_at": "2026-05-03T09:37:04.116901+00:00",
+  "dataset": {
+    "data_hash": "cf13b498609079d37ba7ccd4cb9886b7d8a60a8bcd75e48ab5b4debb939b1c21",
+    "dataset_id": "synthetic_data_subset_1500",
+    "dataset_path": "data\\synthetic_data_subset_1500.json",
+    "inclusion_criteria": "row_ok_only=true; limit=1",
+    "n": 1,
+    "random_seed": null,
+    "row_ids": [
+      "11118"
+    ],
+    "row_order": "source"
+  },
+  "event_summary": {
+    "component_counts": {
+      "multi_agent_anchor": 1,
+      "multi_agent_anchor:call_1": 2,
+      "multi_agent_anchor:call_2": 2,
+      "seizure_frequency": 2
+    },
+    "duration_ms": 0,
+    "errors": 0,
+    "escalation_decisions": 0,
+    "event_count": 7,
+    "event_type_counts": {
+      "context_built": 1,
+      "field_extraction_completed": 1,
+      "parse_attempted": 1,
+      "provider_call_finished": 2,
+      "provider_call_started": 2
+    },
+    "parse_attempts": 1,
+    "parse_repair_attempts": 0,
+    "provider_calls": 2,
+    "quote_bearing_events": 0,
+    "verifier_passes": 0,
+    "warnings": 0
+  },
+  "external_baseline": false,
+  "field_coverage": {
+    "associated_symptoms": "not_implemented",
+    "comorbidities": "not_implemented",
+    "current_medications": "not_implemented",
+    "epilepsy_classification": "not_implemented",
+    "investigations": "not_implemented",
+    "other_therapies": "not_implemented",
+    "rescue_medication": "not_implemented",
+    "seizure_classification": "not_implemented",
+    "seizure_frequency": "implemented"
+  },
+  "harness": "multi_agent_anchor",
+  "harness_events": [
+    {
+      "component": "multi_agent_anchor",
+      "created_at": "2026-05-03T09:37:04.116329+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "11118:1:context_built",
+      "event_type": "context_built",
+      "metrics": {
+        "retrieval_enabled": false
+      },
+      "quote_bearing": false,
+      "row_id": "11118",
+      "sequence_index": 1,
+      "summary": "Anchor extraction context prepared",
+      "warnings": []
+    },
+    {
+      "component": "multi_agent_anchor:call_1",
+      "created_at": "2026-05-03T09:37:04.116586+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "11118:2:provider_call_started",
+      "event_type": "provider_call_started",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "11118",
+      "sequence_index": 2,
+      "summary": "Provider call requested anchor extraction",
+      "warnings": []
+    },
+    {
+      "component": "multi_agent_anchor:call_1",
+      "created_at": "2026-05-03T09:37:04.116593+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "11118:3:provider_call_finished",
+      "event_type": "provider_call_finished",
+      "metrics": {
+        "input_tokens": 20,
+        "latency_ms": 1,
+        "ok": true,
+        "output_tokens": 8
+      },
+      "quote_bearing": false,
+      "row_id": "11118",
+      "sequence_index": 3,
+      "summary": "Provider call completed",
+      "warnings": []
+    },
+    {
+      "component": "multi_agent_anchor:call_2",
+      "created_at": "2026-05-03T09:37:04.116597+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "11118:4:provider_call_started",
+      "event_type": "provider_call_started",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "11118",
+      "sequence_index": 4,
+      "summary": "Provider call requested anchor extraction",
+      "warnings": []
+    },
+    {
+      "component": "multi_agent_anchor:call_2",
+      "created_at": "2026-05-03T09:37:04.116601+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "11118:5:provider_call_finished",
+      "event_type": "provider_call_finished",
+      "metrics": {
+        "input_tokens": 20,
+        "latency_ms": 1,
+        "ok": true,
+        "output_tokens": 6
+      },
+      "quote_bearing": false,
+      "row_id": "11118",
+      "sequence_index": 5,
+      "summary": "Provider call completed",
+      "warnings": []
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:37:04.116605+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "11118:6:parse_attempted",
+      "event_type": "parse_attempted",
+      "metrics": {
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "11118",
+      "sequence_index": 6,
+      "summary": "Anchor output parsed as seizure-frequency label",
+      "warnings": []
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:37:04.116609+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "11118:7:field_extraction_completed",
+      "event_type": "field_extraction_completed",
+      "metrics": {
+        "confidence": 0.99,
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "11118",
+      "sequence_index": 7,
+      "summary": "Anchor seizure-frequency extraction completed",
+      "warnings": []
+    }
+  ],
+  "manifest_hash": "7134c1cc47119df91063522260573c52820fff2d91760dea05a49593ef942ee8",
+  "manifest_id": "multi_agent_anchor.v1",
+  "mapping_version": "",
+  "metrics": {
+    "exact_label_accuracy": 1.0,
+    "monthly_rate_accuracy_tolerance_15pct": 1.0,
+    "n": 1,
+    "pragmatic": {
+      "macro_f1": 1.0,
+      "micro_f1": 1.0,
+      "per_class": {
+        "frequent": {
+          "f1": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "support": 1
+        }
+      },
+      "weighted_f1": 1.0
+    },
+    "pragmatic_confusion": {
+      "frequent": {
+        "frequent": 1
+      }
+    },
+    "purist": {
+      "macro_f1": 1.0,
+      "micro_f1": 1.0,
+      "per_class": {
+        "(1/W,1/D)": {
+          "f1": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "support": 1
+        }
+      },
+      "weighted_f1": 1.0
+    }
+  },
+  "model": "gpt-4o-2024-11-20",
+  "model_registry_entry": "gpt-4o-2024-11-20",
+  "parse_validity": {
+    "seizure_frequency": {
+      "invalid": 0,
+      "total": 1,
+      "valid": 1,
+      "valid_rate": 1.0
+    }
+  },
+  "prompt_version": "anchor_multi_agent_v1",
+  "provider": "replay",
+  "rows": [
+    {
+      "evaluation": {
+        "confidence": 0.99,
+        "exact_match": true,
+        "gold_label": "2 cluster per month, 6 per cluster",
+        "gold_monthly_rate": 12.0,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": "(1/W,1/D)",
+        "monthly_rate_match": true,
+        "predicted_label": "2 cluster per month, 6 per cluster",
+        "predicted_monthly_rate": 12.0,
+        "predicted_pragmatic_class": "frequent",
+        "predicted_purist_class": "(1/W,1/D)",
+        "source_row_index": 11118
+      },
+      "harness_events": [
+        {
+          "component": "multi_agent_anchor",
+          "created_at": "2026-05-03T09:37:04.116329+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "11118:1:context_built",
+          "event_type": "context_built",
+          "metrics": {
+            "retrieval_enabled": false
+          },
+          "quote_bearing": false,
+          "row_id": "11118",
+          "sequence_index": 1,
+          "summary": "Anchor extraction context prepared",
+          "warnings": []
+        },
+        {
+          "component": "multi_agent_anchor:call_1",
+          "created_at": "2026-05-03T09:37:04.116586+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "11118:2:provider_call_started",
+          "event_type": "provider_call_started",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "11118",
+          "sequence_index": 2,
+          "summary": "Provider call requested anchor extraction",
+          "warnings": []
+        },
+        {
+          "component": "multi_agent_anchor:call_1",
+          "created_at": "2026-05-03T09:37:04.116593+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "11118:3:provider_call_finished",
+          "event_type": "provider_call_finished",
+          "metrics": {
+            "input_tokens": 20,
+            "latency_ms": 1,
+            "ok": true,
+            "output_tokens": 8
+          },
+          "quote_bearing": false,
+          "row_id": "11118",
+          "sequence_index": 3,
+          "summary": "Provider call completed",
+          "warnings": []
+        },
+        {
+          "component": "multi_agent_anchor:call_2",
+          "created_at": "2026-05-03T09:37:04.116597+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "11118:4:provider_call_started",
+          "event_type": "provider_call_started",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "11118",
+          "sequence_index": 4,
+          "summary": "Provider call requested anchor extraction",
+          "warnings": []
+        },
+        {
+          "component": "multi_agent_anchor:call_2",
+          "created_at": "2026-05-03T09:37:04.116601+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "11118:5:provider_call_finished",
+          "event_type": "provider_call_finished",
+          "metrics": {
+            "input_tokens": 20,
+            "latency_ms": 1,
+            "ok": true,
+            "output_tokens": 6
+          },
+          "quote_bearing": false,
+          "row_id": "11118",
+          "sequence_index": 5,
+          "summary": "Provider call completed",
+          "warnings": []
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:37:04.116605+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "11118:6:parse_attempted",
+          "event_type": "parse_attempted",
+          "metrics": {
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "11118",
+          "sequence_index": 6,
+          "summary": "Anchor output parsed as seizure-frequency label",
+          "warnings": []
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:37:04.116609+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "11118:7:field_extraction_completed",
+          "event_type": "field_extraction_completed",
+          "metrics": {
+            "confidence": 0.99,
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "11118",
+          "sequence_index": 7,
+          "summary": "Anchor seizure-frequency extraction completed",
+          "warnings": []
+        }
+      ],
+      "payload": {
+        "artifacts": {},
+        "field_coverage": {
+          "associated_symptoms": "not_implemented",
+          "comorbidities": "not_implemented",
+          "current_medications": "not_implemented",
+          "epilepsy_classification": "not_implemented",
+          "investigations": "not_implemented",
+          "other_therapies": "not_implemented",
+          "rescue_medication": "not_implemented",
+          "seizure_classification": "not_implemented",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [
+            {
+              "char_end": null,
+              "char_start": null,
+              "quote": "Over the last four weeks, the records note: \"Cluster days twice this month; typically six seizures in 24 h.\"",
+              "section": null,
+              "span_id": null
+            }
+          ],
+          "confidence": {
+            "seizure_frequency": 0.99
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 12.0,
+            "pragmatic_class": "frequent",
+            "purist_class": "(1/W,1/D)",
+            "value": "2 cluster per month, 6 per cluster"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": []
+        },
+        "invalid_output": false,
+        "metadata": {
+          "source_row_index": 11118
+        },
+        "pipeline_id": "multi_agent_anchor",
+        "schema_version": "1.0.0",
+        "warnings": []
+      },
+      "prediction": {
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "char_end": null,
+            "char_start": null,
+            "quote": "Over the last four weeks, the records note: \"Cluster days twice this month; typically six seizures in 24 h.\"",
+            "section": null,
+            "span_id": null
+          }
+        ],
+        "label": "2 cluster per month, 6 per cluster",
+        "metadata": {
+          "model": "gpt-4o-2024-11-20",
+          "provider": "replay"
+        },
+        "parsed_monthly_rate": 12.0,
+        "pragmatic_class": "frequent",
+        "purist_class": "(1/W,1/D)",
+        "warnings": []
+      },
+      "provider_responses": [
+        {
+          "content": "{\"candidates\": [{\"label\": \"2 cluster per month, 6 per cluster\"}]}",
+          "error": null,
+          "latency_ms": 1,
+          "model": "gpt-4o-2024-11-20",
+          "provider": "replay",
+          "raw": {},
+          "usage": {
+            "cost_usd": 0.0,
+            "input_tokens": 20,
+            "output_tokens": 8
+          }
+        },
+        {
+          "content": "{\"label\": \"2 cluster per month, 6 per cluster\", \"evidence\": \"Over the last four weeks, the records note: \\\"Cluster days twice this month; typically six seizures in 24 h.\\\"\", \"confidence\": 0.99}",
+          "error": null,
+          "latency_ms": 1,
+          "model": "gpt-4o-2024-11-20",
+          "provider": "replay",
+          "raw": {},
+          "usage": {
+            "cost_usd": 0.0,
+            "input_tokens": 20,
+            "output_tokens": 6
+          }
+        }
+      ],
+      "retrieval_artifacts": {},
+      "row_id": "11118",
+      "source_row_index": 11118
+    }
+  ],
+  "run_id": "matrix_gpt-4o-2024-11-20_multi_agent_anchor",
+  "schema_version": "1.0.0",
+  "status": "smoke",
+  "temperature": 0.0,
+  "warnings": []
+}

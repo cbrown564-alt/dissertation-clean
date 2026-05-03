@@ -100,6 +100,146 @@
     "unsupported_citations": ""
   },
   {
+    "architecture_family": "costed_reliability_variant",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "budgeted_escalation",
+    "run_id": "matrix_claude-3-5-haiku-20241022_budgeted_escalation",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "costed_reliability_variant",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "budgeted_escalation",
+    "run_id": "matrix_claude-3-5-sonnet-20241022_budgeted_escalation",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "costed_reliability_variant",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "budgeted_escalation",
+    "run_id": "matrix_claude-3-haiku-20240307_budgeted_escalation",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "costed_reliability_variant",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "budgeted_escalation",
+    "run_id": "matrix_gpt-4o-2024-11-20_budgeted_escalation",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "costed_reliability_variant",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "budgeted_escalation",
+    "run_id": "matrix_gpt-4o-mini-2024-07-18_budgeted_escalation",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "costed_reliability_variant",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "budgeted_escalation",
+    "run_id": "matrix_meta-llama_Llama-3_1-70B-Instruct_budgeted_escalation",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "costed_reliability_variant",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "budgeted_escalation",
+    "run_id": "matrix_meta-llama_Llama-3_1-8B-Instruct_budgeted_escalation",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "clines_inspired_modular",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "clines_epilepsy_modular",
+    "run_id": "matrix_claude-3-5-haiku-20241022_clines_epilepsy_modular",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "clines_inspired_modular",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "clines_epilepsy_modular",
+    "run_id": "matrix_claude-3-5-sonnet-20241022_clines_epilepsy_modular",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "clines_inspired_modular",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "clines_epilepsy_modular",
+    "run_id": "matrix_claude-3-haiku-20240307_clines_epilepsy_modular",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "clines_inspired_modular",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "clines_epilepsy_modular",
+    "run_id": "matrix_gpt-4o-2024-11-20_clines_epilepsy_modular",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "clines_inspired_modular",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "clines_epilepsy_modular",
+    "run_id": "matrix_gpt-4o-mini-2024-07-18_clines_epilepsy_modular",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "clines_inspired_modular",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "clines_epilepsy_modular",
+    "run_id": "matrix_meta-llama_Llama-3_1-70B-Instruct_clines_epilepsy_modular",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "clines_inspired_modular",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "clines_epilepsy_modular",
+    "run_id": "matrix_meta-llama_Llama-3_1-8B-Instruct_clines_epilepsy_modular",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
     "architecture_family": "clines_inspired_modular",
     "evidence_status": "not_reported",
     "evidence_supported_rate": "",
@@ -168,6 +308,76 @@
     "supported_citations": "",
     "total_citations": "",
     "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "direct_llm",
+    "evidence_status": "reported",
+    "evidence_supported_rate": 0.92,
+    "harness": "direct_evidence_contract",
+    "run_id": "matrix_claude-3-5-haiku-20241022_direct_evidence_contract",
+    "supported_citations": 23,
+    "total_citations": 25,
+    "unsupported_citations": 2
+  },
+  {
+    "architecture_family": "direct_llm",
+    "evidence_status": "reported",
+    "evidence_supported_rate": 0.92,
+    "harness": "direct_evidence_contract",
+    "run_id": "matrix_claude-3-5-sonnet-20241022_direct_evidence_contract",
+    "supported_citations": 23,
+    "total_citations": 25,
+    "unsupported_citations": 2
+  },
+  {
+    "architecture_family": "direct_llm",
+    "evidence_status": "reported",
+    "evidence_supported_rate": 0.92,
+    "harness": "direct_evidence_contract",
+    "run_id": "matrix_claude-3-haiku-20240307_direct_evidence_contract",
+    "supported_citations": 23,
+    "total_citations": 25,
+    "unsupported_citations": 2
+  },
+  {
+    "architecture_family": "direct_llm",
+    "evidence_status": "reported",
+    "evidence_supported_rate": 0.92,
+    "harness": "direct_evidence_contract",
+    "run_id": "matrix_gpt-4o-2024-11-20_direct_evidence_contract",
+    "supported_citations": 23,
+    "total_citations": 25,
+    "unsupported_citations": 2
+  },
+  {
+    "architecture_family": "direct_llm",
+    "evidence_status": "reported",
+    "evidence_supported_rate": 0.92,
+    "harness": "direct_evidence_contract",
+    "run_id": "matrix_gpt-4o-mini-2024-07-18_direct_evidence_contract",
+    "supported_citations": 23,
+    "total_citations": 25,
+    "unsupported_citations": 2
+  },
+  {
+    "architecture_family": "direct_llm",
+    "evidence_status": "reported",
+    "evidence_supported_rate": 0.92,
+    "harness": "direct_evidence_contract",
+    "run_id": "matrix_meta-llama_Llama-3_1-70B-Instruct_direct_evidence_contract",
+    "supported_citations": 23,
+    "total_citations": 25,
+    "unsupported_citations": 2
+  },
+  {
+    "architecture_family": "direct_llm",
+    "evidence_status": "reported",
+    "evidence_supported_rate": 0.92,
+    "harness": "direct_evidence_contract",
+    "run_id": "matrix_meta-llama_Llama-3_1-8B-Instruct_direct_evidence_contract",
+    "supported_citations": 23,
+    "total_citations": 25,
+    "unsupported_citations": 2
   },
   {
     "architecture_family": "direct_llm",
@@ -240,6 +450,286 @@
     "unsupported_citations": ""
   },
   {
+    "architecture_family": "clines_inspired_modular",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "multi_agent_anchor",
+    "run_id": "matrix_claude-3-5-haiku-20241022_multi_agent_anchor",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "clines_inspired_modular",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "multi_agent_anchor",
+    "run_id": "matrix_claude-3-5-sonnet-20241022_multi_agent_anchor",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "clines_inspired_modular",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "multi_agent_anchor",
+    "run_id": "matrix_claude-3-haiku-20240307_multi_agent_anchor",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "clines_inspired_modular",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "multi_agent_anchor",
+    "run_id": "matrix_gpt-4o-2024-11-20_multi_agent_anchor",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "clines_inspired_modular",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "multi_agent_anchor",
+    "run_id": "matrix_gpt-4o-mini-2024-07-18_multi_agent_anchor",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "clines_inspired_modular",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "multi_agent_anchor",
+    "run_id": "matrix_meta-llama_Llama-3_1-70B-Instruct_multi_agent_anchor",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "clines_inspired_modular",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "multi_agent_anchor",
+    "run_id": "matrix_meta-llama_Llama-3_1-8B-Instruct_multi_agent_anchor",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "costed_reliability_variant",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "multi_agent_anchor_sc3",
+    "run_id": "matrix_claude-3-5-haiku-20241022_multi_agent_anchor_sc3",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "costed_reliability_variant",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "multi_agent_anchor_sc3",
+    "run_id": "matrix_claude-3-5-sonnet-20241022_multi_agent_anchor_sc3",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "costed_reliability_variant",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "multi_agent_anchor_sc3",
+    "run_id": "matrix_claude-3-haiku-20240307_multi_agent_anchor_sc3",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "costed_reliability_variant",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "multi_agent_anchor_sc3",
+    "run_id": "matrix_gpt-4o-2024-11-20_multi_agent_anchor_sc3",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "costed_reliability_variant",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "multi_agent_anchor_sc3",
+    "run_id": "matrix_gpt-4o-mini-2024-07-18_multi_agent_anchor_sc3",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "costed_reliability_variant",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "multi_agent_anchor_sc3",
+    "run_id": "matrix_meta-llama_Llama-3_1-70B-Instruct_multi_agent_anchor_sc3",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "costed_reliability_variant",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "multi_agent_anchor_sc3",
+    "run_id": "matrix_meta-llama_Llama-3_1-8B-Instruct_multi_agent_anchor_sc3",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "costed_reliability_variant",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "multi_agent_anchor_sc5",
+    "run_id": "matrix_claude-3-5-haiku-20241022_multi_agent_anchor_sc5",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "costed_reliability_variant",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "multi_agent_anchor_sc5",
+    "run_id": "matrix_claude-3-5-sonnet-20241022_multi_agent_anchor_sc5",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "costed_reliability_variant",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "multi_agent_anchor_sc5",
+    "run_id": "matrix_claude-3-haiku-20240307_multi_agent_anchor_sc5",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "costed_reliability_variant",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "multi_agent_anchor_sc5",
+    "run_id": "matrix_gpt-4o-2024-11-20_multi_agent_anchor_sc5",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "costed_reliability_variant",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "multi_agent_anchor_sc5",
+    "run_id": "matrix_gpt-4o-mini-2024-07-18_multi_agent_anchor_sc5",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "costed_reliability_variant",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "multi_agent_anchor_sc5",
+    "run_id": "matrix_meta-llama_Llama-3_1-70B-Instruct_multi_agent_anchor_sc5",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "costed_reliability_variant",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "multi_agent_anchor_sc5",
+    "run_id": "matrix_meta-llama_Llama-3_1-8B-Instruct_multi_agent_anchor_sc5",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "retrieval_field_pipeline",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "retrieval_anchor",
+    "run_id": "matrix_claude-3-5-haiku-20241022_retrieval_anchor",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "retrieval_field_pipeline",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "retrieval_anchor",
+    "run_id": "matrix_claude-3-5-sonnet-20241022_retrieval_anchor",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "retrieval_field_pipeline",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "retrieval_anchor",
+    "run_id": "matrix_claude-3-haiku-20240307_retrieval_anchor",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "retrieval_field_pipeline",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "retrieval_anchor",
+    "run_id": "matrix_gpt-4o-2024-11-20_retrieval_anchor",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "retrieval_field_pipeline",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "retrieval_anchor",
+    "run_id": "matrix_gpt-4o-mini-2024-07-18_retrieval_anchor",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "retrieval_field_pipeline",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "retrieval_anchor",
+    "run_id": "matrix_meta-llama_Llama-3_1-70B-Instruct_retrieval_anchor",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "retrieval_field_pipeline",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "retrieval_anchor",
+    "run_id": "matrix_meta-llama_Llama-3_1-8B-Instruct_retrieval_anchor",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
     "architecture_family": "retrieval_field_pipeline",
     "evidence_status": "not_reported",
     "evidence_supported_rate": "",
@@ -305,6 +795,146 @@
     "evidence_supported_rate": "",
     "harness": "retrieval_field_extractors",
     "run_id": "matrix_meta-llama_Llama-3_1-8B-Instruct_retrieval_field_extractors",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "direct_llm",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "single_prompt_anchor",
+    "run_id": "matrix_claude-3-5-haiku-20241022_single_prompt_anchor",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "direct_llm",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "single_prompt_anchor",
+    "run_id": "matrix_claude-3-5-sonnet-20241022_single_prompt_anchor",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "direct_llm",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "single_prompt_anchor",
+    "run_id": "matrix_claude-3-haiku-20240307_single_prompt_anchor",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "direct_llm",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "single_prompt_anchor",
+    "run_id": "matrix_gpt-4o-2024-11-20_single_prompt_anchor",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "direct_llm",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "single_prompt_anchor",
+    "run_id": "matrix_gpt-4o-mini-2024-07-18_single_prompt_anchor",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "direct_llm",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "single_prompt_anchor",
+    "run_id": "matrix_meta-llama_Llama-3_1-70B-Instruct_single_prompt_anchor",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "direct_llm",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "single_prompt_anchor",
+    "run_id": "matrix_meta-llama_Llama-3_1-8B-Instruct_single_prompt_anchor",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "direct_llm",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "direct_full_contract",
+    "run_id": "matrix_claude-3-5-haiku-20241022_single_prompt_full_contract",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "direct_llm",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "direct_full_contract",
+    "run_id": "matrix_claude-3-5-sonnet-20241022_single_prompt_full_contract",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "direct_llm",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "direct_full_contract",
+    "run_id": "matrix_claude-3-haiku-20240307_single_prompt_full_contract",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "direct_llm",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "direct_full_contract",
+    "run_id": "matrix_gpt-4o-2024-11-20_single_prompt_full_contract",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "direct_llm",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "direct_full_contract",
+    "run_id": "matrix_gpt-4o-mini-2024-07-18_single_prompt_full_contract",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "direct_llm",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "direct_full_contract",
+    "run_id": "matrix_meta-llama_Llama-3_1-70B-Instruct_single_prompt_full_contract",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "direct_llm",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "direct_full_contract",
+    "run_id": "matrix_meta-llama_Llama-3_1-8B-Instruct_single_prompt_full_contract",
     "supported_citations": "",
     "total_citations": "",
     "unsupported_citations": ""
