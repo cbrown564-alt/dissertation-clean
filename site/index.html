@@ -453,6 +453,61 @@ body {
   font-family: var(--mono); font-size: 12px; color: var(--ink); text-align: left;
 }
 
+/* ── Tabs ── */
+.tab-nav { display:flex; gap:0; border-bottom:2px solid var(--ink); margin-bottom:24px; }
+.tab-btn {
+  font-family:var(--body-f); font-size:10px; font-weight:700; letter-spacing:0.1em;
+  text-transform:uppercase; padding:8px 18px; background:none; border:none;
+  border-bottom:3px solid transparent; margin-bottom:-2px; cursor:pointer;
+  color:var(--muted); transition:color 0.15s, border-color 0.15s;
+}
+.tab-btn:hover { color:var(--ink); }
+.tab-btn.active { color:var(--ink); border-bottom-color:var(--ink); }
+.tab-pane { display:none; }
+.tab-pane.active { display:block; }
+
+/* ── Family summary cards ── */
+.fam-grid {
+  display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-bottom:12px;
+}
+.fam-card {
+  border:1px solid var(--rule-lt); background:var(--paper);
+  transition:border-color 0.15s, box-shadow 0.15s; overflow:hidden;
+}
+.fam-card:hover { border-color:var(--rule-mid); box-shadow:0 2px 8px rgba(26,20,17,0.06); }
+.fam-card-accent { height:4px; }
+.fam-card-body { padding:14px 14px 10px; }
+.fam-step-row { display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+.fam-step-circle {
+  width:26px; height:26px; border-radius:50%; display:flex; align-items:center;
+  justify-content:center; font-family:var(--serif); font-size:13px; font-weight:900;
+  color:white; flex-shrink:0;
+}
+.fam-name { font-family:var(--serif); font-size:13px; font-weight:700; color:var(--ink); line-height:1.25; }
+.fam-stats { display:flex; gap:12px; margin:10px 0 8px; }
+.fam-stat { flex:1; }
+.fam-stat-val { font-family:var(--serif); font-size:22px; font-weight:900; line-height:1; color:var(--ink); }
+.fam-stat-lbl { font-size:8.5px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); font-family:var(--body-f); margin-top:2px; }
+.fam-mini-grid { display:flex; gap:3px; flex-wrap:wrap; margin:8px 0 4px; }
+.fam-mini-dot { width:16px; height:16px; border-radius:2px; }
+.fam-footer {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:8px 14px; border-top:1px solid var(--rule-lt);
+  font-size:9px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase;
+  color:var(--muted); cursor:pointer; user-select:none; transition:background 0.12s;
+}
+.fam-footer:hover { background:var(--paper-2); }
+.fam-drill { border-top:1px solid var(--rule-lt); display:none; }
+.fam-card.open .fam-drill { display:block; }
+.fam-run-row {
+  display:grid; grid-template-columns:1fr auto auto; align-items:center;
+  gap:8px; padding:7px 14px; border-bottom:1px solid var(--rule-lt); font-size:11px;
+}
+.fam-run-row:last-child { border-bottom:none; }
+.fam-run-id { font-family:var(--mono); font-size:10px; color:var(--ink-body); word-break:break-all; }
+.fam-run-acc { font-family:var(--serif); font-size:14px; font-weight:800; color:var(--ink); white-space:nowrap; }
+.fam-no-runs { padding:16px 14px; font-size:11px; font-style:italic; color:var(--muted); }
+
 /* ── Responsive ── */
 @media (max-width: 960px) {
   .page { padding: 0 20px 60px; }
@@ -464,7 +519,9 @@ body {
   .ladder-infographic { flex-wrap: wrap; gap: 20px; }
   .ladder-infographic::before { display: none; }
   .s-banner-inv { margin: 60px -20px 28px; padding: 15px 20px; }
+  .fam-grid { grid-template-columns: repeat(2,1fr); }
 }
+@media (max-width: 600px) { .fam-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -564,33 +621,43 @@ function extractMd(text, heading) {
   return m ? m[1].trim() : '';
 }
 
+/* ── Global tab switch ──────────────────────────────── */
+
+function switchTab(containerId, tabName) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  el.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tabName));
+  el.querySelectorAll('.tab-pane').forEach(p => p.classList.toggle('active', p.dataset.tab === tabName));
+}
+
 /* ── Masthead ───────────────────────────────────────── */
 
 function renderMasthead(data) {
-  const nRuns = (data.run_register ?? []).length;
+  const meta  = data.run_meta ?? {};
+  const nDisp = meta.display_total ?? 0;
+  const nPrim = meta.primary_total ?? 0;
+  const nMat  = meta.matrix_total  ?? 0;
   const gen   = fmtDateLong(data.generated_at);
   const year  = data.generated_at ? new Date(data.generated_at).getFullYear() : new Date().getFullYear();
   return `
 <header class="masthead">
   <div class="mh-top">
     <span>Vol.&nbsp;I &nbsp;&middot;&nbsp; Dissertation Research Evidence</span>
-    <span>${nRuns} run record${nRuns !== 1 ? 's' : ''} loaded</span>
+    <span>${nPrim} primary &middot; ${nMat} matrix run records</span>
     <span>Generated ${gen}</span>
   </div>
   <div class="mh-double"></div>
   <h1 class="mh-title">The Epilepsy Extraction<br>Research Cockpit</h1>
   <div class="mh-rule-thin"></div>
-  <div class="mh-sub">CLINES-Inspired Clinical NLP Pipeline &nbsp;&bull;&nbsp; Architecture Ladder &nbsp;&bull;&nbsp; Model Registry &nbsp;&bull;&nbsp; Evidence Register &nbsp;&bull;&nbsp; ${year}</div>
+  <div class="mh-sub">CLINES-Inspired Clinical NLP Pipeline &nbsp;&bull;&nbsp; Architecture Ladder &nbsp;&bull;&nbsp; Model Registry &nbsp;&bull;&nbsp; Results Register &nbsp;&bull;&nbsp; ${year}</div>
   <div class="mh-warning">&#9888;&ensp;Synthetic Data Only &mdash; Not for Clinical Deployment&ensp;&#9888;</div>
 </header>
 
 <nav class="nav-strip">
   <a href="#front">${IC.grid} Overview</a><span class="nav-sep">&middot;</span>
   <a href="#ladder">${IC.ladder} Architecture</a><span class="nav-sep">&middot;</span>
-  <a href="#register">${IC.archive} Evidence</a><span class="nav-sep">&middot;</span>
-  <a href="#coverage">${IC.grid} Coverage</a><span class="nav-sep">&middot;</span>
-  <a href="#budget">${IC.chart} Budget</a><span class="nav-sep">&middot;</span>
-  <a href="#harness">${IC.circuit} Harness</a><span class="nav-sep">&middot;</span>
+  <a href="#register">${IC.archive} Results Register</a><span class="nav-sep">&middot;</span>
+  <a href="#result-tables">${IC.chart} Result Tables</a><span class="nav-sep">&middot;</span>
   <a href="#models">${IC.stack} Models</a><span class="nav-sep">&middot;</span>
   <a href="#docs">${IC.book} Documents</a>
 </nav>`;
@@ -600,8 +667,9 @@ function renderMasthead(data) {
 
 function renderFront(data) {
   const rq     = data.docs?.research_question ?? '';
-  const runs   = data.run_register ?? [];
   const ladder = data.architecture_ladder ?? [];
+  const meta   = data.run_meta ?? {};
+  const famSum = data.family_summaries ?? {};
 
   const primaryQ = extractMd(rq, 'Primary Question') ||
     'How do CLINES-inspired modular architecture, clinical extraction baselines, and model capacity affect clinical correctness, evidence support, auditability, cost, latency, token use, and harness complexity in epilepsy clinic-letter extraction?';
@@ -612,11 +680,11 @@ function renderFront(data) {
   const pq = h1raw ? h1raw[1].trim().split(/\.\s/)[0] + '.' :
     'A CLINES-inspired architecture may improve evidence support, status handling, temporality, and auditability compared with direct prompting.';
 
-  const nRuns      = runs.length;
-  const nCanonical = runs.filter(r => r.status === 'canonical').length;
-  const nFamilies  = [...new Set(runs.map(r => r.architecture_family).filter(Boolean))].length;
-  const nModels    = (data.model_registry?.frozen?.models ?? []).length;
-  const nFields    = (data.field_families ?? []).length;
+  const nDisplay  = meta.display_total ?? 0;
+  const nMatrix   = meta.matrix_total  ?? 0;
+  const nFamilies = ladder.filter(s => (famSum[s.family] ?? {}).has_data).length;
+  const nModels   = (data.model_registry?.frozen?.models ?? []).length;
+  const nFields   = (data.field_families ?? []).length;
 
   const colLead = `
 <div class="fcol">
@@ -629,16 +697,18 @@ function renderFront(data) {
   </div>
   <div class="pullquote">${esc(pq)}</div>
   <div class="body-text">
-    <p>Seven architecture rungs are under evaluation, from deterministic clinical NLP baselines through to a CLINES-inspired modular pipeline with assertion handling, temporality resolution, evidence verification, and cross-chunk aggregation. Results are reported by field family, not only in aggregate.</p>
+    <p>Five architecture rungs are under evaluation, from deterministic clinical NLP baselines through to a CLINES-inspired modular pipeline with assertion handling, temporality resolution, evidence verification, and cross-chunk aggregation. Results are reported by field family, not only in aggregate.</p>
   </div>
 </div>`;
 
   const ladderItems = ladder.map(step => {
-    const stepRuns = runs.filter(r => r.architecture_family === step.family);
-    const live = stepRuns.length > 0;
+    const fs   = famSum[step.family] ?? {};
+    const live = fs.has_data === true;
     const dotColor = fg(step.family);
+    const rc   = fs.run_counts ?? {};
+    const nonSmoke = (rc.supporting ?? 0) + (rc.archive ?? 0);
     const statusText = live
-      ? `${stepRuns.length} run${stepRuns.length !== 1 ? 's' : ''} &mdash; ${stepRuns[0].status}`
+      ? `${nonSmoke} non-smoke run${nonSmoke !== 1 ? 's' : ''}`
       : 'pending';
     return `<li class="lc-item${live ? ' live' : ''}">
       <span class="lc-num">${step.step}</span>
@@ -658,14 +728,15 @@ function renderFront(data) {
   <ul class="ladder-compact">${ladderItems}</ul>
 </div>`;
 
-  // Pip bars for runs (one pip per ladder step, coloured by arch)
+  // Pip bars for families (one pip per ladder step, coloured by arch, filled if has supporting runs)
   const pipRuns = ladder.map(step => {
-    const stepRuns = runs.filter(r => r.architecture_family === step.family);
-    const hasCanon = stepRuns.some(r => r.status === 'canonical');
-    const hasAny   = stepRuns.length > 0;
+    const fs = famSum[step.family] ?? {};
+    const rc = fs.run_counts ?? {};
+    const hasSupporting = (rc.supporting ?? 0) > 0;
+    const hasAny = fs.has_data === true;
     const col = fg(step.family);
-    if (hasCanon) return `<div class="pip" style="background:${col}"></div>`;
-    if (hasAny)   return `<div class="pip" style="background:${col};opacity:0.45"></div>`;
+    if (hasSupporting) return `<div class="pip" style="background:${col}"></div>`;
+    if (hasAny)        return `<div class="pip" style="background:${col};opacity:0.45"></div>`;
     return `<div class="pip"></div>`;
   }).join('');
 
@@ -673,21 +744,20 @@ function renderFront(data) {
 <div class="fcol">
   <div class="kicker">At a Glance</div>
   <div class="brief">
-    <div class="brief-label">Run Records</div>
-    <div class="brief-value">${nRuns}</div>
-    <div class="brief-sub">${nCanonical > 0 ? nCanonical + ' canonical' : 'smoke / development'}</div>
+    <div class="brief-label">Primary Runs (non-smoke)</div>
+    <div class="brief-value">${nDisplay}</div>
+    <div class="brief-sub">in results register</div>
+  </div>
+  <div class="brief">
+    <div class="brief-label">Matrix Data Points</div>
+    <div class="brief-value">${nMatrix}</div>
+    <div class="brief-sub">model &times; harness comparisons</div>
   </div>
   <div class="brief">
     <div class="brief-label">Architecture Families</div>
-    <div class="brief-value">${nFamilies || ladder.length}</div>
-    <div class="brief-sub">${nFamilies} of ${ladder.length} rungs active</div>
+    <div class="brief-value">${nFamilies}</div>
+    <div class="brief-sub">${nFamilies} of ${ladder.length} rungs with data</div>
     <div class="brief-pips">${pipRuns}</div>
-  </div>
-  <div class="brief">
-    <div class="brief-label">Field Families</div>
-    <div class="brief-value">${nFields}</div>
-    <div class="brief-sub">extraction targets</div>
-    <div class="brief-pips">${Array(nFields).fill('<div class="pip" style="background:var(--ink)"></div>').join('')}</div>
   </div>
   <div class="brief">
     <div class="brief-label">Frozen Models</div>
@@ -703,27 +773,38 @@ function renderFront(data) {
 
 function renderLadder(data) {
   const ladder = data.architecture_ladder ?? [];
-  const runs   = data.run_register ?? [];
+  const famSum = data.family_summaries ?? {};
 
   const dots = ladder.map(step => {
-    const live = runs.some(r => r.architecture_family === step.family);
+    const fs   = famSum[step.family] ?? {};
+    const live = fs.has_data === true;
     return `<div title="${esc(step.label)}" style="width:9px;height:9px;border-radius:50%;background:${fg(step.family)};opacity:${live ? '1' : '0.22'}"></div>`;
   }).join('');
 
   const nodes = ladder.map(step => {
-    const stepRuns = runs.filter(r => r.architecture_family === step.family);
-    const live = stepRuns.length > 0;
+    const fs     = famSum[step.family] ?? {};
+    const live   = fs.has_data === true;
     const archFg = fg(step.family);
+    const rc     = fs.run_counts ?? {};
+    const nonSmoke = (rc.supporting ?? 0) + (rc.archive ?? 0);
+    const nMatrix  = rc.matrix ?? 0;
+    const bestAcc  = fs.best_accuracy;
     const ringStyle = live
       ? `background:${archFg};border-color:${archFg};color:white;box-shadow:0 0 0 4px var(--paper),0 0 0 6px ${archFg}44`
       : '';
-    const runsEl = live
-      ? `<div class="lnode-runs" style="color:${archFg}">${stepRuns.length} run${stepRuns.length !== 1 ? 's' : ''}</div>`
-      : `<div class="lnode-pending">pending</div>`;
+    let runsEl = '';
+    if (live) {
+      const accStr = bestAcc != null ? ` &mdash; best ${(Number(bestAcc) * 100).toFixed(0)}%` : '';
+      const matStr = nMatrix > 0 ? ` + ${nMatrix} matrix` : '';
+      runsEl = `<div class="lnode-runs" style="color:${archFg}">${nonSmoke} run${nonSmoke !== 1 ? 's' : ''}${matStr}${accStr}</div>`;
+    } else {
+      runsEl = `<div class="lnode-pending">pending</div>`;
+    }
+    const harnesses = fs.harnesses ?? step.harnesses ?? [];
     return `<div class="lnode${live ? ' live' : ''}">
       <div class="lnode-ring" style="${ringStyle}">${step.step}</div>
       <div class="lnode-name">${esc(step.label)}</div>
-      <div class="lnode-harnesses">${esc((step.harnesses ?? []).join('\n'))}</div>
+      <div class="lnode-harnesses">${esc(harnesses.join('\n'))}</div>
       ${runsEl}
       ${step.description ? `<div class="lnode-desc">${esc(step.description)}</div>` : ''}
     </div>`;
@@ -738,258 +819,277 @@ function renderLadder(data) {
 <div class="ladder-infographic">${nodes || '<div class="empty">No ladder data.</div>'}</div>`;
 }
 
-/* ── Evidence Register ──────────────────────────────── */
+/* ── Family Register ────────────────────────────────── */
 
-function renderRegister(data) {
-  const runs   = data.run_register ?? [];
-  const fields = data.field_families ?? [];
+function renderFamilyRegister(data) {
+  const ladder  = data.architecture_ladder ?? [];
+  const famSum  = data.family_summaries ?? {};
+  const display = data.display_register ?? [];
 
   const ABBR = {
     seizure_frequency: 'SF', seizure_classification: 'SC', epilepsy_classification: 'EC',
     current_medications: 'med', investigations: 'inv', associated_symptoms: 'sym',
     comorbidities: 'com', rescue_medication: 'res', other_therapies: 'oth',
   };
+  const fields = data.field_families ?? Object.keys(ABBR);
 
-  const cards = runs.map(r => {
-    const fc     = r.field_coverage ?? {};
-    const archFg = fg(r.architecture_family);
-    const acc    = r.metrics?.exact_label_accuracy;
+  const cards = ladder.map(step => {
+    const fam    = step.family;
+    const fs     = famSum[fam] ?? {};
+    const archFg = fg(fam);
+    const rc     = fs.run_counts ?? {};
+    const nonSmoke = (rc.supporting ?? 0) + (rc.archive ?? 0);
+    const bestAcc  = fs.best_accuracy;
+    const accStr   = bestAcc != null ? (Number(bestAcc) * 100).toFixed(0) + '%' : '—';
+    const aggCov   = fs.aggregate_field_coverage ?? {};
 
-    const accEl = acc != null ? `
-      <div class="rc-accuracy">
-        <span class="rc-acc-value">${(Number(acc) * 100).toFixed(0)}<span style="font-size:15px">%</span></span>
-        <span class="rc-acc-label">Accuracy<br>n=${r.metrics?.n ?? '—'}</span>
-      </div>` : '';
+    const miniDots = fields.map(f => {
+      const v = aggCov[f];
+      let bg = '#e5e0cc';
+      if (v === 'implemented') bg = '#1e5c30';
+      else if (v === 'partial') bg = '#c4a048';
+      return `<div class="fam-mini-dot" title="${esc(f)}: ${esc(v ?? 'none')}" style="background:${bg}"></div>`;
+    }).join('');
 
-    // Dot grid — use field_families if available, else keys from field_coverage
-    const dotKeys = fields.length > 0 ? fields : Object.keys(fc).filter(k => fc[k] !== 'not_attempted');
-    const dotGrid = dotKeys.length > 0 ? `
-      <div class="rc-dotgrid">
-        ${dotKeys.map(f => {
-          const v = fc[f];
-          const cls = v === 'implemented' ? 'dg-dot-y' : v === 'partial' ? 'dg-dot-p' : 'dg-dot-n';
-          return `<div class="dg-item">
-            <div class="dg-dot ${cls}"></div>
-            <div class="dg-label">${esc(ABBR[f] ?? f.slice(0, 3))}</div>
+    const footerLabel = nonSmoke > 0
+      ? `${nonSmoke} non-smoke run${nonSmoke !== 1 ? 's' : ''} &middot; click to expand`
+      : 'No primary runs yet';
+
+    const famRuns = display.filter(r => r.architecture_family === fam);
+    const drillRows = famRuns.length > 0
+      ? famRuns.map(r => {
+          const acc = r.metrics?.exact_label_accuracy;
+          const accEl = acc != null
+            ? `<span class="fam-run-acc">${(Number(acc) * 100).toFixed(0)}%</span>`
+            : `<span class="fam-run-acc" style="color:var(--faint)">—</span>`;
+          const shortId = String(r.run_id ?? '').length > 40
+            ? String(r.run_id).slice(0, 37) + '...'
+            : String(r.run_id ?? '');
+          return `<div class="fam-run-row">
+            <span class="fam-run-id">${esc(shortId)}</span>
+            ${statusStamp(r.status)}
+            ${accEl}
           </div>`;
-        }).join('')}
-      </div>` : '';
+        }).join('')
+      : `<div class="fam-no-runs">No non-smoke primary runs for this architecture yet.</div>`;
 
-    return `<div class="run-card" onclick="this.classList.toggle('expanded')">
-      <div class="rc-arch-bar" style="background:${archFg}"></div>
-      <div class="rc-summary">
-        <div class="rc-head"><span class="rc-id">${esc(r.run_id)}</span>${statusStamp(r.status)}</div>
-        <div class="rc-family" style="color:${archFg}">${familyLabel(r.architecture_family)}</div>
-        ${accEl}
-        ${dotGrid}
-        <div class="rc-expand-hint">Details <span class="chevron">&#8964;</span></div>
+    return `<div class="fam-card">
+      <div class="fam-card-accent" style="background:${archFg}"></div>
+      <div class="fam-card-body">
+        <div class="fam-step-row">
+          <div class="fam-step-circle" style="background:${archFg}">${step.step}</div>
+          <div class="fam-name">${esc(step.label)}</div>
+        </div>
+        <div class="fam-stats">
+          <div class="fam-stat">
+            <div class="fam-stat-val">${esc(accStr)}</div>
+            <div class="fam-stat-lbl">Best Accuracy</div>
+          </div>
+          <div class="fam-stat">
+            <div class="fam-stat-val">${nonSmoke}</div>
+            <div class="fam-stat-lbl">Runs</div>
+          </div>
+        </div>
+        <div class="fam-mini-grid">${miniDots}</div>
       </div>
-      <div class="rc-detail">
-        <div class="rc-row"><span class="rc-lbl">Harness</span><span class="rc-val">${esc(r.harness)}</span></div>
-        <div class="rc-row"><span class="rc-lbl">Dataset</span><span class="rc-val">${esc(r.dataset_id)} (n=${r.dataset_n ?? '—'})</span></div>
-        <div class="rc-row"><span class="rc-lbl">Provider</span><span class="rc-val">${esc(r.provider || '—')}</span></div>
-        <div class="rc-row"><span class="rc-lbl">Date</span><span class="rc-val">${fmtDateShort(r.created_at)}</span></div>
+      <div class="fam-footer" onclick="this.closest('.fam-card').classList.toggle('open')">
+        <span>${footerLabel}</span>
+        <span class="chevron">&#8964;</span>
       </div>
+      <div class="fam-drill">${drillRows}</div>
     </div>`;
   }).join('');
 
   return `
 <div class="s-banner-gold" id="register">
-  <span class="s-banner-text">${IC.archive}&nbsp; Evidence Register</span>
-  <span class="s-banner-count">${runs.length} record${runs.length !== 1 ? 's' : ''}</span>
+  <span class="s-banner-text">${IC.archive}&nbsp; Results Register</span>
+  <span class="s-banner-count">${display.length} non-smoke primary run${display.length !== 1 ? 's' : ''}</span>
 </div>
-${runs.length === 0
-  ? '<div class="empty">No run records in results/runs/.</div>'
-  : `<div class="register-grid">${cards}</div>`}`;
+<div class="fam-grid">${cards}</div>`;
 }
 
-/* ── Field Coverage Heatmap ─────────────────────────── */
+/* ── Result Tables ──────────────────────────────────── */
 
-function renderCoverage(data) {
-  const runs   = data.run_register ?? [];
-  const fields = data.field_families ?? [];
+function renderResultTables(data) {
+  const tables  = data.result_tables ?? {};
+  const ladder  = data.architecture_ladder ?? [];
+  const display = data.display_register ?? [];
 
-  const SHORT = {
-    seizure_frequency: 'Sz Freq', seizure_classification: 'Sz Class',
-    epilepsy_classification: 'Epil Class', current_medications: 'Medications',
-    investigations: 'Investig.', associated_symptoms: 'Assoc Sx',
-    comorbidities: 'Comorbid', rescue_medication: 'Rescue', other_therapies: 'Other Rx',
-  };
-
-  const ths = fields.map(f => `<th style="min-width:52px">${esc(SHORT[f] ?? f)}</th>`).join('');
-
-  const rows = runs.map(r => {
-    const fc    = r.field_coverage ?? {};
-    const archFg = fg(r.architecture_family);
-    const cells = fields.map(f => {
-      const v = fc[f];
-      if (v === 'implemented')  return `<td><div class="cv-cell cv-y">&#x2713;</div></td>`;
-      if (v === 'partial')      return `<td><div class="cv-cell cv-p">&#x25D1;</div></td>`;
-      if (v === 'not_attempted') return `<td><div class="cv-cell cv-n">&middot;</div></td>`;
-      return `<td><div class="cv-cell cv-x">&mdash;</div></td>`;
-    }).join('');
-    return `<tr>
-      <td class="col-id">${esc(r.run_id)}</td>
-      <td class="col-arch"><span style="color:${archFg};font-weight:700">&bull;</span> ${familyLabel(r.architecture_family)}</td>
-      ${cells}
-    </tr>`;
-  }).join('');
-
-  return `
-<div class="s-banner" id="coverage">
-  <span class="s-banner-text">${IC.grid}&nbsp; Field Coverage Map</span>
-</div>
-<div class="cov-wrap">
-  <table class="cov-heatmap">
-    <thead><tr><th class="col-l">Run ID</th><th class="col-l">Architecture</th>${ths}</tr></thead>
-    <tbody>${rows || '<tr><td colspan="100" class="empty">No runs.</td></tr>'}</tbody>
-  </table>
-</div>
-<div class="cov-legend">
-  <div class="cov-leg-item"><div class="cov-leg-sw" style="background:var(--green)"></div>Implemented</div>
-  <div class="cov-leg-item"><div class="cov-leg-sw" style="background:var(--gold-lt)"></div>Partial</div>
-  <div class="cov-leg-item"><div class="cov-leg-sw" style="background:var(--paper-3);border:1px solid var(--rule-lt)"></div>Not attempted</div>
-</div>`;
-}
-
-/* ── Budget & Performance ───────────────────────────── */
-
-function renderBudget(data) {
-  const tables = data.result_tables ?? {};
-  const runs   = data.run_register ?? [];
-
-  const llmRuns = runs.filter(r => (r.budget?.total_tokens ?? 0) > 0);
-  const maxTok  = llmRuns.length ? Math.max(...llmRuns.map(r => r.budget?.total_tokens ?? 0)) : 1;
-  const maxLat  = llmRuns.length ? Math.max(...llmRuns.map(r => r.budget?.latency_ms   ?? 0)) : 1;
+  // Build harness -> family map from ladder step harness lists
+  const harnessToFamily = {};
+  for (const step of ladder) {
+    for (const h of (step.harnesses ?? [])) {
+      harnessToFamily[h] = step.family;
+    }
+  }
+  // Also enrich from display register
+  for (const r of display) {
+    if (r.harness && r.architecture_family) {
+      harnessToFamily[r.harness] = r.architecture_family;
+    }
+  }
 
   function tokBar(val, max, latency = false) {
-    if (!val) return `<div class="tok-val">—</div>`;
-    const pct = Math.max(4, (val / max) * 100).toFixed(1);
+    const v = Number(val);
+    if (!val || isNaN(v) || v === 0) return `<div class="tok-val">—</div>`;
+    const pct = Math.max(4, (v / max) * 100).toFixed(1);
     const cls = latency ? 'tok-fill tok-fill-lat' : 'tok-fill';
     return `<div class="tok-wrap">
       <div class="tok-track"><div class="${cls}" style="width:${pct}%"></div></div>
-      <div class="tok-val">${Number(val).toLocaleString('en-GB')}</div>
+      <div class="tok-val">${v.toLocaleString('en-GB')}</div>
     </div>`;
   }
 
-  let main = '';
-  const bt = tables.budget_complexity;
-  if (bt && bt.rows?.length > 0) {
-    const ths = bt.headers.map(h => `<th>${esc(h)}</th>`).join('');
-    const trs = bt.rows.map(row =>
-      `<tr>${bt.headers.map(h => `<td>${esc(row[h] ?? '—')}</td>`).join('')}</tr>`
-    ).join('');
-    main = `<div class="data-table-wrap"><table class="data-table"><thead><tr>${ths}</tr></thead><tbody>${trs}</tbody></table></div>`;
-  } else if (llmRuns.length > 0) {
-    const trs = llmRuns.map(r => {
-      const b    = r.budget ?? {};
-      const archFg = fg(r.architecture_family);
-      return `<tr>
-        <td>${esc(r.run_id)}</td>
-        <td><span style="color:${archFg};font-weight:700">&bull;</span> ${familyLabel(r.architecture_family)}</td>
-        <td class="tok-cell">${tokBar(b.input_tokens,  maxTok)}</td>
-        <td class="tok-cell">${tokBar(b.output_tokens, maxTok)}</td>
-        <td class="tok-cell">${tokBar(b.total_tokens,  maxTok)}</td>
-        <td class="tok-cell">${tokBar(b.latency_ms,    maxLat, true)}</td>
-        <td style="text-align:right">${b.llm_calls_per_row ? Number(b.llm_calls_per_row).toFixed(1) : '—'}</td>
-      </tr>`;
+  /* ── Tab 1: Field-Level Correctness ── */
+  function renderFieldAccuracy() {
+    const t = tables.field_level_correctness;
+    if (!t || !t.rows?.length) return `<div class="empty">No field_level_correctness.csv data found.</div>`;
+    const SHOW_COLS = ['harness', 'field_family', 'n', 'exact_label_accuracy', 'monthly_rate_accuracy_tolerance_15pct', 'pragmatic_macro_f1', 'purist_macro_f1'];
+    const COL_LABELS = {
+      harness: 'Harness', field_family: 'Field Family', n: 'N',
+      exact_label_accuracy: 'Exact Acc', monthly_rate_accuracy_tolerance_15pct: 'Monthly Rate Acc (±15%)',
+      pragmatic_macro_f1: 'Pragmatic F1', purist_macro_f1: 'Purist F1',
+    };
+    // Sort by field_family then harness
+    const sorted = [...t.rows].sort((a, b) => {
+      const ff = String(a.field_family ?? '').localeCompare(String(b.field_family ?? ''));
+      if (ff !== 0) return ff;
+      return String(a.harness ?? '').localeCompare(String(b.harness ?? ''));
+    });
+    const ths = SHOW_COLS.map(h => `<th>${esc(COL_LABELS[h] ?? h)}</th>`).join('');
+    const trs = sorted.map(row => {
+      const harness = row.harness ?? '';
+      const fam     = harnessToFamily[harness] ?? '';
+      const archFg  = fg(fam);
+      const cells = SHOW_COLS.map(h => {
+        if (h === 'harness') {
+          return `<td><span style="color:${archFg};font-weight:700">&bull;</span> ${esc(harness)}</td>`;
+        }
+        const v = row[h];
+        if (['exact_label_accuracy', 'monthly_rate_accuracy_tolerance_15pct', 'pragmatic_macro_f1', 'purist_macro_f1'].includes(h)) {
+          return `<td>${fmtPct(v)}</td>`;
+        }
+        return `<td>${esc(v ?? '—')}</td>`;
+      }).join('');
+      return `<tr>${cells}</tr>`;
     }).join('');
-    main = `<div class="data-table-wrap"><table class="data-table"><thead><tr>
-      <th>Run ID</th><th>Architecture</th>
-      <th>Input tokens</th><th>Output tokens</th>
-      <th>Total tokens</th><th>Latency</th>
-      <th style="text-align:right">LLM calls/row</th>
-    </tr></thead><tbody>${trs}</tbody></table></div>`;
-  } else {
-    main = `<div class="empty">No LLM runs with token data yet. Run a harness with a live provider to populate this section.</div>`;
+    return `<div class="data-table-wrap"><table class="data-table"><thead><tr>${ths}</tr></thead><tbody>${trs}</tbody></table></div>`;
   }
 
-  const extras = Object.entries(tables)
-    .filter(([k]) => k !== 'budget_complexity' && k !== 'harness_complexity')
-    .map(([k, t]) => {
-      if (!t.rows?.length) return '';
-      const ths = t.headers.map(h => `<th>${esc(h)}</th>`).join('');
-      const trs = t.rows.map(row => `<tr>${t.headers.map(h => `<td>${esc(row[h] ?? '—')}</td>`).join('')}</tr>`).join('');
-      return `<p style="font-family:var(--serif);font-size:15px;font-style:italic;color:var(--muted);margin:28px 0 10px">${esc(k.replace(/_/g,' '))}</p>
-        <div class="data-table-wrap"><table class="data-table"><thead><tr>${ths}</tr></thead><tbody>${trs}</tbody></table></div>`;
+  /* ── Tab 2: Anchor Comparison ── */
+  function renderAnchorComparison() {
+    const t = tables.seizure_frequency_anchor;
+    if (!t || !t.rows?.length) return `<div class="empty">No seizure_frequency_anchor.csv data found.</div>`;
+    const SHOW_COLS = ['model', 'harness', 'dataset_n', 'exact_label_accuracy', 'monthly_rate_accuracy_tolerance_15pct', 'pragmatic_macro_f1'];
+    const COL_LABELS = {
+      model: 'Model', harness: 'Harness', dataset_n: 'N',
+      exact_label_accuracy: 'Exact Acc', monthly_rate_accuracy_tolerance_15pct: 'Monthly Rate Acc (±15%)',
+      pragmatic_macro_f1: 'Pragmatic F1',
+    };
+    // Filter to only the columns that exist
+    const availCols = SHOW_COLS.filter(c => t.headers.includes(c));
+    const ths = availCols.map(h => `<th>${esc(COL_LABELS[h] ?? h)}</th>`).join('');
+    const trs = t.rows.map(row => {
+      const cells = availCols.map(h => {
+        const v = row[h];
+        if (['exact_label_accuracy', 'monthly_rate_accuracy_tolerance_15pct', 'pragmatic_macro_f1'].includes(h)) {
+          return `<td>${fmtPct(v)}</td>`;
+        }
+        if (h === 'harness') {
+          const fam = harnessToFamily[v ?? ''] ?? (row.architecture_family ?? '');
+          return `<td><span style="color:${fg(fam)};font-weight:700">&bull;</span> ${esc(v ?? '—')}</td>`;
+        }
+        return `<td>${esc(v ?? '—')}</td>`;
+      }).join('');
+      return `<tr>${cells}</tr>`;
     }).join('');
-
-  return `
-<div class="s-banner-ledger" id="budget">
-  <span class="s-banner-text">${IC.chart}&nbsp; Budget &amp; Performance</span>
-  <div class="s-banner-rule"></div>
-</div>
-${main}${extras}`;
-}
-
-/* ── Harness Trace ──────────────────────────────────── */
-
-function renderHarnessNative(data) {
-  const runs      = data.run_register ?? [];
-  const manifests = data.harness_manifests ?? [];
-  const table     = data.result_tables?.harness_complexity;
-
-  const cards = runs.map(r => {
-    const hc     = r.harness_complexity ?? {};
-    const mf     = r.harness_manifest   ?? {};
-    const events = r.harness_events     ?? {};
-    const status = hc.status ?? 'legacy_or_not_reported';
-    const archFg = fg(r.architecture_family);
-    return `<div class="run-card" onclick="this.classList.toggle('expanded')">
-      <div class="rc-arch-bar" style="background:${archFg}"></div>
-      <div class="rc-summary">
-        <div class="rc-head"><span class="rc-id">${esc(r.run_id)}</span><span class="stamp">${esc(status)}</span></div>
-        <div class="rc-family" style="color:${archFg}">${familyLabel(r.architecture_family)}</div>
-        <div class="rc-expand-hint">Details <span class="chevron">&#8964;</span></div>
-      </div>
-      <div class="rc-detail">
-        <div class="rc-row"><span class="rc-lbl">Manifest</span><span class="rc-val">${esc(mf.id || 'not recorded')}</span></div>
-        <div class="rc-row"><span class="rc-lbl">Events</span><span class="rc-val">${fmtNum(hc.event_count ?? events.event_count ?? 0)}</span></div>
-        <div class="rc-row"><span class="rc-lbl">Provider calls</span><span class="rc-val">${fmtNum(hc.provider_calls ?? events.provider_calls ?? 0)}</span></div>
-        <div class="rc-row"><span class="rc-lbl">Repairs</span><span class="rc-val">${fmtNum(hc.parse_repair_attempts ?? events.parse_repair_attempts ?? 0)}</span></div>
-        <div class="rc-row"><span class="rc-lbl">Verifier passes</span><span class="rc-val">${fmtNum(hc.verifier_passes ?? events.verifier_passes ?? 0)}</span></div>
-        <div class="rc-row"><span class="rc-lbl">Escalations</span><span class="rc-val">${fmtNum(hc.escalation_decisions ?? events.escalation_decisions ?? 0)}</span></div>
-      </div>
-    </div>`;
-  }).join('');
-
-  let complexityTable = '';
-  if (table && table.rows?.length > 0) {
-    const ths = table.headers.map(h => `<th>${esc(h)}</th>`).join('');
-    const trs = table.rows.map(row =>
-      `<tr>${table.headers.map(h => `<td>${esc(row[h] ?? '—')}</td>`).join('')}</tr>`
-    ).join('');
-    complexityTable = `<p style="font-family:var(--serif);font-size:15px;font-style:italic;color:var(--muted);margin:28px 0 10px">Harness complexity table</p>
-      <div class="data-table-wrap"><table class="data-table"><thead><tr>${ths}</tr></thead><tbody>${trs}</tbody></table></div>`;
+    return `<div class="data-table-wrap"><table class="data-table"><thead><tr>${ths}</tr></thead><tbody>${trs}</tbody></table></div>`;
   }
 
-  const manifestRows = manifests.map(m => {
-    const id     = m.id ?? m.manifest_id ?? m.harness_id ?? m._source ?? 'manifest';
-    const family = m.architecture_family ?? m.family ?? '';
-    const source = m._source ?? '';
-    return `<tr>
-      <td>${esc(id)}</td>
-      <td><span style="color:${fg(family)};font-weight:700">&bull;</span> ${esc(family)}</td>
-      <td>${esc(source)}</td>
-    </tr>`;
-  }).join('');
+  /* ── Tab 3: Self-Consistency Cost ── */
+  function renderSelfConsistency() {
+    const t = tables.self_consistency_cost;
+    if (!t || !t.rows?.length) return `<div class="empty">No self_consistency_cost.csv data found.</div>`;
+    const maxTok = Math.max(...t.rows.map(r => Number(r.mean_total_tokens ?? 0)).filter(v => !isNaN(v)), 1);
+    const ths = t.headers.map(h => `<th>${esc(h.replace(/_/g,' '))}</th>`).join('');
+    const trs = t.rows.map(row => {
+      const cells = t.headers.map(h => {
+        const v = row[h];
+        if (h === 'mean_total_tokens') {
+          return `<td class="tok-cell">${tokBar(v, maxTok)}</td>`;
+        }
+        if (['exact_label_accuracy', 'monthly_rate_accuracy_tolerance_15pct'].includes(h)) {
+          return `<td>${fmtPct(v)}</td>`;
+        }
+        return `<td>${esc(v ?? '—')}</td>`;
+      }).join('');
+      return `<tr>${cells}</tr>`;
+    }).join('');
+    return `<div class="data-table-wrap"><table class="data-table"><thead><tr>${ths}</tr></thead><tbody>${trs}</tbody></table></div>`;
+  }
 
-  const manifestTable = manifests.length
-    ? `<p style="font-family:var(--serif);font-size:15px;font-style:italic;color:var(--muted);margin:28px 0 10px">Harness manifest lineage</p>
-      <div class="data-table-wrap"><table class="data-table"><thead><tr><th>Manifest</th><th>Architecture</th><th>Source</th></tr></thead><tbody>${manifestRows}</tbody></table></div>`
-    : `<div class="empty" style="margin-top:18px">No harness manifests found yet. Phase 13 can add config/harnesses/*.yaml; this panel is already wired for them.</div>`;
+  /* ── Tab 4: Budget (filtered to display_register) ── */
+  function renderBudgetFiltered() {
+    const t = tables.budget_complexity;
+    if (!t || !t.rows?.length) return `<div class="empty">No budget_complexity.csv data found.</div>`;
+    const displayIds = new Set(display.map(r => r.run_id));
+    const filtered = t.rows.filter(row => displayIds.has(row.run_id));
+    if (!filtered.length) return `<div class="empty">No budget rows match display register run IDs.</div>`;
+    const SHOW_COLS = ['run_id', 'architecture_family', 'llm_calls_per_row', 'mean_total_tokens', 'latency_ms', 'estimated_cost_usd'];
+    const COL_LABELS = {
+      run_id: 'Run ID', architecture_family: 'Architecture', llm_calls_per_row: 'LLM Calls/Row',
+      mean_total_tokens: 'Mean Tokens', latency_ms: 'Latency (ms)', estimated_cost_usd: 'Est. Cost (USD)',
+    };
+    const availCols = SHOW_COLS.filter(c => t.headers.includes(c));
+    const maxTok = Math.max(...filtered.map(r => Number(r.mean_total_tokens ?? 0)).filter(v => !isNaN(v)), 1);
+    const maxLat = Math.max(...filtered.map(r => Number(r.latency_ms ?? 0)).filter(v => !isNaN(v)), 1);
+    const ths = availCols.map(h => `<th>${esc(COL_LABELS[h] ?? h)}</th>`).join('');
+    const trs = filtered.map(row => {
+      const cells = availCols.map(h => {
+        const v = row[h];
+        if (h === 'run_id') {
+          const short = String(v ?? '').length > 36 ? String(v).slice(0, 33) + '...' : String(v ?? '');
+          return `<td><span style="font-family:var(--mono);font-size:10px">${esc(short)}</span></td>`;
+        }
+        if (h === 'architecture_family') {
+          const fam = v ?? '';
+          return `<td><span style="color:${fg(fam)};font-weight:700">&bull;</span> ${esc(familyLabel(fam))}</td>`;
+        }
+        if (h === 'mean_total_tokens') {
+          return `<td class="tok-cell">${tokBar(v, maxTok)}</td>`;
+        }
+        if (h === 'latency_ms') {
+          return `<td class="tok-cell">${tokBar(v, maxLat, true)}</td>`;
+        }
+        return `<td>${esc(v ?? '—')}</td>`;
+      }).join('');
+      return `<tr>${cells}</tr>`;
+    }).join('');
+    return `<div class="data-table-wrap"><table class="data-table"><thead><tr>${ths}</tr></thead><tbody>${trs}</tbody></table></div>`;
+  }
+
+  const tabNav = `
+<div class="tab-nav">
+  <button class="tab-btn active" data-tab="field-accuracy" onclick="switchTab('result-tables-wrap','field-accuracy')">Field Accuracy</button>
+  <button class="tab-btn" data-tab="anchor" onclick="switchTab('result-tables-wrap','anchor')">Anchor Comparison</button>
+  <button class="tab-btn" data-tab="sc" onclick="switchTab('result-tables-wrap','sc')">Self-Consistency</button>
+  <button class="tab-btn" data-tab="budget" onclick="switchTab('result-tables-wrap','budget')">Budget</button>
+</div>`;
+
+  const tabPanes = `
+<div class="tab-pane active" data-tab="field-accuracy">${renderFieldAccuracy()}</div>
+<div class="tab-pane" data-tab="anchor">${renderAnchorComparison()}</div>
+<div class="tab-pane" data-tab="sc">${renderSelfConsistency()}</div>
+<div class="tab-pane" data-tab="budget">${renderBudgetFiltered()}</div>`;
 
   return `
-<div class="s-banner-mono" id="harness">
-  ${IC.circuit}
-  <span class="s-banner-text">Harness Trace &amp; Complexity</span>
+<div class="s-banner" id="result-tables">
+  <span class="s-banner-text">${IC.chart}&nbsp; Result Tables</span>
 </div>
-<div class="body-text" style="margin-bottom:18px">
-  <p>This section is forward-compatible with the harness-native refactor: manifests, event summaries, verifier gates, escalation decisions, workflow versions, and complexity tables surface here when run records provide them.</p>
-</div>
-${runs.length === 0 ? '<div class="empty">No run records available for harness tracing.</div>' : `<div class="register-grid">${cards}</div>`}
-${complexityTable}
-${manifestTable}`;
+<div id="result-tables-wrap">
+  ${tabNav}
+  ${tabPanes}
+</div>`;
 }
 
 /* ── Model Registry ─────────────────────────────────── */
@@ -1099,10 +1199,8 @@ async function boot() {
     renderMasthead(data),
     renderFront(data),
     renderLadder(data),
-    renderRegister(data),
-    renderCoverage(data),
-    renderBudget(data),
-    renderHarnessNative(data),
+    renderFamilyRegister(data),
+    renderResultTables(data),
     renderModels(data),
     renderDocs(data),
   ].join('\n');

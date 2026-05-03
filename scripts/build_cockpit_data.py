@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+from collections import Counter as _Counter
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -98,6 +99,18 @@ ARCHITECTURE_LADDER: list[dict[str, Any]] = [
 
 _FAMILY_TO_STEP = {entry["family"]: entry["step"] for entry in ARCHITECTURE_LADDER}
 
+# Normalise run-record family names to ladder family keys
+FAMILY_NORM: dict[str, str] = {
+    "direct_llm":                 "direct",
+    "retrieval_field_pipeline":   "retrieval",
+    "costed_reliability_variant": "anchor",
+}
+
+
+def _normalize_family(family: str) -> str:
+    return FAMILY_NORM.get(family, family)
+
+
 FIELD_FAMILIES = [
     "seizure_frequency",
     "seizure_classification",
@@ -185,7 +198,8 @@ def _run_summary(record: dict[str, Any]) -> dict[str, Any]:
     metrics = record.get("metrics") or {}
     dataset = record.get("dataset") or {}
     fc = record.get("field_coverage") or {}
-    family = record.get("architecture_family", "")
+    family_raw = record.get("architecture_family", "")
+    family     = _normalize_family(family_raw)
     complexity = record.get("complexity") if isinstance(record.get("complexity"), dict) else {}
     manifest = _manifest_summary(record)
     events = _event_summary(record)
@@ -197,6 +211,7 @@ def _run_summary(record: dict[str, Any]) -> dict[str, Any]:
         "run_id": record.get("run_id", ""),
         "harness": record.get("harness", ""),
         "architecture_family": family,
+        "architecture_family_raw": family_raw,
         "ladder_step": _FAMILY_TO_STEP.get(family),
         "status": record.get("status", ""),
         "created_at": record.get("created_at", ""),
@@ -281,14 +296,72 @@ def main() -> None:
         ]
     }
 
-    run_records: list[dict[str, Any]] = []
     runs_dir = root / "results" / "runs"
+    primary_runs: list[dict[str, Any]] = []
+    matrix_runs:  list[dict[str, Any]] = []
     for path in sorted(runs_dir.glob("**/*.json")):
+        is_matrix = len(path.relative_to(runs_dir).parts) > 1
         try:
             record = json.loads(path.read_text(encoding="utf-8"))
-            run_records.append(_run_summary(record))
+            summary = _run_summary(record)
+            summary["is_matrix_run"] = is_matrix
+            (matrix_runs if is_matrix else primary_runs).append(summary)
         except Exception:  # noqa: BLE001
             pass
+
+    run_records = primary_runs + matrix_runs
+
+    # Non-smoke primary runs for the cockpit register
+    display_register = [r for r in primary_runs if r.get("status") not in ("smoke",)]
+
+    # Per-family aggregated summaries
+    family_summaries: dict[str, Any] = {}
+    for step in ARCHITECTURE_LADDER:
+        fam         = step["family"]
+        fam_primary = [r for r in primary_runs if r["architecture_family"] == fam]
+        fam_matrix  = [r for r in matrix_runs  if r["architecture_family"] == fam]
+        non_smoke   = [r for r in fam_primary  if r.get("status") != "smoke"]
+        accs = [
+            r["metrics"]["exact_label_accuracy"]
+            for r in non_smoke
+            if (r.get("metrics") or {}).get("exact_label_accuracy") is not None
+        ]
+        agg_cov: dict[str, Any] = {}
+        for field in FIELD_FAMILIES:
+            statuses = [r["field_coverage"].get(field) for r in non_smoke if r.get("field_coverage")]
+            if "implemented" in statuses:
+                agg_cov[field] = "implemented"
+            elif "partial" in statuses:
+                agg_cov[field] = "partial"
+            elif any(s is not None for s in statuses):
+                agg_cov[field] = "not_attempted"
+            else:
+                agg_cov[field] = None
+        family_summaries[fam] = {
+            "family": fam,
+            "step": step["step"],
+            "label": step["label"],
+            "colour": step["colour"],
+            "description": step["description"],
+            "harnesses": list(dict.fromkeys(r["harness"] for r in non_smoke if r.get("harness"))),
+            "run_counts": {
+                "supporting": sum(1 for r in fam_primary if r.get("status") == "supporting"),
+                "archive":    sum(1 for r in fam_primary if r.get("status") == "archive"),
+                "smoke":      sum(1 for r in fam_primary if r.get("status") == "smoke"),
+                "matrix":     len(fam_matrix),
+            },
+            "best_accuracy": max(accs) if accs else None,
+            "has_data": len(non_smoke) > 0 or len(fam_matrix) > 0,
+            "aggregate_field_coverage": agg_cov,
+        }
+
+    sc = _Counter(r.get("status", "") for r in primary_runs)
+    run_meta = {
+        "primary_total": len(primary_runs),
+        "matrix_total":  len(matrix_runs),
+        "display_total": len(display_register),
+        "by_status": dict(sc),
+    }
 
     model_registry: dict[str, Any] = {}
     frozen_files = sorted((root / "config").glob("model_registry.????-??-??.yaml"))
@@ -320,6 +393,9 @@ def main() -> None:
         "architecture_ladder": ARCHITECTURE_LADDER,
         "field_families": FIELD_FAMILIES,
         "run_register": run_records,
+        "display_register": display_register,
+        "family_summaries": family_summaries,
+        "run_meta": run_meta,
         "harness_manifests": harness_manifests,
         "model_registry": model_registry,
         "result_tables": result_tables,
@@ -332,8 +408,13 @@ def main() -> None:
         json.dumps(payload, indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
     )
-    n = len(run_records)
-    print(f"Cockpit data written to {args.output}  ({n} run record{'s' if n != 1 else ''})")
+    n_primary = len(primary_runs)
+    n_matrix  = len(matrix_runs)
+    n_display = len(display_register)
+    print(
+        f"Cockpit data written to {args.output}  "
+        f"({n_primary} primary, {n_matrix} matrix, {n_display} display)"
+    )
 
 
 if __name__ == "__main__":
