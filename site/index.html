@@ -466,6 +466,66 @@ body {
 .tab-pane { display:none; }
 .tab-pane.active { display:block; }
 
+/* ── Sticky headers on all data tables ── */
+.data-table thead th {
+  position: sticky; top: 0; z-index: 2; background: var(--paper);
+}
+
+/* ── Pivot heatmap ── */
+.pivot-wrap {
+  overflow: auto; max-height: 68vh;
+  border: 1px solid var(--rule-lt);
+}
+.pivot-table {
+  border-collapse: collapse; width: 100%;
+}
+.pivot-table thead th {
+  position: sticky; top: 0; z-index: 3;
+  background: var(--paper-2); font-size: 9px; font-weight: 700;
+  letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted);
+  padding: 8px 6px; border-bottom: 2px solid var(--ink); white-space: nowrap;
+  text-align: center;
+}
+.pivot-harness-th {
+  text-align: left !important; min-width: 190px;
+  padding-left: 10px !important;
+  position: sticky; left: 0; z-index: 4;
+  background: var(--paper-2);
+  border-right: 1px solid var(--rule-lt);
+}
+.pivot-table tbody tr:hover td { filter: brightness(0.93); }
+.pivot-table tbody td { padding: 0; border-bottom: 1px solid rgba(207,196,180,0.5); }
+.pivot-harness-td {
+  font-family: var(--mono); font-size: 10.5px; white-space: nowrap;
+  padding: 7px 10px; background: var(--paper);
+  position: sticky; left: 0; z-index: 1;
+  border-right: 1px solid var(--rule-lt);
+}
+.pivot-cell {
+  text-align: center; font-family: var(--mono); font-size: 11.5px; font-weight: 700;
+  min-width: 56px; padding: 7px 4px; cursor: default;
+}
+.pivot-empty { background: var(--paper-3); }
+.pivot-note {
+  font-size: 11px; font-style: italic; color: var(--muted);
+  margin-bottom: 12px; line-height: 1.6;
+}
+.pivot-legend {
+  display: flex; align-items: center; gap: 14px;
+  margin-top: 12px; font-size: 10.5px; color: var(--muted); font-family: var(--body-f);
+}
+.pivot-legend-scale {
+  display: flex; align-items: center; gap: 6px;
+}
+.pivot-legend-grad {
+  width: 80px; height: 10px; border-radius: 2px;
+  background: linear-gradient(to right, #e8f2ea, #1e5c30);
+  border: 1px solid var(--rule-lt);
+}
+.pivot-legend-swatch {
+  width: 14px; height: 14px; border-radius: 2px; border: 1px solid var(--rule-lt);
+}
+
 /* ── Family summary cards ── */
 .fam-grid {
   display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-bottom:12px;
@@ -940,40 +1000,114 @@ function renderResultTables(data) {
     </div>`;
   }
 
-  /* ── Tab 1: Field-Level Correctness ── */
+  /* ── Tab 1: Field Accuracy — pivot heatmap ── */
   function renderFieldAccuracy() {
     const t = tables.field_level_correctness;
     if (!t || !t.rows?.length) return `<div class="empty">No field_level_correctness.csv data found.</div>`;
-    const SHOW_COLS = ['harness', 'field_family', 'n', 'exact_label_accuracy', 'monthly_rate_accuracy_tolerance_15pct', 'pragmatic_macro_f1', 'purist_macro_f1'];
-    const COL_LABELS = {
-      harness: 'Harness', field_family: 'Field Family', n: 'N',
-      exact_label_accuracy: 'Exact Acc', monthly_rate_accuracy_tolerance_15pct: 'Monthly Rate Acc (±15%)',
-      pragmatic_macro_f1: 'Pragmatic F1', purist_macro_f1: 'Purist F1',
+
+    const fieldCols = data.field_families ?? [
+      'seizure_frequency','seizure_classification','epilepsy_classification',
+      'current_medications','investigations','associated_symptoms',
+      'comorbidities','rescue_medication','other_therapies',
+    ];
+    const ABBR = {
+      seizure_frequency:'SF', seizure_classification:'SC', epilepsy_classification:'EC',
+      current_medications:'Med', investigations:'Inv', associated_symptoms:'Sx',
+      comorbidities:'Cmrb', rescue_medication:'Resc', other_therapies:'Other',
     };
-    // Sort by field_family then harness
-    const sorted = [...t.rows].sort((a, b) => {
-      const ff = String(a.field_family ?? '').localeCompare(String(b.field_family ?? ''));
-      if (ff !== 0) return ff;
-      return String(a.harness ?? '').localeCompare(String(b.harness ?? ''));
+
+    // Filter to non-smoke primary runs only
+    const displayIds = new Set(display.map(r => r.run_id));
+    const rows = t.rows.filter(row => displayIds.has(row.run_id));
+
+    // Pivot: harness → field → {acc, n}  (largest n wins on ties)
+    const pivot = {};
+    for (const row of rows) {
+      const h   = row.harness ?? '';
+      const f   = row.field_family ?? '';
+      const acc = row.exact_label_accuracy !== '' && row.exact_label_accuracy != null
+        ? Number(row.exact_label_accuracy) : null;
+      const n   = Number(row.n ?? 0);
+      if (!h || !f) continue;
+      if (!pivot[h]) pivot[h] = { family: harnessToFamily[h] ?? '', fields: {} };
+      if (acc !== null) {
+        const ex = pivot[h].fields[f];
+        if (!ex || n > ex.n || (n === ex.n && acc > ex.acc)) {
+          pivot[h].fields[f] = { acc, n };
+        }
+      }
+    }
+
+    // Sort rows by ladder step then harness name
+    const stepOf = {};
+    for (const step of ladder) stepOf[step.family] = step.step;
+    const harnesses = Object.keys(pivot).sort((a, b) => {
+      const sa = stepOf[pivot[a].family] ?? 99;
+      const sb = stepOf[pivot[b].family] ?? 99;
+      return sa !== sb ? sa - sb : a.localeCompare(b);
     });
-    const ths = SHOW_COLS.map(h => `<th>${esc(COL_LABELS[h] ?? h)}</th>`).join('');
-    const trs = sorted.map(row => {
-      const harness = row.harness ?? '';
-      const fam     = harnessToFamily[harness] ?? '';
-      const archFg  = fg(fam);
-      const cells = SHOW_COLS.map(h => {
-        if (h === 'harness') {
-          return `<td><span style="color:${archFg};font-weight:700">&bull;</span> ${esc(harness)}</td>`;
-        }
-        const v = row[h];
-        if (['exact_label_accuracy', 'monthly_rate_accuracy_tolerance_15pct', 'pragmatic_macro_f1', 'purist_macro_f1'].includes(h)) {
-          return `<td>${fmtPct(v)}</td>`;
-        }
-        return `<td>${esc(v ?? '—')}</td>`;
+
+    if (!harnesses.length) return `<div class="empty">No primary non-smoke field accuracy data yet.</div>`;
+
+    // Find max accuracy for colour scaling
+    let maxAcc = 0;
+    for (const h of harnesses)
+      for (const d of Object.values(pivot[h].fields))
+        if (d.acc > maxAcc) maxAcc = d.acc;
+    if (maxAcc === 0) maxAcc = 1;
+
+    // Interpolate #e8f2ea → #1e5c30
+    function cellBg(acc) {
+      const t = acc / maxAcc;
+      const r = Math.round(232 + (30  - 232) * t);
+      const g = Math.round(242 + (92  - 242) * t);
+      const b = Math.round(234 + (48  - 234) * t);
+      return `rgb(${r},${g},${b})`;
+    }
+    function cellFg(acc) { return (acc / maxAcc) > 0.52 ? 'white' : 'var(--ink)'; }
+
+    const ths = fieldCols.map(f =>
+      `<th title="${esc(f)}">${esc(ABBR[f] ?? f)}</th>`
+    ).join('');
+
+    const trs = harnesses.map(h => {
+      const { family, fields } = pivot[h];
+      const archFg = fg(family);
+      const cells = fieldCols.map(f => {
+        const d = fields[f];
+        if (!d) return `<td class="pivot-cell pivot-empty" title="${esc(f)}: no data">—</td>`;
+        const bg  = cellBg(d.acc);
+        const tc  = cellFg(d.acc);
+        const pct = (d.acc * 100).toFixed(0) + '%';
+        return `<td class="pivot-cell" style="background:${bg};color:${tc}" title="${esc(f)}: ${pct} (n=${d.n})">${pct}</td>`;
       }).join('');
-      return `<tr>${cells}</tr>`;
+      return `<tr>
+        <td class="pivot-harness-td"><span style="color:${archFg};font-weight:700">&bull;</span> ${esc(h)}</td>
+        ${cells}
+      </tr>`;
     }).join('');
-    return `<div class="data-table-wrap"><table class="data-table"><thead><tr>${ths}</tr></thead><tbody>${trs}</tbody></table></div>`;
+
+    return `
+<p class="pivot-note">Rows = harnesses; columns = field families. Cell shows exact accuracy from the largest-n primary run for that harness. Colour scales to the highest observed value.</p>
+<div class="pivot-wrap">
+  <table class="pivot-table">
+    <thead><tr>
+      <th class="pivot-harness-th">Harness</th>${ths}
+    </tr></thead>
+    <tbody>${trs}</tbody>
+  </table>
+</div>
+<div class="pivot-legend">
+  <div class="pivot-legend-scale">
+    <span>0%</span>
+    <div class="pivot-legend-grad"></div>
+    <span>${(maxAcc * 100).toFixed(0)}%</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:6px">
+    <div class="pivot-legend-swatch" style="background:var(--paper-3)"></div>
+    <span>no data</span>
+  </div>
+</div>`;
   }
 
   /* ── Tab 2: Anchor Comparison ── */
