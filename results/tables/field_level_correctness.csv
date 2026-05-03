@@ -1,11 +1,12 @@
 run_id,harness,field_family,n,exact_label_accuracy,monthly_rate_accuracy_tolerance_15pct,pragmatic_macro_f1,pragmatic_weighted_f1,purist_macro_f1,purist_weighted_f1,adjudication_status
 deterministic_n25_2026_05_03,deterministic_baseline,seizure_frequency,25,0.2,0.28,0.20248270248270248,0.2164916564916565,0.19576719576719576,0.1940740740740741,not_adjudicated
+direct_evidence_contract_n25_gold_seeded_2026_05_03,direct_evidence_contract,seizure_frequency,25,,,,,,,not_adjudicated
 exect_lite_n25_2026_05_03,exect_lite_cleanroom_baseline,seizure_frequency,25,0.2,0.32,0.24702380952380953,0.28904761904761905,0.23412698412698413,0.2744444444444445,not_adjudicated
-exect_v2_external_pending_n25_2026_05_03,exect_v2_external_baseline,seizure_frequency,25,0.12,0.2,0.08333333333333334,0.06666666666666668,0.04761904761904762,0.06666666666666668,not_adjudicated
+exect_lite_smoke,exect_lite_cleanroom_baseline,seizure_frequency,2,1.0,1.0,1.0,1.0,1.0,1.0,not_adjudicated
 exect_v2_external_gold_seeded_n25_2026_05_03,exect_v2_external_baseline,seizure_frequency,25,1.0,1.0,1.0,1.0,1.0,1.0,not_adjudicated
-single_prompt_anchor_n1_gold_seeded_2026_05_03,single_prompt_anchor,seizure_frequency,1,1.0,1.0,1.0,1.0,1.0,1.0,not_adjudicated
-retrieval_anchor_n1_gold_seeded_2026_05_03,retrieval_anchor,seizure_frequency,1,1.0,1.0,1.0,1.0,1.0,1.0,not_adjudicated
+exect_v2_external_pending_n25_2026_05_03,exect_v2_external_baseline,seizure_frequency,25,0.12,0.2,0.08333333333333334,0.06666666666666668,0.04761904761904762,0.06666666666666668,not_adjudicated
 multi_agent_anchor_n1_gold_seeded_2026_05_03,multi_agent_anchor,seizure_frequency,1,1.0,1.0,1.0,1.0,1.0,1.0,not_adjudicated
 multi_agent_anchor_sc3_n1_gold_seeded_2026_05_03,multi_agent_anchor_sc3,seizure_frequency,1,1.0,1.0,1.0,1.0,1.0,1.0,not_adjudicated
 multi_agent_anchor_sc5_n1_gold_seeded_2026_05_03,multi_agent_anchor_sc5,seizure_frequency,1,1.0,1.0,1.0,1.0,1.0,1.0,not_adjudicated
-direct_evidence_contract_n25_gold_seeded_2026_05_03,direct_evidence_contract,seizure_frequency,25,,,,,,,not_adjudicated
+retrieval_anchor_n1_gold_seeded_2026_05_03,retrieval_anchor,seizure_frequency,1,1.0,1.0,1.0,1.0,1.0,1.0,not_adjudicated
+single_prompt_anchor_n1_gold_seeded_2026_05_03,single_prompt_anchor,seizure_frequency,1,1.0,1.0,1.0,1.0,1.0,1.0,not_adjudicated

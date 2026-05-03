@@ -14,6 +14,19 @@
   },
   {
     "adjudication_status": "not_adjudicated",
+    "exact_label_accuracy": "",
+    "field_family": "seizure_frequency",
+    "harness": "direct_evidence_contract",
+    "monthly_rate_accuracy_tolerance_15pct": "",
+    "n": 25,
+    "pragmatic_macro_f1": "",
+    "pragmatic_weighted_f1": "",
+    "purist_macro_f1": "",
+    "purist_weighted_f1": "",
+    "run_id": "direct_evidence_contract_n25_gold_seeded_2026_05_03"
+  },
+  {
+    "adjudication_status": "not_adjudicated",
     "exact_label_accuracy": 0.2,
     "field_family": "seizure_frequency",
     "harness": "exect_lite_cleanroom_baseline",
@@ -27,16 +40,16 @@
   },
   {
     "adjudication_status": "not_adjudicated",
-    "exact_label_accuracy": 0.12,
+    "exact_label_accuracy": 1.0,
     "field_family": "seizure_frequency",
-    "harness": "exect_v2_external_baseline",
-    "monthly_rate_accuracy_tolerance_15pct": 0.2,
-    "n": 25,
-    "pragmatic_macro_f1": 0.08333333333333334,
-    "pragmatic_weighted_f1": 0.06666666666666668,
-    "purist_macro_f1": 0.04761904761904762,
-    "purist_weighted_f1": 0.06666666666666668,
-    "run_id": "exect_v2_external_pending_n25_2026_05_03"
+    "harness": "exect_lite_cleanroom_baseline",
+    "monthly_rate_accuracy_tolerance_15pct": 1.0,
+    "n": 2,
+    "pragmatic_macro_f1": 1.0,
+    "pragmatic_weighted_f1": 1.0,
+    "purist_macro_f1": 1.0,
+    "purist_weighted_f1": 1.0,
+    "run_id": "exect_lite_smoke"
   },
   {
     "adjudication_status": "not_adjudicated",
@@ -53,29 +66,16 @@
   },
   {
     "adjudication_status": "not_adjudicated",
-    "exact_label_accuracy": 1.0,
+    "exact_label_accuracy": 0.12,
     "field_family": "seizure_frequency",
-    "harness": "single_prompt_anchor",
-    "monthly_rate_accuracy_tolerance_15pct": 1.0,
-    "n": 1,
-    "pragmatic_macro_f1": 1.0,
-    "pragmatic_weighted_f1": 1.0,
-    "purist_macro_f1": 1.0,
-    "purist_weighted_f1": 1.0,
-    "run_id": "single_prompt_anchor_n1_gold_seeded_2026_05_03"
-  },
-  {
-    "adjudication_status": "not_adjudicated",
-    "exact_label_accuracy": 1.0,
-    "field_family": "seizure_frequency",
-    "harness": "retrieval_anchor",
-    "monthly_rate_accuracy_tolerance_15pct": 1.0,
-    "n": 1,
-    "pragmatic_macro_f1": 1.0,
-    "pragmatic_weighted_f1": 1.0,
-    "purist_macro_f1": 1.0,
-    "purist_weighted_f1": 1.0,
-    "run_id": "retrieval_anchor_n1_gold_seeded_2026_05_03"
+    "harness": "exect_v2_external_baseline",
+    "monthly_rate_accuracy_tolerance_15pct": 0.2,
+    "n": 25,
+    "pragmatic_macro_f1": 0.08333333333333334,
+    "pragmatic_weighted_f1": 0.06666666666666668,
+    "purist_macro_f1": 0.04761904761904762,
+    "purist_weighted_f1": 0.06666666666666668,
+    "run_id": "exect_v2_external_pending_n25_2026_05_03"
   },
   {
     "adjudication_status": "not_adjudicated",
@@ -118,15 +118,28 @@
   },
   {
     "adjudication_status": "not_adjudicated",
-    "exact_label_accuracy": "",
+    "exact_label_accuracy": 1.0,
     "field_family": "seizure_frequency",
-    "harness": "direct_evidence_contract",
-    "monthly_rate_accuracy_tolerance_15pct": "",
-    "n": 25,
-    "pragmatic_macro_f1": "",
-    "pragmatic_weighted_f1": "",
-    "purist_macro_f1": "",
-    "purist_weighted_f1": "",
-    "run_id": "direct_evidence_contract_n25_gold_seeded_2026_05_03"
+    "harness": "retrieval_anchor",
+    "monthly_rate_accuracy_tolerance_15pct": 1.0,
+    "n": 1,
+    "pragmatic_macro_f1": 1.0,
+    "pragmatic_weighted_f1": 1.0,
+    "purist_macro_f1": 1.0,
+    "purist_weighted_f1": 1.0,
+    "run_id": "retrieval_anchor_n1_gold_seeded_2026_05_03"
+  },
+  {
+    "adjudication_status": "not_adjudicated",
+    "exact_label_accuracy": 1.0,
+    "field_family": "seizure_frequency",
+    "harness": "single_prompt_anchor",
+    "monthly_rate_accuracy_tolerance_15pct": 1.0,
+    "n": 1,
+    "pragmatic_macro_f1": 1.0,
+    "pragmatic_weighted_f1": 1.0,
+    "purist_macro_f1": 1.0,
+    "purist_weighted_f1": 1.0,
+    "run_id": "single_prompt_anchor_n1_gold_seeded_2026_05_03"
   }
 ]
