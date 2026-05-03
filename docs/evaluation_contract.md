@@ -276,6 +276,64 @@ Harness complexity is part of the result. A modular pipeline that improves
 evidence support at much higher cost should be interpreted as a tradeoff, not a
 simple win.
 
+## Harness-Native Metrics
+
+Phase 13 adds explicit harness metadata. These metrics describe how a system
+operated; they are not clinical correctness scores.
+
+Every canonical harness run should reference:
+
+- `manifest_id`;
+- `manifest_hash`;
+- allowed modules and workflow units;
+- prompt, schema, verifier, aggregation, repair, context, and budget policies;
+- gold-label isolation and artifact-retention policy.
+
+Harness event traces should be PHI-safe summaries unless the row is a synthetic
+fixture explicitly permitted to carry quotes. Report:
+
+- total event count;
+- event counts by type;
+- provider calls;
+- parse attempts and repairs;
+- verifier passes;
+- escalation decisions;
+- warnings and errors;
+- quote-bearing event count.
+
+Workflow units should be versioned and reported separately from prompts. A field
+extractor, deterministic normalizer, verifier, and aggregator can change even
+when the final schema stays fixed. Workflow-unit metrics support method
+auditing and ablation; they should not be interpreted as value correctness.
+
+Verifier-gate metrics should distinguish:
+
+- value support;
+- status support;
+- temporality support;
+- normalization support;
+- field-family placement;
+- epilepsy edge-case checks.
+
+Escalation metrics should report the trigger reason, stronger model used,
+additional call/token/cost burden, and whether escalation was invoked because
+of low confidence, parse failure, verifier disagreement, or unsupported
+evidence. Escalation variants remain `costed_reliability_variant` runs and must
+not silently replace canonical direct, retrieval, or modular baselines.
+
+The Clinical-Document Interface should be reported when used. Document-interface
+metrics include section lookup, candidate-span search, deterministic locators,
+quote fidelity, payload validation, and evidence-to-claim comparison. Direct
+full-letter prompting may bypass this interface and should remain labelled as
+such.
+
+External harness adapters should be reported as adapter-normalized outputs.
+Claude Code, Codex, Pi, Flue, OpenHands, Gemini CLI, Aider, and similar future
+runners are not canonical clinical comparators by default. They become
+comparable only after their outputs are normalized into `ExtractionPayload`,
+event summaries, raw artifact references, and explicit sandbox/version
+metadata.
+
 ## Error Categories
 
 Adjudication should tag errors using stable categories:

@@ -71,6 +71,10 @@ class RunRecord:
     complexity: dict[str, Any] = field(default_factory=dict)
     external_baseline: bool = False
     mapping_version: str = ""
+    manifest_id: str = ""
+    manifest_hash: str = ""
+    harness_events: list[dict[str, Any]] = field(default_factory=list)
+    event_summary: dict[str, Any] = field(default_factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         data = asdict(self)

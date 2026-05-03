@@ -20,8 +20,11 @@ from epilepsy_extraction.schemas import (
     FinalExtraction,
     GoldRecord,
     RunRecord,
+    event_dicts,
     failed_component_coverage,
     field_coverage,
+    harness_event,
+    summarize_harness_events,
     validate_final_payload_keys,
 )
 from epilepsy_extraction.schemas.contracts import ArchitectureFamily, FieldFamily
@@ -57,20 +60,76 @@ def run_direct_full_contract(
     responses: list[ProviderResponse] = []
     parse_results: list[tuple[str, bool]] = []
     run_coverage = field_coverage(implemented=CORE_FIELD_FAMILIES)
+    events = []
 
     for record in record_list:
+        row_events = [
+            harness_event(
+                "context_built",
+                record.row_id,
+                1,
+                component="full_contract_prompt",
+                summary="Full letter and final schema assembled for direct extraction",
+            ),
+            harness_event(
+                "provider_call_started",
+                record.row_id,
+                2,
+                component="direct_full_contract",
+                summary="Provider call requested final extraction payload",
+            ),
+        ]
         response = _call_provider(provider, prompt.content, schema.content, record.letter, model, temperature)
+        row_events.append(
+            harness_event(
+                "provider_call_finished",
+                record.row_id,
+                3,
+                component="direct_full_contract",
+                summary="Provider call completed",
+                metrics={
+                    "ok": response.ok,
+                    "input_tokens": response.usage.input_tokens,
+                    "output_tokens": response.usage.output_tokens,
+                    "latency_ms": response.latency_ms,
+                },
+                error=response.error.type if response.error else "",
+            )
+        )
         responses.append(response)
         payload, component_validity = _payload_from_response(response, record)
+        row_events.append(
+            harness_event(
+                "parse_attempted",
+                record.row_id,
+                4,
+                component="final_output",
+                summary="Provider JSON parsed into final extraction payload",
+                metrics={"valid": not payload.invalid_output},
+                warnings=payload.warnings,
+            )
+        )
         parse_results.extend(component_validity)
         if payload.invalid_output:
             run_coverage = failed_component_coverage(CORE_FIELD_FAMILIES)
+            row_events.append(
+                harness_event(
+                    "warning_emitted",
+                    record.row_id,
+                    5,
+                    component="final_output",
+                    summary="Direct full-contract payload was invalid or incomplete",
+                    warnings=payload.warnings,
+                )
+            )
+        events.extend(row_events)
         rows.append(
             {
                 "row_id": record.row_id,
                 "source_row_index": record.source_row_index,
                 "payload": payload.to_dict(),
                 "provider_response": asdict(response),
+                "harness_events": event_dicts(row_events),
             }
         )
 
@@ -90,6 +149,8 @@ def run_direct_full_contract(
         parse_validity=parse_validity_summary(parse_results),
         artifact_paths={"prompt": prompt.path, "schema": schema.path},
         architecture_family=ArchitectureFamily.DIRECT_LLM.value,
+        harness_events=event_dicts(events),
+        event_summary=summarize_harness_events(events),
     )
 
 

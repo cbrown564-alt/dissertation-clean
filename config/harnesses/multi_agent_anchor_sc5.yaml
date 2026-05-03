@@ -1,0 +1,19 @@
+{
+  "manifest_id": "multi_agent_anchor_sc5.v1",
+  "harness_id": "multi_agent_anchor_sc5",
+  "version": "1",
+  "architecture_family": "costed_reliability_variant",
+  "allowed_modules": ["anchor_extractor", "self_consistency_vote"],
+  "prompt_versions": {"extractor": "multi_agent_v1/extractor"},
+  "schema_version": "1.0.0",
+  "provider": "configurable",
+  "model_registry_entry": "",
+  "context_policy": {"input": "full_letter_text", "uses_document_interface": false},
+  "output_contract": {"payload": "anchor_seizure_frequency"},
+  "repair_policy": {"enabled": false, "invalid_json": "record_invalid_output"},
+  "verifier_policy": {"enabled": false},
+  "aggregation_policy": {"enabled": true, "mode": "self_consistency_majority", "samples": 5},
+  "budget_limits": {"llm_calls_per_row": 5},
+  "gold_label_isolation": {"model_visible": false, "evaluation_only": true},
+  "artifact_retention": {"payload": true, "provider_response": true, "self_consistency_votes": true}
+}

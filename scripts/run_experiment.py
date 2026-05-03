@@ -8,7 +8,11 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from epilepsy_extraction.data import compute_file_sha256, load_synthetic_subset, select_fixed_slice
 from epilepsy_extraction.harnesses import (
+    attach_manifest_to_run,
+    default_manifest_path,
+    load_harness_manifest,
     run_anchor_harness,
+    run_budgeted_escalation_harness,
     run_clines_epilepsy_modular,
     run_clines_epilepsy_verified,
     run_deterministic_baseline,
@@ -45,6 +49,7 @@ def main() -> None:
             "retrieval_field_extractors",
             "clines_epilepsy_modular",
             "clines_epilepsy_verified",
+            "budgeted_escalation",
         ],
         default="metadata_smoke",
     )
@@ -52,8 +57,24 @@ def main() -> None:
     parser.add_argument("--output", type=Path, default=Path("results/runs/smoke_fixed_slice.json"))
     parser.add_argument("--code-version", default=None)
     parser.add_argument("--replay", type=Path, default=None)
-    parser.add_argument("--model", default="mock-model")
+    parser.add_argument("--model", default=None)
+    parser.add_argument(
+        "--manifest",
+        type=Path,
+        default=None,
+        help="Harness manifest path. Defaults to config/harnesses/<harness>.yaml when present.",
+    )
     args = parser.parse_args()
+
+    manifest_path = args.manifest or default_manifest_path(args.harness, Path.cwd())
+    if args.manifest is not None and not manifest_path.exists():
+        raise SystemExit(f"Manifest not found: {manifest_path}")
+    manifest = load_harness_manifest(manifest_path) if manifest_path.exists() else None
+    if manifest is not None and manifest.harness_id != args.harness:
+        raise SystemExit(
+            f"Manifest {manifest_path} is for harness {manifest.harness_id!r}, not {args.harness!r}"
+        )
+    model = args.model or (manifest.model_registry_entry if manifest and manifest.model_registry_entry else "mock-model")
 
     records = load_synthetic_subset(args.dataset)
     selected = select_fixed_slice(records, limit=args.limit)
@@ -82,7 +103,7 @@ def main() -> None:
             code_version,
             ReplayProvider(args.replay),
             harness=args.harness,
-            model=args.model,
+            model=model,
         )
     elif args.harness == "direct_full_contract":
         if args.replay is None:
@@ -93,7 +114,7 @@ def main() -> None:
             args.run_id,
             code_version,
             ReplayProvider(args.replay),
-            model=args.model,
+            model=model,
         )
     elif args.harness == "single_prompt_full_contract":
         if args.replay is None:
@@ -104,7 +125,7 @@ def main() -> None:
             args.run_id,
             code_version,
             ReplayProvider(args.replay),
-            model=args.model,
+            model=model,
         )
     elif args.harness == "direct_evidence_contract":
         if args.replay is None:
@@ -115,7 +136,7 @@ def main() -> None:
             args.run_id,
             code_version,
             ReplayProvider(args.replay),
-            model=args.model,
+            model=model,
         )
     elif args.harness == "retrieval_field_extractors":
         if args.replay is None:
@@ -126,7 +147,7 @@ def main() -> None:
             args.run_id,
             code_version,
             ReplayProvider(args.replay),
-            model=args.model,
+            model=model,
         )
     elif args.harness == "clines_epilepsy_modular":
         if args.replay is None:
@@ -137,7 +158,7 @@ def main() -> None:
             args.run_id,
             code_version,
             ReplayProvider(args.replay),
-            model=args.model,
+            model=model,
         )
     elif args.harness == "clines_epilepsy_verified":
         if args.replay is None:
@@ -148,7 +169,21 @@ def main() -> None:
             args.run_id,
             code_version,
             ReplayProvider(args.replay),
-            model=args.model,
+            model=model,
+        )
+    elif args.harness == "budgeted_escalation":
+        if args.replay is None:
+            raise SystemExit("--replay is required for provider-backed harnesses")
+        provider = ReplayProvider(args.replay)
+        record = run_budgeted_escalation_harness(
+            selected,
+            dataset,
+            args.run_id,
+            code_version,
+            provider,
+            provider,
+            cheap_model=model,
+            strong_model=model,
         )
     else:
         record = RunRecord(
@@ -164,6 +199,7 @@ def main() -> None:
             budget=BudgetMetadata(),
             warnings=["metadata_only_run_no_extraction"],
         )
+    record = attach_manifest_to_run(record, manifest)
     write_run_record(record, args.output)
 
 

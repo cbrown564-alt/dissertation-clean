@@ -1,0 +1,19 @@
+{
+  "manifest_id": "budgeted_escalation.v1",
+  "harness_id": "budgeted_escalation",
+  "version": "1",
+  "architecture_family": "costed_reliability_variant",
+  "allowed_modules": ["cheap_retrieval", "escalation_policy", "strong_direct_evidence"],
+  "prompt_versions": {"cheap": "retrieval/field_extractor_v1", "strong": "direct/evidence_contract_v1"},
+  "schema_version": "1.0.0",
+  "provider": "configurable",
+  "model_registry_entry": "",
+  "context_policy": {"input": "candidate_spans_then_full_letter_on_escalation", "uses_document_interface": true},
+  "output_contract": {"payload": "final_extraction_v1"},
+  "repair_policy": {"enabled": true, "invalid_json": "escalate_then_record_invalid_output"},
+  "verifier_policy": {"enabled": true, "scope": "strong_evidence_contract_on_escalation"},
+  "aggregation_policy": {"enabled": true, "mode": "use_escalated_output_only_when_policy_triggers"},
+  "budget_limits": {"llm_calls_per_row": 6},
+  "gold_label_isolation": {"model_visible": false, "evaluation_only": true},
+  "artifact_retention": {"payload": true, "escalation_decision": true, "provider_response": true}
+}

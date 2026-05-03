@@ -4,7 +4,7 @@ from dataclasses import asdict
 from typing import Any, Iterable
 
 from epilepsy_extraction.assets import load_prompt, load_schema
-from epilepsy_extraction.document.normalization import normalize_letter
+from epilepsy_extraction.document import ClinicalDocumentInterface
 from epilepsy_extraction.evaluation import parse_validity_summary
 from epilepsy_extraction.modules.aggregation import aggregate_field_results
 from epilepsy_extraction.modules.chunking import chunk_letter, select_chunks_for_family
@@ -12,6 +12,13 @@ from epilepsy_extraction.modules.field_extractors import extract_field_family
 from epilepsy_extraction.modules.normalization import enrich_seizure_frequency
 from epilepsy_extraction.modules.status_temporality import annotate_status
 from epilepsy_extraction.modules.verification import verify_field_extraction
+from epilepsy_extraction.modules.workflows import (
+    field_extractor_unit,
+    modular_workflow_units,
+    normalizer_unit,
+    verifier_unit,
+    workflow_unit_dicts,
+)
 from epilepsy_extraction.providers import (
     ChatProvider,
     ProviderResponse,
@@ -23,8 +30,11 @@ from epilepsy_extraction.schemas import (
     ExtractionPayload,
     GoldRecord,
     RunRecord,
+    event_dicts,
     failed_component_coverage,
     field_coverage,
+    harness_event,
+    summarize_harness_events,
 )
 from epilepsy_extraction.schemas.contracts import ArchitectureFamily, FieldFamily
 
@@ -58,14 +68,34 @@ def run_clines_epilepsy_modular(
     all_responses: list[ProviderResponse] = []
     parse_results: list[tuple[str, bool]] = []
     run_coverage = field_coverage(implemented=CORE_FIELD_FAMILIES)
+    events = []
+    workflow_units = modular_workflow_units(provider_verifier=False)
 
     for record in record_list:
-        letter_norm = normalize_letter(record.letter)
+        document = ClinicalDocumentInterface(record.letter)
+        letter_norm = document.letter
         chunks = chunk_letter(letter_norm)
+        row_events = [
+            harness_event(
+                "context_built",
+                record.row_id,
+                1,
+                component="chunking",
+                summary="Letter normalized and chunked for modular extraction",
+                metrics={"chunks": len(chunks)},
+            )
+        ]
+        sequence = 2
 
         row_responses: list[ProviderResponse] = []
         field_data: dict[FieldFamily, dict[str, Any]] = {}
         row_artifacts: dict[str, Any] = {
+            "document_interface": {
+                "used": True,
+                "tools": ["get_sections", "search_spans", "quote_evidence", "validate_payload"],
+                "sections": document.get_sections(),
+            },
+            "workflow_units": workflow_unit_dicts(workflow_units),
             "chunks": [
                 {
                     "chunk_id": c.chunk_id,
@@ -79,17 +109,80 @@ def run_clines_epilepsy_modular(
         for family in CORE_FIELD_FAMILIES:
             selected, selection_warnings = select_chunks_for_family(chunks, family)
             context = "\n---\n".join(c.text for c in selected)
+            row_events.append(
+                harness_event(
+                    "candidate_spans_selected",
+                    record.row_id,
+                    sequence,
+                    component=family.value,
+                    summary="Chunks selected for field-family extraction",
+                    metrics={"selected_chunks": len(selected), "context_chars": len(context)},
+                    warnings=selection_warnings,
+                )
+            )
+            sequence += 1
+            row_events.append(
+                harness_event(
+                    "provider_call_started",
+                    record.row_id,
+                    sequence,
+                    component=family.value,
+                    summary="Provider call requested modular field extraction",
+                )
+            )
+            sequence += 1
 
             result = extract_field_family(
                 provider, prompt.content, schema.content, family, context, model, temperature
             )
             if result.response:
                 row_responses.append(result.response)
+                row_events.append(
+                    harness_event(
+                        "provider_call_finished",
+                        record.row_id,
+                        sequence,
+                        component=family.value,
+                        summary="Provider call completed",
+                        metrics={
+                            "ok": result.response.ok,
+                            "input_tokens": result.response.usage.input_tokens,
+                            "output_tokens": result.response.usage.output_tokens,
+                            "latency_ms": result.response.latency_ms,
+                        },
+                        error=result.response.error.type if result.response.error else "",
+                    )
+                )
+                sequence += 1
             parse_results.append((family.value, result.valid))
+            row_events.append(
+                harness_event(
+                    "parse_attempted",
+                    record.row_id,
+                    sequence,
+                    component=family.value,
+                    summary="Provider JSON parsed into modular field result",
+                    metrics={"valid": result.valid},
+                    warnings=result.warnings,
+                )
+            )
+            sequence += 1
 
             # Deterministic post-processing (stored in artifacts, not final payload)
             _, status_ann = annotate_status(result.data, context)
             verification_artifact, _ = verify_field_extraction(result.data, context)
+            row_events.append(
+                harness_event(
+                    "verification_completed",
+                    record.row_id,
+                    sequence,
+                    component=family.value,
+                    summary="Deterministic evidence verification completed",
+                    metrics={"parse_valid": result.valid},
+                    warnings=result.warnings,
+                )
+            )
+            sequence += 1
 
             freq_norm = {}
             if family == FieldFamily.SEIZURE_FREQUENCY and result.data:
@@ -109,12 +202,54 @@ def run_clines_epilepsy_modular(
                 "frequency_normalization": freq_norm,
                 "parse_valid": result.valid,
                 "warnings": result.warnings,
+                "workflow_units": workflow_unit_dicts(
+                    [
+                        field_extractor_unit(family),
+                        normalizer_unit(),
+                        verifier_unit(provider_backed=False),
+                    ]
+                ),
             }
             field_data[family] = result.data
+            row_events.append(
+                harness_event(
+                    "field_extraction_completed",
+                    record.row_id,
+                    sequence,
+                    component=family.value,
+                    summary="Modular field-family extraction and enrichment completed",
+                    metrics={"valid": result.valid},
+                    warnings=selection_warnings + result.warnings,
+                )
+            )
+            sequence += 1
 
         agg = aggregate_field_results(field_data)
         if agg.any_invalid:
             run_coverage = failed_component_coverage(CORE_FIELD_FAMILIES)
+        row_events.append(
+            harness_event(
+                "aggregation_completed",
+                record.row_id,
+                sequence,
+                component="aggregation",
+                summary="Verified field-family outputs aggregated into final payload",
+                metrics={"valid": not agg.any_invalid, "conflicts": len(agg.conflicts)},
+                warnings=agg.warnings,
+            )
+        )
+        if agg.warnings:
+            row_events.append(
+                harness_event(
+                    "warning_emitted",
+                    record.row_id,
+                    sequence + 1,
+                    component="aggregation",
+                    summary="Modular aggregation emitted warnings",
+                    warnings=agg.warnings,
+                )
+            )
+        events.extend(row_events)
 
         payload = ExtractionPayload(
             pipeline_id="clines_epilepsy_modular",
@@ -130,6 +265,7 @@ def run_clines_epilepsy_modular(
             metadata={
                 "source_row_index": record.source_row_index,
                 "aggregation_conflicts": agg.conflicts,
+                "workflow_units": [unit.unit_id for unit in workflow_units],
             },
         )
 
@@ -141,6 +277,7 @@ def run_clines_epilepsy_modular(
                 "payload": payload.to_dict(),
                 "modular_artifacts": row_artifacts,
                 "provider_responses": [asdict(r) for r in row_responses],
+                "harness_events": event_dicts(row_events),
             }
         )
 
@@ -168,6 +305,9 @@ def run_clines_epilepsy_modular(
                 "normalization",
                 "verification_deterministic",
                 "aggregation",
-            ]
+            ],
+            "workflow_units": [unit.unit_id for unit in workflow_units],
         },
+        harness_events=event_dicts(events),
+        event_summary=summarize_harness_events(events),
     )

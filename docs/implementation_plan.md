@@ -497,7 +497,7 @@ Acceptance criteria:
 - Harness-native displays link back to source manifests, event summaries, run
   records, and result tables rather than duplicating those facts in the site.
 
-## Phase 13: Harness-Native Refactor
+## Phase 13: Harness-Native Refactor ✓ COMPLETE
 
 Goal: refactor the completed architecture ladder so every extraction system is
 described and evaluated as an explicit clinical agent harness.
@@ -509,7 +509,7 @@ The existing direct, retrieval, modular, verifier, model-matrix, adjudication,
 and cockpit work should remain intact, but the metadata and orchestration
 surfaces should become more explicit.
 
-### 13.1 Harness Manifests
+### 13.1 Harness Manifests ✓ COMPLETE
 
 Tasks:
 
@@ -540,7 +540,7 @@ Acceptance criteria:
   longer hidden in code-only conventions.
 - Manifest changes are reviewable as normal dissertation-method changes.
 
-### 13.2 Harness Event Logs
+### 13.2 Harness Event Logs ✓ COMPLETE
 
 Tasks:
 
@@ -573,7 +573,7 @@ Acceptance criteria:
 - Event logs do not leak gold labels or clinical secrets into model-visible
   context.
 
-### 13.3 Skill-Like Field Workflow Units
+### 13.3 Skill-Like Field Workflow Units ✓ COMPLETE
 
 Tasks:
 
@@ -601,7 +601,7 @@ Acceptance criteria:
   implicit prompt-only change.
 - Workflow metadata flows into run artifacts and cockpit data.
 
-### 13.4 Clinical-Document Interface
+### 13.4 Clinical-Document Interface ✓ COMPLETE
 
 Tasks:
 
@@ -631,7 +631,7 @@ Acceptance criteria:
 - Direct and modular comparisons can explicitly report which systems used the
   document interface.
 
-### 13.5 Verifier Gates And Escalation Policies
+### 13.5 Verifier Gates And Escalation Policies ✓ COMPLETE
 
 Tasks:
 
@@ -660,7 +660,7 @@ Acceptance criteria:
 - Costed reliability variants never silently replace the strong direct,
   retrieval, or modular baselines.
 
-### 13.6 External Harness Adapters
+### 13.6 External Harness Adapters ✓ COMPLETE
 
 Tasks:
 
@@ -689,7 +689,7 @@ Acceptance criteria:
 - The repo can compare local harnesses and external harness outputs through a
   common event/run contract.
 
-### 13.7 Cockpit Refactor For Harness Visibility
+### 13.7 Cockpit Refactor For Harness Visibility ✓ COMPLETE
 
 Tasks:
 
@@ -718,7 +718,7 @@ Acceptance criteria:
 - Harness-native claims visible in the cockpit link back to manifests, run
   records, event summaries, tables, or docs.
 
-### 13.8 Evaluation Contract Update
+### 13.8 Evaluation Contract Update ✓ COMPLETE
 
 Tasks:
 

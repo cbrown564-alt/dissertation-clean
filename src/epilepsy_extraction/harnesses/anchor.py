@@ -6,6 +6,7 @@ from dataclasses import asdict
 from typing import Any, Iterable, Literal
 
 from epilepsy_extraction.assets import load_prompt
+from epilepsy_extraction.document import ClinicalDocumentInterface
 from epilepsy_extraction.evaluation import evaluate_prediction, parse_label, parse_validity_summary, summarize
 from epilepsy_extraction.providers import (
     ChatProvider,
@@ -14,7 +15,6 @@ from epilepsy_extraction.providers import (
     ProviderResponse,
     budget_from_provider_responses,
 )
-from epilepsy_extraction.retrieval.candidates import build_retrieval_context
 from epilepsy_extraction.schemas import (
     DatasetSlice,
     EvidenceSpan,
@@ -23,7 +23,10 @@ from epilepsy_extraction.schemas import (
     GoldRecord,
     Prediction,
     RunRecord,
+    event_dicts,
     field_coverage,
+    harness_event,
+    summarize_harness_events,
 )
 from epilepsy_extraction.schemas.contracts import FieldFamily
 
@@ -53,14 +56,102 @@ def run_anchor_harness(
     parse_results: list[tuple[str, bool]] = []
     responses: list[ProviderResponse] = []
     record_list = list(records)
+    events = []
 
     for record in record_list:
+        row_events = [
+            harness_event(
+                "context_built",
+                record.row_id,
+                1,
+                component=harness,
+                summary="Anchor extraction context prepared",
+                metrics={"retrieval_enabled": harness == "retrieval_anchor"},
+            )
+        ]
         prediction, row_responses, retrieval_artifacts = _predict_anchor(
             record.letter, provider, harness, model, temperature
         )
+        if retrieval_artifacts:
+            row_events.append(
+                harness_event(
+                    "candidate_spans_selected",
+                    record.row_id,
+                    2,
+                    component="seizure_frequency",
+                    summary="Candidate spans selected for anchor extraction",
+                    metrics={
+                        "candidate_spans": len(retrieval_artifacts.get("candidate_spans", [])),
+                    },
+                )
+            )
+        sequence = len(row_events) + 1
+        for index, response in enumerate(row_responses, start=1):
+            row_events.append(
+                harness_event(
+                    "provider_call_started",
+                    record.row_id,
+                    sequence,
+                    component=f"{harness}:call_{index}",
+                    summary="Provider call requested anchor extraction",
+                )
+            )
+            sequence += 1
+            row_events.append(
+                harness_event(
+                    "provider_call_finished",
+                    record.row_id,
+                    sequence,
+                    component=f"{harness}:call_{index}",
+                    summary="Provider call completed",
+                    metrics={
+                        "ok": response.ok,
+                        "input_tokens": response.usage.input_tokens,
+                        "output_tokens": response.usage.output_tokens,
+                        "latency_ms": response.latency_ms,
+                    },
+                    error=response.error.type if response.error else "",
+                )
+            )
+            sequence += 1
         responses.extend(row_responses)
         parsed_ok = prediction.parsed_monthly_rate is not None
         parse_results.append(("seizure_frequency", parsed_ok))
+        row_events.append(
+            harness_event(
+                "parse_attempted",
+                record.row_id,
+                sequence,
+                component="seizure_frequency",
+                summary="Anchor output parsed as seizure-frequency label",
+                metrics={"valid": parsed_ok},
+                warnings=prediction.warnings,
+            )
+        )
+        sequence += 1
+        row_events.append(
+            harness_event(
+                "field_extraction_completed",
+                record.row_id,
+                sequence,
+                component="seizure_frequency",
+                summary="Anchor seizure-frequency extraction completed",
+                metrics={"valid": parsed_ok, "confidence": prediction.confidence},
+                warnings=prediction.warnings,
+            )
+        )
+        if prediction.warnings:
+            row_events.append(
+                harness_event(
+                    "warning_emitted",
+                    record.row_id,
+                    sequence + 1,
+                    component="seizure_frequency",
+                    summary="Anchor extraction emitted warnings",
+                    warnings=prediction.warnings,
+                )
+            )
+        events.extend(row_events)
         evaluation = evaluate_prediction(record.source_row_index, record.gold_label, prediction)
         evaluation_rows.append(evaluation)
         payload = _payload_from_prediction(prediction, harness, record)
@@ -73,6 +164,7 @@ def run_anchor_harness(
                 "evaluation": asdict(evaluation),
                 "provider_responses": [asdict(response) for response in row_responses],
                 "retrieval_artifacts": retrieval_artifacts,
+                "harness_events": event_dicts(row_events),
             }
         )
 
@@ -93,6 +185,8 @@ def run_anchor_harness(
         rows=rows,
         parse_validity=parse_validity_summary(parse_results),
         artifact_paths={"prompt": prompt.path},
+        harness_events=event_dicts(events),
+        event_summary=summarize_harness_events(events),
     )
 
 
@@ -104,9 +198,14 @@ def _predict_anchor(
     temperature: float,
 ) -> tuple[Prediction, list[ProviderResponse], dict[str, Any]]:
     if harness == "retrieval_anchor":
-        context, span_artifacts, retrieval_warnings = build_retrieval_context(
-            letter, FieldFamily.SEIZURE_FREQUENCY
-        )
+        document = ClinicalDocumentInterface(letter)
+        span_artifacts = document.search_spans(FieldFamily.SEIZURE_FREQUENCY, max_spans=3)
+        if span_artifacts:
+            context = "\n---\n".join(str(span["text"]) for span in span_artifacts)
+            retrieval_warnings = []
+        else:
+            context = document.letter
+            retrieval_warnings = ["retrieval_recall_loss_fallback_full"]
         response = _call_provider(
             provider,
             "anchor_retrieval",
@@ -117,7 +216,10 @@ def _predict_anchor(
             context_label="Retrieved context",
         )
         prediction = _merge_warnings(_prediction_from_response(response, letter), retrieval_warnings)
-        return prediction, [response], {"candidate_spans": span_artifacts}
+        return prediction, [response], {
+            "document_interface": {"used": True, "tools": ["search_spans"]},
+            "candidate_spans": span_artifacts,
+        }
 
     if harness == "single_prompt_anchor":
         response = _call_provider(provider, "anchor_single", letter, model, temperature)

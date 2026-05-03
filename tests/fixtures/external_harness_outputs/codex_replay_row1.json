@@ -1,0 +1,20 @@
+{
+  "adapter_id": "codex_external_replay.v1",
+  "runner_name": "codex",
+  "runner_version": "replay-fixture",
+  "canonical_comparator": false,
+  "row_id": "1",
+  "final": {
+    "seizure_frequency": {"value": "2 per month"},
+    "current_medications": [{"name": "lamotrigine", "dose": "100 mg bd"}],
+    "investigations": [],
+    "seizure_types": [],
+    "seizure_features": [],
+    "seizure_pattern_modifiers": [],
+    "epilepsy_type": null,
+    "epilepsy_syndrome": null,
+    "citations": [{"field": "seizure_frequency", "quote": "two seizures per month"}],
+    "confidence": {"seizure_frequency": 0.8},
+    "warnings": []
+  }
+}

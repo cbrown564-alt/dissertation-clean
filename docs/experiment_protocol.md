@@ -215,6 +215,28 @@ Each run record should include:
 - path to model registry snapshot;
 - path to adjudication if available.
 
+For harness-native runs, also include:
+
+- `manifest_id` and `manifest_hash`;
+- `harness_events` and `event_summary`;
+- workflow-unit names and versions;
+- document-interface use, if active;
+- verifier-gate summaries;
+- escalation policy and decision reasons;
+- raw artifact references for external adapters.
+
+Matched runs should state whether manifests, event logs, document tools,
+verifier gates, and escalation policies were active. A direct full-letter
+baseline may legitimately set document-interface use to false; retrieval and
+modular runs should use the Clinical-Document Interface where practical.
+
+Escalation variants must be named separately, for example
+`budgeted_escalation`, and reported as `costed_reliability_variant`. They should
+not overwrite or relabel the strong direct, retrieval, or modular baselines.
+External harness outputs should first be replay fixtures through an
+`ExternalClinicalAgentAdapter`; live subprocess or framework-agent runs require
+separate sandbox approval and are non-canonical until promoted.
+
 ## Promotion Gates
 
 Before a harness becomes canonical:

@@ -24,3 +24,26 @@ __all__ = [
     "verify_evidence_deterministic",
     "verify_field_extraction",
 ]
+from .workflows import (
+    WORKFLOW_VERSION,
+    WorkflowContract,
+    WorkflowUnit,
+    aggregator_unit,
+    field_extractor_unit,
+    modular_workflow_units,
+    normalizer_unit,
+    verifier_unit,
+    workflow_unit_dicts,
+)
+
+__all__ = [
+    "WORKFLOW_VERSION",
+    "WorkflowContract",
+    "WorkflowUnit",
+    "aggregator_unit",
+    "field_extractor_unit",
+    "modular_workflow_units",
+    "normalizer_unit",
+    "verifier_unit",
+    "workflow_unit_dicts",
+]

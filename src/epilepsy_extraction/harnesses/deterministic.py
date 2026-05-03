@@ -14,7 +14,10 @@ from epilepsy_extraction.schemas import (
     GoldRecord,
     Prediction,
     RunRecord,
+    event_dicts,
     field_coverage,
+    harness_event,
+    summarize_harness_events,
 )
 from epilepsy_extraction.schemas.contracts import FieldFamily
 
@@ -45,11 +48,55 @@ def run_deterministic_baseline(
     rows: list[dict[str, object]] = []
     evaluation_rows = []
     parse_results: list[tuple[str, bool]] = []
+    events = []
 
     for record in records:
+        row_events = [
+            harness_event(
+                "context_built",
+                record.row_id,
+                1,
+                component="deterministic_rules",
+                summary="Full letter made available to deterministic rules",
+            )
+        ]
         prediction = predict_seizure_frequency(record.letter)
         parsed_ok = prediction.parsed_monthly_rate is not None
         parse_results.append(("seizure_frequency", parsed_ok))
+        row_events.append(
+            harness_event(
+                "parse_attempted",
+                record.row_id,
+                2,
+                component="seizure_frequency",
+                summary="Rule output parsed as seizure-frequency label",
+                metrics={"valid": parsed_ok},
+                warnings=prediction.warnings,
+            )
+        )
+        row_events.append(
+            harness_event(
+                "field_extraction_completed",
+                record.row_id,
+                3,
+                component="seizure_frequency",
+                summary="Deterministic seizure-frequency extraction completed",
+                metrics={"valid": parsed_ok, "confidence": prediction.confidence},
+                warnings=prediction.warnings,
+            )
+        )
+        if prediction.warnings:
+            row_events.append(
+                harness_event(
+                    "warning_emitted",
+                    record.row_id,
+                    4,
+                    component="seizure_frequency",
+                    summary="Deterministic extraction emitted warnings",
+                    warnings=prediction.warnings,
+                )
+            )
+        events.extend(row_events)
         evaluation = evaluate_prediction(record.source_row_index, record.gold_label, prediction)
         evaluation_rows.append(evaluation)
 
@@ -78,6 +125,7 @@ def run_deterministic_baseline(
                 "prediction": asdict(prediction),
                 "payload": payload.to_dict(),
                 "evaluation": asdict(evaluation),
+                "harness_events": event_dicts(row_events),
             }
         )
 
@@ -97,6 +145,8 @@ def run_deterministic_baseline(
         rows=rows,
         parse_validity=parse_validity_summary(parse_results),
         warnings=["deterministic_rules_use_letter_text_only"],
+        harness_events=event_dicts(events),
+        event_summary=summarize_harness_events(events),
     )
 
 

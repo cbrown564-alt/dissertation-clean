@@ -143,3 +143,11 @@ The full-contract single-prompt baseline uses the same replay mechanism:
 ```powershell
 python scripts/run_experiment.py tests/fixtures/synthetic_subset_fixture.json --harness single_prompt_full_contract --limit 1 --replay path/to/replay.json --output results/runs/full_contract_replay.json
 ```
+
+Harness manifests live under `config/harnesses/` and are loaded automatically
+by harness name. They record the architecture family, allowed modules, prompt
+and schema versions, context policy, output contract, repair/verifier/
+aggregation policies, budget limits, gold-label isolation, and artifact
+retention. A run record written through `run_experiment.py` or
+`run_model_matrix.py` includes the manifest ID and SHA-256 hash; pass
+`--manifest path/to/manifest.yaml` to override the default for a one-off run.

@@ -13,13 +13,20 @@ try:
 
     def _load_yaml(path: Path) -> dict[str, Any]:
         try:
-            return _yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+            text = path.read_text(encoding="utf-8")
+            try:
+                return json.loads(text)
+            except json.JSONDecodeError:
+                return _yaml.safe_load(text) or {}
         except Exception as exc:  # noqa: BLE001
             return {"_error": str(exc)}
 
 except ImportError:
     def _load_yaml(path: Path) -> dict[str, Any]:  # type: ignore[misc]
-        return {"_error": "pyyaml not installed — run: pip install pyyaml"}
+        try:
+            return json.loads(path.read_text(encoding="utf-8"))
+        except Exception as exc:  # noqa: BLE001
+            return {"_error": f"pyyaml not installed and JSON parse failed: {exc}"}
 
 
 ARCHITECTURE_LADDER: list[dict[str, Any]] = [
@@ -124,12 +131,16 @@ def _load_csv(path: Path) -> dict[str, Any]:
 
 def _manifest_summary(record: dict[str, Any]) -> dict[str, Any]:
     manifest = record.get("harness_manifest") or record.get("manifest") or {}
+    complexity = record.get("complexity") if isinstance(record.get("complexity"), dict) else {}
+    if not manifest and isinstance(complexity.get("manifest"), dict):
+        manifest = complexity["manifest"]
     if not isinstance(manifest, dict):
         manifest = {}
     return {
         "id": manifest.get("id") or manifest.get("manifest_id") or record.get("manifest_id") or "",
         "hash": manifest.get("hash") or manifest.get("manifest_hash") or record.get("manifest_hash") or "",
-        "source": manifest.get("source") or manifest.get("path") or "",
+        "source": manifest.get("source") or manifest.get("path") or manifest.get("source_path") or "",
+        "architecture_family": manifest.get("architecture_family") or record.get("architecture_family") or "",
     }
 
 

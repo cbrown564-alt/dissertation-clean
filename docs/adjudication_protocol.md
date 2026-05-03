@@ -179,6 +179,20 @@ Each adjudication sheet should include:
 - error tags;
 - adjudicator note.
 
+When available, include harness-native context as reviewer-facing metadata:
+
+- manifest ID and manifest hash;
+- event-summary counts, especially repairs, verifier passes, and escalation
+  decisions;
+- verifier-gate failures relevant to the emitted item;
+- document-interface locator for the cited evidence;
+- workflow-unit version that produced or verified the item.
+
+These fields support auditability and reviewer navigation. They do not replace
+human value, status, temporality, normalization, or evidence judgments.
+Verifier-gate failures may suggest error tags, but the adjudicator remains
+independent from model-generated or deterministic harness claims.
+
 ## Minimum Matched Slice
 
 For final reporting, adjudicate a matched slice containing:

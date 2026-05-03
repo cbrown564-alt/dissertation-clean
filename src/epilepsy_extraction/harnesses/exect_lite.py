@@ -22,6 +22,9 @@ from epilepsy_extraction.schemas import (
     GoldRecord,
     Prediction,
     RunRecord,
+    event_dicts,
+    harness_event,
+    summarize_harness_events,
 )
 from epilepsy_extraction.schemas.contracts import (
     ArchitectureFamily,
@@ -130,16 +133,75 @@ def run_exect_lite_baseline(
     evaluation_rows = []
     parse_results: list[tuple[str, bool]] = []
     mapping = load_mapping("exect_lite")
+    events = []
 
     for record in records:
+        row_events = [
+            harness_event(
+                "context_built",
+                record.row_id,
+                1,
+                component="exect_lite_rules",
+                summary="Full letter made available to cleanroom rules",
+            )
+        ]
         extracted = _extract_all(record.letter)
         freq_prediction = extracted["freq_prediction"]
         parsed_ok = freq_prediction.parsed_monthly_rate is not None
         parse_results.append(("seizure_frequency", parsed_ok))
+        row_events.append(
+            harness_event(
+                "field_extraction_completed",
+                record.row_id,
+                2,
+                component="cleanroom_field_rules",
+                summary="Cleanroom rules extracted supported ExECT-lite fields",
+                metrics={
+                    "medications": len(extracted["medications"]),
+                    "investigations": len(extracted["investigations"]),
+                    "seizure_types": len(extracted["seizure_types"]),
+                    "seizure_frequency_valid": parsed_ok,
+                },
+                warnings=freq_prediction.warnings,
+            )
+        )
+        row_events.append(
+            harness_event(
+                "parse_attempted",
+                record.row_id,
+                3,
+                component="seizure_frequency",
+                summary="Rule output parsed as seizure-frequency label",
+                metrics={"valid": parsed_ok},
+                warnings=freq_prediction.warnings,
+            )
+        )
         evaluation = evaluate_prediction(record.source_row_index, record.gold_label, freq_prediction)
         evaluation_rows.append(evaluation)
 
         coverage = _build_coverage(extracted)
+        row_events.append(
+            harness_event(
+                "aggregation_completed",
+                record.row_id,
+                4,
+                component="baseline_mapping",
+                summary="Cleanroom rule fields mapped into final extraction payload",
+                metrics={"covered_fields": sum(1 for status in coverage.values() if status != "not_attempted")},
+            )
+        )
+        if freq_prediction.warnings:
+            row_events.append(
+                harness_event(
+                    "warning_emitted",
+                    record.row_id,
+                    5,
+                    component="exect_lite_rules",
+                    summary="Cleanroom baseline emitted warnings",
+                    warnings=freq_prediction.warnings,
+                )
+            )
+        events.extend(row_events)
         payload = ExtractionPayload(
             pipeline_id="exect_lite_cleanroom_baseline",
             final=FinalExtraction(
@@ -169,6 +231,7 @@ def run_exect_lite_baseline(
                 "prediction": asdict(freq_prediction),
                 "payload": payload.to_dict(),
                 "evaluation": asdict(evaluation),
+                "harness_events": event_dicts(row_events),
             }
         )
 
@@ -190,6 +253,8 @@ def run_exect_lite_baseline(
         warnings=["exect_lite_cleanroom_independently_authored"],
         architecture_family=ArchitectureFamily.CLINICAL_NLP_BASELINE.value,
         mapping_version=mapping.version,
+        harness_events=event_dicts(events),
+        event_summary=summarize_harness_events(events),
     )
 
 

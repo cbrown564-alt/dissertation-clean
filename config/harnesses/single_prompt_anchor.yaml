@@ -1,0 +1,19 @@
+{
+  "manifest_id": "single_prompt_anchor.v1",
+  "harness_id": "single_prompt_anchor",
+  "version": "1",
+  "architecture_family": "direct_llm",
+  "allowed_modules": ["anchor_prompt", "json_parse"],
+  "prompt_versions": {"anchor": "single_prompt_v1"},
+  "schema_version": "1.0.0",
+  "provider": "configurable",
+  "model_registry_entry": "",
+  "context_policy": {"input": "full_letter_text", "uses_document_interface": false},
+  "output_contract": {"payload": "anchor_seizure_frequency"},
+  "repair_policy": {"enabled": false, "invalid_json": "record_invalid_output"},
+  "verifier_policy": {"enabled": false},
+  "aggregation_policy": {"enabled": false},
+  "budget_limits": {"llm_calls_per_row": 1},
+  "gold_label_isolation": {"model_visible": false, "evaluation_only": true},
+  "artifact_retention": {"payload": true, "provider_response": true}
+}

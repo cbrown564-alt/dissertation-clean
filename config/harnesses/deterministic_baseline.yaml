@@ -1,0 +1,19 @@
+{
+  "manifest_id": "deterministic_baseline.v1",
+  "harness_id": "deterministic_baseline",
+  "version": "1",
+  "architecture_family": "clinical_nlp_baseline",
+  "allowed_modules": ["deterministic_rules"],
+  "prompt_versions": {},
+  "schema_version": "1.0.0",
+  "provider": "deterministic",
+  "model_registry_entry": "",
+  "context_policy": {"input": "full_letter_text", "uses_document_interface": false},
+  "output_contract": {"payload": "final_extraction_v1", "coverage": "seizure_frequency_only"},
+  "repair_policy": {"enabled": false},
+  "verifier_policy": {"enabled": false},
+  "aggregation_policy": {"enabled": false},
+  "budget_limits": {"llm_calls_per_row": 0},
+  "gold_label_isolation": {"model_visible": false, "evaluation_only": true},
+  "artifact_retention": {"payload": true, "raw_provider": false}
+}

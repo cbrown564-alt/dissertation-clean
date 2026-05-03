@@ -32,7 +32,11 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from epilepsy_extraction.data import compute_file_sha256, load_synthetic_subset, select_fixed_slice
 from epilepsy_extraction.harnesses import (
+    attach_manifest_to_run,
+    default_manifest_path,
+    load_harness_manifest,
     run_anchor_harness,
+    run_budgeted_escalation_harness,
     run_clines_epilepsy_modular,
     run_clines_epilepsy_verified,
     run_deterministic_baseline,
@@ -42,6 +46,7 @@ from epilepsy_extraction.harnesses import (
     run_retrieval_field_extractors,
     run_single_prompt_full_contract,
 )
+from epilepsy_extraction.harnesses.manifest import HarnessManifest
 from epilepsy_extraction.models.registry import ModelRegistryEntry, load_registry, validate_registry
 from epilepsy_extraction.providers import MockProvider, ReplayProvider
 from epilepsy_extraction.schemas import DatasetSlice, RunRecord, resolve_code_version, write_run_record
@@ -61,6 +66,7 @@ PROVIDER_BACKED_HARNESSES: frozenset[str] = frozenset({
     "retrieval_field_extractors",
     "clines_epilepsy_modular",
     "clines_epilepsy_verified",
+    "budgeted_escalation",
 })
 
 ALL_HARNESSES: frozenset[str] = DETERMINISTIC_HARNESSES | PROVIDER_BACKED_HARNESSES
@@ -104,6 +110,12 @@ def main() -> None:
         help="Proceed even if the registry frozen_at field is not set",
     )
     parser.add_argument("--code-version", default=None, help="Override code version string")
+    parser.add_argument(
+        "--manifest-dir",
+        type=Path,
+        default=Path("config/harnesses"),
+        help="Directory containing <harness>.yaml manifests (default: config/harnesses)",
+    )
     args = parser.parse_args()
 
     entries = _load_and_validate_registry(args.registry, allow_unfrozen=args.allow_unfrozen)
@@ -117,9 +129,11 @@ def main() -> None:
     model_id_filter = {m.strip() for m in args.model_ids.split(",") if m.strip()} or None
     plan = build_plan(entries, harnesses, tier_filter, model_id_filter)
 
+    manifests = _load_manifests(harnesses, args.manifest_dir)
+
     if args.dry_run:
         print(json.dumps(
-            {"plan": _plan_as_list(plan), "total_runs": len(plan)},
+            {"plan": _plan_as_list(plan, manifests), "total_runs": len(plan)},
             indent=2,
             sort_keys=True,
         ))
@@ -144,6 +158,7 @@ def main() -> None:
         record = _dispatch(harness, entry, selected, dataset, run_id, code_version, provider)
         if entry is not None and not record.model_registry_entry:
             record = replace(record, model_registry_entry=entry.model_id)
+        record = attach_manifest_to_run(record, manifests.get(harness))
         write_run_record(record, output_path)
         results.append({
             "run_id": run_id,
@@ -212,12 +227,32 @@ def _safe_id(text: str) -> str:
     return re.sub(r"[^a-zA-Z0-9_\-]", "_", text)
 
 
-def _plan_as_list(plan: list[tuple[ModelRegistryEntry | None, str]]) -> list[dict[str, str]]:
+def _load_manifests(harnesses: list[str], manifest_dir: Path) -> dict[str, HarnessManifest]:
+    manifests: dict[str, HarnessManifest] = {}
+    for harness in harnesses:
+        path = manifest_dir / f"{harness}.yaml"
+        if not path.exists():
+            path = default_manifest_path(harness, Path.cwd())
+        if not path.exists():
+            continue
+        manifest = load_harness_manifest(path)
+        if manifest.harness_id != harness:
+            raise SystemExit(f"Manifest {path} is for harness {manifest.harness_id!r}, not {harness!r}")
+        manifests[harness] = manifest
+    return manifests
+
+
+def _plan_as_list(
+    plan: list[tuple[ModelRegistryEntry | None, str]],
+    manifests: dict[str, HarnessManifest] | None = None,
+) -> list[dict[str, str]]:
+    manifests = manifests or {}
     return [
         {
             "harness": harness,
             "model": entry.model_id if entry else "none",
             "tier": entry.tier if entry else "none",
+            "manifest_id": manifests[harness].manifest_id if harness in manifests else "",
         }
         for entry, harness in plan
     ]
@@ -260,6 +295,17 @@ def _dispatch(
         return run_clines_epilepsy_modular(records, dataset, run_id, code_version, provider, model=model)
     if harness == "clines_epilepsy_verified":
         return run_clines_epilepsy_verified(records, dataset, run_id, code_version, provider, model=model)
+    if harness == "budgeted_escalation":
+        return run_budgeted_escalation_harness(
+            records,
+            dataset,
+            run_id,
+            code_version,
+            provider,
+            provider,
+            cheap_model=model,
+            strong_model=model,
+        )
     raise ValueError(f"Unknown harness: {harness!r}")
 
 

@@ -1,0 +1,19 @@
+{
+  "manifest_id": "multi_agent_anchor.v1",
+  "harness_id": "multi_agent_anchor",
+  "version": "1",
+  "architecture_family": "clines_inspired_modular",
+  "allowed_modules": ["anchor_extractor", "anchor_verifier"],
+  "prompt_versions": {"extractor": "multi_agent_v1/extractor", "verifier": "multi_agent_v1/verifier"},
+  "schema_version": "1.0.0",
+  "provider": "configurable",
+  "model_registry_entry": "",
+  "context_policy": {"input": "full_letter_text", "uses_document_interface": false},
+  "output_contract": {"payload": "anchor_seizure_frequency"},
+  "repair_policy": {"enabled": false, "invalid_json": "record_invalid_output"},
+  "verifier_policy": {"enabled": true, "scope": "seizure_frequency_evidence"},
+  "aggregation_policy": {"enabled": false},
+  "budget_limits": {"llm_calls_per_row": 2},
+  "gold_label_isolation": {"model_visible": false, "evaluation_only": true},
+  "artifact_retention": {"payload": true, "provider_response": true, "verification": true}
+}

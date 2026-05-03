@@ -5,7 +5,18 @@ from epilepsy_extraction.modules.chunking import chunk_letter, select_chunks_for
 from epilepsy_extraction.modules.field_extractors import extract_field_family
 from epilepsy_extraction.modules.normalization import enrich_seizure_frequency, normalize_frequency
 from epilepsy_extraction.modules.status_temporality import infer_status
-from epilepsy_extraction.modules.verification import verify_evidence_deterministic, verify_field_extraction
+from epilepsy_extraction.modules.verification import (
+    apply_verifier_gate_policy,
+    verifier_gate_summary,
+    verify_evidence_deterministic,
+    verify_field_extraction,
+)
+from epilepsy_extraction.modules.workflows import (
+    aggregator_unit,
+    field_extractor_unit,
+    modular_workflow_units,
+    verifier_unit,
+)
 from epilepsy_extraction.providers import MockProvider
 from epilepsy_extraction.schemas.contracts import EvidenceGrade, FieldFamily
 
@@ -162,6 +173,7 @@ def test_verify_field_extraction_returns_grade() -> None:
     ctx = "The patient has two seizures per month."
     artifact, results = verify_field_extraction(field_data, ctx)
     assert "grade" in artifact
+    assert "verifier_gates" in artifact
     assert len(results) == 1
 
 
@@ -170,6 +182,31 @@ def test_verify_field_extraction_no_citations() -> None:
     artifact, results = verify_field_extraction(field_data, "context")
     assert artifact["grade"] == EvidenceGrade.MISSING_EVIDENCE.value
     assert results == []
+
+
+def test_verifier_gate_summary_separates_support_dimensions() -> None:
+    field_data = {
+        "seizure_frequency": {"value": "2 per month", "monthly_rate": 2.0, "status": "current"},
+        "citations": [{"field": "seizure_frequency", "quote": "two seizures per month"}],
+    }
+    summary = verifier_gate_summary(field_data, "The patient is currently having two seizures per month.")
+
+    assert summary["gates"]["value_support"] is True
+    assert summary["gates"]["status_support"] is True
+    assert summary["gates"]["normalization_support"] is True
+    assert summary["passed"] is True
+
+
+def test_verifier_gate_policy_downgrades_unsupported_overclaim() -> None:
+    field_data = {
+        "seizure_frequency": {"value": "10 per day"},
+        "citations": [{"field": "seizure_frequency", "quote": "not in context"}],
+    }
+    summary = verifier_gate_summary(field_data, "The patient is currently having two seizures per month.")
+    downgraded, warnings = apply_verifier_gate_policy(field_data, summary)
+
+    assert downgraded["unsupported_by_verifier"] is True
+    assert any("value_support" in warning for warning in warnings)
 
 
 # --- Field extraction parsing ---
@@ -327,3 +364,33 @@ def test_aggregate_citations_merged_across_families() -> None:
     }
     result = aggregate_field_results(field_results)
     assert len(result.final.citations) == 2
+
+
+# --- Workflow units ---
+
+def test_field_extractor_workflow_unit_declares_contract() -> None:
+    unit = field_extractor_unit(FieldFamily.SEIZURE_FREQUENCY)
+
+    assert unit.unit_id.startswith("field_extractor.seizure_frequency@")
+    assert "candidate_context" in unit.contract.inputs
+    assert "field_payload" in unit.contract.outputs
+    assert "may not read gold labels" in unit.contract.invariants
+
+
+def test_modular_workflow_units_include_verifier_and_aggregator() -> None:
+    units = modular_workflow_units(provider_verifier=True)
+    names = {unit.name for unit in units}
+
+    assert "provider_verifier" in names
+    assert "schema_aggregator" in names
+    assert len([unit for unit in units if unit.name == "field_extractor"]) >= 5
+
+
+def test_aggregator_workflow_unit_bans_new_claims() -> None:
+    unit = aggregator_unit()
+    assert "aggregator must not invent missing clinical claims" in unit.contract.invariants
+
+
+def test_verifier_workflow_unit_distinguishes_provider_backed() -> None:
+    assert verifier_unit(provider_backed=False).name == "deterministic_verifier"
+    assert verifier_unit(provider_backed=True).name == "provider_verifier"

@@ -8,3 +8,22 @@ __all__ = [
     "normalize_letter",
     "normalize_whitespace",
 ]
+from .interface import (
+    ClinicalDocumentInterface,
+    compare_evidence_to_claim,
+    get_sections,
+    get_span,
+    quote_evidence,
+    search_spans,
+    validate_payload,
+)
+
+__all__ = [
+    "ClinicalDocumentInterface",
+    "compare_evidence_to_claim",
+    "get_sections",
+    "get_span",
+    "quote_evidence",
+    "search_spans",
+    "validate_payload",
+]
