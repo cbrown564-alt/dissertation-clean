@@ -126,6 +126,10 @@ def test_single_prompt_full_contract_cli_runs_from_replay(tmp_path) -> None:
             str(output),
             "--replay",
             str(replay),
+            "--model",
+            "example-frozen-model",
+            "--model-registry-entry",
+            "example-frozen-model",
             "--code-version",
             "test",
         ],
@@ -135,5 +139,6 @@ def test_single_prompt_full_contract_cli_runs_from_replay(tmp_path) -> None:
 
     data = json.loads(output.read_text(encoding="utf-8"))
     assert data["harness"] == "direct_full_contract"
+    assert data["model_registry_entry"] == "example-frozen-model"
     assert data["budget"]["total_tokens"] == 50
     assert data["rows"][0]["payload"]["invalid_output"] is False

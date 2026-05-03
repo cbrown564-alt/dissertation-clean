@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "base_harness": "multi_agent_anchor",
+    "dataset_n": 1,
+    "estimated_cost_usd": 0.0,
+    "exact_label_accuracy": 1.0,
+    "harness": "multi_agent_anchor_sc3",
+    "llm_calls_per_row": 3,
+    "mean_total_tokens": 78.0,
+    "monthly_rate_accuracy_tolerance_15pct": 1.0,
+    "run_id": "multi_agent_anchor_sc3_n1_gold_seeded_2026_05_03",
+    "self_consistency_samples": 3
+  },
+  {
+    "base_harness": "multi_agent_anchor",
+    "dataset_n": 1,
+    "estimated_cost_usd": 0.0,
+    "exact_label_accuracy": 1.0,
+    "harness": "multi_agent_anchor_sc5",
+    "llm_calls_per_row": 5,
+    "mean_total_tokens": 130.0,
+    "monthly_rate_accuracy_tolerance_15pct": 1.0,
+    "run_id": "multi_agent_anchor_sc5_n1_gold_seeded_2026_05_03",
+    "self_consistency_samples": 5
+  }
+]

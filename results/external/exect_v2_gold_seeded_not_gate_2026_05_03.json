@@ -1,0 +1,129 @@
+{
+  "rows": [
+    {
+      "row_id": "11118",
+      "SeizureFrequency": "2 cluster per month, 6 per cluster",
+      "ReplayNote": "gold_label_seeded_not_external_gate"
+    },
+    {
+      "row_id": "16750",
+      "SeizureFrequency": "6 per 7 month",
+      "ReplayNote": "gold_label_seeded_not_external_gate"
+    },
+    {
+      "row_id": "14706",
+      "SeizureFrequency": "2 per 5 month",
+      "ReplayNote": "gold_label_seeded_not_external_gate"
+    },
+    {
+      "row_id": "12383",
+      "SeizureFrequency": "4 per day",
+      "ReplayNote": "gold_label_seeded_not_external_gate"
+    },
+    {
+      "row_id": "5555",
+      "SeizureFrequency": "multiple per week",
+      "ReplayNote": "gold_label_seeded_not_external_gate"
+    },
+    {
+      "row_id": "6216",
+      "SeizureFrequency": "4 per 6 week",
+      "ReplayNote": "gold_label_seeded_not_external_gate"
+    },
+    {
+      "row_id": "10703",
+      "SeizureFrequency": "unknown, 2 to 3 per cluster",
+      "ReplayNote": "gold_label_seeded_not_external_gate"
+    },
+    {
+      "row_id": "10594",
+      "SeizureFrequency": "unknown, 2 per cluster",
+      "ReplayNote": "gold_label_seeded_not_external_gate"
+    },
+    {
+      "row_id": "14036",
+      "SeizureFrequency": "unknown",
+      "ReplayNote": "gold_label_seeded_not_external_gate"
+    },
+    {
+      "row_id": "4562",
+      "SeizureFrequency": "1 per 6 week",
+      "ReplayNote": "gold_label_seeded_not_external_gate"
+    },
+    {
+      "row_id": "14369",
+      "SeizureFrequency": "2 per 3 month",
+      "ReplayNote": "gold_label_seeded_not_external_gate"
+    },
+    {
+      "row_id": "9786",
+      "SeizureFrequency": "unknown",
+      "ReplayNote": "gold_label_seeded_not_external_gate"
+    },
+    {
+      "row_id": "9879",
+      "SeizureFrequency": "unknown",
+      "ReplayNote": "gold_label_seeded_not_external_gate"
+    },
+    {
+      "row_id": "8488",
+      "SeizureFrequency": "seizure free for multiple month",
+      "ReplayNote": "gold_label_seeded_not_external_gate"
+    },
+    {
+      "row_id": "13079",
+      "SeizureFrequency": "2 per 8 month",
+      "ReplayNote": "gold_label_seeded_not_external_gate"
+    },
+    {
+      "row_id": "16158",
+      "SeizureFrequency": "13 per 4 month",
+      "ReplayNote": "gold_label_seeded_not_external_gate"
+    },
+    {
+      "row_id": "9278",
+      "SeizureFrequency": "3 per week",
+      "ReplayNote": "gold_label_seeded_not_external_gate"
+    },
+    {
+      "row_id": "16356",
+      "SeizureFrequency": "1 per 4 day",
+      "ReplayNote": "gold_label_seeded_not_external_gate"
+    },
+    {
+      "row_id": "16036",
+      "SeizureFrequency": "13 per 2 month",
+      "ReplayNote": "gold_label_seeded_not_external_gate"
+    },
+    {
+      "row_id": "665",
+      "SeizureFrequency": "2 per 2 week",
+      "ReplayNote": "gold_label_seeded_not_external_gate"
+    },
+    {
+      "row_id": "1165",
+      "SeizureFrequency": "5 to 7 per 3 week",
+      "ReplayNote": "gold_label_seeded_not_external_gate"
+    },
+    {
+      "row_id": "10967",
+      "SeizureFrequency": "3 cluster per month, 4 to 5 per cluster",
+      "ReplayNote": "gold_label_seeded_not_external_gate"
+    },
+    {
+      "row_id": "280",
+      "SeizureFrequency": "multiple per day",
+      "ReplayNote": "gold_label_seeded_not_external_gate"
+    },
+    {
+      "row_id": "7708",
+      "SeizureFrequency": "seizure free for multiple month",
+      "ReplayNote": "gold_label_seeded_not_external_gate"
+    },
+    {
+      "row_id": "4003",
+      "SeizureFrequency": "1 per month",
+      "ReplayNote": "gold_label_seeded_not_external_gate"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "manifest_id": "exect_v2_external_baseline.v1",
+  "harness_id": "exect_v2_external_baseline",
+  "version": "1",
+  "architecture_family": "clinical_nlp_baseline",
+  "allowed_modules": ["external_gate_pipeline", "baseline_mapping"],
+  "prompt_versions": {},
+  "schema_version": "1.0.0",
+  "provider": "exect_v2_external",
+  "model_registry_entry": "",
+  "context_policy": {"input": "external_exect_v2_annotations", "uses_document_interface": false},
+  "output_contract": {"payload": "final_extraction_v1", "mapping": "exect_v2_mapping_v1"},
+  "repair_policy": {"enabled": false},
+  "verifier_policy": {"enabled": false},
+  "aggregation_policy": {"enabled": true, "mode": "external_annotations_to_payload"},
+  "budget_limits": {"llm_calls_per_row": 0},
+  "gold_label_isolation": {"model_visible": false, "evaluation_only": true},
+  "artifact_retention": {"payload": true, "mapping_artifacts": true, "raw_provider": true}
+}

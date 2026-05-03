@@ -1,5 +1,65 @@
 [
   {
+    "architecture_family": "clines_inspired_modular",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "clines_epilepsy_modular",
+    "run_id": "clines_epilepsy_modular_n25_gold_seeded_2026_05_03",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "clines_inspired_modular",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "clines_epilepsy_verified",
+    "run_id": "clines_epilepsy_verified_n25_gold_seeded_2026_05_03",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "clinical_nlp_baseline",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "deterministic_baseline",
+    "run_id": "deterministic_n25_2026_05_03",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "direct_llm",
+    "evidence_status": "reported",
+    "evidence_supported_rate": 0.92,
+    "harness": "direct_evidence_contract",
+    "run_id": "direct_evidence_contract_n25_gold_seeded_2026_05_03",
+    "supported_citations": 23,
+    "total_citations": 25,
+    "unsupported_citations": 2
+  },
+  {
+    "architecture_family": "direct_llm",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "direct_full_contract",
+    "run_id": "direct_full_contract_n25_gold_seeded_2026_05_03",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "clinical_nlp_baseline",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "exect_lite_cleanroom_baseline",
+    "run_id": "exect_lite_n25_2026_05_03",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
     "architecture_family": "clinical_nlp_baseline",
     "evidence_status": "not_reported",
     "evidence_supported_rate": "",
@@ -10,11 +70,91 @@
     "unsupported_citations": ""
   },
   {
+    "architecture_family": "clinical_nlp_baseline",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "exect_v2_external_baseline",
+    "run_id": "exect_v2_external_gold_seeded_n25_2026_05_03",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "clinical_nlp_baseline",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "exect_v2_external_baseline",
+    "run_id": "exect_v2_external_pending_n25_2026_05_03",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
     "architecture_family": "",
     "evidence_status": "not_reported",
     "evidence_supported_rate": "",
     "harness": "metadata_smoke",
     "run_id": "metadata_smoke_n5",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "clines_inspired_modular",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "multi_agent_anchor",
+    "run_id": "multi_agent_anchor_n1_gold_seeded_2026_05_03",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "costed_reliability_variant",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "multi_agent_anchor_sc3",
+    "run_id": "multi_agent_anchor_sc3_n1_gold_seeded_2026_05_03",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "costed_reliability_variant",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "multi_agent_anchor_sc5",
+    "run_id": "multi_agent_anchor_sc5_n1_gold_seeded_2026_05_03",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "retrieval_field_pipeline",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "retrieval_anchor",
+    "run_id": "retrieval_anchor_n1_gold_seeded_2026_05_03",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "retrieval_field_pipeline",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "retrieval_field_extractors",
+    "run_id": "retrieval_field_extractors_n25_gold_seeded_2026_05_03",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "direct_llm",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "single_prompt_anchor",
+    "run_id": "single_prompt_anchor_n1_gold_seeded_2026_05_03",
     "supported_citations": "",
     "total_citations": "",
     "unsupported_citations": ""

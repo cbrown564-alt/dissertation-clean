@@ -1,0 +1,202 @@
+[
+  {
+    "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"2 cluster per month, 6 per cluster\", \"evidence\": \"Over the last four weeks, the records note: \\\"Cluster days twice this month; typically six seizures in 24 h.\\\"\", \"parsed_monthly_rate\": 12.0, \"pragmatic_class\": \"frequent\", \"purist_class\": \"(1/W,1/D)\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"Over the last four weeks, the records note: \\\"Cluster days twice this month; typically six seizures in 24 h.\\\"\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
+    "usage": {
+      "input_tokens": 120,
+      "output_tokens": 70
+    },
+    "latency_ms": 1
+  },
+  {
+    "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"6 per 7 month\", \"evidence\": \"In February she experienced a prolonged focal seizure... In May there were four further brief absences, and in August a single generalised tonic-clonic seizure... Since adopting structured reminders in late August, she has had no further events.\", \"parsed_monthly_rate\": 0.8571428571428571, \"pragmatic_class\": \"infrequent\", \"purist_class\": \"(1/6M,1/M)\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"In February she experienced a prolonged focal seizure... In May there were four further brief absences, and in August a single generalised tonic-clonic seizure... Since adopting structured reminders in late August, she has had no further events.\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
+    "usage": {
+      "input_tokens": 120,
+      "output_tokens": 70
+    },
+    "latency_ms": 1
+  },
+  {
+    "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"2 per 5 month\", \"evidence\": \"Two events over the last five months.\", \"parsed_monthly_rate\": 0.4, \"pragmatic_class\": \"infrequent\", \"purist_class\": \"(1/6M,1/M)\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"Two events over the last five months.\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
+    "usage": {
+      "input_tokens": 120,
+      "output_tokens": 70
+    },
+    "latency_ms": 1
+  },
+  {
+    "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"4 per day\", \"evidence\": \"he still has focal onset seizures four times per day\", \"parsed_monthly_rate\": 121.75, \"pragmatic_class\": \"frequent\", \"purist_class\": \">=1/D\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"he still has focal onset seizures four times per day\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
+    "usage": {
+      "input_tokens": 120,
+      "output_tokens": 70
+    },
+    "latency_ms": 1
+  },
+  {
+    "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"multiple per week\", \"evidence\": \"several episodes per week of brief generalised events\", \"parsed_monthly_rate\": 13.044375, \"pragmatic_class\": \"frequent\", \"purist_class\": \"(1/W,1/D)\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"several episodes per week of brief generalised events\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
+    "usage": {
+      "input_tokens": 120,
+      "output_tokens": 70
+    },
+    "latency_ms": 1
+  },
+  {
+    "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"4 per 6 week\", \"evidence\": \"over the past six weeks there were four brief focal-aware episodes and one focal-impaired awareness spell\", \"parsed_monthly_rate\": 2.89875, \"pragmatic_class\": \"frequent\", \"purist_class\": \"(1/M,1/W)\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"over the past six weeks there were four brief focal-aware episodes and one focal-impaired awareness spell\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
+    "usage": {
+      "input_tokens": 120,
+      "output_tokens": 70
+    },
+    "latency_ms": 1
+  },
+  {
+    "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"unknown, 2 to 3 per cluster\", \"evidence\": \"after which he may have two to three events over a 24\\u201348 hour period.\", \"parsed_monthly_rate\": 1000.0, \"pragmatic_class\": \"UNK\", \"purist_class\": \"UNK\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"after which he may have two to three events over a 24\\u201348 hour period.\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
+    "usage": {
+      "input_tokens": 120,
+      "output_tokens": 70
+    },
+    "latency_ms": 1
+  },
+  {
+    "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"unknown, 2 per cluster\", \"evidence\": \"Clusters characterized by two focal impaired-awareness seizures; frequency unclear.\", \"parsed_monthly_rate\": 1000.0, \"pragmatic_class\": \"UNK\", \"purist_class\": \"UNK\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"Clusters characterized by two focal impaired-awareness seizures; frequency unclear.\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
+    "usage": {
+      "input_tokens": 120,
+      "output_tokens": 70
+    },
+    "latency_ms": 1
+  },
+  {
+    "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"unknown\", \"evidence\": \"since starting ketogenic diet he has had 4 drop attacks, the latest one on 17 Dec\", \"parsed_monthly_rate\": 1000.0, \"pragmatic_class\": \"UNK\", \"purist_class\": \"UNK\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"since starting ketogenic diet he has had 4 drop attacks, the latest one on 17 Dec\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
+    "usage": {
+      "input_tokens": 120,
+      "output_tokens": 70
+    },
+    "latency_ms": 1
+  },
+  {
+    "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"1 per 6 week\", \"evidence\": \"the median inter-seizure interval \\u2248 six weeks\", \"parsed_monthly_rate\": 0.7246875, \"pragmatic_class\": \"infrequent\", \"purist_class\": \"(1/6M,1/M)\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"the median inter-seizure interval \\u2248 six weeks\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
+    "usage": {
+      "input_tokens": 120,
+      "output_tokens": 70
+    },
+    "latency_ms": 1
+  },
+  {
+    "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"2 per 3 month\", \"evidence\": \"He withdrew from Clobazam on 12/Jan. At that time, he had 2 seizures... He has remained stable without seizures since.\", \"parsed_monthly_rate\": 0.6666666666666666, \"pragmatic_class\": \"infrequent\", \"purist_class\": \"(1/6M,1/M)\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"He withdrew from Clobazam on 12/Jan. At that time, he had 2 seizures... He has remained stable without seizures since.\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
+    "usage": {
+      "input_tokens": 120,
+      "output_tokens": 70
+    },
+    "latency_ms": 1
+  },
+  {
+    "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"unknown\", \"evidence\": \"They describe brief clusters of spasms lasting seconds\", \"parsed_monthly_rate\": 1000.0, \"pragmatic_class\": \"UNK\", \"purist_class\": \"UNK\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"They describe brief clusters of spasms lasting seconds\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
+    "usage": {
+      "input_tokens": 120,
+      "output_tokens": 70
+    },
+    "latency_ms": 1
+  },
+  {
+    "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"unknown\", \"evidence\": \"over the past three months she has had brief clusters of events\", \"parsed_monthly_rate\": 1000.0, \"pragmatic_class\": \"UNK\", \"purist_class\": \"UNK\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"over the past three months she has had brief clusters of events\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
+    "usage": {
+      "input_tokens": 120,
+      "output_tokens": 70
+    },
+    "latency_ms": 1
+  },
+  {
+    "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"seizure free for multiple month\", \"evidence\": \"Since then, there have been no events suggestive of seizures\", \"parsed_monthly_rate\": 0.0, \"pragmatic_class\": \"NS\", \"purist_class\": \"NS\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"Since then, there have been no events suggestive of seizures\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
+    "usage": {
+      "input_tokens": 120,
+      "output_tokens": 70
+    },
+    "latency_ms": 1
+  },
+  {
+    "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"2 per 8 month\", \"evidence\": \"He remained seizure-free for 8 months after starting Levetiracetam 500 mg twice daily, before experiencing a generalised tonic-clonic seizure three Tuesdays ago, preceded by a cluster of absences.\", \"parsed_monthly_rate\": 0.25, \"pragmatic_class\": \"infrequent\", \"purist_class\": \"(1/6M,1/M)\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"He remained seizure-free for 8 months after starting Levetiracetam 500 mg twice daily, before experiencing a generalised tonic-clonic seizure three Tuesdays ago, preceded by a cluster of absences.\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
+    "usage": {
+      "input_tokens": 120,
+      "output_tokens": 70
+    },
+    "latency_ms": 1
+  },
+  {
+    "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"13 per 4 month\", \"evidence\": \"As of this month she reports 2 seizure events; two in August, 7 in July and 2 in June\", \"parsed_monthly_rate\": 3.25, \"pragmatic_class\": \"frequent\", \"purist_class\": \"(1/M,1/W)\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"As of this month she reports 2 seizure events; two in August, 7 in July and 2 in June\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
+    "usage": {
+      "input_tokens": 120,
+      "output_tokens": 70
+    },
+    "latency_ms": 1
+  },
+  {
+    "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"3 per week\", \"evidence\": \"He reports a frequency of \\u2264 three simple partial seizures per week\", \"parsed_monthly_rate\": 13.044375, \"pragmatic_class\": \"frequent\", \"purist_class\": \"(1/W,1/D)\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"He reports a frequency of \\u2264 three simple partial seizures per week\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
+    "usage": {
+      "input_tokens": 120,
+      "output_tokens": 70
+    },
+    "latency_ms": 1
+  },
+  {
+    "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"1 per 4 day\", \"evidence\": \"Seizures remain relatively stable, typically occurring in clusters every 4 days.\", \"parsed_monthly_rate\": 7.609375, \"pragmatic_class\": \"frequent\", \"purist_class\": \"(1/W,1/D)\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"Seizures remain relatively stable, typically occurring in clusters every 4 days.\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
+    "usage": {
+      "input_tokens": 120,
+      "output_tokens": 70
+    },
+    "latency_ms": 1
+  },
+  {
+    "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"13 per 2 month\", \"evidence\": \"In Feb he had four seizures during sleep and 3 while awake. In Mar he had 4 in sleep and 2 while awake.\", \"parsed_monthly_rate\": 6.5, \"pragmatic_class\": \"frequent\", \"purist_class\": \"(1/W,1/D)\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"In Feb he had four seizures during sleep and 3 while awake. In Mar he had 4 in sleep and 2 while awake.\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
+    "usage": {
+      "input_tokens": 120,
+      "output_tokens": 70
+    },
+    "latency_ms": 1
+  },
+  {
+    "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"2 per 2 week\", \"evidence\": \"a regular pattern of seizures twice every two weeks\", \"parsed_monthly_rate\": 4.3481250000000005, \"pragmatic_class\": \"frequent\", \"purist_class\": \"(1/W,1/D)\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"a regular pattern of seizures twice every two weeks\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
+    "usage": {
+      "input_tokens": 120,
+      "output_tokens": 70
+    },
+    "latency_ms": 1
+  },
+  {
+    "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"5 to 7 per 3 week\", \"evidence\": \"5 or 7 focal onset seizures in three weeks during a recent period\", \"parsed_monthly_rate\": 8.696250000000001, \"pragmatic_class\": \"frequent\", \"purist_class\": \"(1/W,1/D)\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"5 or 7 focal onset seizures in three weeks during a recent period\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
+    "usage": {
+      "input_tokens": 120,
+      "output_tokens": 70
+    },
+    "latency_ms": 1
+  },
+  {
+    "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"3 cluster per month, 4 to 5 per cluster\", \"evidence\": \"three nocturnal clusters this month; each ~4 - 5 events\", \"parsed_monthly_rate\": 13.5, \"pragmatic_class\": \"frequent\", \"purist_class\": \"(1/W,1/D)\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"three nocturnal clusters this month; each ~4 - 5 events\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
+    "usage": {
+      "input_tokens": 120,
+      "output_tokens": 70
+    },
+    "latency_ms": 1
+  },
+  {
+    "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"multiple per day\", \"evidence\": \"In the 24 hours prior to clinic he experienced multiple seizures in past day\", \"parsed_monthly_rate\": 91.3125, \"pragmatic_class\": \"frequent\", \"purist_class\": \">=1/D\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"In the 24 hours prior to clinic he experienced multiple seizures in past day\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
+    "usage": {
+      "input_tokens": 120,
+      "output_tokens": 70
+    },
+    "latency_ms": 1
+  },
+  {
+    "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"seizure free for multiple month\", \"evidence\": \"Since adopting the diet, he describes that seizure occurrences have not been happening, and there have been no witnessed episodes\", \"parsed_monthly_rate\": 0.0, \"pragmatic_class\": \"NS\", \"purist_class\": \"NS\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"Since adopting the diet, he describes that seizure occurrences have not been happening, and there have been no witnessed episodes\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
+    "usage": {
+      "input_tokens": 120,
+      "output_tokens": 70
+    },
+    "latency_ms": 1
+  },
+  {
+    "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"1 per month\", \"evidence\": \"the episodes are now occurring abs monthly, with intervening weeks free of events.\", \"parsed_monthly_rate\": 1.0, \"pragmatic_class\": \"infrequent\", \"purist_class\": \"1/M\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"the episodes are now occurring abs monthly, with intervening weeks free of events.\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
+    "usage": {
+      "input_tokens": 120,
+      "output_tokens": 70
+    },
+    "latency_ms": 1
+  }
+]

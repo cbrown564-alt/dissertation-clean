@@ -1,0 +1,5797 @@
+{
+  "architecture_family": "clinical_nlp_baseline",
+  "artifact_paths": {
+    "manifest": "C:\\Users\\cbrow\\Code\\dissertation-clean\\config\\harnesses\\deterministic_baseline.yaml"
+  },
+  "budget": {
+    "estimated_cost_usd": 0.0,
+    "input_tokens": 0,
+    "latency_ms": 0,
+    "llm_calls_per_row": 0,
+    "output_tokens": 0,
+    "total_tokens": 0
+  },
+  "code_version": "6b606dd-dirty",
+  "complexity": {
+    "manifest": {
+      "aggregation_policy": {
+        "enabled": false
+      },
+      "allowed_modules": [
+        "deterministic_rules"
+      ],
+      "architecture_family": "clinical_nlp_baseline",
+      "artifact_retention": {
+        "payload": true,
+        "raw_provider": false
+      },
+      "budget_limits": {
+        "llm_calls_per_row": 0
+      },
+      "context_policy": {
+        "input": "full_letter_text",
+        "uses_document_interface": false
+      },
+      "gold_label_isolation": {
+        "evaluation_only": true,
+        "model_visible": false
+      },
+      "harness_id": "deterministic_baseline",
+      "manifest_hash": "c921ee9ba15f631ce118852e89fab80a5df625aaf4e52a3ecdc96b069353fc70",
+      "manifest_id": "deterministic_baseline.v1",
+      "model_registry_entry": "",
+      "output_contract": {
+        "coverage": "seizure_frequency_only",
+        "payload": "final_extraction_v1"
+      },
+      "prompt_versions": {},
+      "provider": "deterministic",
+      "repair_policy": {
+        "enabled": false
+      },
+      "schema_version": "1.0.0",
+      "source_path": "C:\\Users\\cbrow\\Code\\dissertation-clean\\config\\harnesses\\deterministic_baseline.yaml",
+      "verifier_policy": {
+        "enabled": false
+      },
+      "version": "1"
+    }
+  },
+  "created_at": "2026-05-03T09:24:20.157919+00:00",
+  "dataset": {
+    "data_hash": "cf13b498609079d37ba7ccd4cb9886b7d8a60a8bcd75e48ab5b4debb939b1c21",
+    "dataset_id": "synthetic_data_subset_1500",
+    "dataset_path": "data\\synthetic_data_subset_1500.json",
+    "inclusion_criteria": "row_ok_only=true; limit=25",
+    "n": 25,
+    "random_seed": null,
+    "row_ids": [
+      "11118",
+      "16750",
+      "14706",
+      "12383",
+      "5555",
+      "6216",
+      "10703",
+      "10594",
+      "14036",
+      "4562",
+      "14369",
+      "9786",
+      "9879",
+      "8488",
+      "13079",
+      "16158",
+      "9278",
+      "16356",
+      "16036",
+      "665",
+      "1165",
+      "10967",
+      "280",
+      "7708",
+      "4003"
+    ],
+    "row_order": "source"
+  },
+  "event_summary": {
+    "component_counts": {
+      "deterministic_rules": 25,
+      "seizure_frequency": 72
+    },
+    "duration_ms": 0,
+    "errors": 0,
+    "escalation_decisions": 0,
+    "event_count": 97,
+    "event_type_counts": {
+      "context_built": 25,
+      "field_extraction_completed": 25,
+      "parse_attempted": 25,
+      "warning_emitted": 22
+    },
+    "parse_attempts": 25,
+    "parse_repair_attempts": 0,
+    "provider_calls": 0,
+    "quote_bearing_events": 0,
+    "verifier_passes": 0,
+    "warnings": 66
+  },
+  "external_baseline": false,
+  "field_coverage": {
+    "associated_symptoms": "not_implemented",
+    "comorbidities": "not_implemented",
+    "current_medications": "not_implemented",
+    "epilepsy_classification": "not_implemented",
+    "investigations": "not_implemented",
+    "other_therapies": "not_implemented",
+    "rescue_medication": "not_implemented",
+    "seizure_classification": "not_implemented",
+    "seizure_frequency": "implemented"
+  },
+  "harness": "deterministic_baseline",
+  "harness_events": [
+    {
+      "component": "deterministic_rules",
+      "created_at": "2026-05-03T09:24:20.118095+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "11118:1:context_built",
+      "event_type": "context_built",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "11118",
+      "sequence_index": 1,
+      "summary": "Full letter made available to deterministic rules",
+      "warnings": []
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.120442+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "11118:2:parse_attempted",
+      "event_type": "parse_attempted",
+      "metrics": {
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "11118",
+      "sequence_index": 2,
+      "summary": "Rule output parsed as seizure-frequency label",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.120464+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "11118:3:field_extraction_completed",
+      "event_type": "field_extraction_completed",
+      "metrics": {
+        "confidence": 0.0,
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "11118",
+      "sequence_index": 3,
+      "summary": "Deterministic seizure-frequency extraction completed",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.120473+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "11118:4:warning_emitted",
+      "event_type": "warning_emitted",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "11118",
+      "sequence_index": 4,
+      "summary": "Deterministic extraction emitted warnings",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "deterministic_rules",
+      "created_at": "2026-05-03T09:24:20.121385+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "16750:1:context_built",
+      "event_type": "context_built",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "16750",
+      "sequence_index": 1,
+      "summary": "Full letter made available to deterministic rules",
+      "warnings": []
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.122520+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "16750:2:parse_attempted",
+      "event_type": "parse_attempted",
+      "metrics": {
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "16750",
+      "sequence_index": 2,
+      "summary": "Rule output parsed as seizure-frequency label",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.122534+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "16750:3:field_extraction_completed",
+      "event_type": "field_extraction_completed",
+      "metrics": {
+        "confidence": 0.0,
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "16750",
+      "sequence_index": 3,
+      "summary": "Deterministic seizure-frequency extraction completed",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.122542+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "16750:4:warning_emitted",
+      "event_type": "warning_emitted",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "16750",
+      "sequence_index": 4,
+      "summary": "Deterministic extraction emitted warnings",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "deterministic_rules",
+      "created_at": "2026-05-03T09:24:20.123171+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "14706:1:context_built",
+      "event_type": "context_built",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "14706",
+      "sequence_index": 1,
+      "summary": "Full letter made available to deterministic rules",
+      "warnings": []
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.124387+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "14706:2:parse_attempted",
+      "event_type": "parse_attempted",
+      "metrics": {
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "14706",
+      "sequence_index": 2,
+      "summary": "Rule output parsed as seizure-frequency label",
+      "warnings": []
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.124402+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "14706:3:field_extraction_completed",
+      "event_type": "field_extraction_completed",
+      "metrics": {
+        "confidence": 0.6,
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "14706",
+      "sequence_index": 3,
+      "summary": "Deterministic seizure-frequency extraction completed",
+      "warnings": []
+    },
+    {
+      "component": "deterministic_rules",
+      "created_at": "2026-05-03T09:24:20.124562+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "12383:1:context_built",
+      "event_type": "context_built",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "12383",
+      "sequence_index": 1,
+      "summary": "Full letter made available to deterministic rules",
+      "warnings": []
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.125920+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "12383:2:parse_attempted",
+      "event_type": "parse_attempted",
+      "metrics": {
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "12383",
+      "sequence_index": 2,
+      "summary": "Rule output parsed as seizure-frequency label",
+      "warnings": []
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.125937+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "12383:3:field_extraction_completed",
+      "event_type": "field_extraction_completed",
+      "metrics": {
+        "confidence": 0.6,
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "12383",
+      "sequence_index": 3,
+      "summary": "Deterministic seizure-frequency extraction completed",
+      "warnings": []
+    },
+    {
+      "component": "deterministic_rules",
+      "created_at": "2026-05-03T09:24:20.126122+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "5555:1:context_built",
+      "event_type": "context_built",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "5555",
+      "sequence_index": 1,
+      "summary": "Full letter made available to deterministic rules",
+      "warnings": []
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.127507+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "5555:2:parse_attempted",
+      "event_type": "parse_attempted",
+      "metrics": {
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "5555",
+      "sequence_index": 2,
+      "summary": "Rule output parsed as seizure-frequency label",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.127519+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "5555:3:field_extraction_completed",
+      "event_type": "field_extraction_completed",
+      "metrics": {
+        "confidence": 0.0,
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "5555",
+      "sequence_index": 3,
+      "summary": "Deterministic seizure-frequency extraction completed",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.127525+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "5555:4:warning_emitted",
+      "event_type": "warning_emitted",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "5555",
+      "sequence_index": 4,
+      "summary": "Deterministic extraction emitted warnings",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "deterministic_rules",
+      "created_at": "2026-05-03T09:24:20.127671+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "6216:1:context_built",
+      "event_type": "context_built",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "6216",
+      "sequence_index": 1,
+      "summary": "Full letter made available to deterministic rules",
+      "warnings": []
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.128743+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "6216:2:parse_attempted",
+      "event_type": "parse_attempted",
+      "metrics": {
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "6216",
+      "sequence_index": 2,
+      "summary": "Rule output parsed as seizure-frequency label",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.128752+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "6216:3:field_extraction_completed",
+      "event_type": "field_extraction_completed",
+      "metrics": {
+        "confidence": 0.0,
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "6216",
+      "sequence_index": 3,
+      "summary": "Deterministic seizure-frequency extraction completed",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.128757+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "6216:4:warning_emitted",
+      "event_type": "warning_emitted",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "6216",
+      "sequence_index": 4,
+      "summary": "Deterministic extraction emitted warnings",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "deterministic_rules",
+      "created_at": "2026-05-03T09:24:20.128877+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "10703:1:context_built",
+      "event_type": "context_built",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "10703",
+      "sequence_index": 1,
+      "summary": "Full letter made available to deterministic rules",
+      "warnings": []
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.130167+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "10703:2:parse_attempted",
+      "event_type": "parse_attempted",
+      "metrics": {
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "10703",
+      "sequence_index": 2,
+      "summary": "Rule output parsed as seizure-frequency label",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.130173+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "10703:3:field_extraction_completed",
+      "event_type": "field_extraction_completed",
+      "metrics": {
+        "confidence": 0.0,
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "10703",
+      "sequence_index": 3,
+      "summary": "Deterministic seizure-frequency extraction completed",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.130178+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "10703:4:warning_emitted",
+      "event_type": "warning_emitted",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "10703",
+      "sequence_index": 4,
+      "summary": "Deterministic extraction emitted warnings",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "deterministic_rules",
+      "created_at": "2026-05-03T09:24:20.130273+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "10594:1:context_built",
+      "event_type": "context_built",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "10594",
+      "sequence_index": 1,
+      "summary": "Full letter made available to deterministic rules",
+      "warnings": []
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.130989+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "10594:2:parse_attempted",
+      "event_type": "parse_attempted",
+      "metrics": {
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "10594",
+      "sequence_index": 2,
+      "summary": "Rule output parsed as seizure-frequency label",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.131001+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "10594:3:field_extraction_completed",
+      "event_type": "field_extraction_completed",
+      "metrics": {
+        "confidence": 0.0,
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "10594",
+      "sequence_index": 3,
+      "summary": "Deterministic seizure-frequency extraction completed",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.131011+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "10594:4:warning_emitted",
+      "event_type": "warning_emitted",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "10594",
+      "sequence_index": 4,
+      "summary": "Deterministic extraction emitted warnings",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "deterministic_rules",
+      "created_at": "2026-05-03T09:24:20.131341+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "14036:1:context_built",
+      "event_type": "context_built",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "14036",
+      "sequence_index": 1,
+      "summary": "Full letter made available to deterministic rules",
+      "warnings": []
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.132010+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "14036:2:parse_attempted",
+      "event_type": "parse_attempted",
+      "metrics": {
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "14036",
+      "sequence_index": 2,
+      "summary": "Rule output parsed as seizure-frequency label",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.132017+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "14036:3:field_extraction_completed",
+      "event_type": "field_extraction_completed",
+      "metrics": {
+        "confidence": 0.0,
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "14036",
+      "sequence_index": 3,
+      "summary": "Deterministic seizure-frequency extraction completed",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.132022+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "14036:4:warning_emitted",
+      "event_type": "warning_emitted",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "14036",
+      "sequence_index": 4,
+      "summary": "Deterministic extraction emitted warnings",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "deterministic_rules",
+      "created_at": "2026-05-03T09:24:20.132110+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "4562:1:context_built",
+      "event_type": "context_built",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "4562",
+      "sequence_index": 1,
+      "summary": "Full letter made available to deterministic rules",
+      "warnings": []
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.132818+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "4562:2:parse_attempted",
+      "event_type": "parse_attempted",
+      "metrics": {
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "4562",
+      "sequence_index": 2,
+      "summary": "Rule output parsed as seizure-frequency label",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.132823+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "4562:3:field_extraction_completed",
+      "event_type": "field_extraction_completed",
+      "metrics": {
+        "confidence": 0.0,
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "4562",
+      "sequence_index": 3,
+      "summary": "Deterministic seizure-frequency extraction completed",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.132827+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "4562:4:warning_emitted",
+      "event_type": "warning_emitted",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "4562",
+      "sequence_index": 4,
+      "summary": "Deterministic extraction emitted warnings",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "deterministic_rules",
+      "created_at": "2026-05-03T09:24:20.132932+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "14369:1:context_built",
+      "event_type": "context_built",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "14369",
+      "sequence_index": 1,
+      "summary": "Full letter made available to deterministic rules",
+      "warnings": []
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.134405+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "14369:2:parse_attempted",
+      "event_type": "parse_attempted",
+      "metrics": {
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "14369",
+      "sequence_index": 2,
+      "summary": "Rule output parsed as seizure-frequency label",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.134420+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "14369:3:field_extraction_completed",
+      "event_type": "field_extraction_completed",
+      "metrics": {
+        "confidence": 0.0,
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "14369",
+      "sequence_index": 3,
+      "summary": "Deterministic seizure-frequency extraction completed",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.134426+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "14369:4:warning_emitted",
+      "event_type": "warning_emitted",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "14369",
+      "sequence_index": 4,
+      "summary": "Deterministic extraction emitted warnings",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "deterministic_rules",
+      "created_at": "2026-05-03T09:24:20.134600+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "9786:1:context_built",
+      "event_type": "context_built",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "9786",
+      "sequence_index": 1,
+      "summary": "Full letter made available to deterministic rules",
+      "warnings": []
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.135867+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "9786:2:parse_attempted",
+      "event_type": "parse_attempted",
+      "metrics": {
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "9786",
+      "sequence_index": 2,
+      "summary": "Rule output parsed as seizure-frequency label",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.135883+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "9786:3:field_extraction_completed",
+      "event_type": "field_extraction_completed",
+      "metrics": {
+        "confidence": 0.0,
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "9786",
+      "sequence_index": 3,
+      "summary": "Deterministic seizure-frequency extraction completed",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.135891+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "9786:4:warning_emitted",
+      "event_type": "warning_emitted",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "9786",
+      "sequence_index": 4,
+      "summary": "Deterministic extraction emitted warnings",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "deterministic_rules",
+      "created_at": "2026-05-03T09:24:20.136063+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "9879:1:context_built",
+      "event_type": "context_built",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "9879",
+      "sequence_index": 1,
+      "summary": "Full letter made available to deterministic rules",
+      "warnings": []
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.137670+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "9879:2:parse_attempted",
+      "event_type": "parse_attempted",
+      "metrics": {
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "9879",
+      "sequence_index": 2,
+      "summary": "Rule output parsed as seizure-frequency label",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.137686+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "9879:3:field_extraction_completed",
+      "event_type": "field_extraction_completed",
+      "metrics": {
+        "confidence": 0.0,
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "9879",
+      "sequence_index": 3,
+      "summary": "Deterministic seizure-frequency extraction completed",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.137694+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "9879:4:warning_emitted",
+      "event_type": "warning_emitted",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "9879",
+      "sequence_index": 4,
+      "summary": "Deterministic extraction emitted warnings",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "deterministic_rules",
+      "created_at": "2026-05-03T09:24:20.137855+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "8488:1:context_built",
+      "event_type": "context_built",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "8488",
+      "sequence_index": 1,
+      "summary": "Full letter made available to deterministic rules",
+      "warnings": []
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.138925+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "8488:2:parse_attempted",
+      "event_type": "parse_attempted",
+      "metrics": {
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "8488",
+      "sequence_index": 2,
+      "summary": "Rule output parsed as seizure-frequency label",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.138939+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "8488:3:field_extraction_completed",
+      "event_type": "field_extraction_completed",
+      "metrics": {
+        "confidence": 0.0,
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "8488",
+      "sequence_index": 3,
+      "summary": "Deterministic seizure-frequency extraction completed",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.138947+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "8488:4:warning_emitted",
+      "event_type": "warning_emitted",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "8488",
+      "sequence_index": 4,
+      "summary": "Deterministic extraction emitted warnings",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "deterministic_rules",
+      "created_at": "2026-05-03T09:24:20.139092+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "13079:1:context_built",
+      "event_type": "context_built",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "13079",
+      "sequence_index": 1,
+      "summary": "Full letter made available to deterministic rules",
+      "warnings": []
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.140822+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "13079:2:parse_attempted",
+      "event_type": "parse_attempted",
+      "metrics": {
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "13079",
+      "sequence_index": 2,
+      "summary": "Rule output parsed as seizure-frequency label",
+      "warnings": []
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.140838+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "13079:3:field_extraction_completed",
+      "event_type": "field_extraction_completed",
+      "metrics": {
+        "confidence": 0.6,
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "13079",
+      "sequence_index": 3,
+      "summary": "Deterministic seizure-frequency extraction completed",
+      "warnings": []
+    },
+    {
+      "component": "deterministic_rules",
+      "created_at": "2026-05-03T09:24:20.141027+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "16158:1:context_built",
+      "event_type": "context_built",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "16158",
+      "sequence_index": 1,
+      "summary": "Full letter made available to deterministic rules",
+      "warnings": []
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.142434+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "16158:2:parse_attempted",
+      "event_type": "parse_attempted",
+      "metrics": {
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "16158",
+      "sequence_index": 2,
+      "summary": "Rule output parsed as seizure-frequency label",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.142449+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "16158:3:field_extraction_completed",
+      "event_type": "field_extraction_completed",
+      "metrics": {
+        "confidence": 0.0,
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "16158",
+      "sequence_index": 3,
+      "summary": "Deterministic seizure-frequency extraction completed",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.142458+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "16158:4:warning_emitted",
+      "event_type": "warning_emitted",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "16158",
+      "sequence_index": 4,
+      "summary": "Deterministic extraction emitted warnings",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "deterministic_rules",
+      "created_at": "2026-05-03T09:24:20.142648+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "9278:1:context_built",
+      "event_type": "context_built",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "9278",
+      "sequence_index": 1,
+      "summary": "Full letter made available to deterministic rules",
+      "warnings": []
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.144267+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "9278:2:parse_attempted",
+      "event_type": "parse_attempted",
+      "metrics": {
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "9278",
+      "sequence_index": 2,
+      "summary": "Rule output parsed as seizure-frequency label",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.144283+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "9278:3:field_extraction_completed",
+      "event_type": "field_extraction_completed",
+      "metrics": {
+        "confidence": 0.0,
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "9278",
+      "sequence_index": 3,
+      "summary": "Deterministic seizure-frequency extraction completed",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.144291+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "9278:4:warning_emitted",
+      "event_type": "warning_emitted",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "9278",
+      "sequence_index": 4,
+      "summary": "Deterministic extraction emitted warnings",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "deterministic_rules",
+      "created_at": "2026-05-03T09:24:20.144469+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "16356:1:context_built",
+      "event_type": "context_built",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "16356",
+      "sequence_index": 1,
+      "summary": "Full letter made available to deterministic rules",
+      "warnings": []
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.145665+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "16356:2:parse_attempted",
+      "event_type": "parse_attempted",
+      "metrics": {
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "16356",
+      "sequence_index": 2,
+      "summary": "Rule output parsed as seizure-frequency label",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.145677+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "16356:3:field_extraction_completed",
+      "event_type": "field_extraction_completed",
+      "metrics": {
+        "confidence": 0.0,
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "16356",
+      "sequence_index": 3,
+      "summary": "Deterministic seizure-frequency extraction completed",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.145685+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "16356:4:warning_emitted",
+      "event_type": "warning_emitted",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "16356",
+      "sequence_index": 4,
+      "summary": "Deterministic extraction emitted warnings",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "deterministic_rules",
+      "created_at": "2026-05-03T09:24:20.145870+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "16036:1:context_built",
+      "event_type": "context_built",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "16036",
+      "sequence_index": 1,
+      "summary": "Full letter made available to deterministic rules",
+      "warnings": []
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.147453+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "16036:2:parse_attempted",
+      "event_type": "parse_attempted",
+      "metrics": {
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "16036",
+      "sequence_index": 2,
+      "summary": "Rule output parsed as seizure-frequency label",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.147466+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "16036:3:field_extraction_completed",
+      "event_type": "field_extraction_completed",
+      "metrics": {
+        "confidence": 0.0,
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "16036",
+      "sequence_index": 3,
+      "summary": "Deterministic seizure-frequency extraction completed",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.147474+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "16036:4:warning_emitted",
+      "event_type": "warning_emitted",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "16036",
+      "sequence_index": 4,
+      "summary": "Deterministic extraction emitted warnings",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "deterministic_rules",
+      "created_at": "2026-05-03T09:24:20.147667+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "665:1:context_built",
+      "event_type": "context_built",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "665",
+      "sequence_index": 1,
+      "summary": "Full letter made available to deterministic rules",
+      "warnings": []
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.149419+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "665:2:parse_attempted",
+      "event_type": "parse_attempted",
+      "metrics": {
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "665",
+      "sequence_index": 2,
+      "summary": "Rule output parsed as seizure-frequency label",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.149433+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "665:3:field_extraction_completed",
+      "event_type": "field_extraction_completed",
+      "metrics": {
+        "confidence": 0.0,
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "665",
+      "sequence_index": 3,
+      "summary": "Deterministic seizure-frequency extraction completed",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.149447+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "665:4:warning_emitted",
+      "event_type": "warning_emitted",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "665",
+      "sequence_index": 4,
+      "summary": "Deterministic extraction emitted warnings",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "deterministic_rules",
+      "created_at": "2026-05-03T09:24:20.149633+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "1165:1:context_built",
+      "event_type": "context_built",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "1165",
+      "sequence_index": 1,
+      "summary": "Full letter made available to deterministic rules",
+      "warnings": []
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.150820+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "1165:2:parse_attempted",
+      "event_type": "parse_attempted",
+      "metrics": {
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "1165",
+      "sequence_index": 2,
+      "summary": "Rule output parsed as seizure-frequency label",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.150836+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "1165:3:field_extraction_completed",
+      "event_type": "field_extraction_completed",
+      "metrics": {
+        "confidence": 0.0,
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "1165",
+      "sequence_index": 3,
+      "summary": "Deterministic seizure-frequency extraction completed",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.150842+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "1165:4:warning_emitted",
+      "event_type": "warning_emitted",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "1165",
+      "sequence_index": 4,
+      "summary": "Deterministic extraction emitted warnings",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "deterministic_rules",
+      "created_at": "2026-05-03T09:24:20.150972+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "10967:1:context_built",
+      "event_type": "context_built",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "10967",
+      "sequence_index": 1,
+      "summary": "Full letter made available to deterministic rules",
+      "warnings": []
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.152157+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "10967:2:parse_attempted",
+      "event_type": "parse_attempted",
+      "metrics": {
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "10967",
+      "sequence_index": 2,
+      "summary": "Rule output parsed as seizure-frequency label",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.152170+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "10967:3:field_extraction_completed",
+      "event_type": "field_extraction_completed",
+      "metrics": {
+        "confidence": 0.0,
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "10967",
+      "sequence_index": 3,
+      "summary": "Deterministic seizure-frequency extraction completed",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.152177+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "10967:4:warning_emitted",
+      "event_type": "warning_emitted",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "10967",
+      "sequence_index": 4,
+      "summary": "Deterministic extraction emitted warnings",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "deterministic_rules",
+      "created_at": "2026-05-03T09:24:20.152337+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "280:1:context_built",
+      "event_type": "context_built",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "280",
+      "sequence_index": 1,
+      "summary": "Full letter made available to deterministic rules",
+      "warnings": []
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.153416+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "280:2:parse_attempted",
+      "event_type": "parse_attempted",
+      "metrics": {
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "280",
+      "sequence_index": 2,
+      "summary": "Rule output parsed as seizure-frequency label",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.153426+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "280:3:field_extraction_completed",
+      "event_type": "field_extraction_completed",
+      "metrics": {
+        "confidence": 0.0,
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "280",
+      "sequence_index": 3,
+      "summary": "Deterministic seizure-frequency extraction completed",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.153433+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "280:4:warning_emitted",
+      "event_type": "warning_emitted",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "280",
+      "sequence_index": 4,
+      "summary": "Deterministic extraction emitted warnings",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "deterministic_rules",
+      "created_at": "2026-05-03T09:24:20.153584+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "7708:1:context_built",
+      "event_type": "context_built",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "7708",
+      "sequence_index": 1,
+      "summary": "Full letter made available to deterministic rules",
+      "warnings": []
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.154669+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "7708:2:parse_attempted",
+      "event_type": "parse_attempted",
+      "metrics": {
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "7708",
+      "sequence_index": 2,
+      "summary": "Rule output parsed as seizure-frequency label",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.154680+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "7708:3:field_extraction_completed",
+      "event_type": "field_extraction_completed",
+      "metrics": {
+        "confidence": 0.0,
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "7708",
+      "sequence_index": 3,
+      "summary": "Deterministic seizure-frequency extraction completed",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.154687+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "7708:4:warning_emitted",
+      "event_type": "warning_emitted",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "7708",
+      "sequence_index": 4,
+      "summary": "Deterministic extraction emitted warnings",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "deterministic_rules",
+      "created_at": "2026-05-03T09:24:20.154823+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "4003:1:context_built",
+      "event_type": "context_built",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "4003",
+      "sequence_index": 1,
+      "summary": "Full letter made available to deterministic rules",
+      "warnings": []
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.156593+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "4003:2:parse_attempted",
+      "event_type": "parse_attempted",
+      "metrics": {
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "4003",
+      "sequence_index": 2,
+      "summary": "Rule output parsed as seizure-frequency label",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.156606+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "4003:3:field_extraction_completed",
+      "event_type": "field_extraction_completed",
+      "metrics": {
+        "confidence": 0.0,
+        "valid": true
+      },
+      "quote_bearing": false,
+      "row_id": "4003",
+      "sequence_index": 3,
+      "summary": "Deterministic seizure-frequency extraction completed",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    },
+    {
+      "component": "seizure_frequency",
+      "created_at": "2026-05-03T09:24:20.156613+00:00",
+      "duration_ms": 0,
+      "error": "",
+      "event_id": "4003:4:warning_emitted",
+      "event_type": "warning_emitted",
+      "metrics": {},
+      "quote_bearing": false,
+      "row_id": "4003",
+      "sequence_index": 4,
+      "summary": "Deterministic extraction emitted warnings",
+      "warnings": [
+        "no_deterministic_frequency_match"
+      ]
+    }
+  ],
+  "manifest_hash": "c921ee9ba15f631ce118852e89fab80a5df625aaf4e52a3ecdc96b069353fc70",
+  "manifest_id": "deterministic_baseline.v1",
+  "mapping_version": "",
+  "metrics": {
+    "exact_label_accuracy": 0.2,
+    "monthly_rate_accuracy_tolerance_15pct": 0.28,
+    "n": 25,
+    "pragmatic": {
+      "macro_f1": 0.20248270248270248,
+      "micro_f1": 0.28,
+      "per_class": {
+        "NS": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 2
+        },
+        "UNK": {
+          "f1": 0.37037037037037035,
+          "precision": 0.22727272727272727,
+          "recall": 1.0,
+          "support": 5
+        },
+        "frequent": {
+          "f1": 0.15384615384615385,
+          "precision": 1.0,
+          "recall": 0.08333333333333333,
+          "support": 12
+        },
+        "infrequent": {
+          "f1": 0.2857142857142857,
+          "precision": 1.0,
+          "recall": 0.16666666666666666,
+          "support": 6
+        }
+      },
+      "weighted_f1": 0.2164916564916565
+    },
+    "pragmatic_confusion": {
+      "NS": {
+        "UNK": 2
+      },
+      "UNK": {
+        "UNK": 5
+      },
+      "frequent": {
+        "UNK": 11,
+        "frequent": 1
+      },
+      "infrequent": {
+        "NS": 1,
+        "UNK": 4,
+        "infrequent": 1
+      }
+    },
+    "purist": {
+      "macro_f1": 0.19576719576719576,
+      "micro_f1": 0.28,
+      "per_class": {
+        "(1/6M,1/M)": {
+          "f1": 0.33333333333333337,
+          "precision": 1.0,
+          "recall": 0.2,
+          "support": 5
+        },
+        "(1/M,1/W)": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 2
+        },
+        "(1/W,1/D)": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 8
+        },
+        "1/M": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 1
+        },
+        ">=1/D": {
+          "f1": 0.6666666666666666,
+          "precision": 1.0,
+          "recall": 0.5,
+          "support": 2
+        },
+        "NS": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 2
+        },
+        "UNK": {
+          "f1": 0.37037037037037035,
+          "precision": 0.22727272727272727,
+          "recall": 1.0,
+          "support": 5
+        }
+      },
+      "weighted_f1": 0.1940740740740741
+    }
+  },
+  "model": "none",
+  "model_registry_entry": null,
+  "parse_validity": {
+    "seizure_frequency": {
+      "invalid": 0,
+      "total": 25,
+      "valid": 25,
+      "valid_rate": 1.0
+    }
+  },
+  "prompt_version": "rules_v1",
+  "provider": "deterministic",
+  "rows": [
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "2 cluster per month, 6 per cluster",
+        "gold_monthly_rate": 12.0,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": "(1/W,1/D)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 11118
+      },
+      "harness_events": [
+        {
+          "component": "deterministic_rules",
+          "created_at": "2026-05-03T09:24:20.118095+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "11118:1:context_built",
+          "event_type": "context_built",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "11118",
+          "sequence_index": 1,
+          "summary": "Full letter made available to deterministic rules",
+          "warnings": []
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.120442+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "11118:2:parse_attempted",
+          "event_type": "parse_attempted",
+          "metrics": {
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "11118",
+          "sequence_index": 2,
+          "summary": "Rule output parsed as seizure-frequency label",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.120464+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "11118:3:field_extraction_completed",
+          "event_type": "field_extraction_completed",
+          "metrics": {
+            "confidence": 0.0,
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "11118",
+          "sequence_index": 3,
+          "summary": "Deterministic seizure-frequency extraction completed",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.120473+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "11118:4:warning_emitted",
+          "event_type": "warning_emitted",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "11118",
+          "sequence_index": 4,
+          "summary": "Deterministic extraction emitted warnings",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        }
+      ],
+      "payload": {
+        "artifacts": {},
+        "field_coverage": {
+          "associated_symptoms": "not_implemented",
+          "comorbidities": "not_implemented",
+          "current_medications": "not_implemented",
+          "epilepsy_classification": "not_implemented",
+          "investigations": "not_implemented",
+          "other_therapies": "not_implemented",
+          "rescue_medication": "not_implemented",
+          "seizure_classification": "not_implemented",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [
+            {
+              "char_end": null,
+              "char_start": null,
+              "quote": "Department of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Eleanor Matthews  \nSt Bartholomew's Hospital  \nDepartment of",
+              "section": null,
+              "span_id": null
+            }
+          ],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        "invalid_output": false,
+        "metadata": {
+          "source_row_index": 11118
+        },
+        "pipeline_id": "deterministic_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [
+          {
+            "char_end": null,
+            "char_start": null,
+            "quote": "Department of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Eleanor Matthews  \nSt Bartholomew's Hospital  \nDepartment of",
+            "section": null,
+            "span_id": null
+          }
+        ],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "row_id": "11118",
+      "source_row_index": 11118
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "6 per 7 month",
+        "gold_monthly_rate": 0.8571428571428571,
+        "gold_pragmatic_class": "infrequent",
+        "gold_purist_class": "(1/6M,1/M)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 16750
+      },
+      "harness_events": [
+        {
+          "component": "deterministic_rules",
+          "created_at": "2026-05-03T09:24:20.121385+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "16750:1:context_built",
+          "event_type": "context_built",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "16750",
+          "sequence_index": 1,
+          "summary": "Full letter made available to deterministic rules",
+          "warnings": []
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.122520+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "16750:2:parse_attempted",
+          "event_type": "parse_attempted",
+          "metrics": {
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "16750",
+          "sequence_index": 2,
+          "summary": "Rule output parsed as seizure-frequency label",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.122534+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "16750:3:field_extraction_completed",
+          "event_type": "field_extraction_completed",
+          "metrics": {
+            "confidence": 0.0,
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "16750",
+          "sequence_index": 3,
+          "summary": "Deterministic seizure-frequency extraction completed",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.122542+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "16750:4:warning_emitted",
+          "event_type": "warning_emitted",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "16750",
+          "sequence_index": 4,
+          "summary": "Deterministic extraction emitted warnings",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        }
+      ],
+      "payload": {
+        "artifacts": {},
+        "field_coverage": {
+          "associated_symptoms": "not_implemented",
+          "comorbidities": "not_implemented",
+          "current_medications": "not_implemented",
+          "epilepsy_classification": "not_implemented",
+          "investigations": "not_implemented",
+          "other_therapies": "not_implemented",
+          "rescue_medication": "not_implemented",
+          "seizure_classification": "not_implemented",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [
+            {
+              "char_end": null,
+              "char_start": null,
+              "quote": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 8 September 2010 \n\nDr Patel\nElmwood Medical Centre\n\n72 Elmwood Road, London, S",
+              "section": null,
+              "span_id": null
+            }
+          ],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        "invalid_output": false,
+        "metadata": {
+          "source_row_index": 16750
+        },
+        "pipeline_id": "deterministic_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [
+          {
+            "char_end": null,
+            "char_start": null,
+            "quote": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 8 September 2010 \n\nDr Patel\nElmwood Medical Centre\n\n72 Elmwood Road, London, S",
+            "section": null,
+            "span_id": null
+          }
+        ],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "row_id": "16750",
+      "source_row_index": 16750
+    },
+    {
+      "evaluation": {
+        "confidence": 0.6,
+        "exact_match": true,
+        "gold_label": "2 per 5 month",
+        "gold_monthly_rate": 0.4,
+        "gold_pragmatic_class": "infrequent",
+        "gold_purist_class": "(1/6M,1/M)",
+        "monthly_rate_match": true,
+        "predicted_label": "2 per 5 month",
+        "predicted_monthly_rate": 0.4,
+        "predicted_pragmatic_class": "infrequent",
+        "predicted_purist_class": "(1/6M,1/M)",
+        "source_row_index": 14706
+      },
+      "harness_events": [
+        {
+          "component": "deterministic_rules",
+          "created_at": "2026-05-03T09:24:20.123171+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "14706:1:context_built",
+          "event_type": "context_built",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "14706",
+          "sequence_index": 1,
+          "summary": "Full letter made available to deterministic rules",
+          "warnings": []
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.124387+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "14706:2:parse_attempted",
+          "event_type": "parse_attempted",
+          "metrics": {
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "14706",
+          "sequence_index": 2,
+          "summary": "Rule output parsed as seizure-frequency label",
+          "warnings": []
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.124402+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "14706:3:field_extraction_completed",
+          "event_type": "field_extraction_completed",
+          "metrics": {
+            "confidence": 0.6,
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "14706",
+          "sequence_index": 3,
+          "summary": "Deterministic seizure-frequency extraction completed",
+          "warnings": []
+        }
+      ],
+      "payload": {
+        "artifacts": {},
+        "field_coverage": {
+          "associated_symptoms": "not_implemented",
+          "comorbidities": "not_implemented",
+          "current_medications": "not_implemented",
+          "epilepsy_classification": "not_implemented",
+          "investigations": "not_implemented",
+          "other_therapies": "not_implemented",
+          "rescue_medication": "not_implemented",
+          "seizure_classification": "not_implemented",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [
+            {
+              "char_end": null,
+              "char_start": null,
+              "quote": "Two events over the last five month",
+              "section": null,
+              "span_id": null
+            }
+          ],
+          "confidence": {
+            "seizure_frequency": 0.6
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 0.4,
+            "pragmatic_class": "infrequent",
+            "purist_class": "(1/6M,1/M)",
+            "value": "2 per 5 month"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": []
+        },
+        "invalid_output": false,
+        "metadata": {
+          "source_row_index": 14706
+        },
+        "pipeline_id": "deterministic_baseline",
+        "schema_version": "1.0.0",
+        "warnings": []
+      },
+      "prediction": {
+        "confidence": 0.6,
+        "evidence": [
+          {
+            "char_end": null,
+            "char_start": null,
+            "quote": "Two events over the last five month",
+            "section": null,
+            "span_id": null
+          }
+        ],
+        "label": "2 per 5 month",
+        "metadata": {},
+        "parsed_monthly_rate": 0.4,
+        "pragmatic_class": "infrequent",
+        "purist_class": "(1/6M,1/M)",
+        "warnings": []
+      },
+      "row_id": "14706",
+      "source_row_index": 14706
+    },
+    {
+      "evaluation": {
+        "confidence": 0.6,
+        "exact_match": true,
+        "gold_label": "4 per day",
+        "gold_monthly_rate": 121.75,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": ">=1/D",
+        "monthly_rate_match": true,
+        "predicted_label": "4 per day",
+        "predicted_monthly_rate": 121.75,
+        "predicted_pragmatic_class": "frequent",
+        "predicted_purist_class": ">=1/D",
+        "source_row_index": 12383
+      },
+      "harness_events": [
+        {
+          "component": "deterministic_rules",
+          "created_at": "2026-05-03T09:24:20.124562+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "12383:1:context_built",
+          "event_type": "context_built",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "12383",
+          "sequence_index": 1,
+          "summary": "Full letter made available to deterministic rules",
+          "warnings": []
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.125920+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "12383:2:parse_attempted",
+          "event_type": "parse_attempted",
+          "metrics": {
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "12383",
+          "sequence_index": 2,
+          "summary": "Rule output parsed as seizure-frequency label",
+          "warnings": []
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.125937+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "12383:3:field_extraction_completed",
+          "event_type": "field_extraction_completed",
+          "metrics": {
+            "confidence": 0.6,
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "12383",
+          "sequence_index": 3,
+          "summary": "Deterministic seizure-frequency extraction completed",
+          "warnings": []
+        }
+      ],
+      "payload": {
+        "artifacts": {},
+        "field_coverage": {
+          "associated_symptoms": "not_implemented",
+          "comorbidities": "not_implemented",
+          "current_medications": "not_implemented",
+          "epilepsy_classification": "not_implemented",
+          "investigations": "not_implemented",
+          "other_therapies": "not_implemented",
+          "rescue_medication": "not_implemented",
+          "seizure_classification": "not_implemented",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [
+            {
+              "char_end": null,
+              "char_start": null,
+              "quote": "four times per day",
+              "section": null,
+              "span_id": null
+            }
+          ],
+          "confidence": {
+            "seizure_frequency": 0.6
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 121.75,
+            "pragmatic_class": "frequent",
+            "purist_class": ">=1/D",
+            "value": "4 per day"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": []
+        },
+        "invalid_output": false,
+        "metadata": {
+          "source_row_index": 12383
+        },
+        "pipeline_id": "deterministic_baseline",
+        "schema_version": "1.0.0",
+        "warnings": []
+      },
+      "prediction": {
+        "confidence": 0.6,
+        "evidence": [
+          {
+            "char_end": null,
+            "char_start": null,
+            "quote": "four times per day",
+            "section": null,
+            "span_id": null
+          }
+        ],
+        "label": "4 per day",
+        "metadata": {},
+        "parsed_monthly_rate": 121.75,
+        "pragmatic_class": "frequent",
+        "purist_class": ">=1/D",
+        "warnings": []
+      },
+      "row_id": "12383",
+      "source_row_index": 12383
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "multiple per week",
+        "gold_monthly_rate": 13.044375,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": "(1/W,1/D)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 5555
+      },
+      "harness_events": [
+        {
+          "component": "deterministic_rules",
+          "created_at": "2026-05-03T09:24:20.126122+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "5555:1:context_built",
+          "event_type": "context_built",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "5555",
+          "sequence_index": 1,
+          "summary": "Full letter made available to deterministic rules",
+          "warnings": []
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.127507+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "5555:2:parse_attempted",
+          "event_type": "parse_attempted",
+          "metrics": {
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "5555",
+          "sequence_index": 2,
+          "summary": "Rule output parsed as seizure-frequency label",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.127519+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "5555:3:field_extraction_completed",
+          "event_type": "field_extraction_completed",
+          "metrics": {
+            "confidence": 0.0,
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "5555",
+          "sequence_index": 3,
+          "summary": "Deterministic seizure-frequency extraction completed",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.127525+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "5555:4:warning_emitted",
+          "event_type": "warning_emitted",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "5555",
+          "sequence_index": 4,
+          "summary": "Deterministic extraction emitted warnings",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        }
+      ],
+      "payload": {
+        "artifacts": {},
+        "field_coverage": {
+          "associated_symptoms": "not_implemented",
+          "comorbidities": "not_implemented",
+          "current_medications": "not_implemented",
+          "epilepsy_classification": "not_implemented",
+          "investigations": "not_implemented",
+          "other_therapies": "not_implemented",
+          "rescue_medication": "not_implemented",
+          "seizure_classification": "not_implemented",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [
+            {
+              "char_end": null,
+              "char_start": null,
+              "quote": "University College Hospital\n\nNational Hospital for Neurology and Neurosurgery\n\nClinic Date: 02 October 2025\n\nDr Amelia R",
+              "section": null,
+              "span_id": null
+            }
+          ],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        "invalid_output": false,
+        "metadata": {
+          "source_row_index": 5555
+        },
+        "pipeline_id": "deterministic_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [
+          {
+            "char_end": null,
+            "char_start": null,
+            "quote": "University College Hospital\n\nNational Hospital for Neurology and Neurosurgery\n\nClinic Date: 02 October 2025\n\nDr Amelia R",
+            "section": null,
+            "span_id": null
+          }
+        ],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "row_id": "5555",
+      "source_row_index": 5555
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "4 per 6 week",
+        "gold_monthly_rate": 2.89875,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": "(1/M,1/W)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 6216
+      },
+      "harness_events": [
+        {
+          "component": "deterministic_rules",
+          "created_at": "2026-05-03T09:24:20.127671+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "6216:1:context_built",
+          "event_type": "context_built",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "6216",
+          "sequence_index": 1,
+          "summary": "Full letter made available to deterministic rules",
+          "warnings": []
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.128743+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "6216:2:parse_attempted",
+          "event_type": "parse_attempted",
+          "metrics": {
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "6216",
+          "sequence_index": 2,
+          "summary": "Rule output parsed as seizure-frequency label",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.128752+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "6216:3:field_extraction_completed",
+          "event_type": "field_extraction_completed",
+          "metrics": {
+            "confidence": 0.0,
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "6216",
+          "sequence_index": 3,
+          "summary": "Deterministic seizure-frequency extraction completed",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.128757+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "6216:4:warning_emitted",
+          "event_type": "warning_emitted",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "6216",
+          "sequence_index": 4,
+          "summary": "Deterministic extraction emitted warnings",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        }
+      ],
+      "payload": {
+        "artifacts": {},
+        "field_coverage": {
+          "associated_symptoms": "not_implemented",
+          "comorbidities": "not_implemented",
+          "current_medications": "not_implemented",
+          "epilepsy_classification": "not_implemented",
+          "investigations": "not_implemented",
+          "other_therapies": "not_implemented",
+          "rescue_medication": "not_implemented",
+          "seizure_classification": "not_implemented",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [
+            {
+              "char_end": null,
+              "char_start": null,
+              "quote": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 17 Jun",
+              "section": null,
+              "span_id": null
+            }
+          ],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        "invalid_output": false,
+        "metadata": {
+          "source_row_index": 6216
+        },
+        "pipeline_id": "deterministic_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [
+          {
+            "char_end": null,
+            "char_start": null,
+            "quote": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 17 Jun",
+            "section": null,
+            "span_id": null
+          }
+        ],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "row_id": "6216",
+      "source_row_index": 6216
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "unknown, 2 to 3 per cluster",
+        "gold_monthly_rate": 1000.0,
+        "gold_pragmatic_class": "UNK",
+        "gold_purist_class": "UNK",
+        "monthly_rate_match": true,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 10703
+      },
+      "harness_events": [
+        {
+          "component": "deterministic_rules",
+          "created_at": "2026-05-03T09:24:20.128877+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "10703:1:context_built",
+          "event_type": "context_built",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "10703",
+          "sequence_index": 1,
+          "summary": "Full letter made available to deterministic rules",
+          "warnings": []
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.130167+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "10703:2:parse_attempted",
+          "event_type": "parse_attempted",
+          "metrics": {
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "10703",
+          "sequence_index": 2,
+          "summary": "Rule output parsed as seizure-frequency label",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.130173+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "10703:3:field_extraction_completed",
+          "event_type": "field_extraction_completed",
+          "metrics": {
+            "confidence": 0.0,
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "10703",
+          "sequence_index": 3,
+          "summary": "Deterministic seizure-frequency extraction completed",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.130178+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "10703:4:warning_emitted",
+          "event_type": "warning_emitted",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "10703",
+          "sequence_index": 4,
+          "summary": "Deterministic extraction emitted warnings",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        }
+      ],
+      "payload": {
+        "artifacts": {},
+        "field_coverage": {
+          "associated_symptoms": "not_implemented",
+          "comorbidities": "not_implemented",
+          "current_medications": "not_implemented",
+          "epilepsy_classification": "not_implemented",
+          "investigations": "not_implemented",
+          "other_therapies": "not_implemented",
+          "rescue_medication": "not_implemented",
+          "seizure_classification": "not_implemented",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [
+            {
+              "char_end": null,
+              "char_start": null,
+              "quote": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 02 October 2025 \n\nDr A. Sharma\nConsultant Neurologi",
+              "section": null,
+              "span_id": null
+            }
+          ],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        "invalid_output": false,
+        "metadata": {
+          "source_row_index": 10703
+        },
+        "pipeline_id": "deterministic_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [
+          {
+            "char_end": null,
+            "char_start": null,
+            "quote": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 02 October 2025 \n\nDr A. Sharma\nConsultant Neurologi",
+            "section": null,
+            "span_id": null
+          }
+        ],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "row_id": "10703",
+      "source_row_index": 10703
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "unknown, 2 per cluster",
+        "gold_monthly_rate": 1000.0,
+        "gold_pragmatic_class": "UNK",
+        "gold_purist_class": "UNK",
+        "monthly_rate_match": true,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 10594
+      },
+      "harness_events": [
+        {
+          "component": "deterministic_rules",
+          "created_at": "2026-05-03T09:24:20.130273+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "10594:1:context_built",
+          "event_type": "context_built",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "10594",
+          "sequence_index": 1,
+          "summary": "Full letter made available to deterministic rules",
+          "warnings": []
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.130989+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "10594:2:parse_attempted",
+          "event_type": "parse_attempted",
+          "metrics": {
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "10594",
+          "sequence_index": 2,
+          "summary": "Rule output parsed as seizure-frequency label",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.131001+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "10594:3:field_extraction_completed",
+          "event_type": "field_extraction_completed",
+          "metrics": {
+            "confidence": 0.0,
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "10594",
+          "sequence_index": 3,
+          "summary": "Deterministic seizure-frequency extraction completed",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.131011+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "10594:4:warning_emitted",
+          "event_type": "warning_emitted",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "10594",
+          "sequence_index": 4,
+          "summary": "Deterministic extraction emitted warnings",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        }
+      ],
+      "payload": {
+        "artifacts": {},
+        "field_coverage": {
+          "associated_symptoms": "not_implemented",
+          "comorbidities": "not_implemented",
+          "current_medications": "not_implemented",
+          "epilepsy_classification": "not_implemented",
+          "investigations": "not_implemented",
+          "other_therapies": "not_implemented",
+          "rescue_medication": "not_implemented",
+          "seizure_classification": "not_implemented",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [
+            {
+              "char_end": null,
+              "char_start": null,
+              "quote": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute o",
+              "section": null,
+              "span_id": null
+            }
+          ],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        "invalid_output": false,
+        "metadata": {
+          "source_row_index": 10594
+        },
+        "pipeline_id": "deterministic_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [
+          {
+            "char_end": null,
+            "char_start": null,
+            "quote": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute o",
+            "section": null,
+            "span_id": null
+          }
+        ],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "row_id": "10594",
+      "source_row_index": 10594
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": true,
+        "gold_label": "unknown",
+        "gold_monthly_rate": 1000.0,
+        "gold_pragmatic_class": "UNK",
+        "gold_purist_class": "UNK",
+        "monthly_rate_match": true,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 14036
+      },
+      "harness_events": [
+        {
+          "component": "deterministic_rules",
+          "created_at": "2026-05-03T09:24:20.131341+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "14036:1:context_built",
+          "event_type": "context_built",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "14036",
+          "sequence_index": 1,
+          "summary": "Full letter made available to deterministic rules",
+          "warnings": []
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.132010+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "14036:2:parse_attempted",
+          "event_type": "parse_attempted",
+          "metrics": {
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "14036",
+          "sequence_index": 2,
+          "summary": "Rule output parsed as seizure-frequency label",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.132017+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "14036:3:field_extraction_completed",
+          "event_type": "field_extraction_completed",
+          "metrics": {
+            "confidence": 0.0,
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "14036",
+          "sequence_index": 3,
+          "summary": "Deterministic seizure-frequency extraction completed",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.132022+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "14036:4:warning_emitted",
+          "event_type": "warning_emitted",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "14036",
+          "sequence_index": 4,
+          "summary": "Deterministic extraction emitted warnings",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        }
+      ],
+      "payload": {
+        "artifacts": {},
+        "field_coverage": {
+          "associated_symptoms": "not_implemented",
+          "comorbidities": "not_implemented",
+          "current_medications": "not_implemented",
+          "epilepsy_classification": "not_implemented",
+          "investigations": "not_implemented",
+          "other_therapies": "not_implemented",
+          "rescue_medication": "not_implemented",
+          "seizure_classification": "not_implemented",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [
+            {
+              "char_end": null,
+              "char_start": null,
+              "quote": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Fraser (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 20 ",
+              "section": null,
+              "span_id": null
+            }
+          ],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        "invalid_output": false,
+        "metadata": {
+          "source_row_index": 14036
+        },
+        "pipeline_id": "deterministic_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [
+          {
+            "char_end": null,
+            "char_start": null,
+            "quote": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Fraser (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 20 ",
+            "section": null,
+            "span_id": null
+          }
+        ],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "row_id": "14036",
+      "source_row_index": 14036
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "1 per 6 week",
+        "gold_monthly_rate": 0.7246875,
+        "gold_pragmatic_class": "infrequent",
+        "gold_purist_class": "(1/6M,1/M)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 4562
+      },
+      "harness_events": [
+        {
+          "component": "deterministic_rules",
+          "created_at": "2026-05-03T09:24:20.132110+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "4562:1:context_built",
+          "event_type": "context_built",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "4562",
+          "sequence_index": 1,
+          "summary": "Full letter made available to deterministic rules",
+          "warnings": []
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.132818+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "4562:2:parse_attempted",
+          "event_type": "parse_attempted",
+          "metrics": {
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "4562",
+          "sequence_index": 2,
+          "summary": "Rule output parsed as seizure-frequency label",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.132823+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "4562:3:field_extraction_completed",
+          "event_type": "field_extraction_completed",
+          "metrics": {
+            "confidence": 0.0,
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "4562",
+          "sequence_index": 3,
+          "summary": "Deterministic seizure-frequency extraction completed",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.132827+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "4562:4:warning_emitted",
+          "event_type": "warning_emitted",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "4562",
+          "sequence_index": 4,
+          "summary": "Deterministic extraction emitted warnings",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        }
+      ],
+      "payload": {
+        "artifacts": {},
+        "field_coverage": {
+          "associated_symptoms": "not_implemented",
+          "comorbidities": "not_implemented",
+          "current_medications": "not_implemented",
+          "epilepsy_classification": "not_implemented",
+          "investigations": "not_implemented",
+          "other_therapies": "not_implemented",
+          "rescue_medication": "not_implemented",
+          "seizure_classification": "not_implemented",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [
+            {
+              "char_end": null,
+              "char_start": null,
+              "quote": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 12 October 2019 \n\nDr Patel  \nSt Cuthbert\u2019s NHS Trust  \nNeurology",
+              "section": null,
+              "span_id": null
+            }
+          ],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        "invalid_output": false,
+        "metadata": {
+          "source_row_index": 4562
+        },
+        "pipeline_id": "deterministic_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [
+          {
+            "char_end": null,
+            "char_start": null,
+            "quote": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 12 October 2019 \n\nDr Patel  \nSt Cuthbert\u2019s NHS Trust  \nNeurology",
+            "section": null,
+            "span_id": null
+          }
+        ],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "row_id": "4562",
+      "source_row_index": 4562
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "2 per 3 month",
+        "gold_monthly_rate": 0.6666666666666666,
+        "gold_pragmatic_class": "infrequent",
+        "gold_purist_class": "(1/6M,1/M)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 14369
+      },
+      "harness_events": [
+        {
+          "component": "deterministic_rules",
+          "created_at": "2026-05-03T09:24:20.132932+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "14369:1:context_built",
+          "event_type": "context_built",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "14369",
+          "sequence_index": 1,
+          "summary": "Full letter made available to deterministic rules",
+          "warnings": []
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.134405+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "14369:2:parse_attempted",
+          "event_type": "parse_attempted",
+          "metrics": {
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "14369",
+          "sequence_index": 2,
+          "summary": "Rule output parsed as seizure-frequency label",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.134420+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "14369:3:field_extraction_completed",
+          "event_type": "field_extraction_completed",
+          "metrics": {
+            "confidence": 0.0,
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "14369",
+          "sequence_index": 3,
+          "summary": "Deterministic seizure-frequency extraction completed",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.134426+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "14369:4:warning_emitted",
+          "event_type": "warning_emitted",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "14369",
+          "sequence_index": 4,
+          "summary": "Deterministic extraction emitted warnings",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        }
+      ],
+      "payload": {
+        "artifacts": {},
+        "field_coverage": {
+          "associated_symptoms": "not_implemented",
+          "comorbidities": "not_implemented",
+          "current_medications": "not_implemented",
+          "epilepsy_classification": "not_implemented",
+          "investigations": "not_implemented",
+          "other_therapies": "not_implemented",
+          "rescue_medication": "not_implemented",
+          "seizure_classification": "not_implemented",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [
+            {
+              "char_end": null,
+              "char_start": null,
+              "quote": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 15 April 2015\n\nDr James Rowe\nStour Vale Medical Centre\n\n14 Millstream Way\nStou",
+              "section": null,
+              "span_id": null
+            }
+          ],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        "invalid_output": false,
+        "metadata": {
+          "source_row_index": 14369
+        },
+        "pipeline_id": "deterministic_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [
+          {
+            "char_end": null,
+            "char_start": null,
+            "quote": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 15 April 2015\n\nDr James Rowe\nStour Vale Medical Centre\n\n14 Millstream Way\nStou",
+            "section": null,
+            "span_id": null
+          }
+        ],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "row_id": "14369",
+      "source_row_index": 14369
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": true,
+        "gold_label": "unknown",
+        "gold_monthly_rate": 1000.0,
+        "gold_pragmatic_class": "UNK",
+        "gold_purist_class": "UNK",
+        "monthly_rate_match": true,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 9786
+      },
+      "harness_events": [
+        {
+          "component": "deterministic_rules",
+          "created_at": "2026-05-03T09:24:20.134600+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "9786:1:context_built",
+          "event_type": "context_built",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "9786",
+          "sequence_index": 1,
+          "summary": "Full letter made available to deterministic rules",
+          "warnings": []
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.135867+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "9786:2:parse_attempted",
+          "event_type": "parse_attempted",
+          "metrics": {
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "9786",
+          "sequence_index": 2,
+          "summary": "Rule output parsed as seizure-frequency label",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.135883+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "9786:3:field_extraction_completed",
+          "event_type": "field_extraction_completed",
+          "metrics": {
+            "confidence": 0.0,
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "9786",
+          "sequence_index": 3,
+          "summary": "Deterministic seizure-frequency extraction completed",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.135891+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "9786:4:warning_emitted",
+          "event_type": "warning_emitted",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "9786",
+          "sequence_index": 4,
+          "summary": "Deterministic extraction emitted warnings",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        }
+      ],
+      "payload": {
+        "artifacts": {},
+        "field_coverage": {
+          "associated_symptoms": "not_implemented",
+          "comorbidities": "not_implemented",
+          "current_medications": "not_implemented",
+          "epilepsy_classification": "not_implemented",
+          "investigations": "not_implemented",
+          "other_therapies": "not_implemented",
+          "rescue_medication": "not_implemented",
+          "seizure_classification": "not_implemented",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [
+            {
+              "char_end": null,
+              "char_start": null,
+              "quote": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 18 Feb",
+              "section": null,
+              "span_id": null
+            }
+          ],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        "invalid_output": false,
+        "metadata": {
+          "source_row_index": 9786
+        },
+        "pipeline_id": "deterministic_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [
+          {
+            "char_end": null,
+            "char_start": null,
+            "quote": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 18 Feb",
+            "section": null,
+            "span_id": null
+          }
+        ],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "row_id": "9786",
+      "source_row_index": 9786
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": true,
+        "gold_label": "unknown",
+        "gold_monthly_rate": 1000.0,
+        "gold_pragmatic_class": "UNK",
+        "gold_purist_class": "UNK",
+        "monthly_rate_match": true,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 9879
+      },
+      "harness_events": [
+        {
+          "component": "deterministic_rules",
+          "created_at": "2026-05-03T09:24:20.136063+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "9879:1:context_built",
+          "event_type": "context_built",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "9879",
+          "sequence_index": 1,
+          "summary": "Full letter made available to deterministic rules",
+          "warnings": []
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.137670+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "9879:2:parse_attempted",
+          "event_type": "parse_attempted",
+          "metrics": {
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "9879",
+          "sequence_index": 2,
+          "summary": "Rule output parsed as seizure-frequency label",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.137686+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "9879:3:field_extraction_completed",
+          "event_type": "field_extraction_completed",
+          "metrics": {
+            "confidence": 0.0,
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "9879",
+          "sequence_index": 3,
+          "summary": "Deterministic seizure-frequency extraction completed",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.137694+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "9879:4:warning_emitted",
+          "event_type": "warning_emitted",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "9879",
+          "sequence_index": 4,
+          "summary": "Deterministic extraction emitted warnings",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        }
+      ],
+      "payload": {
+        "artifacts": {},
+        "field_coverage": {
+          "associated_symptoms": "not_implemented",
+          "comorbidities": "not_implemented",
+          "current_medications": "not_implemented",
+          "epilepsy_classification": "not_implemented",
+          "investigations": "not_implemented",
+          "other_therapies": "not_implemented",
+          "rescue_medication": "not_implemented",
+          "seizure_classification": "not_implemented",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [
+            {
+              "char_end": null,
+              "char_start": null,
+              "quote": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 02 October 2025\n\nDr Kate\nHealth Centre\n\nKeele University, Keele, Newcastle\n\n St",
+              "section": null,
+              "span_id": null
+            }
+          ],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        "invalid_output": false,
+        "metadata": {
+          "source_row_index": 9879
+        },
+        "pipeline_id": "deterministic_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [
+          {
+            "char_end": null,
+            "char_start": null,
+            "quote": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 02 October 2025\n\nDr Kate\nHealth Centre\n\nKeele University, Keele, Newcastle\n\n St",
+            "section": null,
+            "span_id": null
+          }
+        ],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "row_id": "9879",
+      "source_row_index": 9879
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "seizure free for multiple month",
+        "gold_monthly_rate": 0.0,
+        "gold_pragmatic_class": "NS",
+        "gold_purist_class": "NS",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 8488
+      },
+      "harness_events": [
+        {
+          "component": "deterministic_rules",
+          "created_at": "2026-05-03T09:24:20.137855+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "8488:1:context_built",
+          "event_type": "context_built",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "8488",
+          "sequence_index": 1,
+          "summary": "Full letter made available to deterministic rules",
+          "warnings": []
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.138925+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "8488:2:parse_attempted",
+          "event_type": "parse_attempted",
+          "metrics": {
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "8488",
+          "sequence_index": 2,
+          "summary": "Rule output parsed as seizure-frequency label",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.138939+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "8488:3:field_extraction_completed",
+          "event_type": "field_extraction_completed",
+          "metrics": {
+            "confidence": 0.0,
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "8488",
+          "sequence_index": 3,
+          "summary": "Deterministic seizure-frequency extraction completed",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.138947+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "8488:4:warning_emitted",
+          "event_type": "warning_emitted",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "8488",
+          "sequence_index": 4,
+          "summary": "Deterministic extraction emitted warnings",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        }
+      ],
+      "payload": {
+        "artifacts": {},
+        "field_coverage": {
+          "associated_symptoms": "not_implemented",
+          "comorbidities": "not_implemented",
+          "current_medications": "not_implemented",
+          "epilepsy_classification": "not_implemented",
+          "investigations": "not_implemented",
+          "other_therapies": "not_implemented",
+          "rescue_medication": "not_implemented",
+          "seizure_classification": "not_implemented",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [
+            {
+              "char_end": null,
+              "char_start": null,
+              "quote": "Department of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Aisha Rahman  \nSouth Thames Neurology Centre  \nNeurology Out",
+              "section": null,
+              "span_id": null
+            }
+          ],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        "invalid_output": false,
+        "metadata": {
+          "source_row_index": 8488
+        },
+        "pipeline_id": "deterministic_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [
+          {
+            "char_end": null,
+            "char_start": null,
+            "quote": "Department of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Aisha Rahman  \nSouth Thames Neurology Centre  \nNeurology Out",
+            "section": null,
+            "span_id": null
+          }
+        ],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "row_id": "8488",
+      "source_row_index": 8488
+    },
+    {
+      "evaluation": {
+        "confidence": 0.6,
+        "exact_match": false,
+        "gold_label": "2 per 8 month",
+        "gold_monthly_rate": 0.25,
+        "gold_pragmatic_class": "infrequent",
+        "gold_purist_class": "(1/6M,1/M)",
+        "monthly_rate_match": false,
+        "predicted_label": "seizure free for 8 month",
+        "predicted_monthly_rate": 0.0,
+        "predicted_pragmatic_class": "NS",
+        "predicted_purist_class": "NS",
+        "source_row_index": 13079
+      },
+      "harness_events": [
+        {
+          "component": "deterministic_rules",
+          "created_at": "2026-05-03T09:24:20.139092+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "13079:1:context_built",
+          "event_type": "context_built",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "13079",
+          "sequence_index": 1,
+          "summary": "Full letter made available to deterministic rules",
+          "warnings": []
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.140822+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "13079:2:parse_attempted",
+          "event_type": "parse_attempted",
+          "metrics": {
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "13079",
+          "sequence_index": 2,
+          "summary": "Rule output parsed as seizure-frequency label",
+          "warnings": []
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.140838+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "13079:3:field_extraction_completed",
+          "event_type": "field_extraction_completed",
+          "metrics": {
+            "confidence": 0.6,
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "13079",
+          "sequence_index": 3,
+          "summary": "Deterministic seizure-frequency extraction completed",
+          "warnings": []
+        }
+      ],
+      "payload": {
+        "artifacts": {},
+        "field_coverage": {
+          "associated_symptoms": "not_implemented",
+          "comorbidities": "not_implemented",
+          "current_medications": "not_implemented",
+          "epilepsy_classification": "not_implemented",
+          "investigations": "not_implemented",
+          "other_therapies": "not_implemented",
+          "rescue_medication": "not_implemented",
+          "seizure_classification": "not_implemented",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [
+            {
+              "char_end": null,
+              "char_start": null,
+              "quote": "seizure-free for 8 month",
+              "section": null,
+              "span_id": null
+            }
+          ],
+          "confidence": {
+            "seizure_frequency": 0.6
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 0.0,
+            "pragmatic_class": "NS",
+            "purist_class": "NS",
+            "value": "seizure free for 8 month"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": []
+        },
+        "invalid_output": false,
+        "metadata": {
+          "source_row_index": 13079
+        },
+        "pipeline_id": "deterministic_baseline",
+        "schema_version": "1.0.0",
+        "warnings": []
+      },
+      "prediction": {
+        "confidence": 0.6,
+        "evidence": [
+          {
+            "char_end": null,
+            "char_start": null,
+            "quote": "seizure-free for 8 month",
+            "section": null,
+            "span_id": null
+          }
+        ],
+        "label": "seizure free for 8 month",
+        "metadata": {},
+        "parsed_monthly_rate": 0.0,
+        "pragmatic_class": "NS",
+        "purist_class": "NS",
+        "warnings": []
+      },
+      "row_id": "13079",
+      "source_row_index": 13079
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "13 per 4 month",
+        "gold_monthly_rate": 3.25,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": "(1/M,1/W)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 16158
+      },
+      "harness_events": [
+        {
+          "component": "deterministic_rules",
+          "created_at": "2026-05-03T09:24:20.141027+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "16158:1:context_built",
+          "event_type": "context_built",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "16158",
+          "sequence_index": 1,
+          "summary": "Full letter made available to deterministic rules",
+          "warnings": []
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.142434+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "16158:2:parse_attempted",
+          "event_type": "parse_attempted",
+          "metrics": {
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "16158",
+          "sequence_index": 2,
+          "summary": "Rule output parsed as seizure-frequency label",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.142449+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "16158:3:field_extraction_completed",
+          "event_type": "field_extraction_completed",
+          "metrics": {
+            "confidence": 0.0,
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "16158",
+          "sequence_index": 3,
+          "summary": "Deterministic seizure-frequency extraction completed",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.142458+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "16158:4:warning_emitted",
+          "event_type": "warning_emitted",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "16158",
+          "sequence_index": 4,
+          "summary": "Deterministic extraction emitted warnings",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        }
+      ],
+      "payload": {
+        "artifacts": {},
+        "field_coverage": {
+          "associated_symptoms": "not_implemented",
+          "comorbidities": "not_implemented",
+          "current_medications": "not_implemented",
+          "epilepsy_classification": "not_implemented",
+          "investigations": "not_implemented",
+          "other_therapies": "not_implemented",
+          "rescue_medication": "not_implemented",
+          "seizure_classification": "not_implemented",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [
+            {
+              "char_end": null,
+              "char_start": null,
+              "quote": "Department of Neurology \n\nClinic Date: 27 September 2012 \n\nDr Amelia Rhodes  \nSouth Thames Neurology Centre  \nNeurology ",
+              "section": null,
+              "span_id": null
+            }
+          ],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        "invalid_output": false,
+        "metadata": {
+          "source_row_index": 16158
+        },
+        "pipeline_id": "deterministic_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [
+          {
+            "char_end": null,
+            "char_start": null,
+            "quote": "Department of Neurology \n\nClinic Date: 27 September 2012 \n\nDr Amelia Rhodes  \nSouth Thames Neurology Centre  \nNeurology ",
+            "section": null,
+            "span_id": null
+          }
+        ],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "row_id": "16158",
+      "source_row_index": 16158
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "3 per week",
+        "gold_monthly_rate": 13.044375,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": "(1/W,1/D)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 9278
+      },
+      "harness_events": [
+        {
+          "component": "deterministic_rules",
+          "created_at": "2026-05-03T09:24:20.142648+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "9278:1:context_built",
+          "event_type": "context_built",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "9278",
+          "sequence_index": 1,
+          "summary": "Full letter made available to deterministic rules",
+          "warnings": []
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.144267+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "9278:2:parse_attempted",
+          "event_type": "parse_attempted",
+          "metrics": {
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "9278",
+          "sequence_index": 2,
+          "summary": "Rule output parsed as seizure-frequency label",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.144283+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "9278:3:field_extraction_completed",
+          "event_type": "field_extraction_completed",
+          "metrics": {
+            "confidence": 0.0,
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "9278",
+          "sequence_index": 3,
+          "summary": "Deterministic seizure-frequency extraction completed",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.144291+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "9278:4:warning_emitted",
+          "event_type": "warning_emitted",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "9278",
+          "sequence_index": 4,
+          "summary": "Deterministic extraction emitted warnings",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        }
+      ],
+      "payload": {
+        "artifacts": {},
+        "field_coverage": {
+          "associated_symptoms": "not_implemented",
+          "comorbidities": "not_implemented",
+          "current_medications": "not_implemented",
+          "epilepsy_classification": "not_implemented",
+          "investigations": "not_implemented",
+          "other_therapies": "not_implemented",
+          "rescue_medication": "not_implemented",
+          "seizure_classification": "not_implemented",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [
+            {
+              "char_end": null,
+              "char_start": null,
+              "quote": "Department of Neurology\n\nClinic Date: 02 October 2025\n\nDr Hannah Keane\nSt Bartholomew\u2019s Hospital\nDepartment of Neurology",
+              "section": null,
+              "span_id": null
+            }
+          ],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        "invalid_output": false,
+        "metadata": {
+          "source_row_index": 9278
+        },
+        "pipeline_id": "deterministic_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [
+          {
+            "char_end": null,
+            "char_start": null,
+            "quote": "Department of Neurology\n\nClinic Date: 02 October 2025\n\nDr Hannah Keane\nSt Bartholomew\u2019s Hospital\nDepartment of Neurology",
+            "section": null,
+            "span_id": null
+          }
+        ],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "row_id": "9278",
+      "source_row_index": 9278
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "1 per 4 day",
+        "gold_monthly_rate": 7.609375,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": "(1/W,1/D)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 16356
+      },
+      "harness_events": [
+        {
+          "component": "deterministic_rules",
+          "created_at": "2026-05-03T09:24:20.144469+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "16356:1:context_built",
+          "event_type": "context_built",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "16356",
+          "sequence_index": 1,
+          "summary": "Full letter made available to deterministic rules",
+          "warnings": []
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.145665+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "16356:2:parse_attempted",
+          "event_type": "parse_attempted",
+          "metrics": {
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "16356",
+          "sequence_index": 2,
+          "summary": "Rule output parsed as seizure-frequency label",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.145677+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "16356:3:field_extraction_completed",
+          "event_type": "field_extraction_completed",
+          "metrics": {
+            "confidence": 0.0,
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "16356",
+          "sequence_index": 3,
+          "summary": "Deterministic seizure-frequency extraction completed",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.145685+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "16356:4:warning_emitted",
+          "event_type": "warning_emitted",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "16356",
+          "sequence_index": 4,
+          "summary": "Deterministic extraction emitted warnings",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        }
+      ],
+      "payload": {
+        "artifacts": {},
+        "field_coverage": {
+          "associated_symptoms": "not_implemented",
+          "comorbidities": "not_implemented",
+          "current_medications": "not_implemented",
+          "epilepsy_classification": "not_implemented",
+          "investigations": "not_implemented",
+          "other_therapies": "not_implemented",
+          "rescue_medication": "not_implemented",
+          "seizure_classification": "not_implemented",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [
+            {
+              "char_end": null,
+              "char_start": null,
+              "quote": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Hannah Reid (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 O",
+              "section": null,
+              "span_id": null
+            }
+          ],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        "invalid_output": false,
+        "metadata": {
+          "source_row_index": 16356
+        },
+        "pipeline_id": "deterministic_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [
+          {
+            "char_end": null,
+            "char_start": null,
+            "quote": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Hannah Reid (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 O",
+            "section": null,
+            "span_id": null
+          }
+        ],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "row_id": "16356",
+      "source_row_index": 16356
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "13 per 2 month",
+        "gold_monthly_rate": 6.5,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": "(1/W,1/D)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 16036
+      },
+      "harness_events": [
+        {
+          "component": "deterministic_rules",
+          "created_at": "2026-05-03T09:24:20.145870+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "16036:1:context_built",
+          "event_type": "context_built",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "16036",
+          "sequence_index": 1,
+          "summary": "Full letter made available to deterministic rules",
+          "warnings": []
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.147453+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "16036:2:parse_attempted",
+          "event_type": "parse_attempted",
+          "metrics": {
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "16036",
+          "sequence_index": 2,
+          "summary": "Rule output parsed as seizure-frequency label",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.147466+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "16036:3:field_extraction_completed",
+          "event_type": "field_extraction_completed",
+          "metrics": {
+            "confidence": 0.0,
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "16036",
+          "sequence_index": 3,
+          "summary": "Deterministic seizure-frequency extraction completed",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.147474+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "16036:4:warning_emitted",
+          "event_type": "warning_emitted",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "16036",
+          "sequence_index": 4,
+          "summary": "Deterministic extraction emitted warnings",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        }
+      ],
+      "payload": {
+        "artifacts": {},
+        "field_coverage": {
+          "associated_symptoms": "not_implemented",
+          "comorbidities": "not_implemented",
+          "current_medications": "not_implemented",
+          "epilepsy_classification": "not_implemented",
+          "investigations": "not_implemented",
+          "other_therapies": "not_implemented",
+          "rescue_medication": "not_implemented",
+          "seizure_classification": "not_implemented",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [
+            {
+              "char_end": null,
+              "char_start": null,
+              "quote": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 14 A",
+              "section": null,
+              "span_id": null
+            }
+          ],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        "invalid_output": false,
+        "metadata": {
+          "source_row_index": 16036
+        },
+        "pipeline_id": "deterministic_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [
+          {
+            "char_end": null,
+            "char_start": null,
+            "quote": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 14 A",
+            "section": null,
+            "span_id": null
+          }
+        ],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "row_id": "16036",
+      "source_row_index": 16036
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "2 per 2 week",
+        "gold_monthly_rate": 4.3481250000000005,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": "(1/W,1/D)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 665
+      },
+      "harness_events": [
+        {
+          "component": "deterministic_rules",
+          "created_at": "2026-05-03T09:24:20.147667+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "665:1:context_built",
+          "event_type": "context_built",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "665",
+          "sequence_index": 1,
+          "summary": "Full letter made available to deterministic rules",
+          "warnings": []
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.149419+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "665:2:parse_attempted",
+          "event_type": "parse_attempted",
+          "metrics": {
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "665",
+          "sequence_index": 2,
+          "summary": "Rule output parsed as seizure-frequency label",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.149433+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "665:3:field_extraction_completed",
+          "event_type": "field_extraction_completed",
+          "metrics": {
+            "confidence": 0.0,
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "665",
+          "sequence_index": 3,
+          "summary": "Deterministic seizure-frequency extraction completed",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.149447+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "665:4:warning_emitted",
+          "event_type": "warning_emitted",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "665",
+          "sequence_index": 4,
+          "summary": "Deterministic extraction emitted warnings",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        }
+      ],
+      "payload": {
+        "artifacts": {},
+        "field_coverage": {
+          "associated_symptoms": "not_implemented",
+          "comorbidities": "not_implemented",
+          "current_medications": "not_implemented",
+          "epilepsy_classification": "not_implemented",
+          "investigations": "not_implemented",
+          "other_therapies": "not_implemented",
+          "rescue_medication": "not_implemented",
+          "seizure_classification": "not_implemented",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [
+            {
+              "char_end": null,
+              "char_start": null,
+              "quote": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 02 October 2025 \n\nDr Alici",
+              "section": null,
+              "span_id": null
+            }
+          ],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        "invalid_output": false,
+        "metadata": {
+          "source_row_index": 665
+        },
+        "pipeline_id": "deterministic_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [
+          {
+            "char_end": null,
+            "char_start": null,
+            "quote": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 02 October 2025 \n\nDr Alici",
+            "section": null,
+            "span_id": null
+          }
+        ],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "row_id": "665",
+      "source_row_index": 665
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "5 to 7 per 3 week",
+        "gold_monthly_rate": 8.696250000000001,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": "(1/W,1/D)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 1165
+      },
+      "harness_events": [
+        {
+          "component": "deterministic_rules",
+          "created_at": "2026-05-03T09:24:20.149633+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "1165:1:context_built",
+          "event_type": "context_built",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "1165",
+          "sequence_index": 1,
+          "summary": "Full letter made available to deterministic rules",
+          "warnings": []
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.150820+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "1165:2:parse_attempted",
+          "event_type": "parse_attempted",
+          "metrics": {
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "1165",
+          "sequence_index": 2,
+          "summary": "Rule output parsed as seizure-frequency label",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.150836+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "1165:3:field_extraction_completed",
+          "event_type": "field_extraction_completed",
+          "metrics": {
+            "confidence": 0.0,
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "1165",
+          "sequence_index": 3,
+          "summary": "Deterministic seizure-frequency extraction completed",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.150842+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "1165:4:warning_emitted",
+          "event_type": "warning_emitted",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "1165",
+          "sequence_index": 4,
+          "summary": "Deterministic extraction emitted warnings",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        }
+      ],
+      "payload": {
+        "artifacts": {},
+        "field_coverage": {
+          "associated_symptoms": "not_implemented",
+          "comorbidities": "not_implemented",
+          "current_medications": "not_implemented",
+          "epilepsy_classification": "not_implemented",
+          "investigations": "not_implemented",
+          "other_therapies": "not_implemented",
+          "rescue_medication": "not_implemented",
+          "seizure_classification": "not_implemented",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [
+            {
+              "char_end": null,
+              "char_start": null,
+              "quote": "University College Hospital\n\nNational Hospital for Neurology and Neurosurgery\n\nClinic Date: 20 November 2021\n\nDr Susan\nU",
+              "section": null,
+              "span_id": null
+            }
+          ],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        "invalid_output": false,
+        "metadata": {
+          "source_row_index": 1165
+        },
+        "pipeline_id": "deterministic_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [
+          {
+            "char_end": null,
+            "char_start": null,
+            "quote": "University College Hospital\n\nNational Hospital for Neurology and Neurosurgery\n\nClinic Date: 20 November 2021\n\nDr Susan\nU",
+            "section": null,
+            "span_id": null
+          }
+        ],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "row_id": "1165",
+      "source_row_index": 1165
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "3 cluster per month, 4 to 5 per cluster",
+        "gold_monthly_rate": 13.5,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": "(1/W,1/D)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 10967
+      },
+      "harness_events": [
+        {
+          "component": "deterministic_rules",
+          "created_at": "2026-05-03T09:24:20.150972+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "10967:1:context_built",
+          "event_type": "context_built",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "10967",
+          "sequence_index": 1,
+          "summary": "Full letter made available to deterministic rules",
+          "warnings": []
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.152157+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "10967:2:parse_attempted",
+          "event_type": "parse_attempted",
+          "metrics": {
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "10967",
+          "sequence_index": 2,
+          "summary": "Rule output parsed as seizure-frequency label",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.152170+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "10967:3:field_extraction_completed",
+          "event_type": "field_extraction_completed",
+          "metrics": {
+            "confidence": 0.0,
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "10967",
+          "sequence_index": 3,
+          "summary": "Deterministic seizure-frequency extraction completed",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.152177+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "10967:4:warning_emitted",
+          "event_type": "warning_emitted",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "10967",
+          "sequence_index": 4,
+          "summary": "Deterministic extraction emitted warnings",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        }
+      ],
+      "payload": {
+        "artifacts": {},
+        "field_coverage": {
+          "associated_symptoms": "not_implemented",
+          "comorbidities": "not_implemented",
+          "current_medications": "not_implemented",
+          "epilepsy_classification": "not_implemented",
+          "investigations": "not_implemented",
+          "other_therapies": "not_implemented",
+          "rescue_medication": "not_implemented",
+          "seizure_classification": "not_implemented",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [
+            {
+              "char_end": null,
+              "char_start": null,
+              "quote": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Sarah Coleman \nConsultant Neurologist  \n",
+              "section": null,
+              "span_id": null
+            }
+          ],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        "invalid_output": false,
+        "metadata": {
+          "source_row_index": 10967
+        },
+        "pipeline_id": "deterministic_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [
+          {
+            "char_end": null,
+            "char_start": null,
+            "quote": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Sarah Coleman \nConsultant Neurologist  \n",
+            "section": null,
+            "span_id": null
+          }
+        ],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "row_id": "10967",
+      "source_row_index": 10967
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "multiple per day",
+        "gold_monthly_rate": 91.3125,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": ">=1/D",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 280
+      },
+      "harness_events": [
+        {
+          "component": "deterministic_rules",
+          "created_at": "2026-05-03T09:24:20.152337+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "280:1:context_built",
+          "event_type": "context_built",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "280",
+          "sequence_index": 1,
+          "summary": "Full letter made available to deterministic rules",
+          "warnings": []
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.153416+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "280:2:parse_attempted",
+          "event_type": "parse_attempted",
+          "metrics": {
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "280",
+          "sequence_index": 2,
+          "summary": "Rule output parsed as seizure-frequency label",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.153426+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "280:3:field_extraction_completed",
+          "event_type": "field_extraction_completed",
+          "metrics": {
+            "confidence": 0.0,
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "280",
+          "sequence_index": 3,
+          "summary": "Deterministic seizure-frequency extraction completed",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.153433+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "280:4:warning_emitted",
+          "event_type": "warning_emitted",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "280",
+          "sequence_index": 4,
+          "summary": "Deterministic extraction emitted warnings",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        }
+      ],
+      "payload": {
+        "artifacts": {},
+        "field_coverage": {
+          "associated_symptoms": "not_implemented",
+          "comorbidities": "not_implemented",
+          "current_medications": "not_implemented",
+          "epilepsy_classification": "not_implemented",
+          "investigations": "not_implemented",
+          "other_therapies": "not_implemented",
+          "rescue_medication": "not_implemented",
+          "seizure_classification": "not_implemented",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [
+            {
+              "char_end": null,
+              "char_start": null,
+              "quote": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 11 December 2015 \n\nDr Anita Shah\nRiverside Medical Practice\n\n12 Riverside Way,",
+              "section": null,
+              "span_id": null
+            }
+          ],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        "invalid_output": false,
+        "metadata": {
+          "source_row_index": 280
+        },
+        "pipeline_id": "deterministic_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [
+          {
+            "char_end": null,
+            "char_start": null,
+            "quote": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 11 December 2015 \n\nDr Anita Shah\nRiverside Medical Practice\n\n12 Riverside Way,",
+            "section": null,
+            "span_id": null
+          }
+        ],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "row_id": "280",
+      "source_row_index": 280
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "seizure free for multiple month",
+        "gold_monthly_rate": 0.0,
+        "gold_pragmatic_class": "NS",
+        "gold_purist_class": "NS",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 7708
+      },
+      "harness_events": [
+        {
+          "component": "deterministic_rules",
+          "created_at": "2026-05-03T09:24:20.153584+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "7708:1:context_built",
+          "event_type": "context_built",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "7708",
+          "sequence_index": 1,
+          "summary": "Full letter made available to deterministic rules",
+          "warnings": []
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.154669+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "7708:2:parse_attempted",
+          "event_type": "parse_attempted",
+          "metrics": {
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "7708",
+          "sequence_index": 2,
+          "summary": "Rule output parsed as seizure-frequency label",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.154680+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "7708:3:field_extraction_completed",
+          "event_type": "field_extraction_completed",
+          "metrics": {
+            "confidence": 0.0,
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "7708",
+          "sequence_index": 3,
+          "summary": "Deterministic seizure-frequency extraction completed",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.154687+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "7708:4:warning_emitted",
+          "event_type": "warning_emitted",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "7708",
+          "sequence_index": 4,
+          "summary": "Deterministic extraction emitted warnings",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        }
+      ],
+      "payload": {
+        "artifacts": {},
+        "field_coverage": {
+          "associated_symptoms": "not_implemented",
+          "comorbidities": "not_implemented",
+          "current_medications": "not_implemented",
+          "epilepsy_classification": "not_implemented",
+          "investigations": "not_implemented",
+          "other_therapies": "not_implemented",
+          "rescue_medication": "not_implemented",
+          "seizure_classification": "not_implemented",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [
+            {
+              "char_end": null,
+              "char_start": null,
+              "quote": "Department of Neurology\n\nClinic Date: 15 January 2019\n\nDr Eleanor Hughes\nSt Cuthbert Neurology Centre\nNeurology Outpatie",
+              "section": null,
+              "span_id": null
+            }
+          ],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        "invalid_output": false,
+        "metadata": {
+          "source_row_index": 7708
+        },
+        "pipeline_id": "deterministic_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [
+          {
+            "char_end": null,
+            "char_start": null,
+            "quote": "Department of Neurology\n\nClinic Date: 15 January 2019\n\nDr Eleanor Hughes\nSt Cuthbert Neurology Centre\nNeurology Outpatie",
+            "section": null,
+            "span_id": null
+          }
+        ],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "row_id": "7708",
+      "source_row_index": 7708
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "1 per month",
+        "gold_monthly_rate": 1.0,
+        "gold_pragmatic_class": "infrequent",
+        "gold_purist_class": "1/M",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 4003
+      },
+      "harness_events": [
+        {
+          "component": "deterministic_rules",
+          "created_at": "2026-05-03T09:24:20.154823+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "4003:1:context_built",
+          "event_type": "context_built",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "4003",
+          "sequence_index": 1,
+          "summary": "Full letter made available to deterministic rules",
+          "warnings": []
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.156593+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "4003:2:parse_attempted",
+          "event_type": "parse_attempted",
+          "metrics": {
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "4003",
+          "sequence_index": 2,
+          "summary": "Rule output parsed as seizure-frequency label",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.156606+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "4003:3:field_extraction_completed",
+          "event_type": "field_extraction_completed",
+          "metrics": {
+            "confidence": 0.0,
+            "valid": true
+          },
+          "quote_bearing": false,
+          "row_id": "4003",
+          "sequence_index": 3,
+          "summary": "Deterministic seizure-frequency extraction completed",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        {
+          "component": "seizure_frequency",
+          "created_at": "2026-05-03T09:24:20.156613+00:00",
+          "duration_ms": 0,
+          "error": "",
+          "event_id": "4003:4:warning_emitted",
+          "event_type": "warning_emitted",
+          "metrics": {},
+          "quote_bearing": false,
+          "row_id": "4003",
+          "sequence_index": 4,
+          "summary": "Deterministic extraction emitted warnings",
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        }
+      ],
+      "payload": {
+        "artifacts": {},
+        "field_coverage": {
+          "associated_symptoms": "not_implemented",
+          "comorbidities": "not_implemented",
+          "current_medications": "not_implemented",
+          "epilepsy_classification": "not_implemented",
+          "investigations": "not_implemented",
+          "other_therapies": "not_implemented",
+          "rescue_medication": "not_implemented",
+          "seizure_classification": "not_implemented",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [
+            {
+              "char_end": null,
+              "char_start": null,
+              "quote": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 22 November 2024 \n\nDr Priya Nair\nConsultant Neurolo",
+              "section": null,
+              "span_id": null
+            }
+          ],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "no_deterministic_frequency_match"
+          ]
+        },
+        "invalid_output": false,
+        "metadata": {
+          "source_row_index": 4003
+        },
+        "pipeline_id": "deterministic_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [
+          {
+            "char_end": null,
+            "char_start": null,
+            "quote": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 22 November 2024 \n\nDr Priya Nair\nConsultant Neurolo",
+            "section": null,
+            "span_id": null
+          }
+        ],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "no_deterministic_frequency_match"
+        ]
+      },
+      "row_id": "4003",
+      "source_row_index": 4003
+    }
+  ],
+  "run_id": "deterministic_n25_2026_05_03",
+  "schema_version": "1.0.0",
+  "status": "supporting",
+  "temperature": 0.0,
+  "warnings": [
+    "deterministic_rules_use_letter_text_only"
+  ]
+}

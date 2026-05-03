@@ -1,3 +1,17 @@
 run_id,harness,architecture_family,model_registry_entry,model_id,provider,family,tier,dataset_n,exact_label_accuracy,evidence_supported_rate,parse_valid_rate,estimated_cost_usd,latency_ms
+clines_epilepsy_modular_n25_gold_seeded_2026_05_03,clines_epilepsy_modular,clines_inspired_modular,claude-3-5-sonnet-20241022,claude-3-5-sonnet-20241022,anthropic,claude-3,frontier,25,,,1.0,0.0,125
+clines_epilepsy_verified_n25_gold_seeded_2026_05_03,clines_epilepsy_verified,clines_inspired_modular,claude-3-5-sonnet-20241022,claude-3-5-sonnet-20241022,anthropic,claude-3,frontier,25,,,1.0,0.0,150
+deterministic_n25_2026_05_03,deterministic_baseline,clinical_nlp_baseline,,none,deterministic,,,25,0.2,,1.0,0.0,0
+direct_evidence_contract_n25_gold_seeded_2026_05_03,direct_evidence_contract,direct_llm,claude-3-5-sonnet-20241022,claude-3-5-sonnet-20241022,anthropic,claude-3,frontier,25,,0.92,1.0,0.0,25
+direct_full_contract_n25_gold_seeded_2026_05_03,direct_full_contract,direct_llm,claude-3-5-sonnet-20241022,claude-3-5-sonnet-20241022,anthropic,claude-3,frontier,25,,,1.0,0.0,25
+exect_lite_n25_2026_05_03,exect_lite_cleanroom_baseline,clinical_nlp_baseline,,none,deterministic,,,25,0.2,,1.0,0.0,0
 exect_lite_smoke,exect_lite_cleanroom_baseline,clinical_nlp_baseline,,none,deterministic,,,2,1.0,,1.0,0.0,0
+exect_v2_external_gold_seeded_n25_2026_05_03,exect_v2_external_baseline,clinical_nlp_baseline,,none,exect_v2_external,,,25,1.0,,1.0,0.0,0
+exect_v2_external_pending_n25_2026_05_03,exect_v2_external_baseline,clinical_nlp_baseline,,none,exect_v2_external,,,25,0.12,,0.0,0.0,0
 metadata_smoke_n5,metadata_smoke,,,none,deterministic,,,5,,,0.0,0.0,0
+multi_agent_anchor_n1_gold_seeded_2026_05_03,multi_agent_anchor,clines_inspired_modular,,mock-model,replay,,,1,1.0,,1.0,0.0,2
+multi_agent_anchor_sc3_n1_gold_seeded_2026_05_03,multi_agent_anchor_sc3,costed_reliability_variant,,mock-model,replay,,,1,1.0,,1.0,0.0,3
+multi_agent_anchor_sc5_n1_gold_seeded_2026_05_03,multi_agent_anchor_sc5,costed_reliability_variant,,mock-model,replay,,,1,1.0,,1.0,0.0,5
+retrieval_anchor_n1_gold_seeded_2026_05_03,retrieval_anchor,retrieval_field_pipeline,,mock-model,replay,,,1,1.0,,1.0,0.0,1
+retrieval_field_extractors_n25_gold_seeded_2026_05_03,retrieval_field_extractors,retrieval_field_pipeline,claude-3-5-sonnet-20241022,claude-3-5-sonnet-20241022,anthropic,claude-3,frontier,25,,,1.0,0.0,125
+single_prompt_anchor_n1_gold_seeded_2026_05_03,single_prompt_anchor,direct_llm,,mock-model,replay,,,1,1.0,,1.0,0.0,1

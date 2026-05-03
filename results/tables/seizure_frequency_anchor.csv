@@ -1,1 +1,6 @@
 run_id,harness,architecture_family,model,dataset_n,exact_label_accuracy,monthly_rate_accuracy_tolerance_15pct,pragmatic_macro_f1,purist_macro_f1,warnings
+multi_agent_anchor_n1_gold_seeded_2026_05_03,multi_agent_anchor,clines_inspired_modular,mock-model,1,1.0,1.0,1.0,1.0,
+multi_agent_anchor_sc3_n1_gold_seeded_2026_05_03,multi_agent_anchor_sc3,costed_reliability_variant,mock-model,1,1.0,1.0,1.0,1.0,
+multi_agent_anchor_sc5_n1_gold_seeded_2026_05_03,multi_agent_anchor_sc5,costed_reliability_variant,mock-model,1,1.0,1.0,1.0,1.0,
+retrieval_anchor_n1_gold_seeded_2026_05_03,retrieval_anchor,retrieval_field_pipeline,mock-model,1,1.0,1.0,1.0,1.0,
+single_prompt_anchor_n1_gold_seeded_2026_05_03,single_prompt_anchor,direct_llm,mock-model,1,1.0,1.0,1.0,1.0,

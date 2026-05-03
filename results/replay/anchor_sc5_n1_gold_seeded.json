@@ -1,0 +1,42 @@
+[
+  {
+    "content": "{\"label\": \"2 cluster per month, 6 per cluster\", \"evidence\": \"Over the last four weeks, the records note: \\\"Cluster days twice this month; typically six seizures in 24 h.\\\"\", \"confidence\": 0.99}",
+    "usage": {
+      "input_tokens": 20,
+      "output_tokens": 6
+    },
+    "latency_ms": 1
+  },
+  {
+    "content": "{\"label\": \"2 cluster per month, 6 per cluster\", \"evidence\": \"Over the last four weeks, the records note: \\\"Cluster days twice this month; typically six seizures in 24 h.\\\"\", \"confidence\": 0.99}",
+    "usage": {
+      "input_tokens": 20,
+      "output_tokens": 6
+    },
+    "latency_ms": 1
+  },
+  {
+    "content": "{\"label\": \"2 cluster per month, 6 per cluster\", \"evidence\": \"Over the last four weeks, the records note: \\\"Cluster days twice this month; typically six seizures in 24 h.\\\"\", \"confidence\": 0.99}",
+    "usage": {
+      "input_tokens": 20,
+      "output_tokens": 6
+    },
+    "latency_ms": 1
+  },
+  {
+    "content": "{\"label\": \"2 cluster per month, 6 per cluster\", \"evidence\": \"Over the last four weeks, the records note: \\\"Cluster days twice this month; typically six seizures in 24 h.\\\"\", \"confidence\": 0.99}",
+    "usage": {
+      "input_tokens": 20,
+      "output_tokens": 6
+    },
+    "latency_ms": 1
+  },
+  {
+    "content": "{\"label\": \"2 cluster per month, 6 per cluster\", \"evidence\": \"Over the last four weeks, the records note: \\\"Cluster days twice this month; typically six seizures in 24 h.\\\"\", \"confidence\": 0.99}",
+    "usage": {
+      "input_tokens": 20,
+      "output_tokens": 6
+    },
+    "latency_ms": 1
+  }
+]

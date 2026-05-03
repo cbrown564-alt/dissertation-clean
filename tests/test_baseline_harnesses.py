@@ -1,4 +1,7 @@
 from pathlib import Path
+import json
+import subprocess
+import sys
 
 from epilepsy_extraction.data import compute_file_sha256, load_synthetic_subset, select_fixed_slice
 from epilepsy_extraction.harnesses import (
@@ -165,3 +168,44 @@ def test_exect_v2_external_payload_has_required_final_keys() -> None:
     )
     for row in run.rows:
         assert set(FINAL_EXTRACTION_REQUIRED_KEYS).issubset(row["payload"]["final"].keys())
+
+
+def test_exect_v2_external_cli_runs_from_output_file(tmp_path) -> None:
+    records = select_fixed_slice(load_synthetic_subset(FIXTURE_PATH), limit=1)
+    exect_output = tmp_path / "exect_v2_output.json"
+    exect_output.write_text(
+        json.dumps({"rows": list(_mock_exect_v2_outputs(records).values())}),
+        encoding="utf-8",
+    )
+    output = tmp_path / "exect_v2_run.json"
+
+    subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "run_experiment.py"),
+            str(FIXTURE_PATH),
+            "--harness",
+            "exect_v2_external_baseline",
+            "--limit",
+            "1",
+            "--run-id",
+            "exect_v2_replay",
+            "--output",
+            str(output),
+            "--exect-v2-output",
+            str(exect_output),
+            "--exect-v2-source-commit",
+            "abc123",
+            "--exect-v2-gate-version",
+            "9.0",
+            "--code-version",
+            "test",
+        ],
+        check=True,
+        cwd=ROOT,
+    )
+
+    data = json.loads(output.read_text(encoding="utf-8"))
+    assert data["harness"] == "exect_v2_external_baseline"
+    assert data["external_baseline"] is True
+    assert data["manifest_id"] == "exect_v2_external_baseline.v1"

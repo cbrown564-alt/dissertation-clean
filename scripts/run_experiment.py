@@ -18,12 +18,14 @@ from epilepsy_extraction.harnesses import (
     run_deterministic_baseline,
     run_direct_evidence_contract,
     run_direct_full_contract,
+    load_exect_v2_outputs,
     run_exect_lite_baseline,
+    run_exect_v2_external_baseline,
     run_retrieval_field_extractors,
     run_single_prompt_full_contract,
 )
 from epilepsy_extraction.providers import ReplayProvider
-from epilepsy_extraction.schemas import BudgetMetadata, DatasetSlice, RunRecord, resolve_code_version, write_run_record
+from epilepsy_extraction.schemas import BudgetMetadata, DatasetSlice, RunRecord, RunStatus, resolve_code_version, write_run_record
 
 
 def main() -> None:
@@ -38,6 +40,7 @@ def main() -> None:
             "metadata_smoke",
             "deterministic_baseline",
             "exect_lite_cleanroom_baseline",
+            "exect_v2_external_baseline",
             "single_prompt_anchor",
             "retrieval_anchor",
             "multi_agent_anchor",
@@ -56,8 +59,27 @@ def main() -> None:
     parser.add_argument("--run-id", default="smoke_fixed_slice")
     parser.add_argument("--output", type=Path, default=Path("results/runs/smoke_fixed_slice.json"))
     parser.add_argument("--code-version", default=None)
+    parser.add_argument(
+        "--status",
+        choices=[item.value for item in RunStatus],
+        default=RunStatus.SMOKE.value,
+        help="Evidence status label written to the run record.",
+    )
     parser.add_argument("--replay", type=Path, default=None)
+    parser.add_argument(
+        "--exect-v2-output",
+        type=Path,
+        default=None,
+        help="Pre-generated ExECTv2 JSON output for exect_v2_external_baseline.",
+    )
+    parser.add_argument("--exect-v2-source-commit", default="")
+    parser.add_argument("--exect-v2-gate-version", default="")
     parser.add_argument("--model", default=None)
+    parser.add_argument(
+        "--model-registry-entry",
+        default=None,
+        help="Frozen model registry entry ID to attach to the run record.",
+    )
     parser.add_argument(
         "--manifest",
         type=Path,
@@ -91,6 +113,18 @@ def main() -> None:
     code_version = resolve_code_version(args.code_version, cwd=Path.cwd(), fallback="uncommitted")
     if args.harness == "exect_lite_cleanroom_baseline":
         record = run_exect_lite_baseline(selected, dataset, args.run_id, code_version)
+    elif args.harness == "exect_v2_external_baseline":
+        if args.exect_v2_output is None:
+            raise SystemExit("--exect-v2-output is required for exect_v2_external_baseline")
+        record = run_exect_v2_external_baseline(
+            selected,
+            dataset,
+            args.run_id,
+            code_version,
+            load_exect_v2_outputs(args.exect_v2_output),
+            source_commit=args.exect_v2_source_commit,
+            gate_version=args.exect_v2_gate_version,
+        )
     elif args.harness == "deterministic_baseline":
         record = run_deterministic_baseline(selected, dataset, args.run_id, code_version)
     elif args.harness.endswith("_anchor") or "_anchor_sc" in args.harness:
@@ -198,6 +232,14 @@ def main() -> None:
             code_version=code_version,
             budget=BudgetMetadata(),
             warnings=["metadata_only_run_no_extraction"],
+        )
+    if record.status.value != args.status or args.model_registry_entry:
+        from dataclasses import replace
+
+        record = replace(
+            record,
+            status=RunStatus(args.status),
+            model_registry_entry=args.model_registry_entry or record.model_registry_entry,
         )
     record = attach_manifest_to_run(record, manifest)
     write_run_record(record, args.output)
