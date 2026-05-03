@@ -1,0 +1,4264 @@
+{
+  "architecture_family": "clinical_nlp_baseline",
+  "artifact_paths": {
+    "manifest": "C:\\Users\\cbrow\\Code\\dissertation-clean\\config\\harnesses\\exect_v2_external_baseline.yaml"
+  },
+  "budget": {
+    "estimated_cost_usd": 0.0,
+    "input_tokens": 0,
+    "latency_ms": 0,
+    "llm_calls_per_row": 0,
+    "output_tokens": 0,
+    "total_tokens": 0
+  },
+  "code_version": "2636720",
+  "complexity": {
+    "manifest": {
+      "aggregation_policy": {
+        "enabled": true,
+        "mode": "external_annotations_to_payload"
+      },
+      "allowed_modules": [
+        "external_gate_pipeline",
+        "baseline_mapping"
+      ],
+      "architecture_family": "clinical_nlp_baseline",
+      "artifact_retention": {
+        "mapping_artifacts": true,
+        "payload": true,
+        "raw_provider": true
+      },
+      "budget_limits": {
+        "llm_calls_per_row": 0
+      },
+      "context_policy": {
+        "input": "external_exect_v2_annotations",
+        "uses_document_interface": false
+      },
+      "gold_label_isolation": {
+        "evaluation_only": true,
+        "model_visible": false
+      },
+      "harness_id": "exect_v2_external_baseline",
+      "manifest_hash": "7db43042fca8739dc56cacc72755481703cedb5949dbb5fd303abc9b62898a26",
+      "manifest_id": "exect_v2_external_baseline.v1",
+      "model_registry_entry": "",
+      "output_contract": {
+        "mapping": "exect_v2_mapping_v1",
+        "payload": "final_extraction_v1"
+      },
+      "prompt_versions": {},
+      "provider": "exect_v2_external",
+      "repair_policy": {
+        "enabled": false
+      },
+      "schema_version": "1.0.0",
+      "source_path": "C:\\Users\\cbrow\\Code\\dissertation-clean\\config\\harnesses\\exect_v2_external_baseline.yaml",
+      "verifier_policy": {
+        "enabled": false
+      },
+      "version": "1"
+    }
+  },
+  "created_at": "2026-05-03T09:39:09.563514+00:00",
+  "dataset": {
+    "data_hash": "cf13b498609079d37ba7ccd4cb9886b7d8a60a8bcd75e48ab5b4debb939b1c21",
+    "dataset_id": "synthetic_data_subset_1500",
+    "dataset_path": "data\\synthetic_data_subset_1500.json",
+    "inclusion_criteria": "row_ok_only=true; limit=50",
+    "n": 50,
+    "random_seed": null,
+    "row_ids": [
+      "11118",
+      "16750",
+      "14706",
+      "12383",
+      "5555",
+      "6216",
+      "10703",
+      "10594",
+      "14036",
+      "4562",
+      "14369",
+      "9786",
+      "9879",
+      "8488",
+      "13079",
+      "16158",
+      "9278",
+      "16356",
+      "16036",
+      "665",
+      "1165",
+      "10967",
+      "280",
+      "7708",
+      "4003",
+      "10010",
+      "15376",
+      "3859",
+      "8188",
+      "1922",
+      "15129",
+      "12111",
+      "16253",
+      "10968",
+      "2135",
+      "10147",
+      "1707",
+      "10909",
+      "2356",
+      "13485",
+      "7047",
+      "9496",
+      "3237",
+      "4110",
+      "6321",
+      "1378",
+      "9354",
+      "13385",
+      "14040",
+      "16685"
+    ],
+    "row_order": "source"
+  },
+  "event_summary": {},
+  "external_baseline": true,
+  "field_coverage": {
+    "associated_symptoms": "not_attempted",
+    "comorbidities": "not_attempted",
+    "current_medications": "implemented",
+    "epilepsy_classification": "partial",
+    "investigations": "implemented",
+    "other_therapies": "not_attempted",
+    "rescue_medication": "not_attempted",
+    "seizure_classification": "implemented",
+    "seizure_frequency": "implemented"
+  },
+  "harness": "exect_v2_external_baseline",
+  "harness_events": [],
+  "manifest_hash": "7db43042fca8739dc56cacc72755481703cedb5949dbb5fd303abc9b62898a26",
+  "manifest_id": "exect_v2_external_baseline.v1",
+  "mapping_version": "exect_v2_v1",
+  "metrics": {
+    "exact_label_accuracy": 0.16,
+    "monthly_rate_accuracy_tolerance_15pct": 0.2,
+    "n": 50,
+    "pragmatic": {
+      "macro_f1": 0.08333333333333334,
+      "micro_f1": 0.20000000000000004,
+      "per_class": {
+        "NS": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 5
+        },
+        "UNK": {
+          "f1": 0.33333333333333337,
+          "precision": 0.2,
+          "recall": 1.0,
+          "support": 10
+        },
+        "frequent": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 26
+        },
+        "infrequent": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 9
+        }
+      },
+      "weighted_f1": 0.06666666666666668
+    },
+    "pragmatic_confusion": {
+      "NS": {
+        "UNK": 5
+      },
+      "UNK": {
+        "UNK": 10
+      },
+      "frequent": {
+        "UNK": 26
+      },
+      "infrequent": {
+        "UNK": 9
+      }
+    },
+    "purist": {
+      "macro_f1": 0.04761904761904762,
+      "micro_f1": 0.20000000000000004,
+      "per_class": {
+        "(1/6M,1/M)": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 8
+        },
+        "(1/M,1/W)": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 5
+        },
+        "(1/W,1/D)": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 18
+        },
+        "1/M": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 1
+        },
+        ">=1/D": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 3
+        },
+        "NS": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 5
+        },
+        "UNK": {
+          "f1": 0.33333333333333337,
+          "precision": 0.2,
+          "recall": 1.0,
+          "support": 10
+        }
+      },
+      "weighted_f1": 0.06666666666666668
+    }
+  },
+  "model": "none",
+  "model_registry_entry": null,
+  "parse_validity": {
+    "seizure_frequency": {
+      "invalid": 50,
+      "total": 50,
+      "valid": 0,
+      "valid_rate": 0.0
+    }
+  },
+  "prompt_version": "exect_v2_external_v1",
+  "provider": "exect_v2_external",
+  "rows": [
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "2 cluster per month, 6 per cluster",
+        "gold_monthly_rate": 12.0,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": "(1/W,1/D)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 11118
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 11118
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "11118",
+      "source_row_index": 11118
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "6 per 7 month",
+        "gold_monthly_rate": 0.8571428571428571,
+        "gold_pragmatic_class": "infrequent",
+        "gold_purist_class": "(1/6M,1/M)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 16750
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 16750
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "16750",
+      "source_row_index": 16750
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "2 per 5 month",
+        "gold_monthly_rate": 0.4,
+        "gold_pragmatic_class": "infrequent",
+        "gold_purist_class": "(1/6M,1/M)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 14706
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 14706
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "14706",
+      "source_row_index": 14706
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "4 per day",
+        "gold_monthly_rate": 121.75,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": ">=1/D",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 12383
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 12383
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "12383",
+      "source_row_index": 12383
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "multiple per week",
+        "gold_monthly_rate": 13.044375,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": "(1/W,1/D)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 5555
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 5555
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "5555",
+      "source_row_index": 5555
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "4 per 6 week",
+        "gold_monthly_rate": 2.89875,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": "(1/M,1/W)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 6216
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 6216
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "6216",
+      "source_row_index": 6216
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "unknown, 2 to 3 per cluster",
+        "gold_monthly_rate": 1000.0,
+        "gold_pragmatic_class": "UNK",
+        "gold_purist_class": "UNK",
+        "monthly_rate_match": true,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 10703
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 10703
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "10703",
+      "source_row_index": 10703
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "unknown, 2 per cluster",
+        "gold_monthly_rate": 1000.0,
+        "gold_pragmatic_class": "UNK",
+        "gold_purist_class": "UNK",
+        "monthly_rate_match": true,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 10594
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 10594
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "10594",
+      "source_row_index": 10594
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": true,
+        "gold_label": "unknown",
+        "gold_monthly_rate": 1000.0,
+        "gold_pragmatic_class": "UNK",
+        "gold_purist_class": "UNK",
+        "monthly_rate_match": true,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 14036
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 14036
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "14036",
+      "source_row_index": 14036
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "1 per 6 week",
+        "gold_monthly_rate": 0.7246875,
+        "gold_pragmatic_class": "infrequent",
+        "gold_purist_class": "(1/6M,1/M)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 4562
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 4562
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "4562",
+      "source_row_index": 4562
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "2 per 3 month",
+        "gold_monthly_rate": 0.6666666666666666,
+        "gold_pragmatic_class": "infrequent",
+        "gold_purist_class": "(1/6M,1/M)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 14369
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 14369
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "14369",
+      "source_row_index": 14369
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": true,
+        "gold_label": "unknown",
+        "gold_monthly_rate": 1000.0,
+        "gold_pragmatic_class": "UNK",
+        "gold_purist_class": "UNK",
+        "monthly_rate_match": true,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 9786
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 9786
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "9786",
+      "source_row_index": 9786
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": true,
+        "gold_label": "unknown",
+        "gold_monthly_rate": 1000.0,
+        "gold_pragmatic_class": "UNK",
+        "gold_purist_class": "UNK",
+        "monthly_rate_match": true,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 9879
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 9879
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "9879",
+      "source_row_index": 9879
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "seizure free for multiple month",
+        "gold_monthly_rate": 0.0,
+        "gold_pragmatic_class": "NS",
+        "gold_purist_class": "NS",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 8488
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 8488
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "8488",
+      "source_row_index": 8488
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "2 per 8 month",
+        "gold_monthly_rate": 0.25,
+        "gold_pragmatic_class": "infrequent",
+        "gold_purist_class": "(1/6M,1/M)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 13079
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 13079
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "13079",
+      "source_row_index": 13079
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "13 per 4 month",
+        "gold_monthly_rate": 3.25,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": "(1/M,1/W)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 16158
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 16158
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "16158",
+      "source_row_index": 16158
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "3 per week",
+        "gold_monthly_rate": 13.044375,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": "(1/W,1/D)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 9278
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 9278
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "9278",
+      "source_row_index": 9278
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "1 per 4 day",
+        "gold_monthly_rate": 7.609375,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": "(1/W,1/D)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 16356
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 16356
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "16356",
+      "source_row_index": 16356
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "13 per 2 month",
+        "gold_monthly_rate": 6.5,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": "(1/W,1/D)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 16036
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 16036
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "16036",
+      "source_row_index": 16036
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "2 per 2 week",
+        "gold_monthly_rate": 4.3481250000000005,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": "(1/W,1/D)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 665
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 665
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "665",
+      "source_row_index": 665
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "5 to 7 per 3 week",
+        "gold_monthly_rate": 8.696250000000001,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": "(1/W,1/D)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 1165
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 1165
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "1165",
+      "source_row_index": 1165
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "3 cluster per month, 4 to 5 per cluster",
+        "gold_monthly_rate": 13.5,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": "(1/W,1/D)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 10967
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 10967
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "10967",
+      "source_row_index": 10967
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "multiple per day",
+        "gold_monthly_rate": 91.3125,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": ">=1/D",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 280
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 280
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "280",
+      "source_row_index": 280
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "seizure free for multiple month",
+        "gold_monthly_rate": 0.0,
+        "gold_pragmatic_class": "NS",
+        "gold_purist_class": "NS",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 7708
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 7708
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "7708",
+      "source_row_index": 7708
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "1 per month",
+        "gold_monthly_rate": 1.0,
+        "gold_pragmatic_class": "infrequent",
+        "gold_purist_class": "1/M",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 4003
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 4003
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "4003",
+      "source_row_index": 4003
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "multiple per week",
+        "gold_monthly_rate": 13.044375,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": "(1/W,1/D)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 10010
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 10010
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "10010",
+      "source_row_index": 10010
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "1 cluster per 2 week, 4 to 6 per cluster",
+        "gold_monthly_rate": 10.8703125,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": "(1/W,1/D)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 15376
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 15376
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "15376",
+      "source_row_index": 15376
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "1 per day",
+        "gold_monthly_rate": 30.4375,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": ">=1/D",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 3859
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 3859
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "3859",
+      "source_row_index": 3859
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "seizure free for multiple month",
+        "gold_monthly_rate": 0.0,
+        "gold_pragmatic_class": "NS",
+        "gold_purist_class": "NS",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 8188
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 8188
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "8188",
+      "source_row_index": 8188
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "7 per 3 month",
+        "gold_monthly_rate": 2.3333333333333335,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": "(1/M,1/W)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 1922
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 1922
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "1922",
+      "source_row_index": 1922
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "4 per 15 month",
+        "gold_monthly_rate": 0.26666666666666666,
+        "gold_pragmatic_class": "infrequent",
+        "gold_purist_class": "(1/6M,1/M)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 15129
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 15129
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "15129",
+      "source_row_index": 15129
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "multiple per week",
+        "gold_monthly_rate": 13.044375,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": "(1/W,1/D)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 12111
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 12111
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "12111",
+      "source_row_index": 12111
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "8 per 3 month",
+        "gold_monthly_rate": 2.6666666666666665,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": "(1/M,1/W)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 16253
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 16253
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "16253",
+      "source_row_index": 16253
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "3 cluster per month, 2 to 4 per cluster",
+        "gold_monthly_rate": 9.0,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": "(1/W,1/D)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 10968
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 10968
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "10968",
+      "source_row_index": 10968
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": true,
+        "gold_label": "unknown",
+        "gold_monthly_rate": 1000.0,
+        "gold_pragmatic_class": "UNK",
+        "gold_purist_class": "UNK",
+        "monthly_rate_match": true,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 2135
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 2135
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "2135",
+      "source_row_index": 2135
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": true,
+        "gold_label": "unknown",
+        "gold_monthly_rate": 1000.0,
+        "gold_pragmatic_class": "UNK",
+        "gold_purist_class": "UNK",
+        "monthly_rate_match": true,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 10147
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 10147
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "10147",
+      "source_row_index": 10147
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "multiple per week",
+        "gold_monthly_rate": 13.044375,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": "(1/W,1/D)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 1707
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 1707
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "1707",
+      "source_row_index": 1707
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "6 cluster per month, 4 per cluster",
+        "gold_monthly_rate": 24.0,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": "(1/W,1/D)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 10909
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 10909
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "10909",
+      "source_row_index": 10909
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "6 to 7 per week",
+        "gold_monthly_rate": 28.262812500000003,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": "(1/W,1/D)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 2356
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 2356
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "2356",
+      "source_row_index": 2356
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "seizure free for multiple year",
+        "gold_monthly_rate": 0.0,
+        "gold_pragmatic_class": "NS",
+        "gold_purist_class": "NS",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 13485
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 13485
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "13485",
+      "source_row_index": 13485
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": true,
+        "gold_label": "unknown",
+        "gold_monthly_rate": 1000.0,
+        "gold_pragmatic_class": "UNK",
+        "gold_purist_class": "UNK",
+        "monthly_rate_match": true,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 7047
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 7047
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "7047",
+      "source_row_index": 7047
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "6 per 12 month",
+        "gold_monthly_rate": 0.5,
+        "gold_pragmatic_class": "infrequent",
+        "gold_purist_class": "(1/6M,1/M)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 9496
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 9496
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "9496",
+      "source_row_index": 9496
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "4 cluster per month, 5 per cluster",
+        "gold_monthly_rate": 20.0,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": "(1/W,1/D)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 3237
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 3237
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "3237",
+      "source_row_index": 3237
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "1 per 1 to 2 day",
+        "gold_monthly_rate": 20.291666666666664,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": "(1/W,1/D)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 4110
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 4110
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "4110",
+      "source_row_index": 4110
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": true,
+        "gold_label": "unknown",
+        "gold_monthly_rate": 1000.0,
+        "gold_pragmatic_class": "UNK",
+        "gold_purist_class": "UNK",
+        "monthly_rate_match": true,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 6321
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 6321
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "6321",
+      "source_row_index": 6321
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "5 per month",
+        "gold_monthly_rate": 5.0,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": "(1/W,1/D)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 1378
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 1378
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "1378",
+      "source_row_index": 1378
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "1 per 2 month",
+        "gold_monthly_rate": 0.5,
+        "gold_pragmatic_class": "infrequent",
+        "gold_purist_class": "(1/6M,1/M)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 9354
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 9354
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "9354",
+      "source_row_index": 9354
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "seizure free for 1.5 year",
+        "gold_monthly_rate": 0.0,
+        "gold_pragmatic_class": "NS",
+        "gold_purist_class": "NS",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 13385
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 13385
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "13385",
+      "source_row_index": 13385
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": true,
+        "gold_label": "unknown",
+        "gold_monthly_rate": 1000.0,
+        "gold_pragmatic_class": "UNK",
+        "gold_purist_class": "UNK",
+        "monthly_rate_match": true,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 14040
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 14040
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "14040",
+      "source_row_index": 14040
+    },
+    {
+      "evaluation": {
+        "confidence": 0.0,
+        "exact_match": false,
+        "gold_label": "10 per 3 month",
+        "gold_monthly_rate": 3.3333333333333335,
+        "gold_pragmatic_class": "frequent",
+        "gold_purist_class": "(1/M,1/W)",
+        "monthly_rate_match": false,
+        "predicted_label": "unknown",
+        "predicted_monthly_rate": 1000.0,
+        "predicted_pragmatic_class": "UNK",
+        "predicted_purist_class": "UNK",
+        "source_row_index": 16685
+      },
+      "exect_v2_raw": {},
+      "payload": {
+        "artifacts": {
+          "exect_v2_raw": {}
+        },
+        "field_coverage": {
+          "associated_symptoms": "not_attempted",
+          "comorbidities": "not_attempted",
+          "current_medications": "not_attempted",
+          "epilepsy_classification": "not_attempted",
+          "investigations": "not_attempted",
+          "other_therapies": "not_attempted",
+          "rescue_medication": "not_attempted",
+          "seizure_classification": "not_attempted",
+          "seizure_frequency": "implemented"
+        },
+        "final": {
+          "citations": [],
+          "confidence": {
+            "seizure_frequency": 0.0
+          },
+          "current_medications": [],
+          "epilepsy_syndrome": null,
+          "epilepsy_type": null,
+          "investigations": [],
+          "seizure_features": [],
+          "seizure_frequency": {
+            "parsed_monthly_rate": 1000.0,
+            "pragmatic_class": "UNK",
+            "purist_class": "UNK",
+            "value": "unknown"
+          },
+          "seizure_pattern_modifiers": [],
+          "seizure_types": [],
+          "warnings": [
+            "exect_v2_missing_row"
+          ]
+        },
+        "invalid_output": true,
+        "metadata": {
+          "exect_v2_row_available": false,
+          "source_row_index": 16685
+        },
+        "pipeline_id": "exect_v2_external_baseline",
+        "schema_version": "1.0.0",
+        "warnings": [
+          "exect_v2_missing_row"
+        ]
+      },
+      "prediction": {
+        "confidence": 0.0,
+        "evidence": [],
+        "label": "unknown",
+        "metadata": {},
+        "parsed_monthly_rate": 1000.0,
+        "pragmatic_class": "UNK",
+        "purist_class": "UNK",
+        "warnings": [
+          "exect_v2_no_seizure_frequency"
+        ]
+      },
+      "row_id": "16685",
+      "source_row_index": 16685
+    }
+  ],
+  "run_id": "exect_v2_external_pending_n50_2026_05_03",
+  "schema_version": "1.0.0",
+  "status": "supporting",
+  "temperature": 0.0,
+  "warnings": [
+    "ExECTv2 outputs were generated externally. Record the source repository commit hash, GATE version, and date of generation in the run record notes before treating this run as canonical.",
+    "exect_v2_source_commit=c6202deb77d1aac3667e6838c15906254ca0caa0",
+    "exect_v2_missing_row=11118",
+    "exect_v2_missing_row=16750",
+    "exect_v2_missing_row=14706",
+    "exect_v2_missing_row=12383",
+    "exect_v2_missing_row=5555",
+    "exect_v2_missing_row=6216",
+    "exect_v2_missing_row=10703",
+    "exect_v2_missing_row=10594",
+    "exect_v2_missing_row=14036",
+    "exect_v2_missing_row=4562",
+    "exect_v2_missing_row=14369",
+    "exect_v2_missing_row=9786",
+    "exect_v2_missing_row=9879",
+    "exect_v2_missing_row=8488",
+    "exect_v2_missing_row=13079",
+    "exect_v2_missing_row=16158",
+    "exect_v2_missing_row=9278",
+    "exect_v2_missing_row=16356",
+    "exect_v2_missing_row=16036",
+    "exect_v2_missing_row=665",
+    "exect_v2_missing_row=1165",
+    "exect_v2_missing_row=10967",
+    "exect_v2_missing_row=280",
+    "exect_v2_missing_row=7708",
+    "exect_v2_missing_row=4003",
+    "exect_v2_missing_row=10010",
+    "exect_v2_missing_row=15376",
+    "exect_v2_missing_row=3859",
+    "exect_v2_missing_row=8188",
+    "exect_v2_missing_row=1922",
+    "exect_v2_missing_row=15129",
+    "exect_v2_missing_row=12111",
+    "exect_v2_missing_row=16253",
+    "exect_v2_missing_row=10968",
+    "exect_v2_missing_row=2135",
+    "exect_v2_missing_row=10147",
+    "exect_v2_missing_row=1707",
+    "exect_v2_missing_row=10909",
+    "exect_v2_missing_row=2356",
+    "exect_v2_missing_row=13485",
+    "exect_v2_missing_row=7047",
+    "exect_v2_missing_row=9496",
+    "exect_v2_missing_row=3237",
+    "exect_v2_missing_row=4110",
+    "exect_v2_missing_row=6321",
+    "exect_v2_missing_row=1378",
+    "exect_v2_missing_row=9354",
+    "exect_v2_missing_row=13385",
+    "exect_v2_missing_row=14040",
+    "exect_v2_missing_row=16685"
+  ]
+}

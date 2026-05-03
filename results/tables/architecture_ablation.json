@@ -140,6 +140,34 @@
     "total_token_delta": 0
   },
   {
+    "baseline_harness": "deterministic_baseline",
+    "baseline_run_id": "deterministic_n50_2026_05_03",
+    "comparison_harness": "exect_lite_cleanroom_baseline",
+    "comparison_run_id": "exect_lite_n50_2026_05_03",
+    "cost_delta_usd": 0.0,
+    "dataset_id": "synthetic_data_subset_1500",
+    "exact_label_accuracy_delta": 0.0,
+    "matched_rows": 50,
+    "model_registry_entry": "none",
+    "monthly_rate_accuracy_delta": 0.06,
+    "parse_validity_delta": 0.0,
+    "total_token_delta": 0
+  },
+  {
+    "baseline_harness": "deterministic_baseline",
+    "baseline_run_id": "deterministic_n50_2026_05_03",
+    "comparison_harness": "exect_v2_external_baseline",
+    "comparison_run_id": "exect_v2_external_pending_n50_2026_05_03",
+    "cost_delta_usd": 0.0,
+    "dataset_id": "synthetic_data_subset_1500",
+    "exact_label_accuracy_delta": -0.04000000000000001,
+    "matched_rows": 50,
+    "model_registry_entry": "none",
+    "monthly_rate_accuracy_delta": -0.03999999999999998,
+    "parse_validity_delta": -1.0,
+    "total_token_delta": 0
+  },
+  {
     "baseline_harness": "direct_evidence_contract",
     "baseline_run_id": "direct_evidence_contract_n25_gold_seeded_2026_05_03",
     "comparison_harness": "direct_full_contract",
@@ -206,6 +234,20 @@
     "matched_rows": 25,
     "model_registry_entry": "none",
     "monthly_rate_accuracy_delta": -0.12,
+    "parse_validity_delta": -1.0,
+    "total_token_delta": 0
+  },
+  {
+    "baseline_harness": "exect_lite_cleanroom_baseline",
+    "baseline_run_id": "exect_lite_n50_2026_05_03",
+    "comparison_harness": "exect_v2_external_baseline",
+    "comparison_run_id": "exect_v2_external_pending_n50_2026_05_03",
+    "cost_delta_usd": 0.0,
+    "dataset_id": "synthetic_data_subset_1500",
+    "exact_label_accuracy_delta": -0.04000000000000001,
+    "matched_rows": 50,
+    "model_registry_entry": "none",
+    "monthly_rate_accuracy_delta": -0.09999999999999998,
     "parse_validity_delta": -1.0,
     "total_token_delta": 0
   },

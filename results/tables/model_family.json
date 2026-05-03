@@ -48,6 +48,22 @@
     "tier": ""
   },
   {
+    "architecture_family": "clinical_nlp_baseline",
+    "dataset_n": 50,
+    "estimated_cost_usd": 0.0,
+    "evidence_supported_rate": "",
+    "exact_label_accuracy": 0.2,
+    "family": "",
+    "harness": "deterministic_baseline",
+    "latency_ms": 0,
+    "model_id": "none",
+    "model_registry_entry": null,
+    "parse_valid_rate": 1.0,
+    "provider": "deterministic",
+    "run_id": "deterministic_n50_2026_05_03",
+    "tier": ""
+  },
+  {
     "architecture_family": "direct_llm",
     "dataset_n": 25,
     "estimated_cost_usd": 0.0,
@@ -97,6 +113,22 @@
   },
   {
     "architecture_family": "clinical_nlp_baseline",
+    "dataset_n": 50,
+    "estimated_cost_usd": 0.0,
+    "evidence_supported_rate": "",
+    "exact_label_accuracy": 0.2,
+    "family": "",
+    "harness": "exect_lite_cleanroom_baseline",
+    "latency_ms": 0,
+    "model_id": "none",
+    "model_registry_entry": null,
+    "parse_valid_rate": 1.0,
+    "provider": "deterministic",
+    "run_id": "exect_lite_n50_2026_05_03",
+    "tier": ""
+  },
+  {
+    "architecture_family": "clinical_nlp_baseline",
     "dataset_n": 2,
     "estimated_cost_usd": 0.0,
     "evidence_supported_rate": "",
@@ -141,6 +173,22 @@
     "parse_valid_rate": 0.0,
     "provider": "exect_v2_external",
     "run_id": "exect_v2_external_pending_n25_2026_05_03",
+    "tier": ""
+  },
+  {
+    "architecture_family": "clinical_nlp_baseline",
+    "dataset_n": 50,
+    "estimated_cost_usd": 0.0,
+    "evidence_supported_rate": "",
+    "exact_label_accuracy": 0.16,
+    "family": "",
+    "harness": "exect_v2_external_baseline",
+    "latency_ms": 0,
+    "model_id": "none",
+    "model_registry_entry": null,
+    "parse_valid_rate": 0.0,
+    "provider": "exect_v2_external",
+    "run_id": "exect_v2_external_pending_n50_2026_05_03",
     "tier": ""
   },
   {

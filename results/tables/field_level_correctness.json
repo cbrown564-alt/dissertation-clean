@@ -14,6 +14,19 @@
   },
   {
     "adjudication_status": "not_adjudicated",
+    "exact_label_accuracy": 0.2,
+    "field_family": "seizure_frequency",
+    "harness": "deterministic_baseline",
+    "monthly_rate_accuracy_tolerance_15pct": 0.24,
+    "n": 50,
+    "pragmatic_macro_f1": 0.1542207792207792,
+    "pragmatic_weighted_f1": 0.14259740259740258,
+    "purist_macro_f1": 0.15194805194805192,
+    "purist_weighted_f1": 0.13472727272727272,
+    "run_id": "deterministic_n50_2026_05_03"
+  },
+  {
+    "adjudication_status": "not_adjudicated",
     "exact_label_accuracy": "",
     "field_family": "seizure_frequency",
     "harness": "direct_evidence_contract",
@@ -37,6 +50,19 @@
     "purist_macro_f1": 0.23412698412698413,
     "purist_weighted_f1": 0.2744444444444445,
     "run_id": "exect_lite_n25_2026_05_03"
+  },
+  {
+    "adjudication_status": "not_adjudicated",
+    "exact_label_accuracy": 0.2,
+    "field_family": "seizure_frequency",
+    "harness": "exect_lite_cleanroom_baseline",
+    "monthly_rate_accuracy_tolerance_15pct": 0.3,
+    "n": 50,
+    "pragmatic_macro_f1": 0.27993730407523515,
+    "pragmatic_weighted_f1": 0.2244514106583072,
+    "purist_macro_f1": 0.2285714285714286,
+    "purist_weighted_f1": 0.218,
+    "run_id": "exect_lite_n50_2026_05_03"
   },
   {
     "adjudication_status": "not_adjudicated",
@@ -76,6 +102,19 @@
     "purist_macro_f1": 0.04761904761904762,
     "purist_weighted_f1": 0.06666666666666668,
     "run_id": "exect_v2_external_pending_n25_2026_05_03"
+  },
+  {
+    "adjudication_status": "not_adjudicated",
+    "exact_label_accuracy": 0.16,
+    "field_family": "seizure_frequency",
+    "harness": "exect_v2_external_baseline",
+    "monthly_rate_accuracy_tolerance_15pct": 0.2,
+    "n": 50,
+    "pragmatic_macro_f1": 0.08333333333333334,
+    "pragmatic_weighted_f1": 0.06666666666666668,
+    "purist_macro_f1": 0.04761904761904762,
+    "purist_weighted_f1": 0.06666666666666668,
+    "run_id": "exect_v2_external_pending_n50_2026_05_03"
   },
   {
     "adjudication_status": "not_adjudicated",

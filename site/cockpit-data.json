@@ -2731,7 +2731,7 @@
     "rescue_medication",
     "other_therapies"
   ],
-  "generated_at": "2026-05-03T09:38:03.538476+00:00",
+  "generated_at": "2026-05-03T09:39:16.259685+00:00",
   "harness_manifests": [
     {
       "_source": "config\\harnesses\\budgeted_escalation.yaml",
@@ -3826,6 +3826,34 @@
           "total_token_delta": "0"
         },
         {
+          "baseline_harness": "deterministic_baseline",
+          "baseline_run_id": "deterministic_n50_2026_05_03",
+          "comparison_harness": "exect_lite_cleanroom_baseline",
+          "comparison_run_id": "exect_lite_n50_2026_05_03",
+          "cost_delta_usd": "0.0",
+          "dataset_id": "synthetic_data_subset_1500",
+          "exact_label_accuracy_delta": "0.0",
+          "matched_rows": "50",
+          "model_registry_entry": "none",
+          "monthly_rate_accuracy_delta": "0.06",
+          "parse_validity_delta": "0.0",
+          "total_token_delta": "0"
+        },
+        {
+          "baseline_harness": "deterministic_baseline",
+          "baseline_run_id": "deterministic_n50_2026_05_03",
+          "comparison_harness": "exect_v2_external_baseline",
+          "comparison_run_id": "exect_v2_external_pending_n50_2026_05_03",
+          "cost_delta_usd": "0.0",
+          "dataset_id": "synthetic_data_subset_1500",
+          "exact_label_accuracy_delta": "-0.04000000000000001",
+          "matched_rows": "50",
+          "model_registry_entry": "none",
+          "monthly_rate_accuracy_delta": "-0.03999999999999998",
+          "parse_validity_delta": "-1.0",
+          "total_token_delta": "0"
+        },
+        {
           "baseline_harness": "direct_evidence_contract",
           "baseline_run_id": "direct_evidence_contract_n25_gold_seeded_2026_05_03",
           "comparison_harness": "direct_full_contract",
@@ -3892,6 +3920,20 @@
           "matched_rows": "25",
           "model_registry_entry": "none",
           "monthly_rate_accuracy_delta": "-0.12",
+          "parse_validity_delta": "-1.0",
+          "total_token_delta": "0"
+        },
+        {
+          "baseline_harness": "exect_lite_cleanroom_baseline",
+          "baseline_run_id": "exect_lite_n50_2026_05_03",
+          "comparison_harness": "exect_v2_external_baseline",
+          "comparison_run_id": "exect_v2_external_pending_n50_2026_05_03",
+          "cost_delta_usd": "0.0",
+          "dataset_id": "synthetic_data_subset_1500",
+          "exact_label_accuracy_delta": "-0.04000000000000001",
+          "matched_rows": "50",
+          "model_registry_entry": "none",
+          "monthly_rate_accuracy_delta": "-0.09999999999999998",
           "parse_validity_delta": "-1.0",
           "total_token_delta": "0"
         },
@@ -7400,6 +7442,105 @@
           "status": "supporting"
         },
         {
+          "architecture_family": "clinical_nlp_baseline",
+          "coverage_status": "implemented",
+          "dataset_id": "synthetic_data_subset_1500",
+          "dataset_n": "50",
+          "field_family": "seizure_frequency",
+          "harness": "deterministic_baseline",
+          "partial_contract": "true",
+          "run_id": "deterministic_n50_2026_05_03",
+          "status": "supporting"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "coverage_status": "not_implemented",
+          "dataset_id": "synthetic_data_subset_1500",
+          "dataset_n": "50",
+          "field_family": "current_medications",
+          "harness": "deterministic_baseline",
+          "partial_contract": "true",
+          "run_id": "deterministic_n50_2026_05_03",
+          "status": "supporting"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "coverage_status": "not_implemented",
+          "dataset_id": "synthetic_data_subset_1500",
+          "dataset_n": "50",
+          "field_family": "investigations",
+          "harness": "deterministic_baseline",
+          "partial_contract": "true",
+          "run_id": "deterministic_n50_2026_05_03",
+          "status": "supporting"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "coverage_status": "not_implemented",
+          "dataset_id": "synthetic_data_subset_1500",
+          "dataset_n": "50",
+          "field_family": "seizure_classification",
+          "harness": "deterministic_baseline",
+          "partial_contract": "true",
+          "run_id": "deterministic_n50_2026_05_03",
+          "status": "supporting"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "coverage_status": "not_implemented",
+          "dataset_id": "synthetic_data_subset_1500",
+          "dataset_n": "50",
+          "field_family": "epilepsy_classification",
+          "harness": "deterministic_baseline",
+          "partial_contract": "true",
+          "run_id": "deterministic_n50_2026_05_03",
+          "status": "supporting"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "coverage_status": "not_implemented",
+          "dataset_id": "synthetic_data_subset_1500",
+          "dataset_n": "50",
+          "field_family": "rescue_medication",
+          "harness": "deterministic_baseline",
+          "partial_contract": "true",
+          "run_id": "deterministic_n50_2026_05_03",
+          "status": "supporting"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "coverage_status": "not_implemented",
+          "dataset_id": "synthetic_data_subset_1500",
+          "dataset_n": "50",
+          "field_family": "other_therapies",
+          "harness": "deterministic_baseline",
+          "partial_contract": "true",
+          "run_id": "deterministic_n50_2026_05_03",
+          "status": "supporting"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "coverage_status": "not_implemented",
+          "dataset_id": "synthetic_data_subset_1500",
+          "dataset_n": "50",
+          "field_family": "comorbidities",
+          "harness": "deterministic_baseline",
+          "partial_contract": "true",
+          "run_id": "deterministic_n50_2026_05_03",
+          "status": "supporting"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "coverage_status": "not_implemented",
+          "dataset_id": "synthetic_data_subset_1500",
+          "dataset_n": "50",
+          "field_family": "associated_symptoms",
+          "harness": "deterministic_baseline",
+          "partial_contract": "true",
+          "run_id": "deterministic_n50_2026_05_03",
+          "status": "supporting"
+        },
+        {
           "architecture_family": "direct_llm",
           "coverage_status": "implemented",
           "dataset_id": "synthetic_data_subset_1500",
@@ -7699,6 +7840,105 @@
         {
           "architecture_family": "clinical_nlp_baseline",
           "coverage_status": "implemented",
+          "dataset_id": "synthetic_data_subset_1500",
+          "dataset_n": "50",
+          "field_family": "seizure_frequency",
+          "harness": "exect_lite_cleanroom_baseline",
+          "partial_contract": "true",
+          "run_id": "exect_lite_n50_2026_05_03",
+          "status": "supporting"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "coverage_status": "partial",
+          "dataset_id": "synthetic_data_subset_1500",
+          "dataset_n": "50",
+          "field_family": "current_medications",
+          "harness": "exect_lite_cleanroom_baseline",
+          "partial_contract": "true",
+          "run_id": "exect_lite_n50_2026_05_03",
+          "status": "supporting"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "coverage_status": "partial",
+          "dataset_id": "synthetic_data_subset_1500",
+          "dataset_n": "50",
+          "field_family": "investigations",
+          "harness": "exect_lite_cleanroom_baseline",
+          "partial_contract": "true",
+          "run_id": "exect_lite_n50_2026_05_03",
+          "status": "supporting"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "coverage_status": "partial",
+          "dataset_id": "synthetic_data_subset_1500",
+          "dataset_n": "50",
+          "field_family": "seizure_classification",
+          "harness": "exect_lite_cleanroom_baseline",
+          "partial_contract": "true",
+          "run_id": "exect_lite_n50_2026_05_03",
+          "status": "supporting"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "coverage_status": "partial",
+          "dataset_id": "synthetic_data_subset_1500",
+          "dataset_n": "50",
+          "field_family": "epilepsy_classification",
+          "harness": "exect_lite_cleanroom_baseline",
+          "partial_contract": "true",
+          "run_id": "exect_lite_n50_2026_05_03",
+          "status": "supporting"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "coverage_status": "not_attempted",
+          "dataset_id": "synthetic_data_subset_1500",
+          "dataset_n": "50",
+          "field_family": "rescue_medication",
+          "harness": "exect_lite_cleanroom_baseline",
+          "partial_contract": "true",
+          "run_id": "exect_lite_n50_2026_05_03",
+          "status": "supporting"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "coverage_status": "not_attempted",
+          "dataset_id": "synthetic_data_subset_1500",
+          "dataset_n": "50",
+          "field_family": "other_therapies",
+          "harness": "exect_lite_cleanroom_baseline",
+          "partial_contract": "true",
+          "run_id": "exect_lite_n50_2026_05_03",
+          "status": "supporting"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "coverage_status": "not_attempted",
+          "dataset_id": "synthetic_data_subset_1500",
+          "dataset_n": "50",
+          "field_family": "comorbidities",
+          "harness": "exect_lite_cleanroom_baseline",
+          "partial_contract": "true",
+          "run_id": "exect_lite_n50_2026_05_03",
+          "status": "supporting"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "coverage_status": "not_attempted",
+          "dataset_id": "synthetic_data_subset_1500",
+          "dataset_n": "50",
+          "field_family": "associated_symptoms",
+          "harness": "exect_lite_cleanroom_baseline",
+          "partial_contract": "true",
+          "run_id": "exect_lite_n50_2026_05_03",
+          "status": "supporting"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "coverage_status": "implemented",
           "dataset_id": "synthetic_subset_fixture",
           "dataset_n": "2",
           "field_family": "seizure_frequency",
@@ -7991,6 +8231,105 @@
           "harness": "exect_v2_external_baseline",
           "partial_contract": "true",
           "run_id": "exect_v2_external_pending_n25_2026_05_03",
+          "status": "supporting"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "coverage_status": "implemented",
+          "dataset_id": "synthetic_data_subset_1500",
+          "dataset_n": "50",
+          "field_family": "seizure_frequency",
+          "harness": "exect_v2_external_baseline",
+          "partial_contract": "true",
+          "run_id": "exect_v2_external_pending_n50_2026_05_03",
+          "status": "supporting"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "coverage_status": "implemented",
+          "dataset_id": "synthetic_data_subset_1500",
+          "dataset_n": "50",
+          "field_family": "current_medications",
+          "harness": "exect_v2_external_baseline",
+          "partial_contract": "true",
+          "run_id": "exect_v2_external_pending_n50_2026_05_03",
+          "status": "supporting"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "coverage_status": "implemented",
+          "dataset_id": "synthetic_data_subset_1500",
+          "dataset_n": "50",
+          "field_family": "investigations",
+          "harness": "exect_v2_external_baseline",
+          "partial_contract": "true",
+          "run_id": "exect_v2_external_pending_n50_2026_05_03",
+          "status": "supporting"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "coverage_status": "implemented",
+          "dataset_id": "synthetic_data_subset_1500",
+          "dataset_n": "50",
+          "field_family": "seizure_classification",
+          "harness": "exect_v2_external_baseline",
+          "partial_contract": "true",
+          "run_id": "exect_v2_external_pending_n50_2026_05_03",
+          "status": "supporting"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "coverage_status": "partial",
+          "dataset_id": "synthetic_data_subset_1500",
+          "dataset_n": "50",
+          "field_family": "epilepsy_classification",
+          "harness": "exect_v2_external_baseline",
+          "partial_contract": "true",
+          "run_id": "exect_v2_external_pending_n50_2026_05_03",
+          "status": "supporting"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "coverage_status": "not_attempted",
+          "dataset_id": "synthetic_data_subset_1500",
+          "dataset_n": "50",
+          "field_family": "rescue_medication",
+          "harness": "exect_v2_external_baseline",
+          "partial_contract": "true",
+          "run_id": "exect_v2_external_pending_n50_2026_05_03",
+          "status": "supporting"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "coverage_status": "not_attempted",
+          "dataset_id": "synthetic_data_subset_1500",
+          "dataset_n": "50",
+          "field_family": "other_therapies",
+          "harness": "exect_v2_external_baseline",
+          "partial_contract": "true",
+          "run_id": "exect_v2_external_pending_n50_2026_05_03",
+          "status": "supporting"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "coverage_status": "not_attempted",
+          "dataset_id": "synthetic_data_subset_1500",
+          "dataset_n": "50",
+          "field_family": "comorbidities",
+          "harness": "exect_v2_external_baseline",
+          "partial_contract": "true",
+          "run_id": "exect_v2_external_pending_n50_2026_05_03",
+          "status": "supporting"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "coverage_status": "not_attempted",
+          "dataset_id": "synthetic_data_subset_1500",
+          "dataset_n": "50",
+          "field_family": "associated_symptoms",
+          "harness": "exect_v2_external_baseline",
+          "partial_contract": "true",
+          "run_id": "exect_v2_external_pending_n50_2026_05_03",
           "status": "supporting"
         },
         {
@@ -17013,6 +17352,96 @@
           "evidence_available": "available_when_span_extracted",
           "external_baseline": "false",
           "field_family": "seizure_frequency",
+          "harness": "deterministic_baseline",
+          "mapping_version": "",
+          "run_id": "deterministic_n50_2026_05_03"
+        },
+        {
+          "comparability_notes": "partial_mapping",
+          "coverage_status": "not_implemented",
+          "evidence_available": "available_when_span_extracted",
+          "external_baseline": "false",
+          "field_family": "current_medications",
+          "harness": "deterministic_baseline",
+          "mapping_version": "",
+          "run_id": "deterministic_n50_2026_05_03"
+        },
+        {
+          "comparability_notes": "partial_mapping",
+          "coverage_status": "not_implemented",
+          "evidence_available": "available_when_span_extracted",
+          "external_baseline": "false",
+          "field_family": "investigations",
+          "harness": "deterministic_baseline",
+          "mapping_version": "",
+          "run_id": "deterministic_n50_2026_05_03"
+        },
+        {
+          "comparability_notes": "partial_mapping",
+          "coverage_status": "not_implemented",
+          "evidence_available": "available_when_span_extracted",
+          "external_baseline": "false",
+          "field_family": "seizure_classification",
+          "harness": "deterministic_baseline",
+          "mapping_version": "",
+          "run_id": "deterministic_n50_2026_05_03"
+        },
+        {
+          "comparability_notes": "partial_mapping",
+          "coverage_status": "not_implemented",
+          "evidence_available": "available_when_span_extracted",
+          "external_baseline": "false",
+          "field_family": "epilepsy_classification",
+          "harness": "deterministic_baseline",
+          "mapping_version": "",
+          "run_id": "deterministic_n50_2026_05_03"
+        },
+        {
+          "comparability_notes": "partial_mapping",
+          "coverage_status": "not_implemented",
+          "evidence_available": "available_when_span_extracted",
+          "external_baseline": "false",
+          "field_family": "rescue_medication",
+          "harness": "deterministic_baseline",
+          "mapping_version": "",
+          "run_id": "deterministic_n50_2026_05_03"
+        },
+        {
+          "comparability_notes": "partial_mapping",
+          "coverage_status": "not_implemented",
+          "evidence_available": "available_when_span_extracted",
+          "external_baseline": "false",
+          "field_family": "other_therapies",
+          "harness": "deterministic_baseline",
+          "mapping_version": "",
+          "run_id": "deterministic_n50_2026_05_03"
+        },
+        {
+          "comparability_notes": "partial_mapping",
+          "coverage_status": "not_implemented",
+          "evidence_available": "available_when_span_extracted",
+          "external_baseline": "false",
+          "field_family": "comorbidities",
+          "harness": "deterministic_baseline",
+          "mapping_version": "",
+          "run_id": "deterministic_n50_2026_05_03"
+        },
+        {
+          "comparability_notes": "partial_mapping",
+          "coverage_status": "not_implemented",
+          "evidence_available": "available_when_span_extracted",
+          "external_baseline": "false",
+          "field_family": "associated_symptoms",
+          "harness": "deterministic_baseline",
+          "mapping_version": "",
+          "run_id": "deterministic_n50_2026_05_03"
+        },
+        {
+          "comparability_notes": "",
+          "coverage_status": "implemented",
+          "evidence_available": "available_when_span_extracted",
+          "external_baseline": "false",
+          "field_family": "seizure_frequency",
           "harness": "exect_lite_cleanroom_baseline",
           "mapping_version": "exect_lite_v1",
           "run_id": "exect_lite_n25_2026_05_03"
@@ -17096,6 +17525,96 @@
           "harness": "exect_lite_cleanroom_baseline",
           "mapping_version": "exect_lite_v1",
           "run_id": "exect_lite_n25_2026_05_03"
+        },
+        {
+          "comparability_notes": "",
+          "coverage_status": "implemented",
+          "evidence_available": "available_when_span_extracted",
+          "external_baseline": "false",
+          "field_family": "seizure_frequency",
+          "harness": "exect_lite_cleanroom_baseline",
+          "mapping_version": "exect_lite_v1",
+          "run_id": "exect_lite_n50_2026_05_03"
+        },
+        {
+          "comparability_notes": "partial_mapping",
+          "coverage_status": "partial",
+          "evidence_available": "available_when_span_extracted",
+          "external_baseline": "false",
+          "field_family": "current_medications",
+          "harness": "exect_lite_cleanroom_baseline",
+          "mapping_version": "exect_lite_v1",
+          "run_id": "exect_lite_n50_2026_05_03"
+        },
+        {
+          "comparability_notes": "partial_mapping",
+          "coverage_status": "partial",
+          "evidence_available": "available_when_span_extracted",
+          "external_baseline": "false",
+          "field_family": "investigations",
+          "harness": "exect_lite_cleanroom_baseline",
+          "mapping_version": "exect_lite_v1",
+          "run_id": "exect_lite_n50_2026_05_03"
+        },
+        {
+          "comparability_notes": "partial_mapping",
+          "coverage_status": "partial",
+          "evidence_available": "available_when_span_extracted",
+          "external_baseline": "false",
+          "field_family": "seizure_classification",
+          "harness": "exect_lite_cleanroom_baseline",
+          "mapping_version": "exect_lite_v1",
+          "run_id": "exect_lite_n50_2026_05_03"
+        },
+        {
+          "comparability_notes": "partial_mapping",
+          "coverage_status": "partial",
+          "evidence_available": "available_when_span_extracted",
+          "external_baseline": "false",
+          "field_family": "epilepsy_classification",
+          "harness": "exect_lite_cleanroom_baseline",
+          "mapping_version": "exect_lite_v1",
+          "run_id": "exect_lite_n50_2026_05_03"
+        },
+        {
+          "comparability_notes": "field_not_attempted",
+          "coverage_status": "not_attempted",
+          "evidence_available": "not_applicable",
+          "external_baseline": "false",
+          "field_family": "rescue_medication",
+          "harness": "exect_lite_cleanroom_baseline",
+          "mapping_version": "exect_lite_v1",
+          "run_id": "exect_lite_n50_2026_05_03"
+        },
+        {
+          "comparability_notes": "field_not_attempted",
+          "coverage_status": "not_attempted",
+          "evidence_available": "not_applicable",
+          "external_baseline": "false",
+          "field_family": "other_therapies",
+          "harness": "exect_lite_cleanroom_baseline",
+          "mapping_version": "exect_lite_v1",
+          "run_id": "exect_lite_n50_2026_05_03"
+        },
+        {
+          "comparability_notes": "field_not_attempted",
+          "coverage_status": "not_attempted",
+          "evidence_available": "not_applicable",
+          "external_baseline": "false",
+          "field_family": "comorbidities",
+          "harness": "exect_lite_cleanroom_baseline",
+          "mapping_version": "exect_lite_v1",
+          "run_id": "exect_lite_n50_2026_05_03"
+        },
+        {
+          "comparability_notes": "field_not_attempted",
+          "coverage_status": "not_attempted",
+          "evidence_available": "not_applicable",
+          "external_baseline": "false",
+          "field_family": "associated_symptoms",
+          "harness": "exect_lite_cleanroom_baseline",
+          "mapping_version": "exect_lite_v1",
+          "run_id": "exect_lite_n50_2026_05_03"
         },
         {
           "comparability_notes": "",
@@ -17366,6 +17885,96 @@
           "harness": "exect_v2_external_baseline",
           "mapping_version": "exect_v2_v1",
           "run_id": "exect_v2_external_pending_n25_2026_05_03"
+        },
+        {
+          "comparability_notes": "",
+          "coverage_status": "implemented",
+          "evidence_available": "mapped_if_supplied",
+          "external_baseline": "true",
+          "field_family": "seizure_frequency",
+          "harness": "exect_v2_external_baseline",
+          "mapping_version": "exect_v2_v1",
+          "run_id": "exect_v2_external_pending_n50_2026_05_03"
+        },
+        {
+          "comparability_notes": "",
+          "coverage_status": "implemented",
+          "evidence_available": "mapped_if_supplied",
+          "external_baseline": "true",
+          "field_family": "current_medications",
+          "harness": "exect_v2_external_baseline",
+          "mapping_version": "exect_v2_v1",
+          "run_id": "exect_v2_external_pending_n50_2026_05_03"
+        },
+        {
+          "comparability_notes": "",
+          "coverage_status": "implemented",
+          "evidence_available": "mapped_if_supplied",
+          "external_baseline": "true",
+          "field_family": "investigations",
+          "harness": "exect_v2_external_baseline",
+          "mapping_version": "exect_v2_v1",
+          "run_id": "exect_v2_external_pending_n50_2026_05_03"
+        },
+        {
+          "comparability_notes": "",
+          "coverage_status": "implemented",
+          "evidence_available": "mapped_if_supplied",
+          "external_baseline": "true",
+          "field_family": "seizure_classification",
+          "harness": "exect_v2_external_baseline",
+          "mapping_version": "exect_v2_v1",
+          "run_id": "exect_v2_external_pending_n50_2026_05_03"
+        },
+        {
+          "comparability_notes": "partial_mapping",
+          "coverage_status": "partial",
+          "evidence_available": "mapped_if_supplied",
+          "external_baseline": "true",
+          "field_family": "epilepsy_classification",
+          "harness": "exect_v2_external_baseline",
+          "mapping_version": "exect_v2_v1",
+          "run_id": "exect_v2_external_pending_n50_2026_05_03"
+        },
+        {
+          "comparability_notes": "field_not_attempted",
+          "coverage_status": "not_attempted",
+          "evidence_available": "not_applicable",
+          "external_baseline": "true",
+          "field_family": "rescue_medication",
+          "harness": "exect_v2_external_baseline",
+          "mapping_version": "exect_v2_v1",
+          "run_id": "exect_v2_external_pending_n50_2026_05_03"
+        },
+        {
+          "comparability_notes": "field_not_attempted",
+          "coverage_status": "not_attempted",
+          "evidence_available": "not_applicable",
+          "external_baseline": "true",
+          "field_family": "other_therapies",
+          "harness": "exect_v2_external_baseline",
+          "mapping_version": "exect_v2_v1",
+          "run_id": "exect_v2_external_pending_n50_2026_05_03"
+        },
+        {
+          "comparability_notes": "field_not_attempted",
+          "coverage_status": "not_attempted",
+          "evidence_available": "not_applicable",
+          "external_baseline": "true",
+          "field_family": "comorbidities",
+          "harness": "exect_v2_external_baseline",
+          "mapping_version": "exect_v2_v1",
+          "run_id": "exect_v2_external_pending_n50_2026_05_03"
+        },
+        {
+          "comparability_notes": "field_not_attempted",
+          "coverage_status": "not_attempted",
+          "evidence_available": "not_applicable",
+          "external_baseline": "true",
+          "field_family": "associated_symptoms",
+          "harness": "exect_v2_external_baseline",
+          "mapping_version": "exect_v2_v1",
+          "run_id": "exect_v2_external_pending_n50_2026_05_03"
         }
       ]
     },
@@ -17456,6 +18065,27 @@
           "temperature": "0.0"
         },
         {
+          "architecture_family": "clinical_nlp_baseline",
+          "dataset_n": "50",
+          "estimated_cost_usd": "0.0",
+          "external_tools": "",
+          "harness": "deterministic_baseline",
+          "intermediate_artifacts": "1",
+          "latency_ms": "0",
+          "llm_calls_per_row": "0",
+          "mapping_version": "",
+          "mean_input_tokens": "0.0",
+          "mean_output_tokens": "0.0",
+          "mean_total_tokens": "0.0",
+          "model": "none",
+          "modules_invoked": "0",
+          "prompt_version": "rules_v1",
+          "provider": "deterministic",
+          "run_id": "deterministic_n50_2026_05_03",
+          "schema_version": "1.0.0",
+          "temperature": "0.0"
+        },
+        {
           "architecture_family": "direct_llm",
           "dataset_n": "25",
           "estimated_cost_usd": "0.0",
@@ -17520,6 +18150,27 @@
         },
         {
           "architecture_family": "clinical_nlp_baseline",
+          "dataset_n": "50",
+          "estimated_cost_usd": "0.0",
+          "external_tools": "",
+          "harness": "exect_lite_cleanroom_baseline",
+          "intermediate_artifacts": "1",
+          "latency_ms": "0",
+          "llm_calls_per_row": "0",
+          "mapping_version": "exect_lite_v1",
+          "mean_input_tokens": "0.0",
+          "mean_output_tokens": "0.0",
+          "mean_total_tokens": "0.0",
+          "model": "none",
+          "modules_invoked": "0",
+          "prompt_version": "exect_lite_rules_v1",
+          "provider": "deterministic",
+          "run_id": "exect_lite_n50_2026_05_03",
+          "schema_version": "1.0.0",
+          "temperature": "0.0"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
           "dataset_n": "2",
           "estimated_cost_usd": "0.0",
           "external_tools": "",
@@ -17578,6 +18229,27 @@
           "prompt_version": "exect_v2_external_v1",
           "provider": "exect_v2_external",
           "run_id": "exect_v2_external_pending_n25_2026_05_03",
+          "schema_version": "1.0.0",
+          "temperature": "0.0"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "dataset_n": "50",
+          "estimated_cost_usd": "0.0",
+          "external_tools": "",
+          "harness": "exect_v2_external_baseline",
+          "intermediate_artifacts": "1",
+          "latency_ms": "0",
+          "llm_calls_per_row": "0",
+          "mapping_version": "exect_v2_v1",
+          "mean_input_tokens": "0.0",
+          "mean_output_tokens": "0.0",
+          "mean_total_tokens": "0.0",
+          "model": "none",
+          "modules_invoked": "0",
+          "prompt_version": "exect_v2_external_v1",
+          "provider": "exect_v2_external",
+          "run_id": "exect_v2_external_pending_n50_2026_05_03",
           "schema_version": "1.0.0",
           "temperature": "0.0"
         },
@@ -19537,6 +20209,16 @@
           "unsupported_citations": ""
         },
         {
+          "architecture_family": "clinical_nlp_baseline",
+          "evidence_status": "not_reported",
+          "evidence_supported_rate": "",
+          "harness": "deterministic_baseline",
+          "run_id": "deterministic_n50_2026_05_03",
+          "supported_citations": "",
+          "total_citations": "",
+          "unsupported_citations": ""
+        },
+        {
           "architecture_family": "direct_llm",
           "evidence_status": "reported",
           "evidence_supported_rate": "0.92",
@@ -19571,6 +20253,16 @@
           "evidence_status": "not_reported",
           "evidence_supported_rate": "",
           "harness": "exect_lite_cleanroom_baseline",
+          "run_id": "exect_lite_n50_2026_05_03",
+          "supported_citations": "",
+          "total_citations": "",
+          "unsupported_citations": ""
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "evidence_status": "not_reported",
+          "evidence_supported_rate": "",
+          "harness": "exect_lite_cleanroom_baseline",
           "run_id": "exect_lite_smoke",
           "supported_citations": "",
           "total_citations": "",
@@ -19592,6 +20284,16 @@
           "evidence_supported_rate": "",
           "harness": "exect_v2_external_baseline",
           "run_id": "exect_v2_external_pending_n25_2026_05_03",
+          "supported_citations": "",
+          "total_citations": "",
+          "unsupported_citations": ""
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "evidence_status": "not_reported",
+          "evidence_supported_rate": "",
+          "harness": "exect_v2_external_baseline",
+          "run_id": "exect_v2_external_pending_n50_2026_05_03",
           "supported_citations": "",
           "total_citations": "",
           "unsupported_citations": ""
@@ -20538,6 +21240,19 @@
         },
         {
           "adjudication_status": "not_adjudicated",
+          "exact_label_accuracy": "0.2",
+          "field_family": "seizure_frequency",
+          "harness": "deterministic_baseline",
+          "monthly_rate_accuracy_tolerance_15pct": "0.24",
+          "n": "50",
+          "pragmatic_macro_f1": "0.1542207792207792",
+          "pragmatic_weighted_f1": "0.14259740259740258",
+          "purist_macro_f1": "0.15194805194805192",
+          "purist_weighted_f1": "0.13472727272727272",
+          "run_id": "deterministic_n50_2026_05_03"
+        },
+        {
+          "adjudication_status": "not_adjudicated",
           "exact_label_accuracy": "",
           "field_family": "seizure_frequency",
           "harness": "direct_evidence_contract",
@@ -20561,6 +21276,19 @@
           "purist_macro_f1": "0.23412698412698413",
           "purist_weighted_f1": "0.2744444444444445",
           "run_id": "exect_lite_n25_2026_05_03"
+        },
+        {
+          "adjudication_status": "not_adjudicated",
+          "exact_label_accuracy": "0.2",
+          "field_family": "seizure_frequency",
+          "harness": "exect_lite_cleanroom_baseline",
+          "monthly_rate_accuracy_tolerance_15pct": "0.3",
+          "n": "50",
+          "pragmatic_macro_f1": "0.27993730407523515",
+          "pragmatic_weighted_f1": "0.2244514106583072",
+          "purist_macro_f1": "0.2285714285714286",
+          "purist_weighted_f1": "0.218",
+          "run_id": "exect_lite_n50_2026_05_03"
         },
         {
           "adjudication_status": "not_adjudicated",
@@ -20600,6 +21328,19 @@
           "purist_macro_f1": "0.04761904761904762",
           "purist_weighted_f1": "0.06666666666666668",
           "run_id": "exect_v2_external_pending_n25_2026_05_03"
+        },
+        {
+          "adjudication_status": "not_adjudicated",
+          "exact_label_accuracy": "0.16",
+          "field_family": "seizure_frequency",
+          "harness": "exect_v2_external_baseline",
+          "monthly_rate_accuracy_tolerance_15pct": "0.2",
+          "n": "50",
+          "pragmatic_macro_f1": "0.08333333333333334",
+          "pragmatic_weighted_f1": "0.06666666666666668",
+          "purist_macro_f1": "0.04761904761904762",
+          "purist_weighted_f1": "0.06666666666666668",
+          "run_id": "exect_v2_external_pending_n50_2026_05_03"
         },
         {
           "adjudication_status": "not_adjudicated",
@@ -21293,6 +22034,25 @@
           "workflow_units": ""
         },
         {
+          "architecture_family": "clinical_nlp_baseline",
+          "complexity_status": "harness_native",
+          "dataset_n": "50",
+          "escalation_decisions": "0",
+          "event_count": "195",
+          "harness": "deterministic_baseline",
+          "intermediate_artifacts": "1",
+          "llm_calls_per_row": "0",
+          "manifest_hash": "c921ee9ba15f631ce118852e89fab80a5df625aaf4e52a3ecdc96b069353fc70",
+          "manifest_id": "deterministic_baseline.v1",
+          "modules_invoked": "",
+          "parse_repair_attempts": "0",
+          "provider_calls": "0",
+          "raw_artifact_paths": "0",
+          "run_id": "deterministic_n50_2026_05_03",
+          "verifier_passes": "0",
+          "workflow_units": ""
+        },
+        {
           "architecture_family": "direct_llm",
           "complexity_status": "harness_native",
           "dataset_n": "25",
@@ -21351,6 +22111,25 @@
         },
         {
           "architecture_family": "clinical_nlp_baseline",
+          "complexity_status": "harness_native",
+          "dataset_n": "50",
+          "escalation_decisions": "0",
+          "event_count": "240",
+          "harness": "exect_lite_cleanroom_baseline",
+          "intermediate_artifacts": "1",
+          "llm_calls_per_row": "0",
+          "manifest_hash": "044a4d20829e2508bc94e5cb79750d6eac9ebe13ed2221b1ce160d93f281c8f8",
+          "manifest_id": "exect_lite_cleanroom_baseline.v1",
+          "modules_invoked": "",
+          "parse_repair_attempts": "0",
+          "provider_calls": "0",
+          "raw_artifact_paths": "0",
+          "run_id": "exect_lite_n50_2026_05_03",
+          "verifier_passes": "0",
+          "workflow_units": ""
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
           "complexity_status": "legacy_or_not_reported",
           "dataset_n": "2",
           "escalation_decisions": "0",
@@ -21403,6 +22182,25 @@
           "provider_calls": "0",
           "raw_artifact_paths": "0",
           "run_id": "exect_v2_external_pending_n25_2026_05_03",
+          "verifier_passes": "0",
+          "workflow_units": ""
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "complexity_status": "partial",
+          "dataset_n": "50",
+          "escalation_decisions": "0",
+          "event_count": "0",
+          "harness": "exect_v2_external_baseline",
+          "intermediate_artifacts": "1",
+          "llm_calls_per_row": "0",
+          "manifest_hash": "7db43042fca8739dc56cacc72755481703cedb5949dbb5fd303abc9b62898a26",
+          "manifest_id": "exect_v2_external_baseline.v1",
+          "modules_invoked": "",
+          "parse_repair_attempts": "0",
+          "provider_calls": "0",
+          "raw_artifact_paths": "0",
+          "run_id": "exect_v2_external_pending_n50_2026_05_03",
           "verifier_passes": "0",
           "workflow_units": ""
         },
@@ -23204,6 +24002,22 @@
           "tier": ""
         },
         {
+          "architecture_family": "clinical_nlp_baseline",
+          "dataset_n": "50",
+          "estimated_cost_usd": "0.0",
+          "evidence_supported_rate": "",
+          "exact_label_accuracy": "0.2",
+          "family": "",
+          "harness": "deterministic_baseline",
+          "latency_ms": "0",
+          "model_id": "none",
+          "model_registry_entry": "",
+          "parse_valid_rate": "1.0",
+          "provider": "deterministic",
+          "run_id": "deterministic_n50_2026_05_03",
+          "tier": ""
+        },
+        {
           "architecture_family": "direct_llm",
           "dataset_n": "25",
           "estimated_cost_usd": "0.0",
@@ -23253,6 +24067,22 @@
         },
         {
           "architecture_family": "clinical_nlp_baseline",
+          "dataset_n": "50",
+          "estimated_cost_usd": "0.0",
+          "evidence_supported_rate": "",
+          "exact_label_accuracy": "0.2",
+          "family": "",
+          "harness": "exect_lite_cleanroom_baseline",
+          "latency_ms": "0",
+          "model_id": "none",
+          "model_registry_entry": "",
+          "parse_valid_rate": "1.0",
+          "provider": "deterministic",
+          "run_id": "exect_lite_n50_2026_05_03",
+          "tier": ""
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
           "dataset_n": "2",
           "estimated_cost_usd": "0.0",
           "evidence_supported_rate": "",
@@ -23297,6 +24127,22 @@
           "parse_valid_rate": "0.0",
           "provider": "exect_v2_external",
           "run_id": "exect_v2_external_pending_n25_2026_05_03",
+          "tier": ""
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "dataset_n": "50",
+          "estimated_cost_usd": "0.0",
+          "evidence_supported_rate": "",
+          "exact_label_accuracy": "0.16",
+          "family": "",
+          "harness": "exect_v2_external_baseline",
+          "latency_ms": "0",
+          "model_id": "none",
+          "model_registry_entry": "",
+          "parse_valid_rate": "0.0",
+          "provider": "exect_v2_external",
+          "run_id": "exect_v2_external_pending_n50_2026_05_03",
           "tier": ""
         },
         {
@@ -25015,6 +25861,17 @@
           "valid_rate": "1.0"
         },
         {
+          "architecture_family": "clinical_nlp_baseline",
+          "component": "seizure_frequency",
+          "harness": "deterministic_baseline",
+          "invalid": "0",
+          "invalid_rate": "0.0",
+          "run_id": "deterministic_n50_2026_05_03",
+          "total": "50",
+          "valid": "50",
+          "valid_rate": "1.0"
+        },
+        {
           "architecture_family": "direct_llm",
           "component": "current_medications",
           "harness": "direct_evidence_contract",
@@ -25163,6 +26020,17 @@
           "harness": "exect_lite_cleanroom_baseline",
           "invalid": "0",
           "invalid_rate": "0.0",
+          "run_id": "exect_lite_n50_2026_05_03",
+          "total": "50",
+          "valid": "50",
+          "valid_rate": "1.0"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "component": "seizure_frequency",
+          "harness": "exect_lite_cleanroom_baseline",
+          "invalid": "0",
+          "invalid_rate": "0.0",
           "run_id": "exect_lite_smoke",
           "total": "2",
           "valid": "2",
@@ -25187,6 +26055,17 @@
           "invalid_rate": "1.0",
           "run_id": "exect_v2_external_pending_n25_2026_05_03",
           "total": "25",
+          "valid": "0",
+          "valid_rate": "0.0"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "component": "seizure_frequency",
+          "harness": "exect_v2_external_baseline",
+          "invalid": "50",
+          "invalid_rate": "1.0",
+          "run_id": "exect_v2_external_pending_n50_2026_05_03",
+          "total": "50",
           "valid": "0",
           "valid_rate": "0.0"
         },
@@ -29784,6 +30663,105 @@
       "workflow_units": []
     },
     {
+      "architecture_family": "clinical_nlp_baseline",
+      "budget": {
+        "input_tokens": 0,
+        "latency_ms": 0,
+        "llm_calls_per_row": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
+      },
+      "code_version": "2636720",
+      "created_at": "2026-05-03T09:39:01.416475+00:00",
+      "dataset_id": "synthetic_data_subset_1500",
+      "dataset_n": 50,
+      "escalation": {},
+      "external_baseline": false,
+      "field_coverage": {
+        "associated_symptoms": "not_implemented",
+        "comorbidities": "not_implemented",
+        "current_medications": "not_implemented",
+        "epilepsy_classification": "not_implemented",
+        "investigations": "not_implemented",
+        "other_therapies": "not_implemented",
+        "rescue_medication": "not_implemented",
+        "seizure_classification": "not_implemented",
+        "seizure_frequency": "implemented"
+      },
+      "field_coverage_counts": {
+        "implemented": 1,
+        "not_attempted": 0,
+        "partial": 0
+      },
+      "harness": "deterministic_baseline",
+      "harness_complexity": {
+        "escalation_decisions": 0,
+        "event_count": 195,
+        "intermediate_artifacts": 1,
+        "modules_invoked": "",
+        "parse_repair_attempts": 0,
+        "provider_calls": 0,
+        "status": "harness_native",
+        "verifier_passes": 0,
+        "workflow_units": 0
+      },
+      "harness_events": {
+        "component_counts": {
+          "deterministic_rules": 50,
+          "seizure_frequency": 145
+        },
+        "duration_ms": 0,
+        "errors": 0,
+        "escalation_decisions": 0,
+        "event_count": 195,
+        "event_type_counts": {
+          "context_built": 50,
+          "field_extraction_completed": 50,
+          "parse_attempted": 50,
+          "warning_emitted": 45
+        },
+        "parse_attempts": 50,
+        "parse_repair_attempts": 0,
+        "provider_calls": 0,
+        "quote_bearing_events": 0,
+        "verifier_passes": 0,
+        "warnings": 135
+      },
+      "harness_manifest": {
+        "architecture_family": "clinical_nlp_baseline",
+        "hash": "c921ee9ba15f631ce118852e89fab80a5df625aaf4e52a3ecdc96b069353fc70",
+        "id": "deterministic_baseline.v1",
+        "source": "C:\\Users\\cbrow\\Code\\dissertation-clean\\config\\harnesses\\deterministic_baseline.yaml"
+      },
+      "ladder_step": 1,
+      "mapping_version": "",
+      "metrics": {
+        "exact_label_accuracy": 0.2,
+        "monthly_rate_accuracy": 0.24,
+        "n": 50
+      },
+      "model": "none",
+      "model_registry_entry": null,
+      "parse_validity": {
+        "seizure_frequency": {
+          "invalid": 0,
+          "total": 50,
+          "valid": 50,
+          "valid_rate": 1.0
+        }
+      },
+      "prompt_version": "rules_v1",
+      "provider": "deterministic",
+      "run_id": "deterministic_n50_2026_05_03",
+      "schema_version": "1.0.0",
+      "status": "supporting",
+      "verifier_gates": {},
+      "warnings": [
+        "deterministic_rules_use_letter_text_only"
+      ],
+      "workflow_units": []
+    },
+    {
       "architecture_family": "direct_llm",
       "budget": {
         "input_tokens": 3000,
@@ -30153,6 +31131,108 @@
         "output_tokens": 0,
         "total_tokens": 0
       },
+      "code_version": "2636720",
+      "created_at": "2026-05-03T09:39:01.500305+00:00",
+      "dataset_id": "synthetic_data_subset_1500",
+      "dataset_n": 50,
+      "escalation": {},
+      "external_baseline": false,
+      "field_coverage": {
+        "associated_symptoms": "not_attempted",
+        "comorbidities": "not_attempted",
+        "current_medications": "partial",
+        "epilepsy_classification": "partial",
+        "investigations": "partial",
+        "other_therapies": "not_attempted",
+        "rescue_medication": "not_attempted",
+        "seizure_classification": "partial",
+        "seizure_frequency": "implemented"
+      },
+      "field_coverage_counts": {
+        "implemented": 1,
+        "not_attempted": 4,
+        "partial": 4
+      },
+      "harness": "exect_lite_cleanroom_baseline",
+      "harness_complexity": {
+        "escalation_decisions": 0,
+        "event_count": 240,
+        "intermediate_artifacts": 1,
+        "modules_invoked": "",
+        "parse_repair_attempts": 0,
+        "provider_calls": 0,
+        "status": "harness_native",
+        "verifier_passes": 0,
+        "workflow_units": 0
+      },
+      "harness_events": {
+        "component_counts": {
+          "baseline_mapping": 50,
+          "cleanroom_field_rules": 50,
+          "exect_lite_rules": 90,
+          "seizure_frequency": 50
+        },
+        "duration_ms": 0,
+        "errors": 0,
+        "escalation_decisions": 0,
+        "event_count": 240,
+        "event_type_counts": {
+          "aggregation_completed": 50,
+          "context_built": 50,
+          "field_extraction_completed": 50,
+          "parse_attempted": 50,
+          "warning_emitted": 40
+        },
+        "parse_attempts": 50,
+        "parse_repair_attempts": 0,
+        "provider_calls": 0,
+        "quote_bearing_events": 0,
+        "verifier_passes": 0,
+        "warnings": 120
+      },
+      "harness_manifest": {
+        "architecture_family": "clinical_nlp_baseline",
+        "hash": "044a4d20829e2508bc94e5cb79750d6eac9ebe13ed2221b1ce160d93f281c8f8",
+        "id": "exect_lite_cleanroom_baseline.v1",
+        "source": "C:\\Users\\cbrow\\Code\\dissertation-clean\\config\\harnesses\\exect_lite_cleanroom_baseline.yaml"
+      },
+      "ladder_step": 1,
+      "mapping_version": "exect_lite_v1",
+      "metrics": {
+        "exact_label_accuracy": 0.2,
+        "monthly_rate_accuracy": 0.3,
+        "n": 50
+      },
+      "model": "none",
+      "model_registry_entry": null,
+      "parse_validity": {
+        "seizure_frequency": {
+          "invalid": 0,
+          "total": 50,
+          "valid": 50,
+          "valid_rate": 1.0
+        }
+      },
+      "prompt_version": "exect_lite_rules_v1",
+      "provider": "deterministic",
+      "run_id": "exect_lite_n50_2026_05_03",
+      "schema_version": "1.0.0",
+      "status": "supporting",
+      "verifier_gates": {},
+      "warnings": [
+        "exect_lite_cleanroom_independently_authored"
+      ],
+      "workflow_units": []
+    },
+    {
+      "architecture_family": "clinical_nlp_baseline",
+      "budget": {
+        "input_tokens": 0,
+        "latency_ms": 0,
+        "llm_calls_per_row": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
+      },
       "code_version": "test",
       "created_at": "2026-05-02T12:20:46.358752+00:00",
       "dataset_id": "synthetic_subset_fixture",
@@ -30423,6 +31503,142 @@
         "exect_v2_missing_row=280",
         "exect_v2_missing_row=7708",
         "exect_v2_missing_row=4003"
+      ],
+      "workflow_units": []
+    },
+    {
+      "architecture_family": "clinical_nlp_baseline",
+      "budget": {
+        "input_tokens": 0,
+        "latency_ms": 0,
+        "llm_calls_per_row": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
+      },
+      "code_version": "2636720",
+      "created_at": "2026-05-03T09:39:09.563514+00:00",
+      "dataset_id": "synthetic_data_subset_1500",
+      "dataset_n": 50,
+      "escalation": {},
+      "external_baseline": true,
+      "field_coverage": {
+        "associated_symptoms": "not_attempted",
+        "comorbidities": "not_attempted",
+        "current_medications": "implemented",
+        "epilepsy_classification": "partial",
+        "investigations": "implemented",
+        "other_therapies": "not_attempted",
+        "rescue_medication": "not_attempted",
+        "seizure_classification": "implemented",
+        "seizure_frequency": "implemented"
+      },
+      "field_coverage_counts": {
+        "implemented": 4,
+        "not_attempted": 4,
+        "partial": 1
+      },
+      "harness": "exect_v2_external_baseline",
+      "harness_complexity": {
+        "escalation_decisions": 0,
+        "event_count": 0,
+        "intermediate_artifacts": 1,
+        "modules_invoked": "",
+        "parse_repair_attempts": 0,
+        "provider_calls": 0,
+        "status": "partial",
+        "verifier_passes": 0,
+        "workflow_units": 0
+      },
+      "harness_events": {
+        "escalation_decisions": 0,
+        "event_count": 0,
+        "event_type_counts": {},
+        "parse_repair_attempts": 0,
+        "provider_calls": 0,
+        "verifier_passes": 0
+      },
+      "harness_manifest": {
+        "architecture_family": "clinical_nlp_baseline",
+        "hash": "7db43042fca8739dc56cacc72755481703cedb5949dbb5fd303abc9b62898a26",
+        "id": "exect_v2_external_baseline.v1",
+        "source": "C:\\Users\\cbrow\\Code\\dissertation-clean\\config\\harnesses\\exect_v2_external_baseline.yaml"
+      },
+      "ladder_step": 1,
+      "mapping_version": "exect_v2_v1",
+      "metrics": {
+        "exact_label_accuracy": 0.16,
+        "monthly_rate_accuracy": 0.2,
+        "n": 50
+      },
+      "model": "none",
+      "model_registry_entry": null,
+      "parse_validity": {
+        "seizure_frequency": {
+          "invalid": 50,
+          "total": 50,
+          "valid": 0,
+          "valid_rate": 0.0
+        }
+      },
+      "prompt_version": "exect_v2_external_v1",
+      "provider": "exect_v2_external",
+      "run_id": "exect_v2_external_pending_n50_2026_05_03",
+      "schema_version": "1.0.0",
+      "status": "supporting",
+      "verifier_gates": {},
+      "warnings": [
+        "ExECTv2 outputs were generated externally. Record the source repository commit hash, GATE version, and date of generation in the run record notes before treating this run as canonical.",
+        "exect_v2_source_commit=c6202deb77d1aac3667e6838c15906254ca0caa0",
+        "exect_v2_missing_row=11118",
+        "exect_v2_missing_row=16750",
+        "exect_v2_missing_row=14706",
+        "exect_v2_missing_row=12383",
+        "exect_v2_missing_row=5555",
+        "exect_v2_missing_row=6216",
+        "exect_v2_missing_row=10703",
+        "exect_v2_missing_row=10594",
+        "exect_v2_missing_row=14036",
+        "exect_v2_missing_row=4562",
+        "exect_v2_missing_row=14369",
+        "exect_v2_missing_row=9786",
+        "exect_v2_missing_row=9879",
+        "exect_v2_missing_row=8488",
+        "exect_v2_missing_row=13079",
+        "exect_v2_missing_row=16158",
+        "exect_v2_missing_row=9278",
+        "exect_v2_missing_row=16356",
+        "exect_v2_missing_row=16036",
+        "exect_v2_missing_row=665",
+        "exect_v2_missing_row=1165",
+        "exect_v2_missing_row=10967",
+        "exect_v2_missing_row=280",
+        "exect_v2_missing_row=7708",
+        "exect_v2_missing_row=4003",
+        "exect_v2_missing_row=10010",
+        "exect_v2_missing_row=15376",
+        "exect_v2_missing_row=3859",
+        "exect_v2_missing_row=8188",
+        "exect_v2_missing_row=1922",
+        "exect_v2_missing_row=15129",
+        "exect_v2_missing_row=12111",
+        "exect_v2_missing_row=16253",
+        "exect_v2_missing_row=10968",
+        "exect_v2_missing_row=2135",
+        "exect_v2_missing_row=10147",
+        "exect_v2_missing_row=1707",
+        "exect_v2_missing_row=10909",
+        "exect_v2_missing_row=2356",
+        "exect_v2_missing_row=13485",
+        "exect_v2_missing_row=7047",
+        "exect_v2_missing_row=9496",
+        "exect_v2_missing_row=3237",
+        "exect_v2_missing_row=4110",
+        "exect_v2_missing_row=6321",
+        "exect_v2_missing_row=1378",
+        "exect_v2_missing_row=9354",
+        "exect_v2_missing_row=13385",
+        "exect_v2_missing_row=14040",
+        "exect_v2_missing_row=16685"
       ],
       "workflow_units": []
     },

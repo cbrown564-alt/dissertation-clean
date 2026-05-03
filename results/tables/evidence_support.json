@@ -30,6 +30,16 @@
     "unsupported_citations": ""
   },
   {
+    "architecture_family": "clinical_nlp_baseline",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "deterministic_baseline",
+    "run_id": "deterministic_n50_2026_05_03",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
     "architecture_family": "direct_llm",
     "evidence_status": "reported",
     "evidence_supported_rate": 0.92,
@@ -64,6 +74,16 @@
     "evidence_status": "not_reported",
     "evidence_supported_rate": "",
     "harness": "exect_lite_cleanroom_baseline",
+    "run_id": "exect_lite_n50_2026_05_03",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "clinical_nlp_baseline",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "exect_lite_cleanroom_baseline",
     "run_id": "exect_lite_smoke",
     "supported_citations": "",
     "total_citations": "",
@@ -85,6 +105,16 @@
     "evidence_supported_rate": "",
     "harness": "exect_v2_external_baseline",
     "run_id": "exect_v2_external_pending_n25_2026_05_03",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "clinical_nlp_baseline",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "exect_v2_external_baseline",
+    "run_id": "exect_v2_external_pending_n50_2026_05_03",
     "supported_citations": "",
     "total_citations": "",
     "unsupported_citations": ""

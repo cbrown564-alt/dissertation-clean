@@ -132,6 +132,17 @@
     "valid_rate": 1.0
   },
   {
+    "architecture_family": "clinical_nlp_baseline",
+    "component": "seizure_frequency",
+    "harness": "deterministic_baseline",
+    "invalid": 0,
+    "invalid_rate": 0.0,
+    "run_id": "deterministic_n50_2026_05_03",
+    "total": 50,
+    "valid": 50,
+    "valid_rate": 1.0
+  },
+  {
     "architecture_family": "direct_llm",
     "component": "current_medications",
     "harness": "direct_evidence_contract",
@@ -280,6 +291,17 @@
     "harness": "exect_lite_cleanroom_baseline",
     "invalid": 0,
     "invalid_rate": 0.0,
+    "run_id": "exect_lite_n50_2026_05_03",
+    "total": 50,
+    "valid": 50,
+    "valid_rate": 1.0
+  },
+  {
+    "architecture_family": "clinical_nlp_baseline",
+    "component": "seizure_frequency",
+    "harness": "exect_lite_cleanroom_baseline",
+    "invalid": 0,
+    "invalid_rate": 0.0,
     "run_id": "exect_lite_smoke",
     "total": 2,
     "valid": 2,
@@ -304,6 +326,17 @@
     "invalid_rate": 1.0,
     "run_id": "exect_v2_external_pending_n25_2026_05_03",
     "total": 25,
+    "valid": 0,
+    "valid_rate": 0.0
+  },
+  {
+    "architecture_family": "clinical_nlp_baseline",
+    "component": "seizure_frequency",
+    "harness": "exect_v2_external_baseline",
+    "invalid": 50,
+    "invalid_rate": 1.0,
+    "run_id": "exect_v2_external_pending_n50_2026_05_03",
+    "total": 50,
     "valid": 0,
     "valid_rate": 0.0
   },

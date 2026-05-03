@@ -1,10 +1,13 @@
 run_id,harness,field_family,n,exact_label_accuracy,monthly_rate_accuracy_tolerance_15pct,pragmatic_macro_f1,pragmatic_weighted_f1,purist_macro_f1,purist_weighted_f1,adjudication_status
 deterministic_n25_2026_05_03,deterministic_baseline,seizure_frequency,25,0.2,0.28,0.20248270248270248,0.2164916564916565,0.19576719576719576,0.1940740740740741,not_adjudicated
+deterministic_n50_2026_05_03,deterministic_baseline,seizure_frequency,50,0.2,0.24,0.1542207792207792,0.14259740259740258,0.15194805194805192,0.13472727272727272,not_adjudicated
 direct_evidence_contract_n25_gold_seeded_2026_05_03,direct_evidence_contract,seizure_frequency,25,,,,,,,not_adjudicated
 exect_lite_n25_2026_05_03,exect_lite_cleanroom_baseline,seizure_frequency,25,0.2,0.32,0.24702380952380953,0.28904761904761905,0.23412698412698413,0.2744444444444445,not_adjudicated
+exect_lite_n50_2026_05_03,exect_lite_cleanroom_baseline,seizure_frequency,50,0.2,0.3,0.27993730407523515,0.2244514106583072,0.2285714285714286,0.218,not_adjudicated
 exect_lite_smoke,exect_lite_cleanroom_baseline,seizure_frequency,2,1.0,1.0,1.0,1.0,1.0,1.0,not_adjudicated
 exect_v2_external_gold_seeded_n25_2026_05_03,exect_v2_external_baseline,seizure_frequency,25,1.0,1.0,1.0,1.0,1.0,1.0,not_adjudicated
 exect_v2_external_pending_n25_2026_05_03,exect_v2_external_baseline,seizure_frequency,25,0.12,0.2,0.08333333333333334,0.06666666666666668,0.04761904761904762,0.06666666666666668,not_adjudicated
+exect_v2_external_pending_n50_2026_05_03,exect_v2_external_baseline,seizure_frequency,50,0.16,0.2,0.08333333333333334,0.06666666666666668,0.04761904761904762,0.06666666666666668,not_adjudicated
 matrix_claude-3-5-haiku-20241022_direct_evidence_contract,direct_evidence_contract,seizure_frequency,25,,,,,,,not_adjudicated
 matrix_claude-3-5-sonnet-20241022_direct_evidence_contract,direct_evidence_contract,seizure_frequency,25,,,,,,,not_adjudicated
 matrix_claude-3-haiku-20240307_direct_evidence_contract,direct_evidence_contract,seizure_frequency,25,,,,,,,not_adjudicated

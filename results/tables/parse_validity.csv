@@ -11,6 +11,7 @@ clines_epilepsy_verified_n25_gold_seeded_2026_05_03,clines_epilepsy_verified,cli
 clines_epilepsy_verified_n25_gold_seeded_2026_05_03,clines_epilepsy_verified,clines_inspired_modular,seizure_frequency,25,0,25,1.0,0.0
 clines_epilepsy_verified_n25_gold_seeded_2026_05_03,clines_epilepsy_verified,clines_inspired_modular,verification,25,0,25,1.0,0.0
 deterministic_n25_2026_05_03,deterministic_baseline,clinical_nlp_baseline,seizure_frequency,25,0,25,1.0,0.0
+deterministic_n50_2026_05_03,deterministic_baseline,clinical_nlp_baseline,seizure_frequency,50,0,50,1.0,0.0
 direct_evidence_contract_n25_gold_seeded_2026_05_03,direct_evidence_contract,direct_llm,current_medications,25,0,25,1.0,0.0
 direct_evidence_contract_n25_gold_seeded_2026_05_03,direct_evidence_contract,direct_llm,epilepsy_classification,25,0,25,1.0,0.0
 direct_evidence_contract_n25_gold_seeded_2026_05_03,direct_evidence_contract,direct_llm,final_output,25,0,25,1.0,0.0
@@ -24,9 +25,11 @@ direct_full_contract_n25_gold_seeded_2026_05_03,direct_full_contract,direct_llm,
 direct_full_contract_n25_gold_seeded_2026_05_03,direct_full_contract,direct_llm,seizure_classification,25,0,25,1.0,0.0
 direct_full_contract_n25_gold_seeded_2026_05_03,direct_full_contract,direct_llm,seizure_frequency,25,0,25,1.0,0.0
 exect_lite_n25_2026_05_03,exect_lite_cleanroom_baseline,clinical_nlp_baseline,seizure_frequency,25,0,25,1.0,0.0
+exect_lite_n50_2026_05_03,exect_lite_cleanroom_baseline,clinical_nlp_baseline,seizure_frequency,50,0,50,1.0,0.0
 exect_lite_smoke,exect_lite_cleanroom_baseline,clinical_nlp_baseline,seizure_frequency,2,0,2,1.0,0.0
 exect_v2_external_gold_seeded_n25_2026_05_03,exect_v2_external_baseline,clinical_nlp_baseline,seizure_frequency,25,0,25,1.0,0.0
 exect_v2_external_pending_n25_2026_05_03,exect_v2_external_baseline,clinical_nlp_baseline,seizure_frequency,0,25,25,0.0,1.0
+exect_v2_external_pending_n50_2026_05_03,exect_v2_external_baseline,clinical_nlp_baseline,seizure_frequency,0,50,50,0.0,1.0
 matrix_claude-3-5-haiku-20241022_budgeted_escalation,budgeted_escalation,costed_reliability_variant,current_medications,25,0,25,1.0,0.0
 matrix_claude-3-5-haiku-20241022_budgeted_escalation,budgeted_escalation,costed_reliability_variant,epilepsy_classification,25,0,25,1.0,0.0
 matrix_claude-3-5-haiku-20241022_budgeted_escalation,budgeted_escalation,costed_reliability_variant,investigations,25,0,25,1.0,0.0

@@ -95,6 +95,96 @@
     "evidence_available": "available_when_span_extracted",
     "external_baseline": false,
     "field_family": "seizure_frequency",
+    "harness": "deterministic_baseline",
+    "mapping_version": "",
+    "run_id": "deterministic_n50_2026_05_03"
+  },
+  {
+    "comparability_notes": "partial_mapping",
+    "coverage_status": "not_implemented",
+    "evidence_available": "available_when_span_extracted",
+    "external_baseline": false,
+    "field_family": "current_medications",
+    "harness": "deterministic_baseline",
+    "mapping_version": "",
+    "run_id": "deterministic_n50_2026_05_03"
+  },
+  {
+    "comparability_notes": "partial_mapping",
+    "coverage_status": "not_implemented",
+    "evidence_available": "available_when_span_extracted",
+    "external_baseline": false,
+    "field_family": "investigations",
+    "harness": "deterministic_baseline",
+    "mapping_version": "",
+    "run_id": "deterministic_n50_2026_05_03"
+  },
+  {
+    "comparability_notes": "partial_mapping",
+    "coverage_status": "not_implemented",
+    "evidence_available": "available_when_span_extracted",
+    "external_baseline": false,
+    "field_family": "seizure_classification",
+    "harness": "deterministic_baseline",
+    "mapping_version": "",
+    "run_id": "deterministic_n50_2026_05_03"
+  },
+  {
+    "comparability_notes": "partial_mapping",
+    "coverage_status": "not_implemented",
+    "evidence_available": "available_when_span_extracted",
+    "external_baseline": false,
+    "field_family": "epilepsy_classification",
+    "harness": "deterministic_baseline",
+    "mapping_version": "",
+    "run_id": "deterministic_n50_2026_05_03"
+  },
+  {
+    "comparability_notes": "partial_mapping",
+    "coverage_status": "not_implemented",
+    "evidence_available": "available_when_span_extracted",
+    "external_baseline": false,
+    "field_family": "rescue_medication",
+    "harness": "deterministic_baseline",
+    "mapping_version": "",
+    "run_id": "deterministic_n50_2026_05_03"
+  },
+  {
+    "comparability_notes": "partial_mapping",
+    "coverage_status": "not_implemented",
+    "evidence_available": "available_when_span_extracted",
+    "external_baseline": false,
+    "field_family": "other_therapies",
+    "harness": "deterministic_baseline",
+    "mapping_version": "",
+    "run_id": "deterministic_n50_2026_05_03"
+  },
+  {
+    "comparability_notes": "partial_mapping",
+    "coverage_status": "not_implemented",
+    "evidence_available": "available_when_span_extracted",
+    "external_baseline": false,
+    "field_family": "comorbidities",
+    "harness": "deterministic_baseline",
+    "mapping_version": "",
+    "run_id": "deterministic_n50_2026_05_03"
+  },
+  {
+    "comparability_notes": "partial_mapping",
+    "coverage_status": "not_implemented",
+    "evidence_available": "available_when_span_extracted",
+    "external_baseline": false,
+    "field_family": "associated_symptoms",
+    "harness": "deterministic_baseline",
+    "mapping_version": "",
+    "run_id": "deterministic_n50_2026_05_03"
+  },
+  {
+    "comparability_notes": "",
+    "coverage_status": "implemented",
+    "evidence_available": "available_when_span_extracted",
+    "external_baseline": false,
+    "field_family": "seizure_frequency",
     "harness": "exect_lite_cleanroom_baseline",
     "mapping_version": "exect_lite_v1",
     "run_id": "exect_lite_n25_2026_05_03"
@@ -178,6 +268,96 @@
     "harness": "exect_lite_cleanroom_baseline",
     "mapping_version": "exect_lite_v1",
     "run_id": "exect_lite_n25_2026_05_03"
+  },
+  {
+    "comparability_notes": "",
+    "coverage_status": "implemented",
+    "evidence_available": "available_when_span_extracted",
+    "external_baseline": false,
+    "field_family": "seizure_frequency",
+    "harness": "exect_lite_cleanroom_baseline",
+    "mapping_version": "exect_lite_v1",
+    "run_id": "exect_lite_n50_2026_05_03"
+  },
+  {
+    "comparability_notes": "partial_mapping",
+    "coverage_status": "partial",
+    "evidence_available": "available_when_span_extracted",
+    "external_baseline": false,
+    "field_family": "current_medications",
+    "harness": "exect_lite_cleanroom_baseline",
+    "mapping_version": "exect_lite_v1",
+    "run_id": "exect_lite_n50_2026_05_03"
+  },
+  {
+    "comparability_notes": "partial_mapping",
+    "coverage_status": "partial",
+    "evidence_available": "available_when_span_extracted",
+    "external_baseline": false,
+    "field_family": "investigations",
+    "harness": "exect_lite_cleanroom_baseline",
+    "mapping_version": "exect_lite_v1",
+    "run_id": "exect_lite_n50_2026_05_03"
+  },
+  {
+    "comparability_notes": "partial_mapping",
+    "coverage_status": "partial",
+    "evidence_available": "available_when_span_extracted",
+    "external_baseline": false,
+    "field_family": "seizure_classification",
+    "harness": "exect_lite_cleanroom_baseline",
+    "mapping_version": "exect_lite_v1",
+    "run_id": "exect_lite_n50_2026_05_03"
+  },
+  {
+    "comparability_notes": "partial_mapping",
+    "coverage_status": "partial",
+    "evidence_available": "available_when_span_extracted",
+    "external_baseline": false,
+    "field_family": "epilepsy_classification",
+    "harness": "exect_lite_cleanroom_baseline",
+    "mapping_version": "exect_lite_v1",
+    "run_id": "exect_lite_n50_2026_05_03"
+  },
+  {
+    "comparability_notes": "field_not_attempted",
+    "coverage_status": "not_attempted",
+    "evidence_available": "not_applicable",
+    "external_baseline": false,
+    "field_family": "rescue_medication",
+    "harness": "exect_lite_cleanroom_baseline",
+    "mapping_version": "exect_lite_v1",
+    "run_id": "exect_lite_n50_2026_05_03"
+  },
+  {
+    "comparability_notes": "field_not_attempted",
+    "coverage_status": "not_attempted",
+    "evidence_available": "not_applicable",
+    "external_baseline": false,
+    "field_family": "other_therapies",
+    "harness": "exect_lite_cleanroom_baseline",
+    "mapping_version": "exect_lite_v1",
+    "run_id": "exect_lite_n50_2026_05_03"
+  },
+  {
+    "comparability_notes": "field_not_attempted",
+    "coverage_status": "not_attempted",
+    "evidence_available": "not_applicable",
+    "external_baseline": false,
+    "field_family": "comorbidities",
+    "harness": "exect_lite_cleanroom_baseline",
+    "mapping_version": "exect_lite_v1",
+    "run_id": "exect_lite_n50_2026_05_03"
+  },
+  {
+    "comparability_notes": "field_not_attempted",
+    "coverage_status": "not_attempted",
+    "evidence_available": "not_applicable",
+    "external_baseline": false,
+    "field_family": "associated_symptoms",
+    "harness": "exect_lite_cleanroom_baseline",
+    "mapping_version": "exect_lite_v1",
+    "run_id": "exect_lite_n50_2026_05_03"
   },
   {
     "comparability_notes": "",
@@ -448,5 +628,95 @@
     "harness": "exect_v2_external_baseline",
     "mapping_version": "exect_v2_v1",
     "run_id": "exect_v2_external_pending_n25_2026_05_03"
+  },
+  {
+    "comparability_notes": "",
+    "coverage_status": "implemented",
+    "evidence_available": "mapped_if_supplied",
+    "external_baseline": true,
+    "field_family": "seizure_frequency",
+    "harness": "exect_v2_external_baseline",
+    "mapping_version": "exect_v2_v1",
+    "run_id": "exect_v2_external_pending_n50_2026_05_03"
+  },
+  {
+    "comparability_notes": "",
+    "coverage_status": "implemented",
+    "evidence_available": "mapped_if_supplied",
+    "external_baseline": true,
+    "field_family": "current_medications",
+    "harness": "exect_v2_external_baseline",
+    "mapping_version": "exect_v2_v1",
+    "run_id": "exect_v2_external_pending_n50_2026_05_03"
+  },
+  {
+    "comparability_notes": "",
+    "coverage_status": "implemented",
+    "evidence_available": "mapped_if_supplied",
+    "external_baseline": true,
+    "field_family": "investigations",
+    "harness": "exect_v2_external_baseline",
+    "mapping_version": "exect_v2_v1",
+    "run_id": "exect_v2_external_pending_n50_2026_05_03"
+  },
+  {
+    "comparability_notes": "",
+    "coverage_status": "implemented",
+    "evidence_available": "mapped_if_supplied",
+    "external_baseline": true,
+    "field_family": "seizure_classification",
+    "harness": "exect_v2_external_baseline",
+    "mapping_version": "exect_v2_v1",
+    "run_id": "exect_v2_external_pending_n50_2026_05_03"
+  },
+  {
+    "comparability_notes": "partial_mapping",
+    "coverage_status": "partial",
+    "evidence_available": "mapped_if_supplied",
+    "external_baseline": true,
+    "field_family": "epilepsy_classification",
+    "harness": "exect_v2_external_baseline",
+    "mapping_version": "exect_v2_v1",
+    "run_id": "exect_v2_external_pending_n50_2026_05_03"
+  },
+  {
+    "comparability_notes": "field_not_attempted",
+    "coverage_status": "not_attempted",
+    "evidence_available": "not_applicable",
+    "external_baseline": true,
+    "field_family": "rescue_medication",
+    "harness": "exect_v2_external_baseline",
+    "mapping_version": "exect_v2_v1",
+    "run_id": "exect_v2_external_pending_n50_2026_05_03"
+  },
+  {
+    "comparability_notes": "field_not_attempted",
+    "coverage_status": "not_attempted",
+    "evidence_available": "not_applicable",
+    "external_baseline": true,
+    "field_family": "other_therapies",
+    "harness": "exect_v2_external_baseline",
+    "mapping_version": "exect_v2_v1",
+    "run_id": "exect_v2_external_pending_n50_2026_05_03"
+  },
+  {
+    "comparability_notes": "field_not_attempted",
+    "coverage_status": "not_attempted",
+    "evidence_available": "not_applicable",
+    "external_baseline": true,
+    "field_family": "comorbidities",
+    "harness": "exect_v2_external_baseline",
+    "mapping_version": "exect_v2_v1",
+    "run_id": "exect_v2_external_pending_n50_2026_05_03"
+  },
+  {
+    "comparability_notes": "field_not_attempted",
+    "coverage_status": "not_attempted",
+    "evidence_available": "not_applicable",
+    "external_baseline": true,
+    "field_family": "associated_symptoms",
+    "harness": "exect_v2_external_baseline",
+    "mapping_version": "exect_v2_v1",
+    "run_id": "exect_v2_external_pending_n50_2026_05_03"
   }
 ]

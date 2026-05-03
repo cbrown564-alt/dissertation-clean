@@ -2,12 +2,15 @@ run_id,harness,architecture_family,model_registry_entry,model_id,provider,family
 clines_epilepsy_modular_n25_gold_seeded_2026_05_03,clines_epilepsy_modular,clines_inspired_modular,openai_gpt_4_1_2025_04_14,mock-model,replay,,,25,,,1.0,0.0,125
 clines_epilepsy_verified_n25_gold_seeded_2026_05_03,clines_epilepsy_verified,clines_inspired_modular,openai_gpt_4_1_2025_04_14,mock-model,replay,,,25,,,1.0,0.0,150
 deterministic_n25_2026_05_03,deterministic_baseline,clinical_nlp_baseline,,none,deterministic,,,25,0.2,,1.0,0.0,0
+deterministic_n50_2026_05_03,deterministic_baseline,clinical_nlp_baseline,,none,deterministic,,,50,0.2,,1.0,0.0,0
 direct_evidence_contract_n25_gold_seeded_2026_05_03,direct_evidence_contract,direct_llm,openai_gpt_4_1_2025_04_14,mock-model,replay,,,25,,0.92,1.0,0.0,25
 direct_full_contract_n25_gold_seeded_2026_05_03,direct_full_contract,direct_llm,openai_gpt_4_1_2025_04_14,mock-model,replay,,,25,,,1.0,0.0,25
 exect_lite_n25_2026_05_03,exect_lite_cleanroom_baseline,clinical_nlp_baseline,,none,deterministic,,,25,0.2,,1.0,0.0,0
+exect_lite_n50_2026_05_03,exect_lite_cleanroom_baseline,clinical_nlp_baseline,,none,deterministic,,,50,0.2,,1.0,0.0,0
 exect_lite_smoke,exect_lite_cleanroom_baseline,clinical_nlp_baseline,,none,deterministic,,,2,1.0,,1.0,0.0,0
 exect_v2_external_gold_seeded_n25_2026_05_03,exect_v2_external_baseline,clinical_nlp_baseline,,none,exect_v2_external,,,25,1.0,,1.0,0.0,0
 exect_v2_external_pending_n25_2026_05_03,exect_v2_external_baseline,clinical_nlp_baseline,,none,exect_v2_external,,,25,0.12,,0.0,0.0,0
+exect_v2_external_pending_n50_2026_05_03,exect_v2_external_baseline,clinical_nlp_baseline,,none,exect_v2_external,,,50,0.16,,0.0,0.0,0
 metadata_smoke_n5,metadata_smoke,,,none,deterministic,,,5,,,0.0,0.0,0
 matrix_claude-3-5-haiku-20241022_budgeted_escalation,budgeted_escalation,costed_reliability_variant,claude-3-5-haiku-20241022,claude-3-5-haiku-20241022,anthropic,claude-3,medium,25,,,1.0,0.0,125
 matrix_claude-3-5-sonnet-20241022_budgeted_escalation,budgeted_escalation,costed_reliability_variant,claude-3-5-sonnet-20241022,claude-3-5-sonnet-20241022,anthropic,claude-3,frontier,25,,,1.0,0.0,125

@@ -1,0 +1,24 @@
+{
+  "completed_rows": 0,
+  "completion_rate": 0.0,
+  "error_tag_counts": {},
+  "evidence_grade_counts": {
+    "not_adjudicated": 125
+  },
+  "field_family_counts": {
+    "seizure_frequency": 125
+  },
+  "not_adjudicated_rows": 125,
+  "rows": 125,
+  "score_counts": {
+    "normalization_score": {
+      "not_adjudicated": 125
+    },
+    "status_temporality_score": {
+      "not_adjudicated": 125
+    },
+    "value_score": {
+      "not_adjudicated": 125
+    }
+  }
+}
