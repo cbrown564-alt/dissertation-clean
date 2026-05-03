@@ -1,5 +1,29 @@
 [
   {
+    "architecture_family": "direct_llm",
+    "dataset_n": 1,
+    "exact_label_accuracy": 1.0,
+    "harness": "single_prompt_anchor",
+    "model": "mock-model",
+    "monthly_rate_accuracy_tolerance_15pct": 1.0,
+    "pragmatic_macro_f1": 1.0,
+    "purist_macro_f1": 1.0,
+    "run_id": "single_prompt_anchor_n1_gold_seeded_2026_05_03",
+    "warnings": ""
+  },
+  {
+    "architecture_family": "retrieval_field_pipeline",
+    "dataset_n": 1,
+    "exact_label_accuracy": 1.0,
+    "harness": "retrieval_anchor",
+    "model": "mock-model",
+    "monthly_rate_accuracy_tolerance_15pct": 1.0,
+    "pragmatic_macro_f1": 1.0,
+    "purist_macro_f1": 1.0,
+    "run_id": "retrieval_anchor_n1_gold_seeded_2026_05_03",
+    "warnings": ""
+  },
+  {
     "architecture_family": "clines_inspired_modular",
     "dataset_n": 1,
     "exact_label_accuracy": 1.0,
@@ -33,30 +57,6 @@
     "pragmatic_macro_f1": 1.0,
     "purist_macro_f1": 1.0,
     "run_id": "multi_agent_anchor_sc5_n1_gold_seeded_2026_05_03",
-    "warnings": ""
-  },
-  {
-    "architecture_family": "retrieval_field_pipeline",
-    "dataset_n": 1,
-    "exact_label_accuracy": 1.0,
-    "harness": "retrieval_anchor",
-    "model": "mock-model",
-    "monthly_rate_accuracy_tolerance_15pct": 1.0,
-    "pragmatic_macro_f1": 1.0,
-    "purist_macro_f1": 1.0,
-    "run_id": "retrieval_anchor_n1_gold_seeded_2026_05_03",
-    "warnings": ""
-  },
-  {
-    "architecture_family": "direct_llm",
-    "dataset_n": 1,
-    "exact_label_accuracy": 1.0,
-    "harness": "single_prompt_anchor",
-    "model": "mock-model",
-    "monthly_rate_accuracy_tolerance_15pct": 1.0,
-    "pragmatic_macro_f1": 1.0,
-    "purist_macro_f1": 1.0,
-    "run_id": "single_prompt_anchor_n1_gold_seeded_2026_05_03",
     "warnings": ""
   }
 ]

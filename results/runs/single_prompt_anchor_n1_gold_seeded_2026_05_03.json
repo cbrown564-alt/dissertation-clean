@@ -12,7 +12,7 @@
     "output_tokens": 6,
     "total_tokens": 26
   },
-  "code_version": "6b606dd-dirty",
+  "code_version": "d8a2c37-dirty",
   "complexity": {
     "manifest": {
       "aggregation_policy": {
@@ -61,7 +61,7 @@
       "version": "1"
     }
   },
-  "created_at": "2026-05-03T09:25:19.665773+00:00",
+  "created_at": "2026-05-03T09:31:08.002524+00:00",
   "dataset": {
     "data_hash": "cf13b498609079d37ba7ccd4cb9886b7d8a60a8bcd75e48ab5b4debb939b1c21",
     "dataset_id": "synthetic_data_subset_1500",
@@ -114,7 +114,7 @@
   "harness_events": [
     {
       "component": "single_prompt_anchor",
-      "created_at": "2026-05-03T09:25:19.664719+00:00",
+      "created_at": "2026-05-03T09:31:08.001384+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "11118:1:context_built",
@@ -130,7 +130,7 @@
     },
     {
       "component": "single_prompt_anchor:call_1",
-      "created_at": "2026-05-03T09:25:19.665346+00:00",
+      "created_at": "2026-05-03T09:31:08.002033+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "11118:2:provider_call_started",
@@ -144,7 +144,7 @@
     },
     {
       "component": "single_prompt_anchor:call_1",
-      "created_at": "2026-05-03T09:25:19.665356+00:00",
+      "created_at": "2026-05-03T09:31:08.002046+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "11118:3:provider_call_finished",
@@ -163,7 +163,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:25:19.665361+00:00",
+      "created_at": "2026-05-03T09:31:08.002051+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "11118:4:parse_attempted",
@@ -179,7 +179,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:25:19.665365+00:00",
+      "created_at": "2026-05-03T09:31:08.002055+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "11118:5:field_extraction_completed",
@@ -235,7 +235,7 @@
     }
   },
   "model": "mock-model",
-  "model_registry_entry": null,
+  "model_registry_entry": "openai_gpt_4_1_2025_04_14",
   "parse_validity": {
     "seizure_frequency": {
       "invalid": 0,
@@ -265,7 +265,7 @@
       "harness_events": [
         {
           "component": "single_prompt_anchor",
-          "created_at": "2026-05-03T09:25:19.664719+00:00",
+          "created_at": "2026-05-03T09:31:08.001384+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "11118:1:context_built",
@@ -281,7 +281,7 @@
         },
         {
           "component": "single_prompt_anchor:call_1",
-          "created_at": "2026-05-03T09:25:19.665346+00:00",
+          "created_at": "2026-05-03T09:31:08.002033+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "11118:2:provider_call_started",
@@ -295,7 +295,7 @@
         },
         {
           "component": "single_prompt_anchor:call_1",
-          "created_at": "2026-05-03T09:25:19.665356+00:00",
+          "created_at": "2026-05-03T09:31:08.002046+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "11118:3:provider_call_finished",
@@ -314,7 +314,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:25:19.665361+00:00",
+          "created_at": "2026-05-03T09:31:08.002051+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "11118:4:parse_attempted",
@@ -330,7 +330,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:25:19.665365+00:00",
+          "created_at": "2026-05-03T09:31:08.002055+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "11118:5:field_extraction_completed",

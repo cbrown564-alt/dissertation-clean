@@ -8,7 +8,7 @@
     "dataset_id": "synthetic_data_subset_1500",
     "exact_label_accuracy_delta": "",
     "matched_rows": 25,
-    "model_registry_entry": "claude-3-5-sonnet-20241022",
+    "model_registry_entry": "openai_gpt_4_1_2025_04_14",
     "monthly_rate_accuracy_delta": "",
     "parse_validity_delta": 0.0,
     "total_token_delta": 3000
@@ -22,7 +22,7 @@
     "dataset_id": "synthetic_data_subset_1500",
     "exact_label_accuracy_delta": "",
     "matched_rows": 25,
-    "model_registry_entry": "claude-3-5-sonnet-20241022",
+    "model_registry_entry": "openai_gpt_4_1_2025_04_14",
     "monthly_rate_accuracy_delta": "",
     "parse_validity_delta": 0.0,
     "total_token_delta": -10875
@@ -36,7 +36,7 @@
     "dataset_id": "synthetic_data_subset_1500",
     "exact_label_accuracy_delta": "",
     "matched_rows": 25,
-    "model_registry_entry": "claude-3-5-sonnet-20241022",
+    "model_registry_entry": "openai_gpt_4_1_2025_04_14",
     "monthly_rate_accuracy_delta": "",
     "parse_validity_delta": 0.0,
     "total_token_delta": -10875
@@ -50,7 +50,7 @@
     "dataset_id": "synthetic_data_subset_1500",
     "exact_label_accuracy_delta": "",
     "matched_rows": 25,
-    "model_registry_entry": "claude-3-5-sonnet-20241022",
+    "model_registry_entry": "openai_gpt_4_1_2025_04_14",
     "monthly_rate_accuracy_delta": "",
     "parse_validity_delta": 0.0,
     "total_token_delta": 0
@@ -64,7 +64,7 @@
     "dataset_id": "synthetic_data_subset_1500",
     "exact_label_accuracy_delta": "",
     "matched_rows": 25,
-    "model_registry_entry": "claude-3-5-sonnet-20241022",
+    "model_registry_entry": "openai_gpt_4_1_2025_04_14",
     "monthly_rate_accuracy_delta": "",
     "parse_validity_delta": 0.0,
     "total_token_delta": -13875
@@ -78,7 +78,7 @@
     "dataset_id": "synthetic_data_subset_1500",
     "exact_label_accuracy_delta": "",
     "matched_rows": 25,
-    "model_registry_entry": "claude-3-5-sonnet-20241022",
+    "model_registry_entry": "openai_gpt_4_1_2025_04_14",
     "monthly_rate_accuracy_delta": "",
     "parse_validity_delta": 0.0,
     "total_token_delta": -13875
@@ -92,7 +92,7 @@
     "dataset_id": "synthetic_data_subset_1500",
     "exact_label_accuracy_delta": "",
     "matched_rows": 25,
-    "model_registry_entry": "claude-3-5-sonnet-20241022",
+    "model_registry_entry": "openai_gpt_4_1_2025_04_14",
     "monthly_rate_accuracy_delta": "",
     "parse_validity_delta": 0.0,
     "total_token_delta": -3000
@@ -148,7 +148,7 @@
     "dataset_id": "synthetic_data_subset_1500",
     "exact_label_accuracy_delta": "",
     "matched_rows": 25,
-    "model_registry_entry": "claude-3-5-sonnet-20241022",
+    "model_registry_entry": "openai_gpt_4_1_2025_04_14",
     "monthly_rate_accuracy_delta": "",
     "parse_validity_delta": 0.0,
     "total_token_delta": 0
@@ -162,7 +162,7 @@
     "dataset_id": "synthetic_data_subset_1500",
     "exact_label_accuracy_delta": "",
     "matched_rows": 25,
-    "model_registry_entry": "claude-3-5-sonnet-20241022",
+    "model_registry_entry": "openai_gpt_4_1_2025_04_14",
     "monthly_rate_accuracy_delta": "",
     "parse_validity_delta": 0.0,
     "total_token_delta": 10875
@@ -176,7 +176,7 @@
     "dataset_id": "synthetic_data_subset_1500",
     "exact_label_accuracy_delta": "",
     "matched_rows": 25,
-    "model_registry_entry": "claude-3-5-sonnet-20241022",
+    "model_registry_entry": "openai_gpt_4_1_2025_04_14",
     "monthly_rate_accuracy_delta": "",
     "parse_validity_delta": 0.0,
     "total_token_delta": 10875
@@ -232,7 +232,7 @@
     "dataset_id": "synthetic_data_subset_1500",
     "exact_label_accuracy_delta": 0.0,
     "matched_rows": 1,
-    "model_registry_entry": "mock-model",
+    "model_registry_entry": "openai_gpt_4_1_2025_04_14",
     "monthly_rate_accuracy_delta": 0.0,
     "parse_validity_delta": 0.0,
     "total_token_delta": 24
@@ -246,7 +246,7 @@
     "dataset_id": "synthetic_data_subset_1500",
     "exact_label_accuracy_delta": 0.0,
     "matched_rows": 1,
-    "model_registry_entry": "mock-model",
+    "model_registry_entry": "openai_gpt_4_1_2025_04_14",
     "monthly_rate_accuracy_delta": 0.0,
     "parse_validity_delta": 0.0,
     "total_token_delta": 76
@@ -260,7 +260,7 @@
     "dataset_id": "synthetic_data_subset_1500",
     "exact_label_accuracy_delta": 0.0,
     "matched_rows": 1,
-    "model_registry_entry": "mock-model",
+    "model_registry_entry": "openai_gpt_4_1_2025_04_14",
     "monthly_rate_accuracy_delta": 0.0,
     "parse_validity_delta": 0.0,
     "total_token_delta": -28
@@ -274,7 +274,7 @@
     "dataset_id": "synthetic_data_subset_1500",
     "exact_label_accuracy_delta": 0.0,
     "matched_rows": 1,
-    "model_registry_entry": "mock-model",
+    "model_registry_entry": "openai_gpt_4_1_2025_04_14",
     "monthly_rate_accuracy_delta": 0.0,
     "parse_validity_delta": 0.0,
     "total_token_delta": -28
@@ -288,7 +288,7 @@
     "dataset_id": "synthetic_data_subset_1500",
     "exact_label_accuracy_delta": 0.0,
     "matched_rows": 1,
-    "model_registry_entry": "mock-model",
+    "model_registry_entry": "openai_gpt_4_1_2025_04_14",
     "monthly_rate_accuracy_delta": 0.0,
     "parse_validity_delta": 0.0,
     "total_token_delta": 52
@@ -302,7 +302,7 @@
     "dataset_id": "synthetic_data_subset_1500",
     "exact_label_accuracy_delta": 0.0,
     "matched_rows": 1,
-    "model_registry_entry": "mock-model",
+    "model_registry_entry": "openai_gpt_4_1_2025_04_14",
     "monthly_rate_accuracy_delta": 0.0,
     "parse_validity_delta": 0.0,
     "total_token_delta": -52
@@ -316,7 +316,7 @@
     "dataset_id": "synthetic_data_subset_1500",
     "exact_label_accuracy_delta": 0.0,
     "matched_rows": 1,
-    "model_registry_entry": "mock-model",
+    "model_registry_entry": "openai_gpt_4_1_2025_04_14",
     "monthly_rate_accuracy_delta": 0.0,
     "parse_validity_delta": 0.0,
     "total_token_delta": -52
@@ -330,7 +330,7 @@
     "dataset_id": "synthetic_data_subset_1500",
     "exact_label_accuracy_delta": 0.0,
     "matched_rows": 1,
-    "model_registry_entry": "mock-model",
+    "model_registry_entry": "openai_gpt_4_1_2025_04_14",
     "monthly_rate_accuracy_delta": 0.0,
     "parse_validity_delta": 0.0,
     "total_token_delta": -104
@@ -344,7 +344,7 @@
     "dataset_id": "synthetic_data_subset_1500",
     "exact_label_accuracy_delta": 0.0,
     "matched_rows": 1,
-    "model_registry_entry": "mock-model",
+    "model_registry_entry": "openai_gpt_4_1_2025_04_14",
     "monthly_rate_accuracy_delta": 0.0,
     "parse_validity_delta": 0.0,
     "total_token_delta": -104
@@ -358,7 +358,7 @@
     "dataset_id": "synthetic_data_subset_1500",
     "exact_label_accuracy_delta": 0.0,
     "matched_rows": 1,
-    "model_registry_entry": "mock-model",
+    "model_registry_entry": "openai_gpt_4_1_2025_04_14",
     "monthly_rate_accuracy_delta": 0.0,
     "parse_validity_delta": 0.0,
     "total_token_delta": 0

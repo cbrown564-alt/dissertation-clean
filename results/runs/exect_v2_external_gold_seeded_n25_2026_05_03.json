@@ -11,7 +11,7 @@
     "output_tokens": 0,
     "total_tokens": 0
   },
-  "code_version": "6b606dd-dirty",
+  "code_version": "d8a2c37-dirty",
   "complexity": {
     "manifest": {
       "aggregation_policy": {
@@ -60,7 +60,7 @@
       "version": "1"
     }
   },
-  "created_at": "2026-05-03T09:25:43.294046+00:00",
+  "created_at": "2026-05-03T09:31:07.745539+00:00",
   "dataset": {
     "data_hash": "cf13b498609079d37ba7ccd4cb9886b7d8a60a8bcd75e48ab5b4debb939b1c21",
     "dataset_id": "synthetic_data_subset_1500",
@@ -2309,7 +2309,6 @@
   "temperature": 0.0,
   "warnings": [
     "ExECTv2 outputs were generated externally. Record the source repository commit hash, GATE version, and date of generation in the run record notes before treating this run as canonical.",
-    "exect_v2_source_commit=c6202deb77d1aac3667e6838c15906254ca0caa0",
-    "exect_v2_gate_version=not-run-gold-seeded-replay"
+    "exect_v2_source_commit=c6202deb77d1aac3667e6838c15906254ca0caa0"
   ]
 }

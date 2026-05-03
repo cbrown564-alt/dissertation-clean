@@ -11,7 +11,7 @@
     "output_tokens": 0,
     "total_tokens": 0
   },
-  "code_version": "6b606dd-dirty",
+  "code_version": "d8a2c37",
   "complexity": {
     "manifest": {
       "aggregation_policy": {
@@ -57,7 +57,7 @@
       "version": "1"
     }
   },
-  "created_at": "2026-05-03T09:24:20.157919+00:00",
+  "created_at": "2026-05-03T09:31:06.951227+00:00",
   "dataset": {
     "data_hash": "cf13b498609079d37ba7ccd4cb9886b7d8a60a8bcd75e48ab5b4debb939b1c21",
     "dataset_id": "synthetic_data_subset_1500",
@@ -132,7 +132,7 @@
   "harness_events": [
     {
       "component": "deterministic_rules",
-      "created_at": "2026-05-03T09:24:20.118095+00:00",
+      "created_at": "2026-05-03T09:31:06.924950+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "11118:1:context_built",
@@ -146,7 +146,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.120442+00:00",
+      "created_at": "2026-05-03T09:31:06.926812+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "11118:2:parse_attempted",
@@ -164,7 +164,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.120464+00:00",
+      "created_at": "2026-05-03T09:31:06.926823+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "11118:3:field_extraction_completed",
@@ -183,7 +183,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.120473+00:00",
+      "created_at": "2026-05-03T09:31:06.926828+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "11118:4:warning_emitted",
@@ -199,7 +199,7 @@
     },
     {
       "component": "deterministic_rules",
-      "created_at": "2026-05-03T09:24:20.121385+00:00",
+      "created_at": "2026-05-03T09:31:06.927330+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16750:1:context_built",
@@ -213,7 +213,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.122520+00:00",
+      "created_at": "2026-05-03T09:31:06.927953+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16750:2:parse_attempted",
@@ -231,7 +231,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.122534+00:00",
+      "created_at": "2026-05-03T09:31:06.927960+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16750:3:field_extraction_completed",
@@ -250,7 +250,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.122542+00:00",
+      "created_at": "2026-05-03T09:31:06.927964+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16750:4:warning_emitted",
@@ -266,7 +266,7 @@
     },
     {
       "component": "deterministic_rules",
-      "created_at": "2026-05-03T09:24:20.123171+00:00",
+      "created_at": "2026-05-03T09:31:06.928315+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "14706:1:context_built",
@@ -280,7 +280,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.124387+00:00",
+      "created_at": "2026-05-03T09:31:06.928926+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "14706:2:parse_attempted",
@@ -296,7 +296,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.124402+00:00",
+      "created_at": "2026-05-03T09:31:06.928934+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "14706:3:field_extraction_completed",
@@ -313,7 +313,7 @@
     },
     {
       "component": "deterministic_rules",
-      "created_at": "2026-05-03T09:24:20.124562+00:00",
+      "created_at": "2026-05-03T09:31:06.929014+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "12383:1:context_built",
@@ -327,7 +327,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.125920+00:00",
+      "created_at": "2026-05-03T09:31:06.929735+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "12383:2:parse_attempted",
@@ -343,7 +343,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.125937+00:00",
+      "created_at": "2026-05-03T09:31:06.929740+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "12383:3:field_extraction_completed",
@@ -360,7 +360,7 @@
     },
     {
       "component": "deterministic_rules",
-      "created_at": "2026-05-03T09:24:20.126122+00:00",
+      "created_at": "2026-05-03T09:31:06.929816+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "5555:1:context_built",
@@ -374,7 +374,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.127507+00:00",
+      "created_at": "2026-05-03T09:31:06.930772+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "5555:2:parse_attempted",
@@ -392,7 +392,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.127519+00:00",
+      "created_at": "2026-05-03T09:31:06.930779+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "5555:3:field_extraction_completed",
@@ -411,7 +411,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.127525+00:00",
+      "created_at": "2026-05-03T09:31:06.930783+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "5555:4:warning_emitted",
@@ -427,7 +427,7 @@
     },
     {
       "component": "deterministic_rules",
-      "created_at": "2026-05-03T09:24:20.127671+00:00",
+      "created_at": "2026-05-03T09:31:06.930875+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "6216:1:context_built",
@@ -441,7 +441,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.128743+00:00",
+      "created_at": "2026-05-03T09:31:06.931712+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "6216:2:parse_attempted",
@@ -459,7 +459,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.128752+00:00",
+      "created_at": "2026-05-03T09:31:06.931716+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "6216:3:field_extraction_completed",
@@ -478,7 +478,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.128757+00:00",
+      "created_at": "2026-05-03T09:31:06.931720+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "6216:4:warning_emitted",
@@ -494,7 +494,7 @@
     },
     {
       "component": "deterministic_rules",
-      "created_at": "2026-05-03T09:24:20.128877+00:00",
+      "created_at": "2026-05-03T09:31:06.931809+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "10703:1:context_built",
@@ -508,7 +508,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.130167+00:00",
+      "created_at": "2026-05-03T09:31:06.932881+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "10703:2:parse_attempted",
@@ -526,7 +526,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.130173+00:00",
+      "created_at": "2026-05-03T09:31:06.932886+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "10703:3:field_extraction_completed",
@@ -545,7 +545,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.130178+00:00",
+      "created_at": "2026-05-03T09:31:06.932890+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "10703:4:warning_emitted",
@@ -561,7 +561,7 @@
     },
     {
       "component": "deterministic_rules",
-      "created_at": "2026-05-03T09:24:20.130273+00:00",
+      "created_at": "2026-05-03T09:31:06.932962+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "10594:1:context_built",
@@ -575,7 +575,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.130989+00:00",
+      "created_at": "2026-05-03T09:31:06.933547+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "10594:2:parse_attempted",
@@ -593,7 +593,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.131001+00:00",
+      "created_at": "2026-05-03T09:31:06.933552+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "10594:3:field_extraction_completed",
@@ -612,7 +612,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.131011+00:00",
+      "created_at": "2026-05-03T09:31:06.933555+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "10594:4:warning_emitted",
@@ -628,7 +628,7 @@
     },
     {
       "component": "deterministic_rules",
-      "created_at": "2026-05-03T09:24:20.131341+00:00",
+      "created_at": "2026-05-03T09:31:06.933821+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "14036:1:context_built",
@@ -642,7 +642,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.132010+00:00",
+      "created_at": "2026-05-03T09:31:06.934378+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "14036:2:parse_attempted",
@@ -660,7 +660,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.132017+00:00",
+      "created_at": "2026-05-03T09:31:06.934383+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "14036:3:field_extraction_completed",
@@ -679,7 +679,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.132022+00:00",
+      "created_at": "2026-05-03T09:31:06.934388+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "14036:4:warning_emitted",
@@ -695,7 +695,7 @@
     },
     {
       "component": "deterministic_rules",
-      "created_at": "2026-05-03T09:24:20.132110+00:00",
+      "created_at": "2026-05-03T09:31:06.934463+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "4562:1:context_built",
@@ -709,7 +709,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.132818+00:00",
+      "created_at": "2026-05-03T09:31:06.935355+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "4562:2:parse_attempted",
@@ -727,7 +727,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.132823+00:00",
+      "created_at": "2026-05-03T09:31:06.935378+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "4562:3:field_extraction_completed",
@@ -746,7 +746,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.132827+00:00",
+      "created_at": "2026-05-03T09:31:06.935383+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "4562:4:warning_emitted",
@@ -762,7 +762,7 @@
     },
     {
       "component": "deterministic_rules",
-      "created_at": "2026-05-03T09:24:20.132932+00:00",
+      "created_at": "2026-05-03T09:31:06.935559+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "14369:1:context_built",
@@ -776,7 +776,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.134405+00:00",
+      "created_at": "2026-05-03T09:31:06.936649+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "14369:2:parse_attempted",
@@ -794,7 +794,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.134420+00:00",
+      "created_at": "2026-05-03T09:31:06.936657+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "14369:3:field_extraction_completed",
@@ -813,7 +813,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.134426+00:00",
+      "created_at": "2026-05-03T09:31:06.936661+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "14369:4:warning_emitted",
@@ -829,7 +829,7 @@
     },
     {
       "component": "deterministic_rules",
-      "created_at": "2026-05-03T09:24:20.134600+00:00",
+      "created_at": "2026-05-03T09:31:06.936781+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "9786:1:context_built",
@@ -843,7 +843,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.135867+00:00",
+      "created_at": "2026-05-03T09:31:06.937506+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "9786:2:parse_attempted",
@@ -861,7 +861,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.135883+00:00",
+      "created_at": "2026-05-03T09:31:06.937512+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "9786:3:field_extraction_completed",
@@ -880,7 +880,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.135891+00:00",
+      "created_at": "2026-05-03T09:31:06.937516+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "9786:4:warning_emitted",
@@ -896,7 +896,7 @@
     },
     {
       "component": "deterministic_rules",
-      "created_at": "2026-05-03T09:24:20.136063+00:00",
+      "created_at": "2026-05-03T09:31:06.937591+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "9879:1:context_built",
@@ -910,7 +910,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.137670+00:00",
+      "created_at": "2026-05-03T09:31:06.938614+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "9879:2:parse_attempted",
@@ -928,7 +928,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.137686+00:00",
+      "created_at": "2026-05-03T09:31:06.938620+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "9879:3:field_extraction_completed",
@@ -947,7 +947,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.137694+00:00",
+      "created_at": "2026-05-03T09:31:06.938625+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "9879:4:warning_emitted",
@@ -963,7 +963,7 @@
     },
     {
       "component": "deterministic_rules",
-      "created_at": "2026-05-03T09:24:20.137855+00:00",
+      "created_at": "2026-05-03T09:31:06.938695+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "8488:1:context_built",
@@ -977,7 +977,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.138925+00:00",
+      "created_at": "2026-05-03T09:31:06.939311+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "8488:2:parse_attempted",
@@ -995,7 +995,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.138939+00:00",
+      "created_at": "2026-05-03T09:31:06.939316+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "8488:3:field_extraction_completed",
@@ -1014,7 +1014,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.138947+00:00",
+      "created_at": "2026-05-03T09:31:06.939320+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "8488:4:warning_emitted",
@@ -1030,7 +1030,7 @@
     },
     {
       "component": "deterministic_rules",
-      "created_at": "2026-05-03T09:24:20.139092+00:00",
+      "created_at": "2026-05-03T09:31:06.939392+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "13079:1:context_built",
@@ -1044,7 +1044,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.140822+00:00",
+      "created_at": "2026-05-03T09:31:06.940409+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "13079:2:parse_attempted",
@@ -1060,7 +1060,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.140838+00:00",
+      "created_at": "2026-05-03T09:31:06.940415+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "13079:3:field_extraction_completed",
@@ -1077,7 +1077,7 @@
     },
     {
       "component": "deterministic_rules",
-      "created_at": "2026-05-03T09:24:20.141027+00:00",
+      "created_at": "2026-05-03T09:31:06.940503+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16158:1:context_built",
@@ -1091,7 +1091,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.142434+00:00",
+      "created_at": "2026-05-03T09:31:06.941340+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16158:2:parse_attempted",
@@ -1109,7 +1109,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.142449+00:00",
+      "created_at": "2026-05-03T09:31:06.941344+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16158:3:field_extraction_completed",
@@ -1128,7 +1128,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.142458+00:00",
+      "created_at": "2026-05-03T09:31:06.941348+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16158:4:warning_emitted",
@@ -1144,7 +1144,7 @@
     },
     {
       "component": "deterministic_rules",
-      "created_at": "2026-05-03T09:24:20.142648+00:00",
+      "created_at": "2026-05-03T09:31:06.941442+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "9278:1:context_built",
@@ -1158,7 +1158,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.144267+00:00",
+      "created_at": "2026-05-03T09:31:06.942339+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "9278:2:parse_attempted",
@@ -1176,7 +1176,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.144283+00:00",
+      "created_at": "2026-05-03T09:31:06.942344+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "9278:3:field_extraction_completed",
@@ -1195,7 +1195,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.144291+00:00",
+      "created_at": "2026-05-03T09:31:06.942348+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "9278:4:warning_emitted",
@@ -1211,7 +1211,7 @@
     },
     {
       "component": "deterministic_rules",
-      "created_at": "2026-05-03T09:24:20.144469+00:00",
+      "created_at": "2026-05-03T09:31:06.942429+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16356:1:context_built",
@@ -1225,7 +1225,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.145665+00:00",
+      "created_at": "2026-05-03T09:31:06.943141+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16356:2:parse_attempted",
@@ -1243,7 +1243,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.145677+00:00",
+      "created_at": "2026-05-03T09:31:06.943146+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16356:3:field_extraction_completed",
@@ -1262,7 +1262,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.145685+00:00",
+      "created_at": "2026-05-03T09:31:06.943150+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16356:4:warning_emitted",
@@ -1278,7 +1278,7 @@
     },
     {
       "component": "deterministic_rules",
-      "created_at": "2026-05-03T09:24:20.145870+00:00",
+      "created_at": "2026-05-03T09:31:06.943231+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16036:1:context_built",
@@ -1292,7 +1292,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.147453+00:00",
+      "created_at": "2026-05-03T09:31:06.944222+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16036:2:parse_attempted",
@@ -1310,7 +1310,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.147466+00:00",
+      "created_at": "2026-05-03T09:31:06.944232+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16036:3:field_extraction_completed",
@@ -1329,7 +1329,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.147474+00:00",
+      "created_at": "2026-05-03T09:31:06.944236+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16036:4:warning_emitted",
@@ -1345,7 +1345,7 @@
     },
     {
       "component": "deterministic_rules",
-      "created_at": "2026-05-03T09:24:20.147667+00:00",
+      "created_at": "2026-05-03T09:31:06.944349+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "665:1:context_built",
@@ -1359,7 +1359,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.149419+00:00",
+      "created_at": "2026-05-03T09:31:06.945344+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "665:2:parse_attempted",
@@ -1377,7 +1377,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.149433+00:00",
+      "created_at": "2026-05-03T09:31:06.945351+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "665:3:field_extraction_completed",
@@ -1396,7 +1396,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.149447+00:00",
+      "created_at": "2026-05-03T09:31:06.945358+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "665:4:warning_emitted",
@@ -1412,7 +1412,7 @@
     },
     {
       "component": "deterministic_rules",
-      "created_at": "2026-05-03T09:24:20.149633+00:00",
+      "created_at": "2026-05-03T09:31:06.945449+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "1165:1:context_built",
@@ -1426,7 +1426,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.150820+00:00",
+      "created_at": "2026-05-03T09:31:06.946568+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "1165:2:parse_attempted",
@@ -1444,7 +1444,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.150836+00:00",
+      "created_at": "2026-05-03T09:31:06.946575+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "1165:3:field_extraction_completed",
@@ -1463,7 +1463,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.150842+00:00",
+      "created_at": "2026-05-03T09:31:06.946579+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "1165:4:warning_emitted",
@@ -1479,7 +1479,7 @@
     },
     {
       "component": "deterministic_rules",
-      "created_at": "2026-05-03T09:24:20.150972+00:00",
+      "created_at": "2026-05-03T09:31:06.946666+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "10967:1:context_built",
@@ -1493,7 +1493,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.152157+00:00",
+      "created_at": "2026-05-03T09:31:06.947642+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "10967:2:parse_attempted",
@@ -1511,7 +1511,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.152170+00:00",
+      "created_at": "2026-05-03T09:31:06.947646+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "10967:3:field_extraction_completed",
@@ -1530,7 +1530,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.152177+00:00",
+      "created_at": "2026-05-03T09:31:06.947650+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "10967:4:warning_emitted",
@@ -1546,7 +1546,7 @@
     },
     {
       "component": "deterministic_rules",
-      "created_at": "2026-05-03T09:24:20.152337+00:00",
+      "created_at": "2026-05-03T09:31:06.947739+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "280:1:context_built",
@@ -1560,7 +1560,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.153416+00:00",
+      "created_at": "2026-05-03T09:31:06.948491+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "280:2:parse_attempted",
@@ -1578,7 +1578,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.153426+00:00",
+      "created_at": "2026-05-03T09:31:06.948496+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "280:3:field_extraction_completed",
@@ -1597,7 +1597,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.153433+00:00",
+      "created_at": "2026-05-03T09:31:06.948500+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "280:4:warning_emitted",
@@ -1613,7 +1613,7 @@
     },
     {
       "component": "deterministic_rules",
-      "created_at": "2026-05-03T09:24:20.153584+00:00",
+      "created_at": "2026-05-03T09:31:06.948581+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "7708:1:context_built",
@@ -1627,7 +1627,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.154669+00:00",
+      "created_at": "2026-05-03T09:31:06.949262+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "7708:2:parse_attempted",
@@ -1645,7 +1645,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.154680+00:00",
+      "created_at": "2026-05-03T09:31:06.949266+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "7708:3:field_extraction_completed",
@@ -1664,7 +1664,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.154687+00:00",
+      "created_at": "2026-05-03T09:31:06.949270+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "7708:4:warning_emitted",
@@ -1680,7 +1680,7 @@
     },
     {
       "component": "deterministic_rules",
-      "created_at": "2026-05-03T09:24:20.154823+00:00",
+      "created_at": "2026-05-03T09:31:06.949339+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "4003:1:context_built",
@@ -1694,7 +1694,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.156593+00:00",
+      "created_at": "2026-05-03T09:31:06.950432+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "4003:2:parse_attempted",
@@ -1712,7 +1712,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.156606+00:00",
+      "created_at": "2026-05-03T09:31:06.950437+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "4003:3:field_extraction_completed",
@@ -1731,7 +1731,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:24:20.156613+00:00",
+      "created_at": "2026-05-03T09:31:06.950441+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "4003:4:warning_emitted",
@@ -1882,7 +1882,7 @@
       "harness_events": [
         {
           "component": "deterministic_rules",
-          "created_at": "2026-05-03T09:24:20.118095+00:00",
+          "created_at": "2026-05-03T09:31:06.924950+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "11118:1:context_built",
@@ -1896,7 +1896,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.120442+00:00",
+          "created_at": "2026-05-03T09:31:06.926812+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "11118:2:parse_attempted",
@@ -1914,7 +1914,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.120464+00:00",
+          "created_at": "2026-05-03T09:31:06.926823+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "11118:3:field_extraction_completed",
@@ -1933,7 +1933,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.120473+00:00",
+          "created_at": "2026-05-03T09:31:06.926828+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "11118:4:warning_emitted",
@@ -2042,7 +2042,7 @@
       "harness_events": [
         {
           "component": "deterministic_rules",
-          "created_at": "2026-05-03T09:24:20.121385+00:00",
+          "created_at": "2026-05-03T09:31:06.927330+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16750:1:context_built",
@@ -2056,7 +2056,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.122520+00:00",
+          "created_at": "2026-05-03T09:31:06.927953+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16750:2:parse_attempted",
@@ -2074,7 +2074,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.122534+00:00",
+          "created_at": "2026-05-03T09:31:06.927960+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16750:3:field_extraction_completed",
@@ -2093,7 +2093,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.122542+00:00",
+          "created_at": "2026-05-03T09:31:06.927964+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16750:4:warning_emitted",
@@ -2202,7 +2202,7 @@
       "harness_events": [
         {
           "component": "deterministic_rules",
-          "created_at": "2026-05-03T09:24:20.123171+00:00",
+          "created_at": "2026-05-03T09:31:06.928315+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "14706:1:context_built",
@@ -2216,7 +2216,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.124387+00:00",
+          "created_at": "2026-05-03T09:31:06.928926+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "14706:2:parse_attempted",
@@ -2232,7 +2232,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.124402+00:00",
+          "created_at": "2026-05-03T09:31:06.928934+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "14706:3:field_extraction_completed",
@@ -2336,7 +2336,7 @@
       "harness_events": [
         {
           "component": "deterministic_rules",
-          "created_at": "2026-05-03T09:24:20.124562+00:00",
+          "created_at": "2026-05-03T09:31:06.929014+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "12383:1:context_built",
@@ -2350,7 +2350,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.125920+00:00",
+          "created_at": "2026-05-03T09:31:06.929735+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "12383:2:parse_attempted",
@@ -2366,7 +2366,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.125937+00:00",
+          "created_at": "2026-05-03T09:31:06.929740+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "12383:3:field_extraction_completed",
@@ -2470,7 +2470,7 @@
       "harness_events": [
         {
           "component": "deterministic_rules",
-          "created_at": "2026-05-03T09:24:20.126122+00:00",
+          "created_at": "2026-05-03T09:31:06.929816+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "5555:1:context_built",
@@ -2484,7 +2484,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.127507+00:00",
+          "created_at": "2026-05-03T09:31:06.930772+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "5555:2:parse_attempted",
@@ -2502,7 +2502,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.127519+00:00",
+          "created_at": "2026-05-03T09:31:06.930779+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "5555:3:field_extraction_completed",
@@ -2521,7 +2521,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.127525+00:00",
+          "created_at": "2026-05-03T09:31:06.930783+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "5555:4:warning_emitted",
@@ -2630,7 +2630,7 @@
       "harness_events": [
         {
           "component": "deterministic_rules",
-          "created_at": "2026-05-03T09:24:20.127671+00:00",
+          "created_at": "2026-05-03T09:31:06.930875+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "6216:1:context_built",
@@ -2644,7 +2644,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.128743+00:00",
+          "created_at": "2026-05-03T09:31:06.931712+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "6216:2:parse_attempted",
@@ -2662,7 +2662,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.128752+00:00",
+          "created_at": "2026-05-03T09:31:06.931716+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "6216:3:field_extraction_completed",
@@ -2681,7 +2681,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.128757+00:00",
+          "created_at": "2026-05-03T09:31:06.931720+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "6216:4:warning_emitted",
@@ -2790,7 +2790,7 @@
       "harness_events": [
         {
           "component": "deterministic_rules",
-          "created_at": "2026-05-03T09:24:20.128877+00:00",
+          "created_at": "2026-05-03T09:31:06.931809+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "10703:1:context_built",
@@ -2804,7 +2804,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.130167+00:00",
+          "created_at": "2026-05-03T09:31:06.932881+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "10703:2:parse_attempted",
@@ -2822,7 +2822,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.130173+00:00",
+          "created_at": "2026-05-03T09:31:06.932886+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "10703:3:field_extraction_completed",
@@ -2841,7 +2841,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.130178+00:00",
+          "created_at": "2026-05-03T09:31:06.932890+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "10703:4:warning_emitted",
@@ -2950,7 +2950,7 @@
       "harness_events": [
         {
           "component": "deterministic_rules",
-          "created_at": "2026-05-03T09:24:20.130273+00:00",
+          "created_at": "2026-05-03T09:31:06.932962+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "10594:1:context_built",
@@ -2964,7 +2964,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.130989+00:00",
+          "created_at": "2026-05-03T09:31:06.933547+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "10594:2:parse_attempted",
@@ -2982,7 +2982,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.131001+00:00",
+          "created_at": "2026-05-03T09:31:06.933552+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "10594:3:field_extraction_completed",
@@ -3001,7 +3001,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.131011+00:00",
+          "created_at": "2026-05-03T09:31:06.933555+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "10594:4:warning_emitted",
@@ -3110,7 +3110,7 @@
       "harness_events": [
         {
           "component": "deterministic_rules",
-          "created_at": "2026-05-03T09:24:20.131341+00:00",
+          "created_at": "2026-05-03T09:31:06.933821+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "14036:1:context_built",
@@ -3124,7 +3124,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.132010+00:00",
+          "created_at": "2026-05-03T09:31:06.934378+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "14036:2:parse_attempted",
@@ -3142,7 +3142,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.132017+00:00",
+          "created_at": "2026-05-03T09:31:06.934383+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "14036:3:field_extraction_completed",
@@ -3161,7 +3161,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.132022+00:00",
+          "created_at": "2026-05-03T09:31:06.934388+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "14036:4:warning_emitted",
@@ -3270,7 +3270,7 @@
       "harness_events": [
         {
           "component": "deterministic_rules",
-          "created_at": "2026-05-03T09:24:20.132110+00:00",
+          "created_at": "2026-05-03T09:31:06.934463+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "4562:1:context_built",
@@ -3284,7 +3284,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.132818+00:00",
+          "created_at": "2026-05-03T09:31:06.935355+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "4562:2:parse_attempted",
@@ -3302,7 +3302,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.132823+00:00",
+          "created_at": "2026-05-03T09:31:06.935378+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "4562:3:field_extraction_completed",
@@ -3321,7 +3321,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.132827+00:00",
+          "created_at": "2026-05-03T09:31:06.935383+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "4562:4:warning_emitted",
@@ -3430,7 +3430,7 @@
       "harness_events": [
         {
           "component": "deterministic_rules",
-          "created_at": "2026-05-03T09:24:20.132932+00:00",
+          "created_at": "2026-05-03T09:31:06.935559+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "14369:1:context_built",
@@ -3444,7 +3444,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.134405+00:00",
+          "created_at": "2026-05-03T09:31:06.936649+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "14369:2:parse_attempted",
@@ -3462,7 +3462,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.134420+00:00",
+          "created_at": "2026-05-03T09:31:06.936657+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "14369:3:field_extraction_completed",
@@ -3481,7 +3481,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.134426+00:00",
+          "created_at": "2026-05-03T09:31:06.936661+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "14369:4:warning_emitted",
@@ -3590,7 +3590,7 @@
       "harness_events": [
         {
           "component": "deterministic_rules",
-          "created_at": "2026-05-03T09:24:20.134600+00:00",
+          "created_at": "2026-05-03T09:31:06.936781+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "9786:1:context_built",
@@ -3604,7 +3604,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.135867+00:00",
+          "created_at": "2026-05-03T09:31:06.937506+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "9786:2:parse_attempted",
@@ -3622,7 +3622,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.135883+00:00",
+          "created_at": "2026-05-03T09:31:06.937512+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "9786:3:field_extraction_completed",
@@ -3641,7 +3641,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.135891+00:00",
+          "created_at": "2026-05-03T09:31:06.937516+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "9786:4:warning_emitted",
@@ -3750,7 +3750,7 @@
       "harness_events": [
         {
           "component": "deterministic_rules",
-          "created_at": "2026-05-03T09:24:20.136063+00:00",
+          "created_at": "2026-05-03T09:31:06.937591+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "9879:1:context_built",
@@ -3764,7 +3764,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.137670+00:00",
+          "created_at": "2026-05-03T09:31:06.938614+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "9879:2:parse_attempted",
@@ -3782,7 +3782,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.137686+00:00",
+          "created_at": "2026-05-03T09:31:06.938620+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "9879:3:field_extraction_completed",
@@ -3801,7 +3801,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.137694+00:00",
+          "created_at": "2026-05-03T09:31:06.938625+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "9879:4:warning_emitted",
@@ -3910,7 +3910,7 @@
       "harness_events": [
         {
           "component": "deterministic_rules",
-          "created_at": "2026-05-03T09:24:20.137855+00:00",
+          "created_at": "2026-05-03T09:31:06.938695+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "8488:1:context_built",
@@ -3924,7 +3924,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.138925+00:00",
+          "created_at": "2026-05-03T09:31:06.939311+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "8488:2:parse_attempted",
@@ -3942,7 +3942,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.138939+00:00",
+          "created_at": "2026-05-03T09:31:06.939316+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "8488:3:field_extraction_completed",
@@ -3961,7 +3961,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.138947+00:00",
+          "created_at": "2026-05-03T09:31:06.939320+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "8488:4:warning_emitted",
@@ -4070,7 +4070,7 @@
       "harness_events": [
         {
           "component": "deterministic_rules",
-          "created_at": "2026-05-03T09:24:20.139092+00:00",
+          "created_at": "2026-05-03T09:31:06.939392+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "13079:1:context_built",
@@ -4084,7 +4084,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.140822+00:00",
+          "created_at": "2026-05-03T09:31:06.940409+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "13079:2:parse_attempted",
@@ -4100,7 +4100,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.140838+00:00",
+          "created_at": "2026-05-03T09:31:06.940415+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "13079:3:field_extraction_completed",
@@ -4204,7 +4204,7 @@
       "harness_events": [
         {
           "component": "deterministic_rules",
-          "created_at": "2026-05-03T09:24:20.141027+00:00",
+          "created_at": "2026-05-03T09:31:06.940503+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16158:1:context_built",
@@ -4218,7 +4218,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.142434+00:00",
+          "created_at": "2026-05-03T09:31:06.941340+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16158:2:parse_attempted",
@@ -4236,7 +4236,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.142449+00:00",
+          "created_at": "2026-05-03T09:31:06.941344+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16158:3:field_extraction_completed",
@@ -4255,7 +4255,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.142458+00:00",
+          "created_at": "2026-05-03T09:31:06.941348+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16158:4:warning_emitted",
@@ -4364,7 +4364,7 @@
       "harness_events": [
         {
           "component": "deterministic_rules",
-          "created_at": "2026-05-03T09:24:20.142648+00:00",
+          "created_at": "2026-05-03T09:31:06.941442+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "9278:1:context_built",
@@ -4378,7 +4378,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.144267+00:00",
+          "created_at": "2026-05-03T09:31:06.942339+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "9278:2:parse_attempted",
@@ -4396,7 +4396,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.144283+00:00",
+          "created_at": "2026-05-03T09:31:06.942344+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "9278:3:field_extraction_completed",
@@ -4415,7 +4415,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.144291+00:00",
+          "created_at": "2026-05-03T09:31:06.942348+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "9278:4:warning_emitted",
@@ -4524,7 +4524,7 @@
       "harness_events": [
         {
           "component": "deterministic_rules",
-          "created_at": "2026-05-03T09:24:20.144469+00:00",
+          "created_at": "2026-05-03T09:31:06.942429+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16356:1:context_built",
@@ -4538,7 +4538,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.145665+00:00",
+          "created_at": "2026-05-03T09:31:06.943141+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16356:2:parse_attempted",
@@ -4556,7 +4556,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.145677+00:00",
+          "created_at": "2026-05-03T09:31:06.943146+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16356:3:field_extraction_completed",
@@ -4575,7 +4575,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.145685+00:00",
+          "created_at": "2026-05-03T09:31:06.943150+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16356:4:warning_emitted",
@@ -4684,7 +4684,7 @@
       "harness_events": [
         {
           "component": "deterministic_rules",
-          "created_at": "2026-05-03T09:24:20.145870+00:00",
+          "created_at": "2026-05-03T09:31:06.943231+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16036:1:context_built",
@@ -4698,7 +4698,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.147453+00:00",
+          "created_at": "2026-05-03T09:31:06.944222+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16036:2:parse_attempted",
@@ -4716,7 +4716,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.147466+00:00",
+          "created_at": "2026-05-03T09:31:06.944232+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16036:3:field_extraction_completed",
@@ -4735,7 +4735,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.147474+00:00",
+          "created_at": "2026-05-03T09:31:06.944236+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16036:4:warning_emitted",
@@ -4844,7 +4844,7 @@
       "harness_events": [
         {
           "component": "deterministic_rules",
-          "created_at": "2026-05-03T09:24:20.147667+00:00",
+          "created_at": "2026-05-03T09:31:06.944349+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "665:1:context_built",
@@ -4858,7 +4858,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.149419+00:00",
+          "created_at": "2026-05-03T09:31:06.945344+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "665:2:parse_attempted",
@@ -4876,7 +4876,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.149433+00:00",
+          "created_at": "2026-05-03T09:31:06.945351+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "665:3:field_extraction_completed",
@@ -4895,7 +4895,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.149447+00:00",
+          "created_at": "2026-05-03T09:31:06.945358+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "665:4:warning_emitted",
@@ -5004,7 +5004,7 @@
       "harness_events": [
         {
           "component": "deterministic_rules",
-          "created_at": "2026-05-03T09:24:20.149633+00:00",
+          "created_at": "2026-05-03T09:31:06.945449+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "1165:1:context_built",
@@ -5018,7 +5018,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.150820+00:00",
+          "created_at": "2026-05-03T09:31:06.946568+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "1165:2:parse_attempted",
@@ -5036,7 +5036,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.150836+00:00",
+          "created_at": "2026-05-03T09:31:06.946575+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "1165:3:field_extraction_completed",
@@ -5055,7 +5055,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.150842+00:00",
+          "created_at": "2026-05-03T09:31:06.946579+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "1165:4:warning_emitted",
@@ -5164,7 +5164,7 @@
       "harness_events": [
         {
           "component": "deterministic_rules",
-          "created_at": "2026-05-03T09:24:20.150972+00:00",
+          "created_at": "2026-05-03T09:31:06.946666+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "10967:1:context_built",
@@ -5178,7 +5178,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.152157+00:00",
+          "created_at": "2026-05-03T09:31:06.947642+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "10967:2:parse_attempted",
@@ -5196,7 +5196,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.152170+00:00",
+          "created_at": "2026-05-03T09:31:06.947646+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "10967:3:field_extraction_completed",
@@ -5215,7 +5215,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.152177+00:00",
+          "created_at": "2026-05-03T09:31:06.947650+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "10967:4:warning_emitted",
@@ -5324,7 +5324,7 @@
       "harness_events": [
         {
           "component": "deterministic_rules",
-          "created_at": "2026-05-03T09:24:20.152337+00:00",
+          "created_at": "2026-05-03T09:31:06.947739+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "280:1:context_built",
@@ -5338,7 +5338,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.153416+00:00",
+          "created_at": "2026-05-03T09:31:06.948491+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "280:2:parse_attempted",
@@ -5356,7 +5356,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.153426+00:00",
+          "created_at": "2026-05-03T09:31:06.948496+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "280:3:field_extraction_completed",
@@ -5375,7 +5375,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.153433+00:00",
+          "created_at": "2026-05-03T09:31:06.948500+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "280:4:warning_emitted",
@@ -5484,7 +5484,7 @@
       "harness_events": [
         {
           "component": "deterministic_rules",
-          "created_at": "2026-05-03T09:24:20.153584+00:00",
+          "created_at": "2026-05-03T09:31:06.948581+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "7708:1:context_built",
@@ -5498,7 +5498,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.154669+00:00",
+          "created_at": "2026-05-03T09:31:06.949262+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "7708:2:parse_attempted",
@@ -5516,7 +5516,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.154680+00:00",
+          "created_at": "2026-05-03T09:31:06.949266+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "7708:3:field_extraction_completed",
@@ -5535,7 +5535,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.154687+00:00",
+          "created_at": "2026-05-03T09:31:06.949270+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "7708:4:warning_emitted",
@@ -5644,7 +5644,7 @@
       "harness_events": [
         {
           "component": "deterministic_rules",
-          "created_at": "2026-05-03T09:24:20.154823+00:00",
+          "created_at": "2026-05-03T09:31:06.949339+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "4003:1:context_built",
@@ -5658,7 +5658,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.156593+00:00",
+          "created_at": "2026-05-03T09:31:06.950432+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "4003:2:parse_attempted",
@@ -5676,7 +5676,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.156606+00:00",
+          "created_at": "2026-05-03T09:31:06.950437+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "4003:3:field_extraction_completed",
@@ -5695,7 +5695,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:24:20.156613+00:00",
+          "created_at": "2026-05-03T09:31:06.950441+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "4003:4:warning_emitted",

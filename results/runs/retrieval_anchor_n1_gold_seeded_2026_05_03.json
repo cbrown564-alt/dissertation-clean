@@ -12,7 +12,7 @@
     "output_tokens": 6,
     "total_tokens": 26
   },
-  "code_version": "6b606dd-dirty",
+  "code_version": "d8a2c37-dirty",
   "complexity": {
     "manifest": {
       "aggregation_policy": {
@@ -63,7 +63,7 @@
       "version": "1"
     }
   },
-  "created_at": "2026-05-03T09:25:19.628515+00:00",
+  "created_at": "2026-05-03T09:31:08.239057+00:00",
   "dataset": {
     "data_hash": "cf13b498609079d37ba7ccd4cb9886b7d8a60a8bcd75e48ab5b4debb939b1c21",
     "dataset_id": "synthetic_data_subset_1500",
@@ -117,7 +117,7 @@
   "harness_events": [
     {
       "component": "retrieval_anchor",
-      "created_at": "2026-05-03T09:25:19.626553+00:00",
+      "created_at": "2026-05-03T09:31:08.237191+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "11118:1:context_built",
@@ -133,7 +133,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:25:19.628010+00:00",
+      "created_at": "2026-05-03T09:31:08.238584+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "11118:2:candidate_spans_selected",
@@ -149,7 +149,7 @@
     },
     {
       "component": "retrieval_anchor:call_1",
-      "created_at": "2026-05-03T09:25:19.628026+00:00",
+      "created_at": "2026-05-03T09:31:08.238597+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "11118:3:provider_call_started",
@@ -163,7 +163,7 @@
     },
     {
       "component": "retrieval_anchor:call_1",
-      "created_at": "2026-05-03T09:25:19.628032+00:00",
+      "created_at": "2026-05-03T09:31:08.238604+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "11118:4:provider_call_finished",
@@ -182,7 +182,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:25:19.628037+00:00",
+      "created_at": "2026-05-03T09:31:08.238608+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "11118:5:parse_attempted",
@@ -198,7 +198,7 @@
     },
     {
       "component": "seizure_frequency",
-      "created_at": "2026-05-03T09:25:19.628041+00:00",
+      "created_at": "2026-05-03T09:31:08.238612+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "11118:6:field_extraction_completed",
@@ -254,7 +254,7 @@
     }
   },
   "model": "mock-model",
-  "model_registry_entry": null,
+  "model_registry_entry": "openai_gpt_4_1_2025_04_14",
   "parse_validity": {
     "seizure_frequency": {
       "invalid": 0,
@@ -284,7 +284,7 @@
       "harness_events": [
         {
           "component": "retrieval_anchor",
-          "created_at": "2026-05-03T09:25:19.626553+00:00",
+          "created_at": "2026-05-03T09:31:08.237191+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "11118:1:context_built",
@@ -300,7 +300,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:25:19.628010+00:00",
+          "created_at": "2026-05-03T09:31:08.238584+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "11118:2:candidate_spans_selected",
@@ -316,7 +316,7 @@
         },
         {
           "component": "retrieval_anchor:call_1",
-          "created_at": "2026-05-03T09:25:19.628026+00:00",
+          "created_at": "2026-05-03T09:31:08.238597+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "11118:3:provider_call_started",
@@ -330,7 +330,7 @@
         },
         {
           "component": "retrieval_anchor:call_1",
-          "created_at": "2026-05-03T09:25:19.628032+00:00",
+          "created_at": "2026-05-03T09:31:08.238604+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "11118:4:provider_call_finished",
@@ -349,7 +349,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:25:19.628037+00:00",
+          "created_at": "2026-05-03T09:31:08.238608+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "11118:5:parse_attempted",
@@ -365,7 +365,7 @@
         },
         {
           "component": "seizure_frequency",
-          "created_at": "2026-05-03T09:25:19.628041+00:00",
+          "created_at": "2026-05-03T09:31:08.238612+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "11118:6:field_extraction_completed",

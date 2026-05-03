@@ -9,7 +9,7 @@
     "notes": "Stable frontier model; preferred for canonical runs requiring strong instruction following.",
     "provider": "anthropic",
     "tier": "frontier",
-    "used_in_runs": "clines_epilepsy_modular_n25_gold_seeded_2026_05_03;clines_epilepsy_verified_n25_gold_seeded_2026_05_03;direct_evidence_contract_n25_gold_seeded_2026_05_03;direct_full_contract_n25_gold_seeded_2026_05_03;retrieval_field_extractors_n25_gold_seeded_2026_05_03"
+    "used_in_runs": ""
   },
   {
     "context_window": 200000,
@@ -88,11 +88,11 @@
     "display_name": "",
     "family": "",
     "frozen_at": "",
-    "model_id": "mock-model",
-    "model_registry_entry": "mock-model",
+    "model_id": "openai_gpt_4_1_2025_04_14",
+    "model_registry_entry": "openai_gpt_4_1_2025_04_14",
     "notes": "not found in supplied registry",
     "provider": "",
     "tier": "",
-    "used_in_runs": "multi_agent_anchor_n1_gold_seeded_2026_05_03;multi_agent_anchor_sc3_n1_gold_seeded_2026_05_03;multi_agent_anchor_sc5_n1_gold_seeded_2026_05_03;retrieval_anchor_n1_gold_seeded_2026_05_03;single_prompt_anchor_n1_gold_seeded_2026_05_03"
+    "used_in_runs": "clines_epilepsy_modular_n25_gold_seeded_2026_05_03;clines_epilepsy_verified_n25_gold_seeded_2026_05_03;direct_evidence_contract_n25_gold_seeded_2026_05_03;direct_full_contract_n25_gold_seeded_2026_05_03;multi_agent_anchor_n1_gold_seeded_2026_05_03;multi_agent_anchor_sc3_n1_gold_seeded_2026_05_03;multi_agent_anchor_sc5_n1_gold_seeded_2026_05_03;retrieval_anchor_n1_gold_seeded_2026_05_03;retrieval_field_extractors_n25_gold_seeded_2026_05_03;single_prompt_anchor_n1_gold_seeded_2026_05_03"
   }
 ]

@@ -13,7 +13,7 @@
     "output_tokens": 1750,
     "total_tokens": 4750
   },
-  "code_version": "6b606dd-dirty",
+  "code_version": "d8a2c37-dirty",
   "complexity": {
     "manifest": {
       "aggregation_policy": {
@@ -66,7 +66,7 @@
       "version": "1"
     }
   },
-  "created_at": "2026-05-03T09:27:10.414475+00:00",
+  "created_at": "2026-05-03T09:31:09.423761+00:00",
   "dataset": {
     "data_hash": "cf13b498609079d37ba7ccd4cb9886b7d8a60a8bcd75e48ab5b4debb939b1c21",
     "dataset_id": "synthetic_data_subset_1500",
@@ -145,7 +145,7 @@
   "harness_events": [
     {
       "component": "evidence_contract_prompt",
-      "created_at": "2026-05-03T09:27:10.406468+00:00",
+      "created_at": "2026-05-03T09:31:09.418370+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "11118:1:context_built",
@@ -159,7 +159,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.406493+00:00",
+      "created_at": "2026-05-03T09:31:09.418389+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "11118:2:provider_call_started",
@@ -173,7 +173,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.406588+00:00",
+      "created_at": "2026-05-03T09:31:09.418464+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "11118:3:provider_call_finished",
@@ -192,7 +192,7 @@
     },
     {
       "component": "final_output",
-      "created_at": "2026-05-03T09:27:10.407560+00:00",
+      "created_at": "2026-05-03T09:31:09.419102+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "11118:4:parse_attempted",
@@ -210,7 +210,7 @@
     },
     {
       "component": "evidence_support",
-      "created_at": "2026-05-03T09:27:10.407578+00:00",
+      "created_at": "2026-05-03T09:31:09.419114+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "11118:5:verification_completed",
@@ -229,7 +229,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.407587+00:00",
+      "created_at": "2026-05-03T09:31:09.419120+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "11118:6:warning_emitted",
@@ -245,7 +245,7 @@
     },
     {
       "component": "evidence_contract_prompt",
-      "created_at": "2026-05-03T09:27:10.407697+00:00",
+      "created_at": "2026-05-03T09:31:09.419199+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16750:1:context_built",
@@ -259,7 +259,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.407706+00:00",
+      "created_at": "2026-05-03T09:31:09.419204+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16750:2:provider_call_started",
@@ -273,7 +273,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.407779+00:00",
+      "created_at": "2026-05-03T09:31:09.419253+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16750:3:provider_call_finished",
@@ -292,7 +292,7 @@
     },
     {
       "component": "final_output",
-      "created_at": "2026-05-03T09:27:10.408316+00:00",
+      "created_at": "2026-05-03T09:31:09.419595+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16750:4:parse_attempted",
@@ -311,7 +311,7 @@
     },
     {
       "component": "evidence_support",
-      "created_at": "2026-05-03T09:27:10.408328+00:00",
+      "created_at": "2026-05-03T09:31:09.419601+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16750:5:verification_completed",
@@ -330,7 +330,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.408336+00:00",
+      "created_at": "2026-05-03T09:31:09.419606+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16750:6:warning_emitted",
@@ -347,7 +347,7 @@
     },
     {
       "component": "evidence_contract_prompt",
-      "created_at": "2026-05-03T09:27:10.408424+00:00",
+      "created_at": "2026-05-03T09:31:09.419668+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "14706:1:context_built",
@@ -361,7 +361,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.408431+00:00",
+      "created_at": "2026-05-03T09:31:09.419673+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "14706:2:provider_call_started",
@@ -375,7 +375,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.408485+00:00",
+      "created_at": "2026-05-03T09:31:09.419706+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "14706:3:provider_call_finished",
@@ -394,7 +394,7 @@
     },
     {
       "component": "final_output",
-      "created_at": "2026-05-03T09:27:10.408583+00:00",
+      "created_at": "2026-05-03T09:31:09.419764+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "14706:4:parse_attempted",
@@ -412,7 +412,7 @@
     },
     {
       "component": "evidence_support",
-      "created_at": "2026-05-03T09:27:10.408590+00:00",
+      "created_at": "2026-05-03T09:31:09.419768+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "14706:5:verification_completed",
@@ -431,7 +431,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.408596+00:00",
+      "created_at": "2026-05-03T09:31:09.419772+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "14706:6:warning_emitted",
@@ -447,7 +447,7 @@
     },
     {
       "component": "evidence_contract_prompt",
-      "created_at": "2026-05-03T09:27:10.408668+00:00",
+      "created_at": "2026-05-03T09:31:09.419819+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "12383:1:context_built",
@@ -461,7 +461,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.408676+00:00",
+      "created_at": "2026-05-03T09:31:09.419828+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "12383:2:provider_call_started",
@@ -475,7 +475,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.408714+00:00",
+      "created_at": "2026-05-03T09:31:09.419854+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "12383:3:provider_call_finished",
@@ -494,7 +494,7 @@
     },
     {
       "component": "final_output",
-      "created_at": "2026-05-03T09:27:10.408805+00:00",
+      "created_at": "2026-05-03T09:31:09.419908+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "12383:4:parse_attempted",
@@ -512,7 +512,7 @@
     },
     {
       "component": "evidence_support",
-      "created_at": "2026-05-03T09:27:10.408812+00:00",
+      "created_at": "2026-05-03T09:31:09.419912+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "12383:5:verification_completed",
@@ -531,7 +531,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.408818+00:00",
+      "created_at": "2026-05-03T09:31:09.419915+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "12383:6:warning_emitted",
@@ -547,7 +547,7 @@
     },
     {
       "component": "evidence_contract_prompt",
-      "created_at": "2026-05-03T09:27:10.408885+00:00",
+      "created_at": "2026-05-03T09:31:09.419959+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "5555:1:context_built",
@@ -561,7 +561,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.408891+00:00",
+      "created_at": "2026-05-03T09:31:09.419962+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "5555:2:provider_call_started",
@@ -575,7 +575,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.409262+00:00",
+      "created_at": "2026-05-03T09:31:09.420174+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "5555:3:provider_call_finished",
@@ -594,7 +594,7 @@
     },
     {
       "component": "final_output",
-      "created_at": "2026-05-03T09:27:10.409368+00:00",
+      "created_at": "2026-05-03T09:31:09.420238+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "5555:4:parse_attempted",
@@ -612,7 +612,7 @@
     },
     {
       "component": "evidence_support",
-      "created_at": "2026-05-03T09:27:10.409374+00:00",
+      "created_at": "2026-05-03T09:31:09.420242+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "5555:5:verification_completed",
@@ -631,7 +631,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.409380+00:00",
+      "created_at": "2026-05-03T09:31:09.420245+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "5555:6:warning_emitted",
@@ -647,7 +647,7 @@
     },
     {
       "component": "evidence_contract_prompt",
-      "created_at": "2026-05-03T09:27:10.409453+00:00",
+      "created_at": "2026-05-03T09:31:09.420293+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "6216:1:context_built",
@@ -661,7 +661,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.409459+00:00",
+      "created_at": "2026-05-03T09:31:09.420296+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "6216:2:provider_call_started",
@@ -675,7 +675,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.409506+00:00",
+      "created_at": "2026-05-03T09:31:09.420336+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "6216:3:provider_call_finished",
@@ -694,7 +694,7 @@
     },
     {
       "component": "final_output",
-      "created_at": "2026-05-03T09:27:10.409588+00:00",
+      "created_at": "2026-05-03T09:31:09.420394+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "6216:4:parse_attempted",
@@ -712,7 +712,7 @@
     },
     {
       "component": "evidence_support",
-      "created_at": "2026-05-03T09:27:10.409594+00:00",
+      "created_at": "2026-05-03T09:31:09.420397+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "6216:5:verification_completed",
@@ -731,7 +731,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.409600+00:00",
+      "created_at": "2026-05-03T09:31:09.420400+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "6216:6:warning_emitted",
@@ -747,7 +747,7 @@
     },
     {
       "component": "evidence_contract_prompt",
-      "created_at": "2026-05-03T09:27:10.409673+00:00",
+      "created_at": "2026-05-03T09:31:09.420447+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "10703:1:context_built",
@@ -761,7 +761,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.409678+00:00",
+      "created_at": "2026-05-03T09:31:09.420450+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "10703:2:provider_call_started",
@@ -775,7 +775,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.409720+00:00",
+      "created_at": "2026-05-03T09:31:09.420482+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "10703:3:provider_call_finished",
@@ -794,7 +794,7 @@
     },
     {
       "component": "final_output",
-      "created_at": "2026-05-03T09:27:10.409781+00:00",
+      "created_at": "2026-05-03T09:31:09.420523+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "10703:4:parse_attempted",
@@ -812,7 +812,7 @@
     },
     {
       "component": "evidence_support",
-      "created_at": "2026-05-03T09:27:10.409787+00:00",
+      "created_at": "2026-05-03T09:31:09.420526+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "10703:5:verification_completed",
@@ -831,7 +831,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.409795+00:00",
+      "created_at": "2026-05-03T09:31:09.420529+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "10703:6:warning_emitted",
@@ -847,7 +847,7 @@
     },
     {
       "component": "evidence_contract_prompt",
-      "created_at": "2026-05-03T09:27:10.409867+00:00",
+      "created_at": "2026-05-03T09:31:09.420580+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "10594:1:context_built",
@@ -861,7 +861,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.409873+00:00",
+      "created_at": "2026-05-03T09:31:09.420583+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "10594:2:provider_call_started",
@@ -875,7 +875,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.409905+00:00",
+      "created_at": "2026-05-03T09:31:09.420604+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "10594:3:provider_call_finished",
@@ -894,7 +894,7 @@
     },
     {
       "component": "final_output",
-      "created_at": "2026-05-03T09:27:10.409963+00:00",
+      "created_at": "2026-05-03T09:31:09.420642+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "10594:4:parse_attempted",
@@ -912,7 +912,7 @@
     },
     {
       "component": "evidence_support",
-      "created_at": "2026-05-03T09:27:10.409969+00:00",
+      "created_at": "2026-05-03T09:31:09.420645+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "10594:5:verification_completed",
@@ -931,7 +931,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.409974+00:00",
+      "created_at": "2026-05-03T09:31:09.420648+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "10594:6:warning_emitted",
@@ -947,7 +947,7 @@
     },
     {
       "component": "evidence_contract_prompt",
-      "created_at": "2026-05-03T09:27:10.410041+00:00",
+      "created_at": "2026-05-03T09:31:09.420692+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "14036:1:context_built",
@@ -961,7 +961,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.410046+00:00",
+      "created_at": "2026-05-03T09:31:09.420695+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "14036:2:provider_call_started",
@@ -975,7 +975,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.410080+00:00",
+      "created_at": "2026-05-03T09:31:09.420716+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "14036:3:provider_call_finished",
@@ -994,7 +994,7 @@
     },
     {
       "component": "final_output",
-      "created_at": "2026-05-03T09:27:10.410135+00:00",
+      "created_at": "2026-05-03T09:31:09.420757+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "14036:4:parse_attempted",
@@ -1012,7 +1012,7 @@
     },
     {
       "component": "evidence_support",
-      "created_at": "2026-05-03T09:27:10.410141+00:00",
+      "created_at": "2026-05-03T09:31:09.420760+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "14036:5:verification_completed",
@@ -1031,7 +1031,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.410149+00:00",
+      "created_at": "2026-05-03T09:31:09.420764+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "14036:6:warning_emitted",
@@ -1047,7 +1047,7 @@
     },
     {
       "component": "evidence_contract_prompt",
-      "created_at": "2026-05-03T09:27:10.410213+00:00",
+      "created_at": "2026-05-03T09:31:09.420808+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "4562:1:context_built",
@@ -1061,7 +1061,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.410221+00:00",
+      "created_at": "2026-05-03T09:31:09.420811+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "4562:2:provider_call_started",
@@ -1075,7 +1075,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.410259+00:00",
+      "created_at": "2026-05-03T09:31:09.420842+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "4562:3:provider_call_finished",
@@ -1094,7 +1094,7 @@
     },
     {
       "component": "final_output",
-      "created_at": "2026-05-03T09:27:10.410332+00:00",
+      "created_at": "2026-05-03T09:31:09.420894+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "4562:4:parse_attempted",
@@ -1112,7 +1112,7 @@
     },
     {
       "component": "evidence_support",
-      "created_at": "2026-05-03T09:27:10.410338+00:00",
+      "created_at": "2026-05-03T09:31:09.420898+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "4562:5:verification_completed",
@@ -1131,7 +1131,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.410343+00:00",
+      "created_at": "2026-05-03T09:31:09.420901+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "4562:6:warning_emitted",
@@ -1147,7 +1147,7 @@
     },
     {
       "component": "evidence_contract_prompt",
-      "created_at": "2026-05-03T09:27:10.410415+00:00",
+      "created_at": "2026-05-03T09:31:09.420951+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "14369:1:context_built",
@@ -1161,7 +1161,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.410420+00:00",
+      "created_at": "2026-05-03T09:31:09.420955+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "14369:2:provider_call_started",
@@ -1175,7 +1175,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.410459+00:00",
+      "created_at": "2026-05-03T09:31:09.420980+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "14369:3:provider_call_finished",
@@ -1194,7 +1194,7 @@
     },
     {
       "component": "final_output",
-      "created_at": "2026-05-03T09:27:10.410532+00:00",
+      "created_at": "2026-05-03T09:31:09.421031+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "14369:4:parse_attempted",
@@ -1213,7 +1213,7 @@
     },
     {
       "component": "evidence_support",
-      "created_at": "2026-05-03T09:27:10.410538+00:00",
+      "created_at": "2026-05-03T09:31:09.421035+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "14369:5:verification_completed",
@@ -1232,7 +1232,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.410544+00:00",
+      "created_at": "2026-05-03T09:31:09.421039+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "14369:6:warning_emitted",
@@ -1249,7 +1249,7 @@
     },
     {
       "component": "evidence_contract_prompt",
-      "created_at": "2026-05-03T09:27:10.410611+00:00",
+      "created_at": "2026-05-03T09:31:09.421087+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "9786:1:context_built",
@@ -1263,7 +1263,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.410616+00:00",
+      "created_at": "2026-05-03T09:31:09.421091+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "9786:2:provider_call_started",
@@ -1277,7 +1277,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.410654+00:00",
+      "created_at": "2026-05-03T09:31:09.421154+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "9786:3:provider_call_finished",
@@ -1296,7 +1296,7 @@
     },
     {
       "component": "final_output",
-      "created_at": "2026-05-03T09:27:10.410709+00:00",
+      "created_at": "2026-05-03T09:31:09.421194+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "9786:4:parse_attempted",
@@ -1314,7 +1314,7 @@
     },
     {
       "component": "evidence_support",
-      "created_at": "2026-05-03T09:27:10.410715+00:00",
+      "created_at": "2026-05-03T09:31:09.421198+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "9786:5:verification_completed",
@@ -1333,7 +1333,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.410720+00:00",
+      "created_at": "2026-05-03T09:31:09.421201+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "9786:6:warning_emitted",
@@ -1349,7 +1349,7 @@
     },
     {
       "component": "evidence_contract_prompt",
-      "created_at": "2026-05-03T09:27:10.410807+00:00",
+      "created_at": "2026-05-03T09:31:09.421245+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "9879:1:context_built",
@@ -1363,7 +1363,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.410813+00:00",
+      "created_at": "2026-05-03T09:31:09.421248+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "9879:2:provider_call_started",
@@ -1377,7 +1377,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.410855+00:00",
+      "created_at": "2026-05-03T09:31:09.421275+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "9879:3:provider_call_finished",
@@ -1396,7 +1396,7 @@
     },
     {
       "component": "final_output",
-      "created_at": "2026-05-03T09:27:10.410909+00:00",
+      "created_at": "2026-05-03T09:31:09.421312+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "9879:4:parse_attempted",
@@ -1414,7 +1414,7 @@
     },
     {
       "component": "evidence_support",
-      "created_at": "2026-05-03T09:27:10.410915+00:00",
+      "created_at": "2026-05-03T09:31:09.421316+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "9879:5:verification_completed",
@@ -1433,7 +1433,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.410920+00:00",
+      "created_at": "2026-05-03T09:31:09.421319+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "9879:6:warning_emitted",
@@ -1449,7 +1449,7 @@
     },
     {
       "component": "evidence_contract_prompt",
-      "created_at": "2026-05-03T09:27:10.410988+00:00",
+      "created_at": "2026-05-03T09:31:09.421363+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "8488:1:context_built",
@@ -1463,7 +1463,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.410994+00:00",
+      "created_at": "2026-05-03T09:31:09.421366+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "8488:2:provider_call_started",
@@ -1477,7 +1477,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.411025+00:00",
+      "created_at": "2026-05-03T09:31:09.421393+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "8488:3:provider_call_finished",
@@ -1496,7 +1496,7 @@
     },
     {
       "component": "final_output",
-      "created_at": "2026-05-03T09:27:10.411082+00:00",
+      "created_at": "2026-05-03T09:31:09.421434+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "8488:4:parse_attempted",
@@ -1514,7 +1514,7 @@
     },
     {
       "component": "evidence_support",
-      "created_at": "2026-05-03T09:27:10.411087+00:00",
+      "created_at": "2026-05-03T09:31:09.421437+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "8488:5:verification_completed",
@@ -1533,7 +1533,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.411094+00:00",
+      "created_at": "2026-05-03T09:31:09.421441+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "8488:6:warning_emitted",
@@ -1549,7 +1549,7 @@
     },
     {
       "component": "evidence_contract_prompt",
-      "created_at": "2026-05-03T09:27:10.411161+00:00",
+      "created_at": "2026-05-03T09:31:09.421488+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "13079:1:context_built",
@@ -1563,7 +1563,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.411166+00:00",
+      "created_at": "2026-05-03T09:31:09.421492+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "13079:2:provider_call_started",
@@ -1577,7 +1577,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.411204+00:00",
+      "created_at": "2026-05-03T09:31:09.421523+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "13079:3:provider_call_finished",
@@ -1596,7 +1596,7 @@
     },
     {
       "component": "final_output",
-      "created_at": "2026-05-03T09:27:10.411276+00:00",
+      "created_at": "2026-05-03T09:31:09.421580+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "13079:4:parse_attempted",
@@ -1614,7 +1614,7 @@
     },
     {
       "component": "evidence_support",
-      "created_at": "2026-05-03T09:27:10.411282+00:00",
+      "created_at": "2026-05-03T09:31:09.421586+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "13079:5:verification_completed",
@@ -1633,7 +1633,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.411287+00:00",
+      "created_at": "2026-05-03T09:31:09.421591+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "13079:6:warning_emitted",
@@ -1649,7 +1649,7 @@
     },
     {
       "component": "evidence_contract_prompt",
-      "created_at": "2026-05-03T09:27:10.411355+00:00",
+      "created_at": "2026-05-03T09:31:09.421641+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16158:1:context_built",
@@ -1663,7 +1663,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.411361+00:00",
+      "created_at": "2026-05-03T09:31:09.421645+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16158:2:provider_call_started",
@@ -1677,7 +1677,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.411391+00:00",
+      "created_at": "2026-05-03T09:31:09.421676+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16158:3:provider_call_finished",
@@ -1696,7 +1696,7 @@
     },
     {
       "component": "final_output",
-      "created_at": "2026-05-03T09:27:10.411456+00:00",
+      "created_at": "2026-05-03T09:31:09.421727+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16158:4:parse_attempted",
@@ -1714,7 +1714,7 @@
     },
     {
       "component": "evidence_support",
-      "created_at": "2026-05-03T09:27:10.411461+00:00",
+      "created_at": "2026-05-03T09:31:09.421731+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16158:5:verification_completed",
@@ -1733,7 +1733,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.411466+00:00",
+      "created_at": "2026-05-03T09:31:09.421735+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16158:6:warning_emitted",
@@ -1749,7 +1749,7 @@
     },
     {
       "component": "evidence_contract_prompt",
-      "created_at": "2026-05-03T09:27:10.411535+00:00",
+      "created_at": "2026-05-03T09:31:09.421780+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "9278:1:context_built",
@@ -1763,7 +1763,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.411543+00:00",
+      "created_at": "2026-05-03T09:31:09.421785+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "9278:2:provider_call_started",
@@ -1777,7 +1777,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.411581+00:00",
+      "created_at": "2026-05-03T09:31:09.421809+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "9278:3:provider_call_finished",
@@ -1796,7 +1796,7 @@
     },
     {
       "component": "final_output",
-      "created_at": "2026-05-03T09:27:10.411645+00:00",
+      "created_at": "2026-05-03T09:31:09.421855+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "9278:4:parse_attempted",
@@ -1814,7 +1814,7 @@
     },
     {
       "component": "evidence_support",
-      "created_at": "2026-05-03T09:27:10.411650+00:00",
+      "created_at": "2026-05-03T09:31:09.421858+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "9278:5:verification_completed",
@@ -1833,7 +1833,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.411657+00:00",
+      "created_at": "2026-05-03T09:31:09.421862+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "9278:6:warning_emitted",
@@ -1849,7 +1849,7 @@
     },
     {
       "component": "evidence_contract_prompt",
-      "created_at": "2026-05-03T09:27:10.411731+00:00",
+      "created_at": "2026-05-03T09:31:09.421916+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16356:1:context_built",
@@ -1863,7 +1863,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.411736+00:00",
+      "created_at": "2026-05-03T09:31:09.421921+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16356:2:provider_call_started",
@@ -1877,7 +1877,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.411766+00:00",
+      "created_at": "2026-05-03T09:31:09.421942+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16356:3:provider_call_finished",
@@ -1896,7 +1896,7 @@
     },
     {
       "component": "final_output",
-      "created_at": "2026-05-03T09:27:10.411830+00:00",
+      "created_at": "2026-05-03T09:31:09.421988+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16356:4:parse_attempted",
@@ -1914,7 +1914,7 @@
     },
     {
       "component": "evidence_support",
-      "created_at": "2026-05-03T09:27:10.411836+00:00",
+      "created_at": "2026-05-03T09:31:09.421992+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16356:5:verification_completed",
@@ -1933,7 +1933,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.411841+00:00",
+      "created_at": "2026-05-03T09:31:09.421995+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16356:6:warning_emitted",
@@ -1949,7 +1949,7 @@
     },
     {
       "component": "evidence_contract_prompt",
-      "created_at": "2026-05-03T09:27:10.411907+00:00",
+      "created_at": "2026-05-03T09:31:09.422039+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16036:1:context_built",
@@ -1963,7 +1963,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.411912+00:00",
+      "created_at": "2026-05-03T09:31:09.422042+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16036:2:provider_call_started",
@@ -1977,7 +1977,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.411950+00:00",
+      "created_at": "2026-05-03T09:31:09.422075+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16036:3:provider_call_finished",
@@ -1996,7 +1996,7 @@
     },
     {
       "component": "final_output",
-      "created_at": "2026-05-03T09:27:10.412014+00:00",
+      "created_at": "2026-05-03T09:31:09.422121+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16036:4:parse_attempted",
@@ -2014,7 +2014,7 @@
     },
     {
       "component": "evidence_support",
-      "created_at": "2026-05-03T09:27:10.412020+00:00",
+      "created_at": "2026-05-03T09:31:09.422125+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16036:5:verification_completed",
@@ -2033,7 +2033,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.412025+00:00",
+      "created_at": "2026-05-03T09:31:09.422128+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "16036:6:warning_emitted",
@@ -2049,7 +2049,7 @@
     },
     {
       "component": "evidence_contract_prompt",
-      "created_at": "2026-05-03T09:27:10.412094+00:00",
+      "created_at": "2026-05-03T09:31:09.422177+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "665:1:context_built",
@@ -2063,7 +2063,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.412099+00:00",
+      "created_at": "2026-05-03T09:31:09.422180+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "665:2:provider_call_started",
@@ -2077,7 +2077,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.412136+00:00",
+      "created_at": "2026-05-03T09:31:09.422208+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "665:3:provider_call_finished",
@@ -2096,7 +2096,7 @@
     },
     {
       "component": "final_output",
-      "created_at": "2026-05-03T09:27:10.412200+00:00",
+      "created_at": "2026-05-03T09:31:09.422259+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "665:4:parse_attempted",
@@ -2114,7 +2114,7 @@
     },
     {
       "component": "evidence_support",
-      "created_at": "2026-05-03T09:27:10.412205+00:00",
+      "created_at": "2026-05-03T09:31:09.422263+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "665:5:verification_completed",
@@ -2133,7 +2133,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.412211+00:00",
+      "created_at": "2026-05-03T09:31:09.422266+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "665:6:warning_emitted",
@@ -2149,7 +2149,7 @@
     },
     {
       "component": "evidence_contract_prompt",
-      "created_at": "2026-05-03T09:27:10.412275+00:00",
+      "created_at": "2026-05-03T09:31:09.422311+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "1165:1:context_built",
@@ -2163,7 +2163,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.412281+00:00",
+      "created_at": "2026-05-03T09:31:09.422314+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "1165:2:provider_call_started",
@@ -2177,7 +2177,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.412314+00:00",
+      "created_at": "2026-05-03T09:31:09.422340+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "1165:3:provider_call_finished",
@@ -2196,7 +2196,7 @@
     },
     {
       "component": "final_output",
-      "created_at": "2026-05-03T09:27:10.412384+00:00",
+      "created_at": "2026-05-03T09:31:09.422392+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "1165:4:parse_attempted",
@@ -2214,7 +2214,7 @@
     },
     {
       "component": "evidence_support",
-      "created_at": "2026-05-03T09:27:10.412390+00:00",
+      "created_at": "2026-05-03T09:31:09.422395+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "1165:5:verification_completed",
@@ -2233,7 +2233,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.412397+00:00",
+      "created_at": "2026-05-03T09:31:09.422399+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "1165:6:warning_emitted",
@@ -2249,7 +2249,7 @@
     },
     {
       "component": "evidence_contract_prompt",
-      "created_at": "2026-05-03T09:27:10.412472+00:00",
+      "created_at": "2026-05-03T09:31:09.422447+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "10967:1:context_built",
@@ -2263,7 +2263,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.412478+00:00",
+      "created_at": "2026-05-03T09:31:09.422450+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "10967:2:provider_call_started",
@@ -2277,7 +2277,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.412516+00:00",
+      "created_at": "2026-05-03T09:31:09.422479+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "10967:3:provider_call_finished",
@@ -2296,7 +2296,7 @@
     },
     {
       "component": "final_output",
-      "created_at": "2026-05-03T09:27:10.412587+00:00",
+      "created_at": "2026-05-03T09:31:09.422530+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "10967:4:parse_attempted",
@@ -2314,7 +2314,7 @@
     },
     {
       "component": "evidence_support",
-      "created_at": "2026-05-03T09:27:10.412593+00:00",
+      "created_at": "2026-05-03T09:31:09.422533+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "10967:5:verification_completed",
@@ -2333,7 +2333,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.412601+00:00",
+      "created_at": "2026-05-03T09:31:09.422538+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "10967:6:warning_emitted",
@@ -2349,7 +2349,7 @@
     },
     {
       "component": "evidence_contract_prompt",
-      "created_at": "2026-05-03T09:27:10.412670+00:00",
+      "created_at": "2026-05-03T09:31:09.422588+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "280:1:context_built",
@@ -2363,7 +2363,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.412675+00:00",
+      "created_at": "2026-05-03T09:31:09.422592+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "280:2:provider_call_started",
@@ -2377,7 +2377,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.412713+00:00",
+      "created_at": "2026-05-03T09:31:09.422615+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "280:3:provider_call_finished",
@@ -2396,7 +2396,7 @@
     },
     {
       "component": "final_output",
-      "created_at": "2026-05-03T09:27:10.412779+00:00",
+      "created_at": "2026-05-03T09:31:09.422662+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "280:4:parse_attempted",
@@ -2414,7 +2414,7 @@
     },
     {
       "component": "evidence_support",
-      "created_at": "2026-05-03T09:27:10.412785+00:00",
+      "created_at": "2026-05-03T09:31:09.422665+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "280:5:verification_completed",
@@ -2433,7 +2433,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.412790+00:00",
+      "created_at": "2026-05-03T09:31:09.422668+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "280:6:warning_emitted",
@@ -2449,7 +2449,7 @@
     },
     {
       "component": "evidence_contract_prompt",
-      "created_at": "2026-05-03T09:27:10.412866+00:00",
+      "created_at": "2026-05-03T09:31:09.422713+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "7708:1:context_built",
@@ -2463,7 +2463,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.412872+00:00",
+      "created_at": "2026-05-03T09:31:09.422717+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "7708:2:provider_call_started",
@@ -2477,7 +2477,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.412905+00:00",
+      "created_at": "2026-05-03T09:31:09.422739+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "7708:3:provider_call_finished",
@@ -2496,7 +2496,7 @@
     },
     {
       "component": "final_output",
-      "created_at": "2026-05-03T09:27:10.412962+00:00",
+      "created_at": "2026-05-03T09:31:09.422779+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "7708:4:parse_attempted",
@@ -2514,7 +2514,7 @@
     },
     {
       "component": "evidence_support",
-      "created_at": "2026-05-03T09:27:10.412967+00:00",
+      "created_at": "2026-05-03T09:31:09.422782+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "7708:5:verification_completed",
@@ -2533,7 +2533,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.412972+00:00",
+      "created_at": "2026-05-03T09:31:09.422787+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "7708:6:warning_emitted",
@@ -2549,7 +2549,7 @@
     },
     {
       "component": "evidence_contract_prompt",
-      "created_at": "2026-05-03T09:27:10.413040+00:00",
+      "created_at": "2026-05-03T09:31:09.422834+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "4003:1:context_built",
@@ -2563,7 +2563,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.413045+00:00",
+      "created_at": "2026-05-03T09:31:09.422838+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "4003:2:provider_call_started",
@@ -2577,7 +2577,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.413083+00:00",
+      "created_at": "2026-05-03T09:31:09.422865+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "4003:3:provider_call_finished",
@@ -2596,7 +2596,7 @@
     },
     {
       "component": "final_output",
-      "created_at": "2026-05-03T09:27:10.413149+00:00",
+      "created_at": "2026-05-03T09:31:09.422915+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "4003:4:parse_attempted",
@@ -2614,7 +2614,7 @@
     },
     {
       "component": "evidence_support",
-      "created_at": "2026-05-03T09:27:10.413155+00:00",
+      "created_at": "2026-05-03T09:31:09.422918+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "4003:5:verification_completed",
@@ -2633,7 +2633,7 @@
     },
     {
       "component": "direct_evidence_contract",
-      "created_at": "2026-05-03T09:27:10.413162+00:00",
+      "created_at": "2026-05-03T09:31:09.422922+00:00",
       "duration_ms": 0,
       "error": "",
       "event_id": "4003:6:warning_emitted",
@@ -2659,8 +2659,8 @@
       "unsupported_citations": 2
     }
   },
-  "model": "claude-3-5-sonnet-20241022",
-  "model_registry_entry": "claude-3-5-sonnet-20241022",
+  "model": "mock-model",
+  "model_registry_entry": "openai_gpt_4_1_2025_04_14",
   "parse_validity": {
     "current_medications": {
       "invalid": 0,
@@ -2712,7 +2712,7 @@
       "harness_events": [
         {
           "component": "evidence_contract_prompt",
-          "created_at": "2026-05-03T09:27:10.406468+00:00",
+          "created_at": "2026-05-03T09:31:09.418370+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "11118:1:context_built",
@@ -2726,7 +2726,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.406493+00:00",
+          "created_at": "2026-05-03T09:31:09.418389+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "11118:2:provider_call_started",
@@ -2740,7 +2740,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.406588+00:00",
+          "created_at": "2026-05-03T09:31:09.418464+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "11118:3:provider_call_finished",
@@ -2759,7 +2759,7 @@
         },
         {
           "component": "final_output",
-          "created_at": "2026-05-03T09:27:10.407560+00:00",
+          "created_at": "2026-05-03T09:31:09.419102+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "11118:4:parse_attempted",
@@ -2777,7 +2777,7 @@
         },
         {
           "component": "evidence_support",
-          "created_at": "2026-05-03T09:27:10.407578+00:00",
+          "created_at": "2026-05-03T09:31:09.419114+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "11118:5:verification_completed",
@@ -2796,7 +2796,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.407587+00:00",
+          "created_at": "2026-05-03T09:31:09.419120+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "11118:6:warning_emitted",
@@ -2897,7 +2897,7 @@
         "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"2 cluster per month, 6 per cluster\", \"evidence\": \"Over the last four weeks, the records note: \\\"Cluster days twice this month; typically six seizures in 24 h.\\\"\", \"parsed_monthly_rate\": 12.0, \"pragmatic_class\": \"frequent\", \"purist_class\": \"(1/W,1/D)\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"Over the last four weeks, the records note: \\\"Cluster days twice this month; typically six seizures in 24 h.\\\"\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
         "error": null,
         "latency_ms": 1,
-        "model": "claude-3-5-sonnet-20241022",
+        "model": "mock-model",
         "provider": "replay",
         "raw": {},
         "usage": {
@@ -2919,7 +2919,7 @@
       "harness_events": [
         {
           "component": "evidence_contract_prompt",
-          "created_at": "2026-05-03T09:27:10.407697+00:00",
+          "created_at": "2026-05-03T09:31:09.419199+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16750:1:context_built",
@@ -2933,7 +2933,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.407706+00:00",
+          "created_at": "2026-05-03T09:31:09.419204+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16750:2:provider_call_started",
@@ -2947,7 +2947,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.407779+00:00",
+          "created_at": "2026-05-03T09:31:09.419253+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16750:3:provider_call_finished",
@@ -2966,7 +2966,7 @@
         },
         {
           "component": "final_output",
-          "created_at": "2026-05-03T09:27:10.408316+00:00",
+          "created_at": "2026-05-03T09:31:09.419595+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16750:4:parse_attempted",
@@ -2985,7 +2985,7 @@
         },
         {
           "component": "evidence_support",
-          "created_at": "2026-05-03T09:27:10.408328+00:00",
+          "created_at": "2026-05-03T09:31:09.419601+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16750:5:verification_completed",
@@ -3004,7 +3004,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.408336+00:00",
+          "created_at": "2026-05-03T09:31:09.419606+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16750:6:warning_emitted",
@@ -3107,7 +3107,7 @@
         "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"6 per 7 month\", \"evidence\": \"In February she experienced a prolonged focal seizure... In May there were four further brief absences, and in August a single generalised tonic-clonic seizure... Since adopting structured reminders in late August, she has had no further events.\", \"parsed_monthly_rate\": 0.8571428571428571, \"pragmatic_class\": \"infrequent\", \"purist_class\": \"(1/6M,1/M)\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"In February she experienced a prolonged focal seizure... In May there were four further brief absences, and in August a single generalised tonic-clonic seizure... Since adopting structured reminders in late August, she has had no further events.\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
         "error": null,
         "latency_ms": 1,
-        "model": "claude-3-5-sonnet-20241022",
+        "model": "mock-model",
         "provider": "replay",
         "raw": {},
         "usage": {
@@ -3129,7 +3129,7 @@
       "harness_events": [
         {
           "component": "evidence_contract_prompt",
-          "created_at": "2026-05-03T09:27:10.408424+00:00",
+          "created_at": "2026-05-03T09:31:09.419668+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "14706:1:context_built",
@@ -3143,7 +3143,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.408431+00:00",
+          "created_at": "2026-05-03T09:31:09.419673+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "14706:2:provider_call_started",
@@ -3157,7 +3157,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.408485+00:00",
+          "created_at": "2026-05-03T09:31:09.419706+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "14706:3:provider_call_finished",
@@ -3176,7 +3176,7 @@
         },
         {
           "component": "final_output",
-          "created_at": "2026-05-03T09:27:10.408583+00:00",
+          "created_at": "2026-05-03T09:31:09.419764+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "14706:4:parse_attempted",
@@ -3194,7 +3194,7 @@
         },
         {
           "component": "evidence_support",
-          "created_at": "2026-05-03T09:27:10.408590+00:00",
+          "created_at": "2026-05-03T09:31:09.419768+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "14706:5:verification_completed",
@@ -3213,7 +3213,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.408596+00:00",
+          "created_at": "2026-05-03T09:31:09.419772+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "14706:6:warning_emitted",
@@ -3314,7 +3314,7 @@
         "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"2 per 5 month\", \"evidence\": \"Two events over the last five months.\", \"parsed_monthly_rate\": 0.4, \"pragmatic_class\": \"infrequent\", \"purist_class\": \"(1/6M,1/M)\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"Two events over the last five months.\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
         "error": null,
         "latency_ms": 1,
-        "model": "claude-3-5-sonnet-20241022",
+        "model": "mock-model",
         "provider": "replay",
         "raw": {},
         "usage": {
@@ -3336,7 +3336,7 @@
       "harness_events": [
         {
           "component": "evidence_contract_prompt",
-          "created_at": "2026-05-03T09:27:10.408668+00:00",
+          "created_at": "2026-05-03T09:31:09.419819+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "12383:1:context_built",
@@ -3350,7 +3350,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.408676+00:00",
+          "created_at": "2026-05-03T09:31:09.419828+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "12383:2:provider_call_started",
@@ -3364,7 +3364,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.408714+00:00",
+          "created_at": "2026-05-03T09:31:09.419854+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "12383:3:provider_call_finished",
@@ -3383,7 +3383,7 @@
         },
         {
           "component": "final_output",
-          "created_at": "2026-05-03T09:27:10.408805+00:00",
+          "created_at": "2026-05-03T09:31:09.419908+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "12383:4:parse_attempted",
@@ -3401,7 +3401,7 @@
         },
         {
           "component": "evidence_support",
-          "created_at": "2026-05-03T09:27:10.408812+00:00",
+          "created_at": "2026-05-03T09:31:09.419912+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "12383:5:verification_completed",
@@ -3420,7 +3420,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.408818+00:00",
+          "created_at": "2026-05-03T09:31:09.419915+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "12383:6:warning_emitted",
@@ -3521,7 +3521,7 @@
         "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"4 per day\", \"evidence\": \"he still has focal onset seizures four times per day\", \"parsed_monthly_rate\": 121.75, \"pragmatic_class\": \"frequent\", \"purist_class\": \">=1/D\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"he still has focal onset seizures four times per day\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
         "error": null,
         "latency_ms": 1,
-        "model": "claude-3-5-sonnet-20241022",
+        "model": "mock-model",
         "provider": "replay",
         "raw": {},
         "usage": {
@@ -3543,7 +3543,7 @@
       "harness_events": [
         {
           "component": "evidence_contract_prompt",
-          "created_at": "2026-05-03T09:27:10.408885+00:00",
+          "created_at": "2026-05-03T09:31:09.419959+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "5555:1:context_built",
@@ -3557,7 +3557,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.408891+00:00",
+          "created_at": "2026-05-03T09:31:09.419962+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "5555:2:provider_call_started",
@@ -3571,7 +3571,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.409262+00:00",
+          "created_at": "2026-05-03T09:31:09.420174+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "5555:3:provider_call_finished",
@@ -3590,7 +3590,7 @@
         },
         {
           "component": "final_output",
-          "created_at": "2026-05-03T09:27:10.409368+00:00",
+          "created_at": "2026-05-03T09:31:09.420238+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "5555:4:parse_attempted",
@@ -3608,7 +3608,7 @@
         },
         {
           "component": "evidence_support",
-          "created_at": "2026-05-03T09:27:10.409374+00:00",
+          "created_at": "2026-05-03T09:31:09.420242+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "5555:5:verification_completed",
@@ -3627,7 +3627,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.409380+00:00",
+          "created_at": "2026-05-03T09:31:09.420245+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "5555:6:warning_emitted",
@@ -3728,7 +3728,7 @@
         "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"multiple per week\", \"evidence\": \"several episodes per week of brief generalised events\", \"parsed_monthly_rate\": 13.044375, \"pragmatic_class\": \"frequent\", \"purist_class\": \"(1/W,1/D)\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"several episodes per week of brief generalised events\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
         "error": null,
         "latency_ms": 1,
-        "model": "claude-3-5-sonnet-20241022",
+        "model": "mock-model",
         "provider": "replay",
         "raw": {},
         "usage": {
@@ -3750,7 +3750,7 @@
       "harness_events": [
         {
           "component": "evidence_contract_prompt",
-          "created_at": "2026-05-03T09:27:10.409453+00:00",
+          "created_at": "2026-05-03T09:31:09.420293+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "6216:1:context_built",
@@ -3764,7 +3764,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.409459+00:00",
+          "created_at": "2026-05-03T09:31:09.420296+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "6216:2:provider_call_started",
@@ -3778,7 +3778,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.409506+00:00",
+          "created_at": "2026-05-03T09:31:09.420336+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "6216:3:provider_call_finished",
@@ -3797,7 +3797,7 @@
         },
         {
           "component": "final_output",
-          "created_at": "2026-05-03T09:27:10.409588+00:00",
+          "created_at": "2026-05-03T09:31:09.420394+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "6216:4:parse_attempted",
@@ -3815,7 +3815,7 @@
         },
         {
           "component": "evidence_support",
-          "created_at": "2026-05-03T09:27:10.409594+00:00",
+          "created_at": "2026-05-03T09:31:09.420397+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "6216:5:verification_completed",
@@ -3834,7 +3834,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.409600+00:00",
+          "created_at": "2026-05-03T09:31:09.420400+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "6216:6:warning_emitted",
@@ -3935,7 +3935,7 @@
         "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"4 per 6 week\", \"evidence\": \"over the past six weeks there were four brief focal-aware episodes and one focal-impaired awareness spell\", \"parsed_monthly_rate\": 2.89875, \"pragmatic_class\": \"frequent\", \"purist_class\": \"(1/M,1/W)\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"over the past six weeks there were four brief focal-aware episodes and one focal-impaired awareness spell\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
         "error": null,
         "latency_ms": 1,
-        "model": "claude-3-5-sonnet-20241022",
+        "model": "mock-model",
         "provider": "replay",
         "raw": {},
         "usage": {
@@ -3957,7 +3957,7 @@
       "harness_events": [
         {
           "component": "evidence_contract_prompt",
-          "created_at": "2026-05-03T09:27:10.409673+00:00",
+          "created_at": "2026-05-03T09:31:09.420447+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "10703:1:context_built",
@@ -3971,7 +3971,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.409678+00:00",
+          "created_at": "2026-05-03T09:31:09.420450+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "10703:2:provider_call_started",
@@ -3985,7 +3985,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.409720+00:00",
+          "created_at": "2026-05-03T09:31:09.420482+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "10703:3:provider_call_finished",
@@ -4004,7 +4004,7 @@
         },
         {
           "component": "final_output",
-          "created_at": "2026-05-03T09:27:10.409781+00:00",
+          "created_at": "2026-05-03T09:31:09.420523+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "10703:4:parse_attempted",
@@ -4022,7 +4022,7 @@
         },
         {
           "component": "evidence_support",
-          "created_at": "2026-05-03T09:27:10.409787+00:00",
+          "created_at": "2026-05-03T09:31:09.420526+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "10703:5:verification_completed",
@@ -4041,7 +4041,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.409795+00:00",
+          "created_at": "2026-05-03T09:31:09.420529+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "10703:6:warning_emitted",
@@ -4142,7 +4142,7 @@
         "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"unknown, 2 to 3 per cluster\", \"evidence\": \"after which he may have two to three events over a 24\\u201348 hour period.\", \"parsed_monthly_rate\": 1000.0, \"pragmatic_class\": \"UNK\", \"purist_class\": \"UNK\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"after which he may have two to three events over a 24\\u201348 hour period.\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
         "error": null,
         "latency_ms": 1,
-        "model": "claude-3-5-sonnet-20241022",
+        "model": "mock-model",
         "provider": "replay",
         "raw": {},
         "usage": {
@@ -4164,7 +4164,7 @@
       "harness_events": [
         {
           "component": "evidence_contract_prompt",
-          "created_at": "2026-05-03T09:27:10.409867+00:00",
+          "created_at": "2026-05-03T09:31:09.420580+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "10594:1:context_built",
@@ -4178,7 +4178,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.409873+00:00",
+          "created_at": "2026-05-03T09:31:09.420583+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "10594:2:provider_call_started",
@@ -4192,7 +4192,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.409905+00:00",
+          "created_at": "2026-05-03T09:31:09.420604+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "10594:3:provider_call_finished",
@@ -4211,7 +4211,7 @@
         },
         {
           "component": "final_output",
-          "created_at": "2026-05-03T09:27:10.409963+00:00",
+          "created_at": "2026-05-03T09:31:09.420642+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "10594:4:parse_attempted",
@@ -4229,7 +4229,7 @@
         },
         {
           "component": "evidence_support",
-          "created_at": "2026-05-03T09:27:10.409969+00:00",
+          "created_at": "2026-05-03T09:31:09.420645+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "10594:5:verification_completed",
@@ -4248,7 +4248,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.409974+00:00",
+          "created_at": "2026-05-03T09:31:09.420648+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "10594:6:warning_emitted",
@@ -4349,7 +4349,7 @@
         "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"unknown, 2 per cluster\", \"evidence\": \"Clusters characterized by two focal impaired-awareness seizures; frequency unclear.\", \"parsed_monthly_rate\": 1000.0, \"pragmatic_class\": \"UNK\", \"purist_class\": \"UNK\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"Clusters characterized by two focal impaired-awareness seizures; frequency unclear.\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
         "error": null,
         "latency_ms": 1,
-        "model": "claude-3-5-sonnet-20241022",
+        "model": "mock-model",
         "provider": "replay",
         "raw": {},
         "usage": {
@@ -4371,7 +4371,7 @@
       "harness_events": [
         {
           "component": "evidence_contract_prompt",
-          "created_at": "2026-05-03T09:27:10.410041+00:00",
+          "created_at": "2026-05-03T09:31:09.420692+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "14036:1:context_built",
@@ -4385,7 +4385,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.410046+00:00",
+          "created_at": "2026-05-03T09:31:09.420695+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "14036:2:provider_call_started",
@@ -4399,7 +4399,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.410080+00:00",
+          "created_at": "2026-05-03T09:31:09.420716+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "14036:3:provider_call_finished",
@@ -4418,7 +4418,7 @@
         },
         {
           "component": "final_output",
-          "created_at": "2026-05-03T09:27:10.410135+00:00",
+          "created_at": "2026-05-03T09:31:09.420757+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "14036:4:parse_attempted",
@@ -4436,7 +4436,7 @@
         },
         {
           "component": "evidence_support",
-          "created_at": "2026-05-03T09:27:10.410141+00:00",
+          "created_at": "2026-05-03T09:31:09.420760+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "14036:5:verification_completed",
@@ -4455,7 +4455,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.410149+00:00",
+          "created_at": "2026-05-03T09:31:09.420764+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "14036:6:warning_emitted",
@@ -4556,7 +4556,7 @@
         "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"unknown\", \"evidence\": \"since starting ketogenic diet he has had 4 drop attacks, the latest one on 17 Dec\", \"parsed_monthly_rate\": 1000.0, \"pragmatic_class\": \"UNK\", \"purist_class\": \"UNK\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"since starting ketogenic diet he has had 4 drop attacks, the latest one on 17 Dec\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
         "error": null,
         "latency_ms": 1,
-        "model": "claude-3-5-sonnet-20241022",
+        "model": "mock-model",
         "provider": "replay",
         "raw": {},
         "usage": {
@@ -4578,7 +4578,7 @@
       "harness_events": [
         {
           "component": "evidence_contract_prompt",
-          "created_at": "2026-05-03T09:27:10.410213+00:00",
+          "created_at": "2026-05-03T09:31:09.420808+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "4562:1:context_built",
@@ -4592,7 +4592,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.410221+00:00",
+          "created_at": "2026-05-03T09:31:09.420811+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "4562:2:provider_call_started",
@@ -4606,7 +4606,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.410259+00:00",
+          "created_at": "2026-05-03T09:31:09.420842+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "4562:3:provider_call_finished",
@@ -4625,7 +4625,7 @@
         },
         {
           "component": "final_output",
-          "created_at": "2026-05-03T09:27:10.410332+00:00",
+          "created_at": "2026-05-03T09:31:09.420894+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "4562:4:parse_attempted",
@@ -4643,7 +4643,7 @@
         },
         {
           "component": "evidence_support",
-          "created_at": "2026-05-03T09:27:10.410338+00:00",
+          "created_at": "2026-05-03T09:31:09.420898+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "4562:5:verification_completed",
@@ -4662,7 +4662,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.410343+00:00",
+          "created_at": "2026-05-03T09:31:09.420901+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "4562:6:warning_emitted",
@@ -4763,7 +4763,7 @@
         "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"1 per 6 week\", \"evidence\": \"the median inter-seizure interval \\u2248 six weeks\", \"parsed_monthly_rate\": 0.7246875, \"pragmatic_class\": \"infrequent\", \"purist_class\": \"(1/6M,1/M)\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"the median inter-seizure interval \\u2248 six weeks\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
         "error": null,
         "latency_ms": 1,
-        "model": "claude-3-5-sonnet-20241022",
+        "model": "mock-model",
         "provider": "replay",
         "raw": {},
         "usage": {
@@ -4785,7 +4785,7 @@
       "harness_events": [
         {
           "component": "evidence_contract_prompt",
-          "created_at": "2026-05-03T09:27:10.410415+00:00",
+          "created_at": "2026-05-03T09:31:09.420951+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "14369:1:context_built",
@@ -4799,7 +4799,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.410420+00:00",
+          "created_at": "2026-05-03T09:31:09.420955+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "14369:2:provider_call_started",
@@ -4813,7 +4813,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.410459+00:00",
+          "created_at": "2026-05-03T09:31:09.420980+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "14369:3:provider_call_finished",
@@ -4832,7 +4832,7 @@
         },
         {
           "component": "final_output",
-          "created_at": "2026-05-03T09:27:10.410532+00:00",
+          "created_at": "2026-05-03T09:31:09.421031+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "14369:4:parse_attempted",
@@ -4851,7 +4851,7 @@
         },
         {
           "component": "evidence_support",
-          "created_at": "2026-05-03T09:27:10.410538+00:00",
+          "created_at": "2026-05-03T09:31:09.421035+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "14369:5:verification_completed",
@@ -4870,7 +4870,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.410544+00:00",
+          "created_at": "2026-05-03T09:31:09.421039+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "14369:6:warning_emitted",
@@ -4973,7 +4973,7 @@
         "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"2 per 3 month\", \"evidence\": \"He withdrew from Clobazam on 12/Jan. At that time, he had 2 seizures... He has remained stable without seizures since.\", \"parsed_monthly_rate\": 0.6666666666666666, \"pragmatic_class\": \"infrequent\", \"purist_class\": \"(1/6M,1/M)\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"He withdrew from Clobazam on 12/Jan. At that time, he had 2 seizures... He has remained stable without seizures since.\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
         "error": null,
         "latency_ms": 1,
-        "model": "claude-3-5-sonnet-20241022",
+        "model": "mock-model",
         "provider": "replay",
         "raw": {},
         "usage": {
@@ -4995,7 +4995,7 @@
       "harness_events": [
         {
           "component": "evidence_contract_prompt",
-          "created_at": "2026-05-03T09:27:10.410611+00:00",
+          "created_at": "2026-05-03T09:31:09.421087+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "9786:1:context_built",
@@ -5009,7 +5009,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.410616+00:00",
+          "created_at": "2026-05-03T09:31:09.421091+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "9786:2:provider_call_started",
@@ -5023,7 +5023,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.410654+00:00",
+          "created_at": "2026-05-03T09:31:09.421154+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "9786:3:provider_call_finished",
@@ -5042,7 +5042,7 @@
         },
         {
           "component": "final_output",
-          "created_at": "2026-05-03T09:27:10.410709+00:00",
+          "created_at": "2026-05-03T09:31:09.421194+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "9786:4:parse_attempted",
@@ -5060,7 +5060,7 @@
         },
         {
           "component": "evidence_support",
-          "created_at": "2026-05-03T09:27:10.410715+00:00",
+          "created_at": "2026-05-03T09:31:09.421198+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "9786:5:verification_completed",
@@ -5079,7 +5079,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.410720+00:00",
+          "created_at": "2026-05-03T09:31:09.421201+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "9786:6:warning_emitted",
@@ -5180,7 +5180,7 @@
         "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"unknown\", \"evidence\": \"They describe brief clusters of spasms lasting seconds\", \"parsed_monthly_rate\": 1000.0, \"pragmatic_class\": \"UNK\", \"purist_class\": \"UNK\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"They describe brief clusters of spasms lasting seconds\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
         "error": null,
         "latency_ms": 1,
-        "model": "claude-3-5-sonnet-20241022",
+        "model": "mock-model",
         "provider": "replay",
         "raw": {},
         "usage": {
@@ -5202,7 +5202,7 @@
       "harness_events": [
         {
           "component": "evidence_contract_prompt",
-          "created_at": "2026-05-03T09:27:10.410807+00:00",
+          "created_at": "2026-05-03T09:31:09.421245+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "9879:1:context_built",
@@ -5216,7 +5216,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.410813+00:00",
+          "created_at": "2026-05-03T09:31:09.421248+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "9879:2:provider_call_started",
@@ -5230,7 +5230,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.410855+00:00",
+          "created_at": "2026-05-03T09:31:09.421275+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "9879:3:provider_call_finished",
@@ -5249,7 +5249,7 @@
         },
         {
           "component": "final_output",
-          "created_at": "2026-05-03T09:27:10.410909+00:00",
+          "created_at": "2026-05-03T09:31:09.421312+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "9879:4:parse_attempted",
@@ -5267,7 +5267,7 @@
         },
         {
           "component": "evidence_support",
-          "created_at": "2026-05-03T09:27:10.410915+00:00",
+          "created_at": "2026-05-03T09:31:09.421316+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "9879:5:verification_completed",
@@ -5286,7 +5286,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.410920+00:00",
+          "created_at": "2026-05-03T09:31:09.421319+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "9879:6:warning_emitted",
@@ -5387,7 +5387,7 @@
         "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"unknown\", \"evidence\": \"over the past three months she has had brief clusters of events\", \"parsed_monthly_rate\": 1000.0, \"pragmatic_class\": \"UNK\", \"purist_class\": \"UNK\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"over the past three months she has had brief clusters of events\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
         "error": null,
         "latency_ms": 1,
-        "model": "claude-3-5-sonnet-20241022",
+        "model": "mock-model",
         "provider": "replay",
         "raw": {},
         "usage": {
@@ -5409,7 +5409,7 @@
       "harness_events": [
         {
           "component": "evidence_contract_prompt",
-          "created_at": "2026-05-03T09:27:10.410988+00:00",
+          "created_at": "2026-05-03T09:31:09.421363+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "8488:1:context_built",
@@ -5423,7 +5423,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.410994+00:00",
+          "created_at": "2026-05-03T09:31:09.421366+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "8488:2:provider_call_started",
@@ -5437,7 +5437,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.411025+00:00",
+          "created_at": "2026-05-03T09:31:09.421393+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "8488:3:provider_call_finished",
@@ -5456,7 +5456,7 @@
         },
         {
           "component": "final_output",
-          "created_at": "2026-05-03T09:27:10.411082+00:00",
+          "created_at": "2026-05-03T09:31:09.421434+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "8488:4:parse_attempted",
@@ -5474,7 +5474,7 @@
         },
         {
           "component": "evidence_support",
-          "created_at": "2026-05-03T09:27:10.411087+00:00",
+          "created_at": "2026-05-03T09:31:09.421437+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "8488:5:verification_completed",
@@ -5493,7 +5493,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.411094+00:00",
+          "created_at": "2026-05-03T09:31:09.421441+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "8488:6:warning_emitted",
@@ -5594,7 +5594,7 @@
         "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"seizure free for multiple month\", \"evidence\": \"Since then, there have been no events suggestive of seizures\", \"parsed_monthly_rate\": 0.0, \"pragmatic_class\": \"NS\", \"purist_class\": \"NS\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"Since then, there have been no events suggestive of seizures\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
         "error": null,
         "latency_ms": 1,
-        "model": "claude-3-5-sonnet-20241022",
+        "model": "mock-model",
         "provider": "replay",
         "raw": {},
         "usage": {
@@ -5616,7 +5616,7 @@
       "harness_events": [
         {
           "component": "evidence_contract_prompt",
-          "created_at": "2026-05-03T09:27:10.411161+00:00",
+          "created_at": "2026-05-03T09:31:09.421488+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "13079:1:context_built",
@@ -5630,7 +5630,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.411166+00:00",
+          "created_at": "2026-05-03T09:31:09.421492+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "13079:2:provider_call_started",
@@ -5644,7 +5644,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.411204+00:00",
+          "created_at": "2026-05-03T09:31:09.421523+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "13079:3:provider_call_finished",
@@ -5663,7 +5663,7 @@
         },
         {
           "component": "final_output",
-          "created_at": "2026-05-03T09:27:10.411276+00:00",
+          "created_at": "2026-05-03T09:31:09.421580+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "13079:4:parse_attempted",
@@ -5681,7 +5681,7 @@
         },
         {
           "component": "evidence_support",
-          "created_at": "2026-05-03T09:27:10.411282+00:00",
+          "created_at": "2026-05-03T09:31:09.421586+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "13079:5:verification_completed",
@@ -5700,7 +5700,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.411287+00:00",
+          "created_at": "2026-05-03T09:31:09.421591+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "13079:6:warning_emitted",
@@ -5801,7 +5801,7 @@
         "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"2 per 8 month\", \"evidence\": \"He remained seizure-free for 8 months after starting Levetiracetam 500 mg twice daily, before experiencing a generalised tonic-clonic seizure three Tuesdays ago, preceded by a cluster of absences.\", \"parsed_monthly_rate\": 0.25, \"pragmatic_class\": \"infrequent\", \"purist_class\": \"(1/6M,1/M)\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"He remained seizure-free for 8 months after starting Levetiracetam 500 mg twice daily, before experiencing a generalised tonic-clonic seizure three Tuesdays ago, preceded by a cluster of absences.\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
         "error": null,
         "latency_ms": 1,
-        "model": "claude-3-5-sonnet-20241022",
+        "model": "mock-model",
         "provider": "replay",
         "raw": {},
         "usage": {
@@ -5823,7 +5823,7 @@
       "harness_events": [
         {
           "component": "evidence_contract_prompt",
-          "created_at": "2026-05-03T09:27:10.411355+00:00",
+          "created_at": "2026-05-03T09:31:09.421641+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16158:1:context_built",
@@ -5837,7 +5837,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.411361+00:00",
+          "created_at": "2026-05-03T09:31:09.421645+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16158:2:provider_call_started",
@@ -5851,7 +5851,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.411391+00:00",
+          "created_at": "2026-05-03T09:31:09.421676+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16158:3:provider_call_finished",
@@ -5870,7 +5870,7 @@
         },
         {
           "component": "final_output",
-          "created_at": "2026-05-03T09:27:10.411456+00:00",
+          "created_at": "2026-05-03T09:31:09.421727+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16158:4:parse_attempted",
@@ -5888,7 +5888,7 @@
         },
         {
           "component": "evidence_support",
-          "created_at": "2026-05-03T09:27:10.411461+00:00",
+          "created_at": "2026-05-03T09:31:09.421731+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16158:5:verification_completed",
@@ -5907,7 +5907,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.411466+00:00",
+          "created_at": "2026-05-03T09:31:09.421735+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16158:6:warning_emitted",
@@ -6008,7 +6008,7 @@
         "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"13 per 4 month\", \"evidence\": \"As of this month she reports 2 seizure events; two in August, 7 in July and 2 in June\", \"parsed_monthly_rate\": 3.25, \"pragmatic_class\": \"frequent\", \"purist_class\": \"(1/M,1/W)\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"As of this month she reports 2 seizure events; two in August, 7 in July and 2 in June\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
         "error": null,
         "latency_ms": 1,
-        "model": "claude-3-5-sonnet-20241022",
+        "model": "mock-model",
         "provider": "replay",
         "raw": {},
         "usage": {
@@ -6030,7 +6030,7 @@
       "harness_events": [
         {
           "component": "evidence_contract_prompt",
-          "created_at": "2026-05-03T09:27:10.411535+00:00",
+          "created_at": "2026-05-03T09:31:09.421780+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "9278:1:context_built",
@@ -6044,7 +6044,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.411543+00:00",
+          "created_at": "2026-05-03T09:31:09.421785+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "9278:2:provider_call_started",
@@ -6058,7 +6058,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.411581+00:00",
+          "created_at": "2026-05-03T09:31:09.421809+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "9278:3:provider_call_finished",
@@ -6077,7 +6077,7 @@
         },
         {
           "component": "final_output",
-          "created_at": "2026-05-03T09:27:10.411645+00:00",
+          "created_at": "2026-05-03T09:31:09.421855+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "9278:4:parse_attempted",
@@ -6095,7 +6095,7 @@
         },
         {
           "component": "evidence_support",
-          "created_at": "2026-05-03T09:27:10.411650+00:00",
+          "created_at": "2026-05-03T09:31:09.421858+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "9278:5:verification_completed",
@@ -6114,7 +6114,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.411657+00:00",
+          "created_at": "2026-05-03T09:31:09.421862+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "9278:6:warning_emitted",
@@ -6215,7 +6215,7 @@
         "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"3 per week\", \"evidence\": \"He reports a frequency of \\u2264 three simple partial seizures per week\", \"parsed_monthly_rate\": 13.044375, \"pragmatic_class\": \"frequent\", \"purist_class\": \"(1/W,1/D)\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"He reports a frequency of \\u2264 three simple partial seizures per week\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
         "error": null,
         "latency_ms": 1,
-        "model": "claude-3-5-sonnet-20241022",
+        "model": "mock-model",
         "provider": "replay",
         "raw": {},
         "usage": {
@@ -6237,7 +6237,7 @@
       "harness_events": [
         {
           "component": "evidence_contract_prompt",
-          "created_at": "2026-05-03T09:27:10.411731+00:00",
+          "created_at": "2026-05-03T09:31:09.421916+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16356:1:context_built",
@@ -6251,7 +6251,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.411736+00:00",
+          "created_at": "2026-05-03T09:31:09.421921+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16356:2:provider_call_started",
@@ -6265,7 +6265,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.411766+00:00",
+          "created_at": "2026-05-03T09:31:09.421942+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16356:3:provider_call_finished",
@@ -6284,7 +6284,7 @@
         },
         {
           "component": "final_output",
-          "created_at": "2026-05-03T09:27:10.411830+00:00",
+          "created_at": "2026-05-03T09:31:09.421988+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16356:4:parse_attempted",
@@ -6302,7 +6302,7 @@
         },
         {
           "component": "evidence_support",
-          "created_at": "2026-05-03T09:27:10.411836+00:00",
+          "created_at": "2026-05-03T09:31:09.421992+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16356:5:verification_completed",
@@ -6321,7 +6321,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.411841+00:00",
+          "created_at": "2026-05-03T09:31:09.421995+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16356:6:warning_emitted",
@@ -6422,7 +6422,7 @@
         "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"1 per 4 day\", \"evidence\": \"Seizures remain relatively stable, typically occurring in clusters every 4 days.\", \"parsed_monthly_rate\": 7.609375, \"pragmatic_class\": \"frequent\", \"purist_class\": \"(1/W,1/D)\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"Seizures remain relatively stable, typically occurring in clusters every 4 days.\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
         "error": null,
         "latency_ms": 1,
-        "model": "claude-3-5-sonnet-20241022",
+        "model": "mock-model",
         "provider": "replay",
         "raw": {},
         "usage": {
@@ -6444,7 +6444,7 @@
       "harness_events": [
         {
           "component": "evidence_contract_prompt",
-          "created_at": "2026-05-03T09:27:10.411907+00:00",
+          "created_at": "2026-05-03T09:31:09.422039+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16036:1:context_built",
@@ -6458,7 +6458,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.411912+00:00",
+          "created_at": "2026-05-03T09:31:09.422042+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16036:2:provider_call_started",
@@ -6472,7 +6472,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.411950+00:00",
+          "created_at": "2026-05-03T09:31:09.422075+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16036:3:provider_call_finished",
@@ -6491,7 +6491,7 @@
         },
         {
           "component": "final_output",
-          "created_at": "2026-05-03T09:27:10.412014+00:00",
+          "created_at": "2026-05-03T09:31:09.422121+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16036:4:parse_attempted",
@@ -6509,7 +6509,7 @@
         },
         {
           "component": "evidence_support",
-          "created_at": "2026-05-03T09:27:10.412020+00:00",
+          "created_at": "2026-05-03T09:31:09.422125+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16036:5:verification_completed",
@@ -6528,7 +6528,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.412025+00:00",
+          "created_at": "2026-05-03T09:31:09.422128+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "16036:6:warning_emitted",
@@ -6629,7 +6629,7 @@
         "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"13 per 2 month\", \"evidence\": \"In Feb he had four seizures during sleep and 3 while awake. In Mar he had 4 in sleep and 2 while awake.\", \"parsed_monthly_rate\": 6.5, \"pragmatic_class\": \"frequent\", \"purist_class\": \"(1/W,1/D)\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"In Feb he had four seizures during sleep and 3 while awake. In Mar he had 4 in sleep and 2 while awake.\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
         "error": null,
         "latency_ms": 1,
-        "model": "claude-3-5-sonnet-20241022",
+        "model": "mock-model",
         "provider": "replay",
         "raw": {},
         "usage": {
@@ -6651,7 +6651,7 @@
       "harness_events": [
         {
           "component": "evidence_contract_prompt",
-          "created_at": "2026-05-03T09:27:10.412094+00:00",
+          "created_at": "2026-05-03T09:31:09.422177+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "665:1:context_built",
@@ -6665,7 +6665,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.412099+00:00",
+          "created_at": "2026-05-03T09:31:09.422180+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "665:2:provider_call_started",
@@ -6679,7 +6679,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.412136+00:00",
+          "created_at": "2026-05-03T09:31:09.422208+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "665:3:provider_call_finished",
@@ -6698,7 +6698,7 @@
         },
         {
           "component": "final_output",
-          "created_at": "2026-05-03T09:27:10.412200+00:00",
+          "created_at": "2026-05-03T09:31:09.422259+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "665:4:parse_attempted",
@@ -6716,7 +6716,7 @@
         },
         {
           "component": "evidence_support",
-          "created_at": "2026-05-03T09:27:10.412205+00:00",
+          "created_at": "2026-05-03T09:31:09.422263+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "665:5:verification_completed",
@@ -6735,7 +6735,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.412211+00:00",
+          "created_at": "2026-05-03T09:31:09.422266+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "665:6:warning_emitted",
@@ -6836,7 +6836,7 @@
         "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"2 per 2 week\", \"evidence\": \"a regular pattern of seizures twice every two weeks\", \"parsed_monthly_rate\": 4.3481250000000005, \"pragmatic_class\": \"frequent\", \"purist_class\": \"(1/W,1/D)\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"a regular pattern of seizures twice every two weeks\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
         "error": null,
         "latency_ms": 1,
-        "model": "claude-3-5-sonnet-20241022",
+        "model": "mock-model",
         "provider": "replay",
         "raw": {},
         "usage": {
@@ -6858,7 +6858,7 @@
       "harness_events": [
         {
           "component": "evidence_contract_prompt",
-          "created_at": "2026-05-03T09:27:10.412275+00:00",
+          "created_at": "2026-05-03T09:31:09.422311+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "1165:1:context_built",
@@ -6872,7 +6872,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.412281+00:00",
+          "created_at": "2026-05-03T09:31:09.422314+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "1165:2:provider_call_started",
@@ -6886,7 +6886,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.412314+00:00",
+          "created_at": "2026-05-03T09:31:09.422340+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "1165:3:provider_call_finished",
@@ -6905,7 +6905,7 @@
         },
         {
           "component": "final_output",
-          "created_at": "2026-05-03T09:27:10.412384+00:00",
+          "created_at": "2026-05-03T09:31:09.422392+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "1165:4:parse_attempted",
@@ -6923,7 +6923,7 @@
         },
         {
           "component": "evidence_support",
-          "created_at": "2026-05-03T09:27:10.412390+00:00",
+          "created_at": "2026-05-03T09:31:09.422395+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "1165:5:verification_completed",
@@ -6942,7 +6942,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.412397+00:00",
+          "created_at": "2026-05-03T09:31:09.422399+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "1165:6:warning_emitted",
@@ -7043,7 +7043,7 @@
         "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"5 to 7 per 3 week\", \"evidence\": \"5 or 7 focal onset seizures in three weeks during a recent period\", \"parsed_monthly_rate\": 8.696250000000001, \"pragmatic_class\": \"frequent\", \"purist_class\": \"(1/W,1/D)\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"5 or 7 focal onset seizures in three weeks during a recent period\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
         "error": null,
         "latency_ms": 1,
-        "model": "claude-3-5-sonnet-20241022",
+        "model": "mock-model",
         "provider": "replay",
         "raw": {},
         "usage": {
@@ -7065,7 +7065,7 @@
       "harness_events": [
         {
           "component": "evidence_contract_prompt",
-          "created_at": "2026-05-03T09:27:10.412472+00:00",
+          "created_at": "2026-05-03T09:31:09.422447+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "10967:1:context_built",
@@ -7079,7 +7079,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.412478+00:00",
+          "created_at": "2026-05-03T09:31:09.422450+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "10967:2:provider_call_started",
@@ -7093,7 +7093,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.412516+00:00",
+          "created_at": "2026-05-03T09:31:09.422479+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "10967:3:provider_call_finished",
@@ -7112,7 +7112,7 @@
         },
         {
           "component": "final_output",
-          "created_at": "2026-05-03T09:27:10.412587+00:00",
+          "created_at": "2026-05-03T09:31:09.422530+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "10967:4:parse_attempted",
@@ -7130,7 +7130,7 @@
         },
         {
           "component": "evidence_support",
-          "created_at": "2026-05-03T09:27:10.412593+00:00",
+          "created_at": "2026-05-03T09:31:09.422533+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "10967:5:verification_completed",
@@ -7149,7 +7149,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.412601+00:00",
+          "created_at": "2026-05-03T09:31:09.422538+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "10967:6:warning_emitted",
@@ -7250,7 +7250,7 @@
         "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"3 cluster per month, 4 to 5 per cluster\", \"evidence\": \"three nocturnal clusters this month; each ~4 - 5 events\", \"parsed_monthly_rate\": 13.5, \"pragmatic_class\": \"frequent\", \"purist_class\": \"(1/W,1/D)\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"three nocturnal clusters this month; each ~4 - 5 events\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
         "error": null,
         "latency_ms": 1,
-        "model": "claude-3-5-sonnet-20241022",
+        "model": "mock-model",
         "provider": "replay",
         "raw": {},
         "usage": {
@@ -7272,7 +7272,7 @@
       "harness_events": [
         {
           "component": "evidence_contract_prompt",
-          "created_at": "2026-05-03T09:27:10.412670+00:00",
+          "created_at": "2026-05-03T09:31:09.422588+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "280:1:context_built",
@@ -7286,7 +7286,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.412675+00:00",
+          "created_at": "2026-05-03T09:31:09.422592+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "280:2:provider_call_started",
@@ -7300,7 +7300,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.412713+00:00",
+          "created_at": "2026-05-03T09:31:09.422615+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "280:3:provider_call_finished",
@@ -7319,7 +7319,7 @@
         },
         {
           "component": "final_output",
-          "created_at": "2026-05-03T09:27:10.412779+00:00",
+          "created_at": "2026-05-03T09:31:09.422662+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "280:4:parse_attempted",
@@ -7337,7 +7337,7 @@
         },
         {
           "component": "evidence_support",
-          "created_at": "2026-05-03T09:27:10.412785+00:00",
+          "created_at": "2026-05-03T09:31:09.422665+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "280:5:verification_completed",
@@ -7356,7 +7356,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.412790+00:00",
+          "created_at": "2026-05-03T09:31:09.422668+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "280:6:warning_emitted",
@@ -7457,7 +7457,7 @@
         "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"multiple per day\", \"evidence\": \"In the 24 hours prior to clinic he experienced multiple seizures in past day\", \"parsed_monthly_rate\": 91.3125, \"pragmatic_class\": \"frequent\", \"purist_class\": \">=1/D\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"In the 24 hours prior to clinic he experienced multiple seizures in past day\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
         "error": null,
         "latency_ms": 1,
-        "model": "claude-3-5-sonnet-20241022",
+        "model": "mock-model",
         "provider": "replay",
         "raw": {},
         "usage": {
@@ -7479,7 +7479,7 @@
       "harness_events": [
         {
           "component": "evidence_contract_prompt",
-          "created_at": "2026-05-03T09:27:10.412866+00:00",
+          "created_at": "2026-05-03T09:31:09.422713+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "7708:1:context_built",
@@ -7493,7 +7493,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.412872+00:00",
+          "created_at": "2026-05-03T09:31:09.422717+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "7708:2:provider_call_started",
@@ -7507,7 +7507,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.412905+00:00",
+          "created_at": "2026-05-03T09:31:09.422739+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "7708:3:provider_call_finished",
@@ -7526,7 +7526,7 @@
         },
         {
           "component": "final_output",
-          "created_at": "2026-05-03T09:27:10.412962+00:00",
+          "created_at": "2026-05-03T09:31:09.422779+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "7708:4:parse_attempted",
@@ -7544,7 +7544,7 @@
         },
         {
           "component": "evidence_support",
-          "created_at": "2026-05-03T09:27:10.412967+00:00",
+          "created_at": "2026-05-03T09:31:09.422782+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "7708:5:verification_completed",
@@ -7563,7 +7563,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.412972+00:00",
+          "created_at": "2026-05-03T09:31:09.422787+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "7708:6:warning_emitted",
@@ -7664,7 +7664,7 @@
         "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"seizure free for multiple month\", \"evidence\": \"Since adopting the diet, he describes that seizure occurrences have not been happening, and there have been no witnessed episodes\", \"parsed_monthly_rate\": 0.0, \"pragmatic_class\": \"NS\", \"purist_class\": \"NS\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"Since adopting the diet, he describes that seizure occurrences have not been happening, and there have been no witnessed episodes\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
         "error": null,
         "latency_ms": 1,
-        "model": "claude-3-5-sonnet-20241022",
+        "model": "mock-model",
         "provider": "replay",
         "raw": {},
         "usage": {
@@ -7686,7 +7686,7 @@
       "harness_events": [
         {
           "component": "evidence_contract_prompt",
-          "created_at": "2026-05-03T09:27:10.413040+00:00",
+          "created_at": "2026-05-03T09:31:09.422834+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "4003:1:context_built",
@@ -7700,7 +7700,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.413045+00:00",
+          "created_at": "2026-05-03T09:31:09.422838+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "4003:2:provider_call_started",
@@ -7714,7 +7714,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.413083+00:00",
+          "created_at": "2026-05-03T09:31:09.422865+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "4003:3:provider_call_finished",
@@ -7733,7 +7733,7 @@
         },
         {
           "component": "final_output",
-          "created_at": "2026-05-03T09:27:10.413149+00:00",
+          "created_at": "2026-05-03T09:31:09.422915+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "4003:4:parse_attempted",
@@ -7751,7 +7751,7 @@
         },
         {
           "component": "evidence_support",
-          "created_at": "2026-05-03T09:27:10.413155+00:00",
+          "created_at": "2026-05-03T09:31:09.422918+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "4003:5:verification_completed",
@@ -7770,7 +7770,7 @@
         },
         {
           "component": "direct_evidence_contract",
-          "created_at": "2026-05-03T09:27:10.413162+00:00",
+          "created_at": "2026-05-03T09:31:09.422922+00:00",
           "duration_ms": 0,
           "error": "",
           "event_id": "4003:6:warning_emitted",
@@ -7871,7 +7871,7 @@
         "content": "{\"final\": {\"seizure_frequency\": {\"value\": \"1 per month\", \"evidence\": \"the episodes are now occurring abs monthly, with intervening weeks free of events.\", \"parsed_monthly_rate\": 1.0, \"pragmatic_class\": \"infrequent\", \"purist_class\": \"1/M\"}, \"current_medications\": [], \"investigations\": [], \"seizure_types\": [], \"seizure_features\": [], \"seizure_pattern_modifiers\": [], \"epilepsy_type\": null, \"epilepsy_syndrome\": null, \"citations\": [{\"quote\": \"the episodes are now occurring abs monthly, with intervening weeks free of events.\", \"field\": \"seizure_frequency\"}], \"confidence\": {\"seizure_frequency\": 0.99}, \"warnings\": [\"gold_label_seeded_replay_not_model_evidence\"]}}",
         "error": null,
         "latency_ms": 1,
-        "model": "claude-3-5-sonnet-20241022",
+        "model": "mock-model",
         "provider": "replay",
         "raw": {},
         "usage": {
