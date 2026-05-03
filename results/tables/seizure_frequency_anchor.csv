@@ -1,0 +1,1 @@
+run_id,harness,architecture_family,model,dataset_n,exact_label_accuracy,monthly_rate_accuracy_tolerance_15pct,pragmatic_macro_f1,purist_macro_f1,warnings

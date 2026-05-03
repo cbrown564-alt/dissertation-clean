@@ -50,3 +50,32 @@ def test_smoke_run_and_summary_work_against_fixture(tmp_path) -> None:
     summary_data = json.loads(summary.stdout)
     assert summary_data["run_id"] == "fixture_smoke"
     assert summary_data["n"] == 2
+
+
+def test_build_cockpit_data_surfaces_harness_native_fields(tmp_path) -> None:
+    output = tmp_path / "cockpit-data.json"
+
+    subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "build_cockpit_data.py"),
+            "--repo-root",
+            str(ROOT),
+            "--output",
+            str(output),
+        ],
+        check=True,
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+    )
+
+    data = json.loads(output.read_text(encoding="utf-8"))
+    assert "harness_manifests" in data
+    assert "coding_agent_harness_literature_review" in data["docs"]
+    assert data["run_register"]
+
+    run = data["run_register"][0]
+    assert "harness_manifest" in run
+    assert "harness_events" in run
+    assert "harness_complexity" in run

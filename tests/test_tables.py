@@ -49,6 +49,36 @@ def test_budget_and_parse_tables_surface_run_metadata() -> None:
     assert parse["valid_rate"] == 1.0
 
 
+def test_harness_complexity_table_handles_future_harness_native_metadata() -> None:
+    record = _run_record()
+    record["harness_manifest"] = {"id": "exect_lite.v1", "hash": "abc123"}
+    record["complexity"] = {
+        "modules": ["rules", "mapper"],
+        "workflow_units": ["seizure_frequency", "investigations"],
+    }
+    record["harness_events"] = [
+        {"event_type": "context_built"},
+        {"event_type": "provider_call_started"},
+        {"event_type": "parse_repaired"},
+        {"event_type": "verification_completed"},
+        {"event_type": "escalation_decision"},
+    ]
+
+    tables = build_result_tables([record])
+    complexity = tables["harness_complexity"][0]
+
+    assert complexity["manifest_id"] == "exect_lite.v1"
+    assert complexity["manifest_hash"] == "abc123"
+    assert complexity["modules_invoked"] == 2
+    assert complexity["workflow_units"] == 2
+    assert complexity["provider_calls"] == 1
+    assert complexity["event_count"] == 5
+    assert complexity["parse_repair_attempts"] == 1
+    assert complexity["verifier_passes"] == 1
+    assert complexity["escalation_decisions"] == 1
+    assert complexity["complexity_status"] == "harness_native"
+
+
 def test_summarize_results_writes_json_and_csv_tables(tmp_path) -> None:
     output_dir = tmp_path / "tables"
 
@@ -73,8 +103,10 @@ def test_summarize_results_writes_json_and_csv_tables(tmp_path) -> None:
 
     coverage_json = output_dir / "architecture_harness_coverage.json"
     coverage_csv = output_dir / "architecture_harness_coverage.csv"
+    harness_complexity_json = output_dir / "harness_complexity.json"
     assert coverage_json.exists()
     assert coverage_csv.exists()
+    assert harness_complexity_json.exists()
 
     rows = json.loads(coverage_json.read_text(encoding="utf-8"))
     assert rows[0]["run_id"] == "exect_lite_smoke"

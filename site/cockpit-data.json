@@ -1,0 +1,1046 @@
+{
+  "adjudication": {},
+  "architecture_ladder": [
+    {
+      "colour": "teal",
+      "description": "Deterministic rule-based extraction, ExECT-inspired clean-room rules, and an external ExECTv2 adapter. Establishes reproducible floors before LLM comparison.",
+      "family": "clinical_nlp_baseline",
+      "harnesses": [
+        "deterministic_baseline",
+        "exect_lite_cleanroom_baseline",
+        "exect_v2_external"
+      ],
+      "label": "Clinical NLP Baselines",
+      "step": 1
+    },
+    {
+      "colour": "blue",
+      "description": "Single provider call reads the full letter and emits the final schema. Full-contract and evidence-contract variants test whether requiring evidence citations changes output quality.",
+      "family": "direct",
+      "harnesses": [
+        "direct_full_contract",
+        "direct_evidence_contract"
+      ],
+      "label": "Direct LLM Baselines",
+      "step": 2
+    },
+    {
+      "colour": "purple",
+      "description": "Candidate-span retrieval grouped by field family, then local-context extraction per field. Tests whether span selection and focused context improve output quality.",
+      "family": "retrieval",
+      "harnesses": [
+        "retrieval_field_extractors"
+      ],
+      "label": "Retrieval + Field Extraction",
+      "step": 3
+    },
+    {
+      "colour": "amber",
+      "description": "Full modular pipeline: sectioning, semantic chunking, field-specific extraction, assertion/status enrichment, normalization, evidence verification, and cross-chunk aggregation. Main proposed architecture.",
+      "family": "clines_inspired_modular",
+      "harnesses": [
+        "clines_epilepsy_modular",
+        "clines_epilepsy_verified"
+      ],
+      "label": "CLINES-Inspired Modular Pipeline",
+      "step": 4
+    },
+    {
+      "colour": "green",
+      "description": "Microcosm anchor harnesses for seizure frequency across architecture families and model tiers. Self-consistency variants measure costed reliability gains.",
+      "family": "anchor",
+      "harnesses": [
+        "direct_anchor",
+        "retrieval_anchor",
+        "anchor_sc3",
+        "anchor_sc5"
+      ],
+      "label": "Seizure-Frequency Anchor",
+      "step": 5
+    }
+  ],
+  "docs": {
+    "adjudication_protocol": "# Clinical Adjudication Protocol\n\n## Purpose\n\nThis protocol defines how model outputs should be judged clinically. The guiding\nprinciple is conservative usefulness: reward clinically real, text-supported\ninformation, but penalize unsupported diagnostic upgrades, wrong status, and\nover-normalization.\n\n## Scoring Unit\n\nScore at the field-item level, not only at the row level.\n\nFor each emitted item, adjudicate:\n\n- value correctness;\n- status or temporality correctness;\n- normalization correctness;\n- evidence support;\n- error tags where applicable.\n\nFor missing expected items, adjudicate recall when a reference annotation exists.\n\n## Evidence Rule\n\nA model output is fully supported only when its evidence span supports the\nspecific claimed value and its status or temporality. A non-empty quote is not\nenough.\n\nExamples:\n\n- A medication list quote can support a current anti-seizure medication.\n- \"Previously tried carbamazepine\" does not support current carbamazepine.\n- \"No epileptiform discharges\" supports an EEG result, but not a normal EEG\n  unless normality is explicitly stated.\n- \"No tonic-clonic seizures\" does not support seizure-free overall if absence\n  seizures continue.\n\n## Seizure Frequency\n\nExtract the current or most recent clinically relevant seizure frequency.\n\nFull credit requires:\n\n- correct frequency or seizure-free value;\n- correct time window or anchor;\n- correct seizure-type specificity where stated;\n- no unsupported conversion from vague wording to precise rates;\n- decisive evidence span.\n\nCommon errors:\n\n- using historical frequency as current;\n- collapsing type-specific seizure freedom into global seizure freedom;\n- ignoring an explicit seizure-free statement;\n- averaging clusters into over-precise monthly rates;\n- missing the time anchor.\n\n## Current Anti-Seizure Medications\n\nExtract current maintenance anti-seizure medications, with dose if available and\nrequired by the schema.\n\nFull credit requires:\n\n- correct medication entity;\n- current or continued status;\n- correct dose/status where schema requires it;\n- exclusion of previous, stopped, avoided, allergy-only, and family-member\n  medications;\n- direct evidence from medication list, plan, or continuation statement.\n\nRescue medication should be separate when supported by the schema. If the schema\ndoes not support rescue medication yet, mark it out of scope or partial rather\nthan treating it as current maintenance therapy.\n\n## Investigations\n\nExtract epilepsy-relevant investigations and monitoring:\n\n- EEG, sleep-deprived EEG, ambulatory EEG, and video EEG;\n- MRI;\n- CT;\n- genetic testing;\n- blood monitoring, metabolic testing, ECG, and drug levels as `other` when\n  relevant to seizure assessment or medication monitoring.\n\nImportant rules:\n\n- Bloods, metabolic panels, TFTs, ECG, and drug levels must not normalize to\n  `CT`.\n- Normal EEG does not imply no epilepsy.\n- No epileptiform discharges is not the same as a normal EEG unless stated.\n- EEG slowing can be abnormal but non-specific or non-epileptiform.\n- Conditional investigation plans are not firm planned investigations.\n\n## Seizure Type, Semiology, And Pattern Modifiers\n\nSeparate these concepts:\n\n- canonical seizure type;\n- semiology feature;\n- pattern modifier;\n- epilepsy diagnosis/type.\n\nUse the most specific defensible level:\n\n1. explicit canonical seizure type;\n2. strong semiology plus supported onset/awareness;\n3. semiology feature without full seizure-type normalization;\n4. pattern modifier only;\n5. epilepsy diagnosis/type, not seizure type;\n6. non-epileptic differential, unless separate epileptic-event wording exists.\n\nExamples:\n\n- \"Focal impaired awareness seizures\" is a seizure type.\n- \"Bilateral hand fumbling\" is a semiology feature unless awareness/onset are\n  supported.\n- \"Nocturnal clusters\" is a pattern or frequency modifier.\n- \"Temporal lobe epilepsy\" is epilepsy type/localization, not seizure type.\n\n## Epilepsy Type And Syndrome\n\nExtract disease-level formulations only when stated:\n\n- focal epilepsy;\n- generalized epilepsy;\n- combined generalized and focal epilepsy;\n- unknown epilepsy type;\n- temporal lobe epilepsy or another localization;\n- named syndrome, such as juvenile myoclonic epilepsy.\n\nPreserve certainty:\n\n- confirmed;\n- probable/likely;\n- possible/query;\n- differential;\n- negated.\n\nDo not infer epilepsy type from medication choice, EEG slowing, MRI abnormality,\nor semiology fragments alone.\n\n## Error Tags\n\nUse these tags for adjudication and failure analysis:\n\n- `wrong_temporal_status`\n- `unsupported_overclaim`\n- `eeg_non_specific`\n- `conditional_investigation`\n- `investigation_type_confusion`\n- `diagnosis_vs_seizure_type`\n- `semiology_fragment`\n- `pattern_modifier`\n- `frequency_anchor_error`\n- `medication_status_error`\n- `missing_expected_item`\n- `unsupported_evidence`\n- `schema_valid_but_clinically_wrong`\n\n## Adjudication Sheet Columns\n\nEach adjudication sheet should include:\n\n- row ID;\n- harness ID;\n- architecture family;\n- model registry entry, where applicable;\n- model/provider;\n- field family;\n- emitted value;\n- reference value where available;\n- value score;\n- status/temporality score;\n- normalization score;\n- evidence grade;\n- error tags;\n- adjudicator note.\n\n## Minimum Matched Slice\n\nFor final reporting, adjudicate a matched slice containing:\n\n- seizure-frequency rows with varied temporal anchors;\n- current medication examples with prior, stopped, and planned medication\n  distractors;\n- investigation examples with EEG, MRI, CT, bloods, ECG, and drug-level edge\n  cases;\n- seizure semiology and pattern-modifier examples;\n- epilepsy type/syndrome examples with uncertainty language.\n\nThe same rows should be used across the architecture ladder whenever possible:\nclinical NLP baselines, direct LLM baselines, retrieval-field pipelines,\nCLINES-inspired modular pipelines, verifier variants, and model-family\nsensitivity runs.\n",
+    "architecture": "# System Architecture\n\n## Purpose\n\nThe clean repo should implement a CLINES-inspired modular extraction framework\nfor epilepsy clinic letters, while retaining strong direct-prompt and clinical\nNLP baselines. The architecture is training-free unless a later sensitivity\nstudy explicitly introduces fine-tuning.\n\nThis is not a direct CLINES replication. CLINES code, exact prompts, and\nevaluation scripts are not currently public. The repo should therefore describe\nthe main system as CLINES-inspired and document which design choices are taken\nfrom the paper-level architecture.\n\n## Architecture Families\n\nThe repo should support several architecture families behind a shared final\nschema and evaluation contract.\n\n| Family | Example harness | Purpose |\n| --- | --- | --- |\n| Clinical NLP baselines | `deterministic_baseline`, `exect_v2_external_baseline`, `exect_lite_cleanroom_baseline` | Establish reproducible non-LLM and epilepsy-specific floors. |\n| Direct LLM baselines | `direct_full_contract`, `direct_evidence_contract` | Test strong full-letter prompting. |\n| Retrieval-field pipeline | `retrieval_field_extractors` | Test candidate-span retrieval and field-specific local-context extraction. |\n| CLINES-inspired modular pipeline | `clines_epilepsy_modular`, `clines_epilepsy_verified` | Test clinical modularization, normalization, temporality, evidence grading, and aggregation. |\n| Costed reliability variants | `*_sc3`, `*_sc5`, model escalation, stronger verifier | Test reliability gains against added cost and latency. |\n\nAll LLM-based systems should emit the same final payload shape, so architecture\nchanges are evaluated without changing the target contract.\n\n## High-Level Modular Flow\n\n```text\nclinic letter\n  -> document normalization and sectioning\n  -> semantic chunking / candidate-span retrieval\n  -> field-specific extraction\n  -> assertion, status, and temporality enrichment\n  -> normalization and value/unit handling\n  -> evidence grading and verification\n  -> cross-chunk aggregation\n  -> final JSON + artifacts + budget metadata\n```\n\n## Module 0: Document Normalization\n\nResponsibilities:\n\n- normalize line endings, whitespace, and document identifiers;\n- preserve original character offsets where possible;\n- detect obvious sections such as diagnosis, history, investigations,\n  medications, impression, and plan;\n- record letter-level dates and document metadata;\n- avoid rewriting clinical text before extraction.\n\nOutput should include:\n\n- normalized text;\n- original-to-normalized offset mapping if available;\n- section labels and span ranges;\n- document metadata;\n- warnings about missing or unusual structure.\n\n## Module 1: Semantic Chunking And Candidate Retrieval\n\nThis module is inspired by CLINES' use of semantic chunking for long notes, but\nadapted to epilepsy letters.\n\nResponsibilities:\n\n- split long letters into semantically coherent chunks;\n- preserve section labels and letter-level date anchors in chunk metadata;\n- optionally retrieve candidate spans for each field family;\n- keep enough local context for temporality and negation;\n- log chunk boundaries, token counts, and retrieval decisions.\n\nCandidate span groups:\n\n| Group | Typical signals |\n| --- | --- |\n| Seizure frequency | frequency phrases, seizure-free statements, last seizure, clusters, since-last-review phrases |\n| Current medications | antiseizure medication names, dose, unit, frequency, planned changes |\n| Investigations | EEG, MRI, CT, genetics, bloods, normal/abnormal/pending results |\n| Seizure classification | focal/generalized/absence/tonic-clonic/myoclonic terms, semiology phrases |\n| Epilepsy classification | epilepsy type, syndrome, diagnostic certainty |\n\nRetrieval must be evaluated as a possible source of recall loss. Direct\nfull-letter baselines remain necessary.\n\n## Module 2: Field-Specific Extraction\n\nField extractors read either the full letter, relevant chunks, or retrieved\ncandidate spans plus local context.\n\nRecommended extractor groups:\n\n| Extractor | Scope |\n| --- | --- |\n| Seizure frequency extractor | Current/recent seizure frequency, seizure freedom, most recent seizure anchor, ambiguity. |\n| Medication extractor | Current anti-seizure medications, dose, unit, frequency, planned changes, rescue medication if supported. |\n| Investigation extractor | EEG/MRI/CT/genetics/other investigations, result, status, temporality. |\n| Seizure classification extractor | Seizure types, semiology features, pattern modifiers, certainty. |\n| Epilepsy classification extractor | Epilepsy type, syndrome, cause if supported, diagnostic certainty. |\n\nEach extractor should:\n\n- emit structured JSON;\n- cite evidence spans;\n- preserve raw text values alongside normalized labels;\n- abstain when unsupported;\n- preserve uncertainty rather than forcing normalization;\n- record parse validity and repair attempts.\n\n## Module 3: Assertion, Status, And Temporality Enrichment\n\nThis module turns extracted mentions into clinical-status objects. It may be\nimplemented as part of each field extractor or as a separate enrichment pass.\n\nResponsibilities:\n\n- classify current, historical, planned, pending, absent, conditional, possible,\n  and uncertain status;\n- resolve explicit and relative time anchors where feasible;\n- separate current seizure frequency from historical seizure burden;\n- distinguish \"no tonic-clonic seizures\" from global seizure freedom;\n- flag inferred dates or ambiguous temporal anchors;\n- preserve item-level warnings.\n\nThe output should not force every field into a single numeric or categorical\ntarget. It should expose the clinical qualification needed for adjudication.\n\n## Module 4: Normalization And Value Handling\n\nResponsibilities:\n\n- normalize seizure-frequency categories only when source text supports them;\n- perform deterministic numeric conversions only under explicit rules;\n- normalize medication dose/unit/frequency strings where possible;\n- normalize investigation results as normal, abnormal, pending, not stated, or\n  uncertain;\n- normalize epilepsy and seizure classifications to the chosen schema;\n- optionally link concepts to UMLS/ILAE/SNOMED-like identifiers where licensing\n  and implementation allow.\n\nFor CLINES-inspired UMLS-style normalization, use retrieval or terminology\nlookup as an ablation rather than as a hidden assumption. If SapBERT or another\nembedding model is used, log model ID, vocabulary source, ranking method, and\ncandidate list.\n\n## Module 5: Evidence Verification\n\nThe verifier checks whether each extracted item is supported by source text. It\nmust verify support quality rather than checking only for a non-empty evidence\nstring.\n\nVerifier checks:\n\n- value support;\n- status support;\n- temporality support;\n- normalization support;\n- field-family placement;\n- known epilepsy edge cases.\n\nVerifier output should include:\n\n- item-level evidence grade;\n- warning text;\n- error tags;\n- suggested downgrade or removal policy;\n- confidence adjustment.\n\nUnsupported items should remain inspectable in artifacts even if excluded or\ndowngraded in the final output.\n\n## Module 6: Aggregation And Schema Adaptation\n\nThe aggregator produces the final structured extraction payload.\n\nResponsibilities:\n\n- merge field extractor outputs across chunks;\n- deduplicate repeated mentions;\n- attach verifier grades and warnings;\n- preserve citations;\n- resolve conflicts conservatively;\n- expose parse validity and field coverage;\n- produce result shapes needed by downstream tables.\n\nThe aggregator must not invent new clinical facts. It only combines, labels,\ndowngrades, or excludes outputs from earlier stages.\n\n## Final Payload Shape\n\nEvery extraction run should produce:\n\n```json\n{\n  \"pipeline_id\": \"clines_epilepsy_modular\",\n  \"architecture_family\": \"clines_inspired_modular\",\n  \"schema_version\": \"1.0.0\",\n  \"field_coverage\": {},\n  \"final\": {},\n  \"artifacts\": {},\n  \"invalid_output\": false,\n  \"warnings\": [],\n  \"metadata\": {}\n}\n```\n\nThe `final` object should include:\n\n- `seizure_frequency`;\n- `seizure_freedom`;\n- `current_medications`;\n- `investigations`;\n- `seizure_types`;\n- `seizure_features`;\n- `seizure_pattern_modifiers`;\n- `epilepsy_type`;\n- `epilepsy_syndrome`;\n- `citations`;\n- `confidence`;\n- `warnings`.\n\nThe `artifacts` object should include architecture-specific intermediate\noutputs where available:\n\n- `normalization`;\n- `sections`;\n- `chunks`;\n- `candidate_spans`;\n- `field_extractions`;\n- `status_temporality`;\n- `normalization_candidates`;\n- `verification`;\n- `aggregation`.\n\n## Metadata Requirements\n\nRequired metadata:\n\n- dataset ID;\n- data hash;\n- row ID;\n- architecture family;\n- harness ID;\n- model registry entry ID;\n- model;\n- provider;\n- inference backend;\n- temperature and decoding settings;\n- call budget;\n- input tokens;\n- output tokens;\n- latency;\n- estimated cost;\n- prompt version;\n- schema version;\n- code version or commit hash;\n- external baseline version or commit hash, where relevant.\n\n## Baseline-Specific Notes\n\n### ExECTv2 External Baseline\n\nExECTv2 has a public GATE repository and public synthetic validation data, but\nthe repository currently appears to have no explicit license. Treat it as an\nexternal baseline unless licensing is clarified. Record the source repository,\ncommit hash, GATE version, input files, output mapping, and validation script\nused.\n\n### ExECT-Lite Clean-Room Baseline\n\nIf a local rule baseline is needed, implement it from published field\ndefinitions and independently authored rules. Do not copy JAPE rules,\ngazetteers, Groovy scripts, or other source logic from ExECTv2 into this repo\nwithout permission.\n\n### CLINES-Inspired Pipeline\n\nUse CLINES as an architectural inspiration, not a replication. Record the paper\nversion and the public details used: semantic chunking, chunk-level extraction,\nnormalization, attribute/status/date enrichment, and aggregation.\n\n## Acceptance Criteria\n\nThe architecture is implemented well enough when:\n\n1. direct-prompt and modular systems emit the same final schema;\n2. baseline outputs can be mapped into the evaluation contract;\n3. modular runs expose inspectable artifacts for chunking, spans, extraction,\n   status/temporality, normalization, verification, and aggregation;\n4. verification grades evidence support beyond quote presence;\n5. aggregation preserves warnings rather than hiding uncertainty;\n6. run records contain budget, latency, token, cost, and reproducibility\n   metadata;\n7. evaluation can compare field-level correctness across architecture families,\n   model families, and model size tiers.\n",
+    "coding_agent_harness_literature_review": "# Coding-Agent Harnesses For Structured Clinical Data Extraction\n\nAccessed: 3 May 2026.\n\n## Review Aim\n\nThis review connects two literatures that are usually discussed separately:\n\n1. LLM-based structured information extraction from clinical narratives.\n2. Coding-agent harnesses such as Claude Code, OpenAI Codex, Pi, Flue,\n   Gemini CLI, SWE-agent, OpenHands, Aider, and harness adapters.\n\nThe dissertation question in this repo is not simply whether a language model\ncan extract seizure frequency, medications, investigations, seizure types, and\nepilepsy classifications from clinic letters. It is whether the harness around\nthe model can make extraction more reliable, auditable, reproducible, and\nclinically adjudicable.\n\nThe central claim of this review is therefore methodological:\n\n> A clinical extraction system should be evaluated as an agent harness, not as\n> a prompt. The harness defines context assembly, tool access, chunking,\n> retrieval, schema constraints, parse repair, verification, aggregation,\n> evidence logging, budget accounting, and human review.\n\nThe repo already contains the right beginnings: clinical NLP baselines,\ndirect-prompt LLM baselines, retrieval-field extractors, CLINES-inspired\nmodular pipelines, verifier variants, model registry snapshots, run records,\nand adjudication tables. The opportunity is to borrow more deliberately from\nmodern coding-agent harnesses while keeping the clinical system conservative.\n\n## 1. Clinical Structured Extraction: The Current Evidence\n\nClinical information extraction has moved from rule-based and ontology-driven\nsystems toward LLM-centered pipelines, but the older lessons still hold.\nClinical text is not only unstructured; it is status-rich, temporal, uncertain,\nand full of distractors. A schema-valid JSON object can still be clinically\nwrong if it turns a historical medication into a current one, treats \"no\ntonic-clonic seizures\" as global seizure freedom, or normalizes a non-specific\nEEG abnormality as a normal EEG.\n\nSeveral recent studies establish the shape of the problem.\n\nAgrawal et al. showed that large language models can be effective few-shot\nclinical information extractors, making LLM prompting a serious alternative to\ntask-specific clinical NLP for low-resource extraction settings. The paper is\nimportant because it does not treat extraction as summarization; it evaluates\nspan, label, and relation-style information extraction tasks.\n\nCLINES is the closest architectural precedent for this repo. It describes a\nmodular clinical LLM pipeline with semantic chunking, LLM extraction,\nassertion/experiencer/value/unit attributes, UMLS normalization, date\nresolution, and aggregation into an i2b2-style schema. In zero-shot evaluations\non MIMIC-III, 4CE, and CORAL oncology reports, CLINES outperformed rule/lexicon\nsystems, transformer encoders, and single-prompt LLM baselines, with reported\ngains over the strongest single-prompt LLM of 0.21-0.38 F1 across tasks. The\nlesson is not \"multi-agent is always better\"; it is that a modular harness can\nhelp when long notes require different operations for retrieval, extraction,\nnormalization, temporal reasoning, and aggregation.\n\nPathology structured-extraction studies are useful because they are closer to\nschema extraction than clinical dialogue. Grothey et al. evaluated GPT-4 and\nopen-source Llama/Qwen models over 579 German and English pathology reports,\nrequiring structured JSON for eleven parameters. The study found that\nopen-source models could approach proprietary performance in some settings,\nbut also emphasized prompt design, quantization, JSON validity, runtime,\nhallucination checks on negative reports, and local deployment. This maps\ndirectly onto the repo's evaluation contract: parse validity, not-mentioned\nhandling, field-specific errors, and cost/latency are part of the result.\n\nScalable clinical extraction pipelines increasingly combine cheap retrieval or\nregex-like screening with LLM interpretation. SPELL-LLMs, for example, uses a\nhybrid local workflow over large clinical corpora: regular expressions identify\ncandidate snippets and locally hosted LLMs interpret them. This supports the\nrepo's retrieval-field extractor rung: candidate-span retrieval should be\nevaluated as a possible efficiency and focus improvement, but also as a source\nof recall loss.\n\nWithin epilepsy, the existing `docs/literature_review.md` already covers ExECT,\nXie et al., Holgate et al., Fang et al., and Gan et al. The relevant synthesis\nfor harness design is:\n\n- ExECT shows that epilepsy clinic-letter extraction has strong non-LLM\n  baselines, especially for formulaic medication-like fields.\n- Seizure frequency remains hard because it is temporal, qualified, and often\n  expressed indirectly.\n- Direct LLM extraction can be strong; Fang et al. caution that summaries and\n  contextualized variants do not automatically improve performance.\n- Synthetic, evidence-grounded supervision can be powerful, but it is a\n  different intervention from training-free harness design.\n- Evidence spans and rationales are valuable for adjudication, but the public\n  trust object should be source-grounded evidence, not hidden chain-of-thought.\n\n## 2. Why Coding-Agent Harnesses Matter\n\nOpenAI's Codex engineering write-up defines the agent loop as the core logic\nthat orchestrates user input, model inference, tool calls, and observations.\nIt explicitly frames Codex as a harness: the CLI, cloud, and IDE surfaces share\ncore execution logic. This matters because the model's \"answer\" may be an edit,\na test run, a patch, a commit, or a final message. In clinical extraction, the\nequivalent is not a patch but a validated payload plus artifacts.\n\nClaude Code's documentation describes an agentic coding tool that reads a\ncodebase, edits files, runs commands, integrates with development tools, uses\nproject instructions, skills, hooks, MCP, auto-memory, parallel agents, CI, and\ncustom agents through an SDK. The important design pattern is not that clinical\nextraction should let an LLM roam freely. It is that reliable agent systems\nexternalize capabilities as explicit harness features: instructions, skills,\ntools, hooks, memory, roles, permissions, and review surfaces.\n\nSWE-agent is the most academically useful coding-agent precedent. Its core\nclaim is that interface design affects agent performance. By designing an\nAgent-Computer Interface for code navigation, editing, and test execution, it\nimproved the ability of a language model agent to solve software engineering\ntasks. For this repo, the analogue is a Clinical-Document Interface: bounded\ntools for section lookup, candidate-span retrieval, evidence quoting, schema\nvalidation, verifier review, and adjudication export.\n\nOpenHands broadens this into an open platform for software agents that operate\nthrough code, shells, and browsers. The lesson is platformization: model choice,\nsandboxing, lifecycle management, logs, and task abstractions can be separated\nfrom the task-specific policy. The repo's provider abstraction and model\nregistry are aligned with this.\n\nGemini CLI's architecture separates a client-side terminal application from a\nlocal server/core package that manages model requests and tools such as file\noperations, shell execution, and web fetching. This is a useful reminder that\nagent harnesses often need a small control plane. In this repo, that control\nplane is currently spread across harness functions, providers, schemas, and\nscripts. A future `orchestration` layer could make this explicit.\n\nPi is especially relevant because it describes itself as a minimal terminal\ncoding harness, not a full product. Its default core is small, but it supports\nextensions, skills, prompt templates, themes, packages, tree-structured\nhistory, model switching, print/JSON mode, RPC mode, and an SDK. It also\ndeliberately omits built-in subagents, plan mode, MCP, and permission popups,\nexpecting users to add those features if their workflow needs them. The lesson\nfor this repo is to avoid baking every experimental architecture into the core.\nAdd thin, composable primitives that can express retrieval, extraction,\nverification, adjudication, and model-matrix runs.\n\nFlue is a newer and more explicitly harness-centered framework. It summarizes\nthe stack as model tokens/tools/prompts, harness skills/memory/sessions,\nsandbox bash/security/network, and filesystem read/write/grep/glob. It exposes\nsessions, skills with typed outputs, deployable agents, sandbox choices, and\nfine-grained secret handling. The clinical analogue is a deployable extraction\nworkflow where the model never sees secrets or gold labels, every skill has a\ntyped output contract, and each session produces a durable trace.\n\nHarness adapters such as `harness.lol` are a different but important layer:\nthey run several coding agents behind one unified CLI and event stream. That\npattern suggests a way to evaluate external coding-agent-style clinical\nextractors without integrating each product deeply. A normalized event/run\nformat lets this repo compare outputs from local harnesses, external CLIs, and\nfuture agent frameworks.\n\n## 3. Taxonomy Of Harness Features\n\nModern coding-agent harnesses can be reduced to a set of design primitives.\nEach has a clinical extraction equivalent.\n\n| Coding-agent primitive | Clinical extraction analogue | Repo status |\n| --- | --- | --- |\n| Project instructions (`CLAUDE.md`, `AGENTS.md`) | Study protocol, schema rules, adjudication rules, field-specific extraction policies | Present as docs/prompts, not yet a single agent-readable protocol bundle |\n| Tool registry | Retrieval, section lookup, evidence quote extraction, schema validation, verifier call, adjudication export | Partly present through modules/scripts |\n| Agent loop | Multi-step extraction and verification workflow | Present inside harness functions |\n| Skills/workflows | Field extractors, verifier, normalizer, aggregator, adjudication sheet builder | Present conceptually, not formalized as skill objects |\n| Typed outputs | JSON schema, Pydantic/dataclass validation, parse repair | Present through schema payloads and tests |\n| Context compaction | Long-letter chunking and artifact summarization | Partly present through chunking/retrieval |\n| Memory/session history | Run records, artifacts, model registry, prompt versions | Present |\n| Sandbox/permissions | No gold-label access; no uncontrolled network; secrets outside model context | Partly present by tests and provider abstraction |\n| Parallel agents | Field-family extractors or verifier passes run independently | Not yet a first-class orchestration primitive |\n| Hooks | Pre/post validation, budget checks, redaction, provenance checks | Not yet explicit |\n| Event stream | Tool/call/artifact trace for observability | Run records exist, but event stream is not formalized |\n| Human review UI | Adjudication sheet and cockpit | Present |\n\nThis taxonomy suggests that the next architecture expansion should not be\n\"add more agents\" in the abstract. It should add the smallest primitives that\nmake harness behavior inspectable and configurable.\n\n## 4. Architectural Implications For This Repo\n\nThe existing architecture ladder is strong:\n\n- `deterministic_baseline`\n- `exect_lite_cleanroom_baseline`\n- `exect_v2_external_baseline`\n- `direct_full_contract`\n- `direct_evidence_contract`\n- `retrieval_field_extractors`\n- `clines_epilepsy_modular`\n- `clines_epilepsy_verified`\n- anchor and self-consistency variants\n\nThe next expansion should preserve this ladder while adding harness\nengineering layers around it.\n\n### 4.1 Add A Formal Harness Manifest\n\nCreate a versioned manifest for every harness run. It should specify:\n\n- harness ID and architecture family;\n- allowed modules/tools;\n- prompts and schema versions;\n- provider/model registry entry;\n- input context policy: full letter, chunks, retrieved spans, or artifacts;\n- output contract and repair policy;\n- verifier policy;\n- aggregation policy;\n- budget limits;\n- gold-label isolation rules;\n- artifact retention policy.\n\nThis is the clinical equivalent of project instructions plus a coding-agent\nconfig. It would make architecture comparisons reproducible and prevent hidden\ndifferences between harnesses.\n\nSuggested path:\n\n```text\nconfig/harnesses/\n  direct_full_contract.v1.yaml\n  direct_evidence_contract.v1.yaml\n  retrieval_field_extractors.v1.yaml\n  clines_epilepsy_modular.v1.yaml\n  clines_epilepsy_verified.v1.yaml\n```\n\n### 4.2 Introduce A Harness Event Log\n\nRun records currently capture rows and payloads, but coding-agent harnesses\nteach that traces matter. Add a row-level event log with stable event types:\n\n- `context_built`\n- `provider_call_started`\n- `provider_call_finished`\n- `parse_attempted`\n- `parse_repaired`\n- `candidate_spans_selected`\n- `field_extraction_completed`\n- `verification_completed`\n- `aggregation_completed`\n- `budget_limit_hit`\n- `warning_emitted`\n\nThis event log should not include PHI in a real clinical setting by default;\nit can include hashes, offsets, token counts, field family, and artifact IDs.\nFor synthetic fixtures, quotes can be retained.\n\n### 4.3 Promote Field Extractors To Skill-Like Units\n\nPi and Flue both make \"skills\" first-class. This repo can do the same without\nimporting a new framework. A clinical extraction skill should have:\n\n- name and version;\n- input schema;\n- output schema;\n- prompt/template reference if LLM-backed;\n- deterministic pre/post-processing hooks;\n- provider call budget;\n- parse repair behavior;\n- unit tests with replay/mock outputs.\n\nThe existing modules already contain the logic; this is a packaging and\nmetadata improvement. It would make it easier to add new fields, compare\nfield-family difficulty, and run field extractors in parallel later.\n\n### 4.4 Add A Clinical-Document Interface\n\nBorrowing from SWE-agent's Agent-Computer Interface, define a small set of\ndocument tools rather than passing arbitrary context:\n\n- `get_sections(row_id)`\n- `search_spans(row_id, field_family)`\n- `get_span(row_id, start, end, window)`\n- `quote_evidence(row_id, locator)`\n- `validate_payload(payload)`\n- `compare_evidence_to_claim(claim, evidence)`\n\nThese can be implemented as normal Python functions, not model tools at first.\nThe point is to define the interface. Direct prompting can bypass it; retrieval\nand modular harnesses can use it. That makes the ablation explicit.\n\n### 4.5 Make Verification More Like Code Review\n\nCoding agents often finish by running tests, lint, or review. Clinical\nextraction needs an analogous final gate:\n\n- parse validity check;\n- schema completeness check;\n- evidence support check;\n- status/temporality consistency check;\n- known epilepsy edge-case check;\n- unsupported-overclaim downgrade;\n- final artifact summary for adjudication.\n\nThe existing `clines_epilepsy_verified` harness is the correct place to expand\nthis. The verifier should be evaluated separately: how many errors does it\ncatch, how often does it incorrectly reject correct claims, and what does it\ncost?\n\n### 4.6 Add External Harness Adapters\n\nDo not couple the dissertation to one vendor agent, but add a normalized adapter\nboundary inspired by `harness.lol`:\n\n```text\nExternalClinicalAgentAdapter\n  run(row, manifest) -> ExtractionPayload + EventLog + RawArtifacts\n```\n\nThis would allow future experiments where Claude Code, Codex, Pi, Flue, or\nOpenHands are asked to run a controlled extraction script in a sandbox. The\ndissertation's canonical results should still use local deterministic/replay\nharnesses, but adapter support would make the architecture future-proof.\n\n### 4.7 Treat Model Switching As An Experimental Variable\n\nPi and OpenHands emphasize model-agnostic routing and mid-session switching.\nFor clinical extraction, dynamic switching should be conservative:\n\n- cheap model for candidate retrieval;\n- stronger model for ambiguous field extraction;\n- verifier model equal or stronger than extractor;\n- escalation only when parse validity, low confidence, or verifier disagreement\n  triggers it.\n\nThis should be evaluated as a costed reliability variant, not silently added to\nthe main harness.\n\n## 5. Specific Research Hypotheses Enabled By Harness Expansion\n\nThe expanded harness architecture would support sharper dissertation claims:\n\n1. Direct prompting may maximize recall and minimize cost, but modular harnesses\n   may improve evidence support and failure discoverability.\n2. Retrieval-field extraction may reduce cost and context length, but may lose\n   recall when seizure frequency or medication status is distributed across\n   sections.\n3. Verifier variants may improve precision and evidence support while reducing\n   recall through over-rejection.\n4. Smaller open models may benefit more from harness structure than frontier\n   closed models.\n5. Typed outputs and parse repair may improve apparent validity but must be\n   separated from clinical correctness.\n6. Harness event logs may make adjudication faster and more consistent even\n   when aggregate correctness does not improve.\n7. Escalation policies may achieve a better cost/correctness frontier than\n   using a frontier model for every row and every field.\n\n## 6. Risks And Guardrails\n\nThe main risk is turning a clinical extraction dissertation into an agent\ntheatre exercise. More roles, calls, and artifacts do not automatically produce\nbetter clinical extraction.\n\nGuardrails:\n\n- Keep the direct-prompt baseline strong and current.\n- Evaluate every added module through ablation.\n- Report cost, latency, token use, and implementation complexity.\n- Preserve full-letter baselines so retrieval recall loss is visible.\n- Do not expose gold labels to any harness path.\n- Do not treat citations as sufficient evidence; score whether the cited text\n  supports value, status, temporality, and normalization.\n- Prefer deterministic post-processing where clinical rules are unambiguous.\n- Keep synthetic-fixture claims separate from real-clinical claims.\n- Treat chain-of-thought as implementation detail, not evidence.\n- Keep external coding-agent adapters out of canonical clinical claims until\n  they are reproducibly sandboxed and logged.\n\n## 7. Recommended Implementation Backlog\n\n### Near Term\n\n1. Add `config/harnesses/*.yaml` manifests for existing harnesses.\n2. Add a lightweight `HarnessEvent` dataclass and row-level event log.\n3. Add manifest IDs and event-log summary counts to run metadata.\n4. Package field extractors as skill-like units with name/version/input/output.\n5. Extend the verifier artifact to distinguish value support, status support,\n   temporality support, and normalization support.\n\n### Medium Term\n\n1. Implement a Clinical-Document Interface over sections, spans, and evidence.\n2. Add budget-limited escalation policies as separate harness variants.\n3. Add parallel field-family execution only after event logs make ordering and\n   artifacts reproducible.\n4. Add an external-agent adapter interface that can normalize outputs from\n   CLI-based coding agents or Flue/Pi-style harnesses.\n5. Add a table that reports harness complexity: number of calls, modules,\n   prompts, schemas, repair attempts, and artifacts per row.\n\n### Later\n\n1. Evaluate synthetic-supervised fine-tuned models as a separate comparator.\n2. Add local terminology lookup/UMLS-like normalization as an ablation.\n3. Add clinician adjudication timing: does the artifact-rich harness reduce\n   review time or improve reviewer agreement?\n4. Explore a deployable headless workflow, Flue-style, only after the research\n   harness has stable manifests, traces, and guardrails.\n\n## 8. Bottom Line\n\nThe repo should not copy Claude Code, Codex, Pi, Flue, or OpenHands as products.\nIt should copy their deeper lesson: agent behavior is largely a property of the\nharness. In clinical structured extraction, the harness is the method.\n\nFor this dissertation, the most valuable expansion is not a more elaborate\nmulti-agent story. It is a more explicit clinical extraction harness: manifests,\ntyped skills, bounded document tools, event traces, verifier gates, budgeted\nmodel routing, and adjudication-ready artifacts. That would make the existing\narchitecture ladder more publishable because it would let the dissertation ask\nnot only \"which model got the right answer?\" but \"which harness made the\nanswer clinically supported, inspectable, reproducible, and worth its cost?\"\n\n## Sources\n\n- Agrawal M, Hegselmann S, Lang H, Kim Y, Sontag D. Large Language Models are\n  Few-Shot Clinical Information Extractors. EMNLP 2022.\n  <https://arxiv.org/abs/2205.12689>\n- Anthropic. Claude Code overview.\n  <https://code.claude.com/docs>\n- Flue. The Agent Harness Framework.\n  <https://flueframework.com/>\n- Gemini CLI documentation.\n  <https://google-gemini.github.io/gemini-cli/docs/>\n- Grothey B, Odenkirchen J, Brkic A, et al. Comprehensive testing of large\n  language models for extraction of structured data in pathology.\n  Communications Medicine 2025.\n  <https://www.nature.com/articles/s43856-025-00808-8>\n- Harness.lol. What is harness?\n  <https://www.harness.lol/docs>\n- Holgate B, Fang S, Shek A, et al. Extracting Epilepsy Patient Data with\n  Llama 2. BioNLP 2024.\n  <https://aclanthology.org/2024.bionlp-1.43/>\n- OpenAI. Unrolling the Codex agent loop. 2026.\n  <https://openai.com/index/unrolling-the-codex-agent-loop/>\n- OpenHands: An Open Platform for AI Software Developers as Generalist Agents.\n  arXiv 2024.\n  <https://arxiv.org/abs/2407.16741>\n- Pi Coding Agent.\n  <https://pi.dev/>\n- SPELL-LLMs: A Scalable and Privacy-Compliant NLP Pipeline Using Locally\n  Hosted Large Language Models for Clinical Information Extraction.\n  <https://pmc.ncbi.nlm.nih.gov/articles/PMC12330431/>\n- SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering.\n  arXiv 2024.\n  <https://arxiv.org/abs/2405.15793>\n- Yang Z, Yuan H, Sayeed R, et al. CLINES: Clinical LLM-based Information\n  Extraction and Structuring Agent. medRxiv 2025.\n  <https://www.medrxiv.org/content/10.64898/2025.12.01.25341355v1>\n",
+    "evaluation_contract": "# Evaluation Contract\n\n## Purpose\n\nThis document defines the evaluation vocabulary for the clean repo after the\nliterature-review pivot. Seizure frequency remains the anchor task, but the\nmain study now evaluates clinical extraction systems across architecture\nfamilies, clinical NLP baselines, model families, model size tiers, and\noperating profiles.\n\nThe evaluation must therefore answer more than \"which model is most accurate?\"\nIt should show how architecture, model capacity, evidence requirements,\nnormalization, cost, latency, token use, and harness complexity influence the\nquality of structured epilepsy-letter extraction.\n\n## Evaluation Units\n\nResults should be reportable at four levels:\n\n| Unit | Meaning |\n| --- | --- |\n| Row / letter | One clinic letter or synthetic letter. |\n| Field family | A clinically coherent output group such as medications or seizure frequency. |\n| Item | One extracted clinical claim, such as a medication, investigation result, seizure type, or frequency statement. |\n| Architecture run | A fixed harness/model/dataset-slice combination. |\n\nDo not rely on a single aggregate score. Aggregate metrics can be useful only\nafter field-family and item-level results are visible.\n\n## Architecture Families\n\nEvery run should declare one architecture family:\n\n| Family | Example harnesses | Evaluation role |\n| --- | --- | --- |\n| `clinical_nlp_baseline` | `deterministic_baseline`, `exect_lite_cleanroom_baseline`, `exect_v2_external_baseline` | Non-LLM and epilepsy-specific baseline floor. |\n| `direct_llm` | `direct_full_contract`, `direct_evidence_contract` | Strong full-letter LLM comparator. |\n| `retrieval_field_pipeline` | `retrieval_field_extractors`, `retrieval_anchor` | Candidate-span and local-context extraction ablation. |\n| `clines_inspired_modular` | `clines_epilepsy_modular`, `clines_epilepsy_verified` | Main clinical modular architecture. |\n| `costed_reliability_variant` | self-consistency, stronger verifier, model escalation | Costed reliability or sensitivity intervention. |\n\nBaseline outputs may be partial. Their coverage must be explicit rather than\npenalized as if they attempted the full contract.\n\n## Field Families\n\n| Field family | Status | Required initially |\n| --- | --- | --- |\n| Seizure frequency | Core anchor | Yes |\n| Seizure freedom | Core subfield | Yes, as explicit subfield where possible |\n| Current anti-seizure medications | Core | Yes |\n| Investigations | Core | Yes |\n| Seizure type, semiology, and pattern modifiers | Core, normalization-sensitive | Yes |\n| Epilepsy type and syndrome | Core | Yes |\n| Most recent seizure | Future/subfield | Optional first pass |\n| Rescue medication | Future/subfield | Optional first pass |\n| Other therapies | Future | Optional first pass |\n| Comorbidities | Future | Optional first pass |\n| Associated symptoms | Future | Optional first pass |\n\nHarnesses that do not emit all core field families must be labelled\n`partial_contract`. External baselines such as ExECTv2 may be mapped onto the\nnearest supported field families and reported with explicit `field_coverage`.\n\n## Literature Alignment\n\nThe field families should remain aligned with prior epilepsy and clinical IE\nliterature where possible. This makes the proposal easier to defend and helps\nseparate direct comparisons from new-field extensions.\n\n| Proposed field family | Prior literature alignment | Evaluation implication |\n| --- | --- | --- |\n| Seizure frequency | ExECT/ExECTv2; Xie et al.; Holgate et al.; Gan et al. | Core anchor. Report fine-grained and pragmatic labels where possible, plus status, temporality, ambiguity, and evidence support. |\n| Seizure freedom | Xie et al.; Gan et al.; seizure-frequency annotation schemes | Treat as explicit subfield, not merely a frequency category, because \"no tonic-clonic seizures\" may not imply global seizure freedom. |\n| Most recent seizure / date of last seizure | Xie et al.; Gan et al. | Optional first-pass subfield, but important for temporality evaluation and future machine-reading comparison. |\n| Current anti-seizure medications | ExECT/ExECTv2 prescriptions; Fang et al.; i2b2 medication lineage | Core field. Score currentness, drug name, dose, unit, frequency, planned changes, and evidence separately where supported. |\n| Investigations | ExECT CT/MRI/EEG; ExECTv2 EEG/CT/MRI results; CLINES tests/labs/procedures | Core field. Score investigation type, result, status, temporality, and normal/abnormal/pending normalization. |\n| Seizure type and classification | ExECT focal/generalized seizure categories; ExECTv2 seizure type; Fang et al. | Core normalization-sensitive field. Report raw mention and normalized label to avoid overclaiming. |\n| Semiology features and pattern modifiers | Partially covered by Fang associated symptoms; not fully covered by ExECTv2 public annotation scope | Include as core only where the schema can preserve raw evidence and uncertainty; report separately from seizure-type labels. |\n| Epilepsy type and syndrome | ExECT epilepsy diagnosis/type; ExECTv2 diagnosis/type/syndrome; Fang et al. | Core field. Score diagnosis/type/syndrome and diagnostic certainty separately. |\n| Epilepsy cause / etiology | ExECTv2 epilepsy cause | Optional extension unless proposal scope expands; useful for ExECTv2 mapping. |\n| Age/onset/when diagnosed | ExECTv2 onset and when diagnosed | Optional extension; useful for temporality stress testing but not required for first full contract. |\n| Birth history and patient history | ExECTv2 annotation set | Out of initial scope unless needed for ExECTv2 baseline completeness; report as not attempted rather than false negative. |\n| Associated symptoms | Fang et al. | Optional or supporting field; may overlap with semiology and should be mapped carefully. |\n| Generic concepts, assertions, values/units, dates | CLINES | Architectural inspiration rather than epilepsy-field target; use for status, temporality, normalization, and value/unit evaluation axes. |\n\nWhen a previous paper uses a different representation, evaluate alignment at\nthe nearest defensible level. For example, ExECT focal/generalized seizure\noutputs can be mapped to seizure classification, while Holgate-style\nseizure-frequency categories can be mapped to pragmatic frequency labels.\nFields that prior systems did not attempt should be marked `not_attempted`.\n\n## Evaluation Layers\n\nEvaluation happens in nine layers:\n\n1. Architecture and field implementation coverage.\n2. Baseline output mapping and comparability.\n3. Parse validity and recoverability.\n4. Proxy coverage and evidence presence.\n5. Matched clinical adjudication.\n6. Evidence-support grading.\n7. Architecture ablation effects.\n8. Model-family and model-tier effects.\n9. Budget, latency, token use, and harness complexity.\n\nLayered reporting matters because schema-valid, evidence-present outputs can\nstill be clinically wrong.\n\n## Coverage Metrics\n\nReport coverage separately from correctness.\n\nRequired coverage metrics:\n\n- `attempted_field_families`;\n- `supported_field_families`;\n- `partial_contract`;\n- `rows_attempted`;\n- `rows_with_any_output`;\n- `rows_with_field_family_output`;\n- `items_emitted_by_field_family`;\n- `abstention_rate_by_field_family`;\n- `external_baseline_mapped_fields`, where applicable.\n\nFor baselines that do not attempt a field, report `not_attempted`, not false\nnegative.\n\n## Parse Validity Metrics\n\nRun artifacts should expose component validity separately:\n\n- `seizure_frequency_invalid_output_rate`;\n- `seizure_freedom_invalid_output_rate`;\n- `current_medication_invalid_output_rate`;\n- `seizure_classification_invalid_output_rate`;\n- `investigations_invalid_output_rate`;\n- `epilepsy_classification_invalid_output_rate`;\n- `broader_fields_invalid_output_rate`;\n- `full_contract_invalid_output_rate`;\n- `repair_attempt_rate`;\n- `repair_success_rate`;\n- `legacy_any_invalid_output_rate`.\n\n`legacy_any_invalid_output_rate` may exist for continuity, but dissertation\ntables should prefer component validity and `full_contract_invalid_output_rate`.\n\n## Correctness Axes\n\nFor non-empty outputs, score these axes:\n\n| Axis | Meaning |\n| --- | --- |\n| Value correctness | Did the system identify the right clinical entity or concept? |\n| Status correctness | Did it preserve current, historical, planned, pending, conditional, absent, or uncertain status? |\n| Temporality correctness | Did it preserve the relevant time anchor or currentness? |\n| Normalization correctness | Did it map the raw phrase to a defensible schema label or code? |\n| Evidence support | Does the cited span support value, status, temporality, and normalization? |\n| Field placement | Was the item assigned to the right field family? |\n| Completeness | Did the system miss clinically relevant items within a field family it attempted? |\n\nSchema validity is not clinical correctness.\n\n## Evidence Grades\n\n| Grade | Definition |\n| --- | --- |\n| `exact_span` | Shortest or near-shortest span directly supports the output. |\n| `overlapping_span` | Span overlaps the decisive wording but includes extra text. |\n| `section_level` | Right section, but not decisive wording. |\n| `wrong_temporal_status` | Evidence supports the entity but not the claimed status or time anchor. |\n| `wrong_normalization` | Evidence supports a raw mention but not the normalized label or code. |\n| `unsupported` | Evidence does not support the output. |\n| `missing_evidence` | Non-empty output has no usable evidence. |\n| `not_applicable` | Baseline or field does not provide evidence spans. |\n\nFull evidence credit requires `exact_span` or `overlapping_span`.\n\nFor systems without evidence spans, report value correctness separately and mark\nevidence support as `not_applicable` rather than silently treating it as\nunsupported.\n\n## Baseline Comparability\n\nClinical NLP baselines may emit different output structures from LLM harnesses.\nEach baseline needs a mapping layer:\n\n- source field name;\n- mapped field family;\n- mapped item value;\n- mapped status, if available;\n- mapped temporality, if available;\n- mapped normalization, if available;\n- mapped evidence span or `not_applicable`;\n- mapping warnings.\n\nReport baseline limitations explicitly:\n\n- fields not attempted;\n- evidence not available;\n- normalization not available;\n- status or temporality not available;\n- external runtime requirements;\n- license or reproducibility constraints.\n\n## Architecture Ablation Metrics\n\nArchitecture comparisons should be reported as deltas against matched rows and\nmatched model registry entries where possible.\n\nRecommended ablation metrics:\n\n- direct prompt to evidence-contract delta;\n- direct prompt to retrieval-field pipeline delta;\n- retrieval-field pipeline to CLINES-inspired modular delta;\n- modular to verified modular delta;\n- one-pass to self-consistency delta;\n- small-model direct to small-model modular delta;\n- frontier-model direct to frontier-model modular delta.\n\nFor each delta, report:\n\n- field-family correctness change;\n- evidence-support change;\n- abstention change;\n- parse-validity change;\n- token/cost/latency change;\n- warning and error-category change.\n\n## Model-Family Metrics\n\nModel comparisons must use frozen model registry entries.\n\nReport:\n\n- model registry entry ID;\n- family;\n- exact model ID;\n- tier;\n- provider/backend;\n- context window;\n- decoding settings;\n- local hardware or API pricing;\n- field-family metrics;\n- evidence-supported correctness;\n- parse validity;\n- cost per row;\n- latency per row;\n- cost per valid output;\n- cost per evidence-supported item;\n- cost per correctly adjudicated item.\n\nAvoid reporting only generic model family names such as \"GPT\", \"Claude\", or\n\"Qwen\" in result tables.\n\n## Budget And Complexity Metrics\n\nEvery run should report:\n\n- number of LLM calls per row;\n- mean input tokens;\n- mean output tokens;\n- mean total tokens;\n- mean latency;\n- estimated cost;\n- model/provider/backend;\n- temperature and sampling settings;\n- prompt/schema version;\n- fixed data slice and data hash;\n- number of modules invoked;\n- number of intermediate artifacts;\n- external tools required;\n- local hardware where applicable.\n\nHarness complexity is part of the result. A modular pipeline that improves\nevidence support at much higher cost should be interpreted as a tradeoff, not a\nsimple win.\n\n## Error Categories\n\nAdjudication should tag errors using stable categories:\n\n- `missed_item`;\n- `spurious_item`;\n- `wrong_value`;\n- `wrong_status`;\n- `wrong_temporality`;\n- `wrong_normalization`;\n- `wrong_field_family`;\n- `unsupported_evidence`;\n- `overbroad_evidence`;\n- `missing_evidence`;\n- `parse_or_schema_error`;\n- `retrieval_recall_loss`;\n- `aggregation_conflict`;\n- `baseline_mapping_error`.\n\nThese categories should support architecture-specific error analysis. For\nexample, retrieval recall loss should be separable from field-extractor failure.\n\n## Minimum Result Tables\n\nThe clean repo should generate:\n\n- architecture and harness coverage table;\n- baseline comparability table;\n- model registry table;\n- budget, latency, token, and complexity table;\n- parse-validity table;\n- field-level correctness table;\n- evidence-support table;\n- architecture ablation table;\n- model-family and model-tier table;\n- seizure-frequency anchor table;\n- self-consistency cost table;\n- adjudication error-category table.\n\n## Reporting Order\n\nFinal result tables should be ordered as:\n\n1. architecture and field implementation coverage;\n2. baseline comparability;\n3. model registry and run configuration;\n4. budget, latency, token use, and harness complexity;\n5. component parse validity;\n6. proxy coverage and evidence presence;\n7. matched clinical adjudication;\n8. evidence-support grading;\n9. architecture ablations;\n10. model-family and model-tier comparisons;\n11. seizure-frequency anchor metrics;\n12. failure categories and uncertainty.\n",
+    "experiment_protocol": "# Experiment Protocol\n\n## Purpose\n\nExperiments should be small, comparable, and reproducible. The clean repo should\nanswer the revised research question with fixed slices, explicit budgets,\narchitecture ablations, model registry entries, and machine-readable run\nrecords.\n\nThe main comparison is no longer a binary single-prompt versus multi-agent\ntest. The study should evaluate an architecture ladder: clinical NLP baselines,\ndirect LLM prompting, evidence-required prompting, retrieval-plus-extraction,\nCLINES-inspired modular extraction, verification variants, and costed\nreliability interventions.\n\n## Harness Names\n\nUse descriptive clean harness names rather than inheriting every exploratory\n`h00x` name.\n\n| Clean harness | Historical reference | Purpose |\n| --- | --- | --- |\n| `deterministic_baseline` | `h001`/`h002` | Reproducible rule floor. |\n| `exect_v2_external_baseline` | new | Published epilepsy NLP comparator, run as external GATE baseline where feasible. |\n| `exect_lite_cleanroom_baseline` | new | Transparent local epilepsy-rule baseline written from published definitions. |\n| `direct_anchor` | `h003` | Seizure-frequency direct-prompt anchor. |\n| `retrieval_anchor` | new / `h004` reference | Candidate-span seizure-frequency anchor. |\n| `anchor_sc3` | `h006` | Self-consistency k=3 on anchor task. |\n| `anchor_sc5` | `h007` | Self-consistency k=5 on anchor task. |\n| `direct_full_contract` | new | Full-schema direct-prompt comparator. |\n| `direct_evidence_contract` | new | Full-schema direct prompt with stricter evidence and abstention contract. |\n| `retrieval_field_extractors` | new | Candidate retrieval plus field-specific extraction. |\n| `clines_epilepsy_modular` | `h013` reference | Main CLINES-inspired modular system. |\n| `clines_epilepsy_verified` | new | Modular system with explicit verifier/downgrade pass. |\n| `model_family_sensitivity` | `h012` reference | Bounded model-family and model-capacity sensitivity runs. |\n\n## Required Harness Families\n\n### Clinical NLP Baselines\n\nPurpose:\n\n- establish reproducible non-LLM floors;\n- avoid comparing LLM systems against a straw man;\n- identify fields where conventional rules remain competitive.\n\nRequired baselines:\n\n- `deterministic_baseline`;\n- `exect_lite_cleanroom_baseline`;\n- `exect_v2_external_baseline`, if GATE setup and licensing constraints allow\n  external execution.\n\nExECTv2 should be treated as an external baseline unless licensing is clarified.\nRecord repository URL, commit hash, GATE version, input documents, output\nmapping, and validation scripts used. Do not copy ExECTv2 source logic into\nthis repo without permission.\n\n### Direct LLM Baselines\n\n`direct_full_contract` is one LLM call that reads the letter and emits the full\noutput schema.\n\n`direct_evidence_contract` uses the same direct architecture but stricter\nevidence, abstention, and warning requirements.\n\nRequirements:\n\n- same final schema as modular pipelines;\n- evidence spans required;\n- invalid-output recovery logged;\n- field-family validity metrics emitted;\n- call/token/latency/cost metadata emitted.\n\n### Retrieval-Plus-Field Extraction\n\nThis harness tests whether candidate-span retrieval and field-specific local\ncontext improve output quality before adopting the full modular pipeline.\n\nRequirements:\n\n- candidate span artifact;\n- field-family extractor outputs;\n- evidence spans;\n- recall-loss warnings where candidate spans appear incomplete;\n- same final schema as direct and modular systems.\n\n### CLINES-Inspired Modular Pipeline\n\nThis is the clean implementation of the revised research architecture.\n\nRequirements:\n\n- document normalization and sectioning artifact;\n- semantic chunking or candidate-span artifact;\n- field extractor artifacts;\n- status/temporality artifact;\n- normalization artifact, where implemented;\n- verification artifact for `clines_epilepsy_verified`;\n- aggregation artifact;\n- final schema identical to the direct-prompt baseline;\n- explicit call/token/latency/cost budget.\n\nDo not label this as a CLINES replication unless the original CLINES code,\nprompts, annotations, and evaluation scripts are public and used.\n\n### Anchor Seizure-Frequency Harnesses\n\nKeep the anchor-task line as a compact reliability microcosm:\n\n- direct anchor;\n- retrieval anchor;\n- CLINES-style anchor if separable;\n- self-consistency k=3;\n- self-consistency k=5.\n\nPurpose:\n\n- preserve a controlled reliability study;\n- stress-test temporality and ambiguity;\n- show whether self-consistency is worth its cost;\n- keep a low-cost place to test new model families before full-contract runs.\n\n### Model-Family Sensitivity Harnesses\n\nSensitivity runs should answer specific questions:\n\n- does a stronger model reduce the benefit of modular architecture?\n- do smaller open models benefit more from retrieval and verification?\n- which models are cost-efficient per evidence-supported extraction?\n- do frontier closed models improve correctness enough to justify cost or\n  governance constraints?\n\nClosed-provider sensitivity runs on synthetic data must not become the main\nclinical evidence spine.\n\n## Fixed-Slice Discipline\n\nEvery experiment should specify:\n\n- dataset path;\n- data hash;\n- row inclusion criteria;\n- row order;\n- `n`;\n- row IDs;\n- random seed, if sampling;\n- model registry entry ID;\n- model/provider/backend;\n- prompt/schema version;\n- run timestamp;\n- code version or commit hash;\n- external baseline version or commit hash, if applicable.\n\nComparisons should use matched rows whenever possible.\n\n## Model Registry Discipline\n\nExperiments must use frozen model registry entries rather than vague labels such\nas \"latest GPT\" or \"latest Qwen.\" Each entry should identify the exact model ID,\nprovider, release date or snapshot date, context window, pricing source,\ninference backend, quantization, decoding settings, and hardware.\n\nLatest-release scouting can happen before the freeze date, but canonical runs\nmust use frozen entries.\n\n## Budget And Complexity Metrics\n\nFor architecture comparisons, define budget explicitly:\n\n- same call count where possible;\n- same maximum token budget where meaningful;\n- deliberately unequal budgets reported as part of the intervention.\n\nDo not compare a one-call baseline against a multi-call modular pipeline without\nmaking call count, token use, latency, cost, and harness complexity central to\ninterpretation.\n\nEvery run should emit:\n\n- number of LLM calls per row;\n- mean input tokens;\n- mean output tokens;\n- mean total tokens;\n- latency;\n- estimated cost;\n- parse repair count;\n- number of modules invoked;\n- number and size of intermediate artifacts;\n- external tool/runtime requirements.\n\n## Run Record Contract\n\nEach run record should include:\n\n- `run_id`;\n- `harness`;\n- `architecture_family`;\n- `schema_version`;\n- `field_coverage`;\n- `dataset`;\n- `slice`;\n- `model_registry_entry`;\n- `model`;\n- `provider`;\n- `backend`;\n- `budget`;\n- `complexity`;\n- `metrics`;\n- `rows`;\n- `parse_validity`;\n- `warnings`;\n- `artifact_paths`;\n- path to prompt/schema definitions;\n- path to model registry snapshot;\n- path to adjudication if available.\n\n## Promotion Gates\n\nBefore a harness becomes canonical:\n\n1. one-row smoke validates output shape;\n2. small fixed-slice run validates parse stability;\n3. `n=25` or `n=50` matched run gives preliminary metrics;\n4. matched adjudication confirms value/status/temporality/normalization/evidence\n   correctness;\n5. budget and complexity metrics are complete;\n6. only then promote to canonical result.\n\n## Minimum Dissertation Experiment Set\n\nThe repo should produce:\n\n1. deterministic baseline run;\n2. ExECT-lite clean-room baseline run;\n3. ExECTv2 external baseline run if feasible;\n4. seizure-frequency anchor direct vs retrieval/modular run;\n5. anchor self-consistency run;\n6. direct full-contract run;\n7. direct evidence-contract run;\n8. retrieval-plus-field-extraction run;\n9. CLINES-inspired modular run;\n10. CLINES-inspired verified run;\n11. matched adjudication for the full-contract architecture ladder;\n12. model-family sensitivity runs across frozen open and closed model entries;\n13. optional frontier sensitivity run on synthetic data only.\n\n## Result Families\n\nMaintain simple structured outputs for:\n\n- harness coverage;\n- baseline comparison;\n- architecture ablation ladder;\n- model-family and model-tier comparison;\n- budget, latency, token, and complexity comparison;\n- anchor reliability results;\n- clinical adjudication results;\n- evidence-support results;\n- sensitivity results.\n\nUse `canonical`, `supporting`, and `archive` labels so the visibility cockpit\nloads only the evidence that supports final claims by default.\n",
+    "implementation_plan": "# Comprehensive Implementation Plan\n\nThis plan builds from the repo's current contract-first state into a runnable\ndissertation evidence pipeline for the revised research question:\n\n> How do CLINES-inspired modular architecture, clinical extraction baselines,\n> and model capacity affect correctness, evidence support, auditability, cost,\n> latency, token use, and harness complexity in epilepsy clinic-letter\n> extraction?\n\nThe implementation should no longer optimize for a single binary comparison\nbetween direct prompting and a role-separated system. It should build an\narchitecture ladder, map clinical NLP baselines, and support frozen model-family\nexperiments.\n\nThe companion review in `docs/coding_agent_harness_literature_review.md`\nextends this plan with a harness-native direction. The main implication is that\nthe system should treat the harness as part of the evaluated method, not as\nincidental glue around prompts. Later phases should therefore make manifests,\ntyped workflow units, event traces, document tools, verifier gates, budget\npolicies, and cockpit visibility first-class outputs.\n\n## Phase 0: Repo Readiness\n\nGoal: make the existing foundation easy to run and hard to accidentally break.\n\nTasks:\n\n- Add a tiny committed fixture dataset under `tests/fixtures/`.\n- Ensure `pytest` is available through a documented dev setup.\n- Add `README` commands for install, test, smoke run, summarize run.\n- Confirm all schema, data, and evaluation tests pass from a fresh checkout.\n- Add a lightweight CI command or local `scripts/check.py` if desired.\n\nFiles likely touched:\n\n- `README.md`\n- `pyproject.toml`\n- `tests/fixtures/*.json`\n- `tests/test_*.py`\n\nAcceptance criteria:\n\n- A new developer can install dev dependencies and run tests.\n- Existing smoke metadata run works against a fixture.\n- No LLM/provider dependency is needed for tests.\n\n## Phase 1: Contract And Schema Hardening\n\nGoal: strengthen the shared contract before adding baselines and harnesses.\n\nTasks:\n\n- Add JSON serialization helpers for extraction payloads, not just run records.\n- Add schema validation-style checks for required final payload keys.\n- Add `architecture_family`, `model_registry_entry`, `complexity`, and\n  `external_baseline` fields to run records.\n- Add field coverage helpers for full contract, partial contract, unsupported\n  fields, and `not_attempted` baseline fields.\n- Add parse-validity metric helpers for component validity rates.\n- Add helpers for evidence grades, field-family mapping, and literature-aligned\n  field names.\n- Make run-record `code_version` configurable from git commit when available.\n- Add tests for payload serialization, coverage helpers, baseline mapping, and\n  run-record metadata.\n\nFiles likely touched:\n\n- `src/epilepsy_extraction/schemas/extraction.py`\n- `src/epilepsy_extraction/schemas/contracts.py`\n- `src/epilepsy_extraction/schemas/runs.py`\n- `src/epilepsy_extraction/evaluation/mapping.py`\n- `tests/test_schemas.py`\n- `tests/test_evaluation_mapping.py`\n\nAcceptance criteria:\n\n- Every harness can emit the same payload shape or an explicitly mapped partial\n  baseline payload.\n- Missing, partial, failed, and not-attempted fields are represented\n  consistently.\n- Run records include reproducibility, model registry, architecture, budget,\n  and complexity metadata in standard places.\n\n## Phase 2: Model Registry And Provider Abstraction\n\nGoal: define the boundary between harness logic and model calls, and make\nmodel-family experiments reproducible.\n\nTasks:\n\n- Add provider protocol/interface for chat/completion requests.\n- Define provider request, response, usage, latency, cost, and error dataclasses.\n- Add mock provider for tests.\n- Add local JSON replay provider so old or captured outputs can be evaluated\n  without calling an API.\n- Add model registry loader and validator.\n- Add candidate and frozen registry file locations.\n- Add parse failure/recovery conventions.\n- Keep closed-provider clients optional and outside core tests.\n\nFiles likely touched:\n\n- `src/epilepsy_extraction/providers/base.py`\n- `src/epilepsy_extraction/providers/mock.py`\n- `src/epilepsy_extraction/providers/replay.py`\n- `src/epilepsy_extraction/providers/__init__.py`\n- `src/epilepsy_extraction/models/registry.py`\n- `config/model_registry.candidate.yaml`\n- `tests/test_providers.py`\n- `tests/test_model_registry.py`\n\nAcceptance criteria:\n\n- Harnesses can call a provider without knowing whether it is mock, replay,\n  local, or closed.\n- Token, call, latency, and cost metadata flow into run records.\n- A frozen model registry entry can be attached to a run.\n- Tests do not require network or secrets.\n\n## Phase 3: Prompt, Schema, And Mapping Assets\n\nGoal: make prompts, output schemas, and baseline mapping rules versioned,\ninspectable, and tied to run records.\n\nTasks:\n\n- Add prompt directories for direct, evidence-contract, retrieval, and\n  CLINES-inspired modular harnesses.\n- Add final output schema description or JSON schema-like contract.\n- Add baseline mapping specs for deterministic, ExECT-lite, and ExECTv2 outputs.\n- Add prompt version IDs.\n- Add loader utilities for prompt and mapping files.\n- Store prompt path/version, schema version, and mapping version in run records.\n\nSuggested structure:\n\n```text\nprompts/\n  direct/\n    full_contract_v1.md\n    evidence_contract_v1.md\n  retrieval/\n    field_extractors_v1/\n  clines_inspired/\n    chunking_v1.md\n    field_extractors_v1/\n    verification_v1.md\nschemas/\n  final_extraction_v1.md or final_extraction_v1.json\nmappings/\n  exect_v2_mapping_v1.yaml\n  exect_lite_mapping_v1.yaml\n```\n\nAcceptance criteria:\n\n- Every LLM run records prompt version and schema version.\n- Every external or partial baseline run records mapping version.\n- Prompt and mapping changes are reviewable as normal files.\n- Direct, retrieval, and modular systems share the same final schema.\n\n## Phase 4: Clinical NLP Baselines\n\nGoal: create reproducible floors and serious non-LLM comparators before LLM\narchitecture work.\n\nTasks:\n\n- Implement `deterministic_baseline` harness.\n- Implement `exect_lite_cleanroom_baseline` using independently authored rules\n  based on published field definitions.\n- Add an `exect_v2_external_baseline` adapter that can ingest ExECTv2 outputs\n  when generated outside this repo.\n- Document ExECTv2 setup assumptions, source repository, commit hash, GATE\n  version, and licensing caveat.\n- Ensure gold labels are reserved for evaluation and fixtures; no benchmark path\n  may read gold labels as input.\n- Emit valid mapped run records with `clinical_nlp_baseline` architecture\n  family.\n\nFiles likely touched:\n\n- `src/epilepsy_extraction/harnesses/deterministic.py`\n- `src/epilepsy_extraction/harnesses/exect_lite.py`\n- `src/epilepsy_extraction/harnesses/exect_v2_external.py`\n- `src/epilepsy_extraction/harnesses/__init__.py`\n- `scripts/run_experiment.py`\n- `tests/test_baseline_harnesses.py`\n\nAcceptance criteria:\n\n- `python scripts/run_experiment.py dataset.json --harness deterministic_baseline --limit 5`\n  writes a valid run record.\n- ExECT-lite emits mapped partial/full outputs without copying ExECTv2 source\n  logic.\n- ExECTv2 external outputs can be mapped when available.\n- Baseline field coverage distinguishes attempted, supported, and\n  `not_attempted` fields.\n- No benchmark path reads gold labels as input.\n\n## Phase 5: Anchor Seizure-Frequency Harnesses \u2713 COMPLETE\n\nGoal: rebuild the compact reliability microcosm around the new architecture\nladder.\n\nTasks:\n\n- Implement `direct_anchor`.\n- Implement `retrieval_anchor`.\n- Implement a separable CLINES-style anchor if useful.\n- Implement self-consistency variants `anchor_sc3` and `anchor_sc5`.\n- Reuse existing label parsing and metrics.\n- Emit row-level predictions, evidence spans, confidence, warnings, and budget.\n- Add replay/mock-provider tests for successful parse, invalid JSON, abstention,\n  unsupported evidence, and retrieval recall loss.\n- Timebox this phase as an infrastructure exercise so seizure frequency does\n  not crowd out the full-contract architecture ladder.\n\nFiles likely touched:\n\n- `src/epilepsy_extraction/harnesses/anchor.py`\n- `src/epilepsy_extraction/retrieval/candidates.py`\n- `src/epilepsy_extraction/evaluation/metrics.py`\n- `scripts/run_experiment.py`\n- `tests/test_anchor_harnesses.py`\n\nAcceptance criteria:\n\n- Anchor harnesses produce comparable run records.\n- `summarize()` can generate anchor metrics from run rows.\n- Self-consistency reports extra cost explicitly.\n- Retrieval failures are visible as retrieval recall or candidate-span warnings.\n\n## Phase 6: Direct Full-Contract LLM Baselines \u2713 COMPLETE\n\nGoal: create strong direct-prompt comparators.\n\nTasks:\n\n- Implement `direct_full_contract`.\n- Implement `direct_evidence_contract`.\n- One provider call reads the letter and emits the final schema.\n- Parse into `ExtractionPayload`.\n- Validate field-family coverage and component parse validity.\n- Preserve warnings, citations, confidence, invalid output state, and raw\n  provider artifact.\n- Add recovery policy for invalid/malformed output.\n\nFiles likely touched:\n\n- `src/epilepsy_extraction/harnesses/direct_full_contract.py`\n- `src/epilepsy_extraction/schemas/extraction.py`\n- `tests/test_direct_full_contract.py`\n\nAcceptance criteria:\n\n- Direct harnesses emit the same final payload shape expected of retrieval and\n  modular pipelines.\n- Records field coverage for all core families.\n- Invalid output is measurable by component, not only globally.\n- Evidence-contract behavior is separately measurable from direct prompting.\n\n## Phase 7: Retrieval-Plus-Field Extraction \u2713 COMPLETE\n\nGoal: test whether candidate-span selection and local-context extraction improve\noutput quality before the full modular pipeline.\n\nTasks:\n\n- Implement document normalization and basic section detection.\n- Implement candidate-span retrieval grouped by field family.\n- Implement field-specific extractors over candidate spans plus local context.\n- Preserve candidate-span artifacts, token counts, and retrieval warnings.\n- Add recall-loss error tags when retrieved context appears insufficient.\n- Aggregate field outputs into the shared final payload.\n\nFiles likely touched:\n\n- `src/epilepsy_extraction/document/normalization.py`\n- `src/epilepsy_extraction/document/sections.py`\n- `src/epilepsy_extraction/retrieval/candidates.py`\n- `src/epilepsy_extraction/harnesses/retrieval_field_extractors.py`\n- `tests/test_retrieval.py`\n- `tests/test_retrieval_field_extractors.py`\n\nAcceptance criteria:\n\n- Retrieval artifacts are preserved in `artifacts`.\n- Field extractors emit schema-valid outputs using the shared final schema.\n- Retrieval can be compared against direct prompting on matched rows.\n- Candidate-span recall failures are observable and not collapsed into generic\n  wrong-answer errors.\n\n## Phase 8: CLINES-Inspired Modular Pipeline \u2713 COMPLETE\n\nGoal: implement the main revised architecture as a clinical modular pipeline,\nnot as a claimed CLINES replication.\n\nBuild modules in this order:\n\n1. Document normalization and sectioning.\n2. Semantic chunking and candidate-span retrieval.\n3. Field-specific extraction.\n4. Assertion, status, and temporality enrichment.\n5. Normalization and value/unit handling.\n6. Evidence verification.\n7. Cross-chunk aggregation and schema adaptation.\n\nField extractors should cover:\n\n- Seizure frequency and seizure freedom.\n- Current medications.\n- Investigations.\n- Seizure type, semiology, and pattern modifiers.\n- Epilepsy type and syndrome.\n\nFiles likely touched:\n\n- `src/epilepsy_extraction/modules/chunking.py`\n- `src/epilepsy_extraction/modules/field_extractors.py`\n- `src/epilepsy_extraction/modules/status_temporality.py`\n- `src/epilepsy_extraction/modules/normalization.py`\n- `src/epilepsy_extraction/modules/verification.py`\n- `src/epilepsy_extraction/modules/aggregation.py`\n- `src/epilepsy_extraction/harnesses/clines_epilepsy_modular.py`\n- `src/epilepsy_extraction/harnesses/clines_epilepsy_verified.py`\n- `tests/test_modules.py`\n- `tests/test_clines_epilepsy_modular.py`\n\nAcceptance criteria:\n\n- Modular final schema matches direct-prompt final schema.\n- Intermediate artifacts are preserved for chunking, candidate spans,\n  extraction, status/temporality, normalization, verification, and aggregation.\n- Verifier grades more than quote presence.\n- Aggregator does not create new clinical claims.\n- The run record clearly labels this as `clines_inspired_modular`, not CLINES\n  replication.\n\n## Phase 9: Evaluation And Result Tables \u2713 COMPLETE\n\nGoal: turn runs into dissertation-ready evidence under the revised evaluation\ncontract.\n\nTasks:\n\n- Generate architecture and harness coverage table.\n- Generate baseline comparability table.\n- Generate model registry table.\n- Generate budget, latency, token, and complexity table.\n- Generate component parse-validity table.\n- Generate field-level correctness/adjudication table skeletons.\n- Generate evidence-support table.\n- Generate architecture ablation table.\n- Generate model-family and model-tier table.\n- Generate seizure-frequency anchor table.\n- Generate self-consistency cost table.\n- Generate harness-complexity tables that can later incorporate manifest\n  version, event counts, module counts, repair attempts, verifier passes,\n  escalation decisions, and artifact counts per row.\n- Add CSV/JSON output under `results/tables/`.\n\nFiles likely touched:\n\n- `scripts/summarize_results.py`\n- `src/epilepsy_extraction/evaluation/tables.py`\n- `src/epilepsy_extraction/evaluation/metrics.py`\n- `tests/test_tables.py`\n\nAcceptance criteria:\n\n- Given one or more run records, scripts produce stable machine-readable tables.\n- Tables follow the order in `docs/evaluation_contract.md`.\n- Missing adjudication is explicit, not silently treated as zero.\n- Architecture deltas can be computed on matched rows where available.\n- Harness complexity is represented as evaluable data rather than prose-only\n  commentary.\n\n## Phase 10: Adjudication Workflow \u2713 COMPLETE\n\nGoal: support matched clinical review without blending adjudication into model\noutput.\n\nTasks:\n\n- Add adjudication sheet generator.\n- Include row ID, harness, architecture family, model registry entry, field\n  family, emitted value, evidence, scores, error tags, and notes.\n- Add adjudication importer.\n- Add adjudication summary metrics.\n- Keep adjudication files under `results/adjudication/`.\n- Align error tags with `docs/evaluation_contract.md` and\n  `docs/adjudication_protocol.md`.\n\nFiles likely touched:\n\n- `src/epilepsy_extraction/evaluation/adjudication.py`\n- `scripts/build_adjudication_sheet.py`\n- `scripts/summarize_adjudication.py`\n- `tests/test_adjudication.py`\n\nAcceptance criteria:\n\n- Matched architecture-ladder outputs can be exported for review.\n- Completed adjudication can be re-imported.\n- Error tags distinguish wrong value, wrong status, wrong temporality, wrong\n  normalization, unsupported evidence, retrieval recall loss, aggregation\n  conflict, and baseline mapping error.\n\n## Phase 11: Model-Family Sensitivity Runs \u2713 COMPLETE\n\nGoal: evaluate whether architecture benefits change across open and closed\nmodel families and model-size tiers.\n\nTasks:\n\n- Freeze `config/model_registry.YYYY-MM-DD.yaml`.\n- Run anchor smoke tests across candidate model entries.\n- Select bounded small/medium/frontier model sets.\n- Run selected architecture rungs across frozen model entries.\n- Report model-family metrics, token use, cost, latency, parse stability, and\n  evidence-supported correctness.\n- Keep closed-provider and frontier runs bounded, especially on synthetic data.\n\nFiles likely touched:\n\n- `config/model_registry.YYYY-MM-DD.yaml`\n- `scripts/run_model_matrix.py`\n- `scripts/summarize_results.py`\n- `results/runs/*`\n- `results/tables/model_family*.csv`\n\nAcceptance criteria:\n\n- Every canonical model run references a frozen registry entry.\n- Results can compare model family, tier, architecture, budget, and evidence\n  support.\n- Moving aliases such as \"latest\" are not used in canonical result tables.\n- Closed-provider sensitivity runs are clearly labelled and bounded.\n\n## Phase 12: Generated Unified Cockpit \u2713 COMPLETE\n\nGoal: provide a compact, regularly regenerated visibility layer that preserves\nthe best qualities of the original unified document without recreating the old\ndashboard sprawl.\n\nThe cockpit should be a supervisor/examiner-facing visual narrative, not just a\nJSON dump. It should make the research arc legible at a glance: architecture\nladder, baselines, model registry, decisions, linked records, current claims,\nuncertainties, timelines, example rows, and budget/performance tradeoffs.\n\nDesign reference screenshots and notes from the previous unified simplified\nview are preserved in `docs/visibility_cockpit_reference/`. They should inspire\nthe interaction model and information hierarchy, while the clean repo rebuilds\nthe content model around benchmark comparison, wider field coverage, evidence\nsupport, adjudication, and model registry governance.\n\nTasks:\n\n- Expand `build_cockpit_data.py` into the source-backed data compiler for the\n  cockpit.\n- Generate `site/cockpit-data.json` from docs, run records, result tables,\n  adjudication files, and decision notes.\n- Add a small static `site/index.html` inspired by the original unified doc's\n  editorial research-review style.\n- Show research docs, run records, current canonical/supporting/archive runs,\n  table summaries, and model registry snapshots.\n- Include core visual views: architecture ladder, harness tradeoff surface,\n  baseline comparability, model-family matrix, branch detail, linked decisions,\n  session timeline, current-status claim panel, and source-letter/extracted\n  output example view.\n- Refactor the cockpit data model so it can ingest harness manifests, event-log\n  summaries, skill/module versions, verifier-gate summaries, and\n  harness-complexity tables when Phase 13 lands.\n- Add a harness-native view that explains how a row moved through context\n  construction, extraction, verification, aggregation, and adjudication export.\n- Keep it generated, data-driven, and minimal enough to maintain.\n- Treat `site/cockpit-data.json` as generated output by default. Commit the\n  generator and source artifacts; commit generated snapshots only when they are\n  intentionally used as review/reproducibility artifacts.\n\nFiles likely touched:\n\n- `scripts/build_cockpit_data.py`\n- `site/index.html`\n- `site/cockpit-data.json`\n\nAcceptance criteria:\n\n- Cockpit is regenerated by a documented command, not hand-maintained.\n- Cockpit loads generated JSON and links every visible claim back to docs,\n  run records, tables, adjudication, model registry entries, or decision notes.\n- It does not become a second source of truth.\n- It only surfaces canonical/supporting/archive labels already present in run\n  records.\n- Harness-native displays link back to source manifests, event summaries, run\n  records, and result tables rather than duplicating those facts in the site.\n\n## Phase 13: Harness-Native Refactor\n\nGoal: refactor the completed architecture ladder so every extraction system is\ndescribed and evaluated as an explicit clinical agent harness.\n\nThis phase incorporates the implementation backlog from\n`docs/coding_agent_harness_literature_review.md`. It should be treated as a\nmethodological hardening phase, not a new claim that more agents are better.\nThe existing direct, retrieval, modular, verifier, model-matrix, adjudication,\nand cockpit work should remain intact, but the metadata and orchestration\nsurfaces should become more explicit.\n\n### 13.1 Harness Manifests\n\nTasks:\n\n- Add versioned harness manifests under `config/harnesses/`.\n- Capture harness ID, architecture family, allowed modules/tools, prompt\n  versions, schema versions, provider/model registry entry, context policy,\n  output contract, repair policy, verifier policy, aggregation policy, budget\n  limits, gold-label isolation rules, and artifact retention policy.\n- Add manifest loader and validator.\n- Store manifest ID and manifest hash in run records.\n- Update `scripts/run_experiment.py` and `scripts/run_model_matrix.py` so a run\n  can resolve defaults from a manifest while still allowing explicit CLI\n  overrides for experiments.\n\nFiles likely touched:\n\n- `config/harnesses/*.yaml`\n- `src/epilepsy_extraction/harnesses/manifest.py`\n- `src/epilepsy_extraction/schemas/runs.py`\n- `scripts/run_experiment.py`\n- `scripts/run_model_matrix.py`\n- `tests/test_harness_manifests.py`\n\nAcceptance criteria:\n\n- Every canonical harness run references a validated manifest.\n- Prompt, schema, mapping, verifier, aggregation, and budget policies are no\n  longer hidden in code-only conventions.\n- Manifest changes are reviewable as normal dissertation-method changes.\n\n### 13.2 Harness Event Logs\n\nTasks:\n\n- Add a lightweight `HarnessEvent` schema for row-level traces.\n- Use stable event types such as `context_built`, `provider_call_started`,\n  `provider_call_finished`, `parse_attempted`, `parse_repaired`,\n  `candidate_spans_selected`, `field_extraction_completed`,\n  `verification_completed`, `aggregation_completed`, `budget_limit_hit`, and\n  `warning_emitted`.\n- Store PHI-safe event summaries by default; allow quote-bearing synthetic\n  fixture events only when the dataset policy permits it.\n- Add event summary helpers for counts, timings, warnings, repair attempts,\n  verifier passes, and escalation decisions.\n- Include event summary metadata in run records and result tables.\n\nFiles likely touched:\n\n- `src/epilepsy_extraction/schemas/events.py`\n- `src/epilepsy_extraction/schemas/runs.py`\n- `src/epilepsy_extraction/evaluation/tables.py`\n- `src/epilepsy_extraction/harnesses/*.py`\n- `tests/test_harness_events.py`\n- `tests/test_tables.py`\n\nAcceptance criteria:\n\n- Harness behavior is inspectable without reading raw provider artifacts.\n- Event logs support row-level debugging, matched ablations, and cockpit\n  visualization.\n- Event logs do not leak gold labels or clinical secrets into model-visible\n  context.\n\n### 13.3 Skill-Like Field Workflow Units\n\nTasks:\n\n- Package field extractors, verifier, normalizer, and aggregator as versioned\n  workflow units with declared input/output contracts.\n- Record workflow unit names and versions in artifacts.\n- Add shared pre/post hooks for parse repair, deterministic normalization,\n  evidence validation, and warning emission.\n- Keep the implementation Python-native; do not introduce an external agent\n  framework unless a later experiment explicitly justifies it.\n\nFiles likely touched:\n\n- `src/epilepsy_extraction/modules/field_extractors.py`\n- `src/epilepsy_extraction/modules/verification.py`\n- `src/epilepsy_extraction/modules/normalization.py`\n- `src/epilepsy_extraction/modules/aggregation.py`\n- `src/epilepsy_extraction/modules/workflows.py`\n- `tests/test_modules.py`\n\nAcceptance criteria:\n\n- Field-family behavior can be compared by workflow unit version.\n- Adding a new clinical field requires a declared contract rather than an\n  implicit prompt-only change.\n- Workflow metadata flows into run artifacts and cockpit data.\n\n### 13.4 Clinical-Document Interface\n\nTasks:\n\n- Define bounded document tools for `get_sections`, `search_spans`,\n  `get_span`, `quote_evidence`, `validate_payload`, and\n  `compare_evidence_to_claim`.\n- Route retrieval and modular harnesses through this interface where practical.\n- Preserve direct full-letter prompting as a separate baseline that can bypass\n  the interface.\n- Add tests for section lookup, span windows, quote fidelity, and evidence\n  locator stability.\n\nFiles likely touched:\n\n- `src/epilepsy_extraction/document/interface.py`\n- `src/epilepsy_extraction/document/sections.py`\n- `src/epilepsy_extraction/retrieval/candidates.py`\n- `src/epilepsy_extraction/harnesses/retrieval_field_extractors.py`\n- `src/epilepsy_extraction/harnesses/clines_epilepsy_modular.py`\n- `tests/test_document_interface.py`\n\nAcceptance criteria:\n\n- Retrieval and modular systems have a stable Clinical-Document Interface,\n  analogous to a coding agent's Agent-Computer Interface.\n- Evidence quotes can be traced back to deterministic locators.\n- Direct and modular comparisons can explicitly report which systems used the\n  document interface.\n\n### 13.5 Verifier Gates And Escalation Policies\n\nTasks:\n\n- Expand verifier artifacts to distinguish value support, status support,\n  temporality support, normalization support, field-family placement, and\n  known epilepsy edge-case checks.\n- Add downgrade/removal policies for unsupported overclaims.\n- Add budgeted model-escalation harness variants: cheap retrieval, stronger\n  ambiguous extraction, verifier equal-or-stronger than extractor, and\n  escalation only on low confidence, parse failure, or verifier disagreement.\n- Keep escalation variants separate from canonical baseline runs.\n\nFiles likely touched:\n\n- `src/epilepsy_extraction/modules/verification.py`\n- `src/epilepsy_extraction/harnesses/clines_epilepsy_verified.py`\n- `src/epilepsy_extraction/harnesses/escalation.py`\n- `config/harnesses/*escalation*.yaml`\n- `tests/test_clines_epilepsy_modular.py`\n- `tests/test_escalation_harnesses.py`\n\nAcceptance criteria:\n\n- Verifier performance can be evaluated as its own intervention.\n- Escalation decisions are visible in event logs and budget tables.\n- Costed reliability variants never silently replace the strong direct,\n  retrieval, or modular baselines.\n\n### 13.6 External Harness Adapters\n\nTasks:\n\n- Define an `ExternalClinicalAgentAdapter` boundary for sandboxed outputs from\n  CLI or framework agents.\n- Normalize adapter outputs into `ExtractionPayload`, `HarnessEvent` summaries,\n  and raw artifact references.\n- Treat Claude Code, Codex, Pi, Flue, OpenHands, Gemini CLI, Aider, and\n  harness adapters as possible future runners, not canonical clinical\n  comparators by default.\n- Add replay fixtures for external adapter outputs before attempting live\n  subprocess runs.\n\nFiles likely touched:\n\n- `src/epilepsy_extraction/harnesses/external_adapter.py`\n- `src/epilepsy_extraction/providers/replay.py`\n- `tests/fixtures/external_harness_outputs/*.json`\n- `tests/test_external_harness_adapter.py`\n\nAcceptance criteria:\n\n- External harness outputs can be evaluated without changing the final schema.\n- Live external-agent runs remain optional and non-canonical unless separately\n  approved and sandboxed.\n- The repo can compare local harnesses and external harness outputs through a\n  common event/run contract.\n\n### 13.7 Cockpit Refactor For Harness Visibility\n\nTasks:\n\n- Update `scripts/build_cockpit_data.py` to ingest harness manifests, event-log\n  summaries, workflow versions, verifier-gate summaries, escalation decisions,\n  and harness-complexity tables.\n- Add cockpit panels for harness manifest lineage, row-level event timelines,\n  verifier gates, escalation/cost decisions, and workflow-unit versions.\n- Keep `site/index.html` generated-data-driven; do not make the cockpit a\n  hand-maintained source of truth.\n- Add tests or smoke checks that the cockpit compiler handles old run records\n  without harness-native fields and new run records with manifest/event data.\n\nFiles likely touched:\n\n- `scripts/build_cockpit_data.py`\n- `site/index.html`\n- `site/cockpit-data.json`\n- `tests/test_scripts.py`\n\nAcceptance criteria:\n\n- The cockpit can explain not only which harness won, but how a harness reached\n  its output.\n- Older run records degrade gracefully with missing manifest/event data.\n- Harness-native claims visible in the cockpit link back to manifests, run\n  records, event summaries, tables, or docs.\n\n### 13.8 Evaluation Contract Update\n\nTasks:\n\n- Update `docs/evaluation_contract.md` to define harness manifests,\n  event traces, verifier-gate metrics, escalation metrics, and\n  harness-complexity reporting.\n- Update `docs/experiment_protocol.md` so matched runs specify whether\n  manifests, event logs, document tools, verifier gates, and escalation policies\n  are active.\n- Update `docs/adjudication_protocol.md` only where event traces or verifier\n  gates affect reviewer-facing artifacts.\n\nFiles likely touched:\n\n- `docs/evaluation_contract.md`\n- `docs/experiment_protocol.md`\n- `docs/adjudication_protocol.md`\n\nAcceptance criteria:\n\n- Harness-native metadata has a documented evaluation meaning.\n- New complexity and trace metrics are not confused with clinical correctness.\n- Human adjudication remains independent from model-generated claims.\n\n## Recommended Build Order\n\n1. Phase 0: repo readiness.\n2. Phase 1: contract and schema hardening.\n3. Phase 2: model registry and provider abstraction.\n4. Phase 3: prompt, schema, and mapping assets.\n5. Phase 4: clinical NLP baselines.\n6. Phase 5: anchor seizure-frequency harnesses.\n7. Phase 6: direct full-contract LLM baselines.\n8. Phase 7: retrieval-plus-field extraction.\n9. Phase 8: CLINES-inspired modular pipeline.\n10. Phase 9: evaluation and result tables.\n11. Phase 10: adjudication workflow.\n12. Phase 11: model-family sensitivity runs.\n13. Phase 12: cockpit.\n14. Phase 13: harness-native refactor.\n\nThe anchor harnesses still come before the full-contract systems. They are\nsmaller, they exercise provider calls and run metadata, and they expose the\nawkward parts of parsing, invalid output handling, evidence spans, retrieval,\nand budget accounting before those problems get multiplied across all field\nfamilies. Clinical NLP baselines should also come early so the project does not\naccidentally optimize only against LLM comparators.\n\nPhase 13 comes after the first complete architecture ladder because it refactors\nwhat has already been learned into a more explicit harness contract. It should\nnot invalidate earlier runs; instead, it should allow older records to remain\nreadable while newer records expose manifests, event traces, verifier gates,\nworkflow versions, and cockpit-level harness visibility.\n",
+    "model_registry_protocol": "# Model Registry Protocol\n\n## Purpose\n\nThe dissertation should evaluate contemporary open and closed models, including\nrecent releases from families such as Qwen, Llama, Gemma, Phi, DeepSeek, GPT,\nand Claude. Because model availability, aliases, pricing, and context windows\nchange quickly, canonical experiments must use frozen model registry entries\nrather than vague \"latest model\" labels.\n\nThis protocol defines how to select, freeze, document, and report model\nsnapshots.\n\n## Registry Principle\n\nUse model families and tiers during proposal design. Use exact model IDs during\nexperiments.\n\nProposal language can say:\n\n> We evaluate latest available model snapshots from selected open and closed\n> model families, frozen before canonical runs.\n\nCanonical results must say:\n\n> We evaluated `provider/model-id` as listed in registry snapshot\n> `model_registry_YYYY-MM-DD.yaml`.\n\n## Model Families\n\nInitial family set:\n\n| Category | Families | Rationale |\n| --- | --- | --- |\n| Open or open-weight | Qwen, Llama, Gemma, Phi, DeepSeek | Covers major accessible model families with different sizes, licenses, and deployment profiles. |\n| Closed frontier | GPT, Claude | Provides high-capacity proprietary comparators. |\n| Optional closed or hosted | Gemini, Mistral, hosted open models | Include only if access, pricing, and governance are practical. |\n\nFamily inclusion should be justified by availability, clinical extraction\nrelevance, cost, context window, and ability to run under the evaluation\ncontract.\n\n## Size And Capacity Tiers\n\nUse tiers to make model comparisons interpretable.\n\n| Tier | Typical role | Examples of metadata to capture |\n| --- | --- | --- |\n| Small / cheap | Low-cost extraction and local/privacy-sensitive settings | parameter count, quantization, hardware, throughput |\n| Medium | Practical quality/cost tradeoff | context window, cost per supported extraction, parse stability |\n| Large / frontier | Upper-bound quality and architecture sensitivity | pricing, latency, governance constraints, token efficiency |\n\nExact thresholds can vary by family. For mixture-of-experts models, record total\nparameters and active parameters where known.\n\n## Freeze Process\n\nBefore canonical experiments:\n\n1. Set a model-freeze date.\n2. Search official provider documentation, model cards, and repository pages.\n3. Select exact model IDs for each family/tier.\n4. Record pricing, context window, access route, and deprecation status.\n5. Run a one-row smoke test for schema compatibility.\n6. Save a registry snapshot.\n7. Do not change canonical model entries unless a model becomes unavailable or a\n   serious configuration error is discovered.\n\nIf a model changes behind a moving alias, either pin a dated snapshot or record\nthe alias resolution date and provider documentation.\n\n## Registry Entry Schema\n\nEach model entry should include:\n\n```yaml\n- id: qwen_medium_YYYYMMDD\n  family: Qwen\n  tier: medium\n  model_id: provider-or-repo/model-name\n  provider: provider-name\n  access_route: local | hosted_api | provider_api\n  release_date: YYYY-MM-DD\n  freeze_date: YYYY-MM-DD\n  context_window_tokens: 0\n  input_modalities: [text]\n  output_modalities: [text]\n  parameters_total: null\n  parameters_active: null\n  quantization: null\n  inference_backend: vllm | llama_cpp | ollama | provider_api | other\n  hardware: null\n  pricing:\n    input_per_million_tokens_usd: null\n    output_per_million_tokens_usd: null\n    source_url: null\n    checked_date: YYYY-MM-DD\n  decoding_defaults:\n    temperature: 0\n    top_p: null\n    max_output_tokens: null\n    reasoning_effort: null\n  governance_notes: \"\"\n  source_urls: []\n  status: candidate | canonical | deprecated | unavailable\n```\n\n## Decoding Settings\n\nClinical extraction should default to deterministic or near-deterministic\nsettings:\n\n- temperature `0` or the provider's closest deterministic setting;\n- fixed maximum output tokens;\n- fixed reasoning effort where providers expose it;\n- no hidden prompt changes between architecture conditions;\n- no provider-side web browsing or tools unless explicitly part of the harness.\n\nIf a provider does not support deterministic decoding, record the closest\navailable settings.\n\n## Cost Reporting\n\nEvery canonical run should compute:\n\n- input tokens;\n- output tokens;\n- total tokens;\n- estimated API cost;\n- local inference runtime cost proxy if available;\n- latency;\n- cost per row;\n- cost per valid extraction;\n- cost per evidence-supported extraction;\n- cost per correctly adjudicated field item.\n\nFor local models, report hardware and throughput even if dollar cost is not\nestimated.\n\n## Model Availability And Deprecation\n\nIf a model is deprecated after canonical runs, keep the result and mark the\nentry as deprecated. Do not silently rerun with a successor model.\n\nIf a model disappears before canonical runs, replace it through a documented\nregistry update:\n\n- old entry ID;\n- reason for removal;\n- replacement entry ID;\n- date;\n- source evidence.\n\n## Open Versus Closed Interpretation\n\nClosed frontier models may establish an upper-bound performance estimate, but\nthey do not automatically define the best clinical system. Interpret results\nagainst:\n\n- governance constraints;\n- data-sharing restrictions;\n- cost;\n- latency;\n- reproducibility;\n- ability to run locally;\n- robustness under exact evidence requirements.\n\nOpen models may be less accurate in direct prompting but more attractive if\nthey become competitive under retrieval, verification, and modular extraction.\n\n## Reporting Rules\n\nDissertation tables should report:\n\n- family;\n- exact model ID;\n- tier;\n- provider/backend;\n- context window;\n- cost per million input/output tokens or local hardware;\n- mean calls per row;\n- mean tokens per row;\n- mean latency per row;\n- parse validity;\n- evidence-supported correctness;\n- field-family metrics.\n\nAvoid reporting only \"GPT\", \"Claude\", \"Qwen\", or \"latest model\" in results.\n\n## Suggested Files\n\nUse:\n\n- `config/model_registry.candidate.yaml` for scouting;\n- `config/model_registry.YYYY-MM-DD.yaml` for frozen canonical entries;\n- `runs/*/model_registry_snapshot.yaml` copied into run artifacts;\n- `docs/model_registry_protocol.md` as the method description.\n",
+    "research_question": "# Research Question And Claims\n\n## Primary Question\n\nFor structured epilepsy clinic-letter extraction, how do CLINES-inspired\nmodular architecture, clinical extraction baselines, and model capacity affect\nclinical correctness, evidence support, auditability, cost, latency, token use,\nand harness complexity?\n\n## Study Position\n\nThe dissertation should no longer be framed as a simple test of whether\nmulti-agent extraction beats a single prompt. The literature suggests a wider\nand more useful design space. Direct prompting can be strong, rule-based\nepilepsy NLP systems such as ExECT are serious comparators, and modular\nclinical pipelines such as CLINES suggest that chunking, normalization,\nassertion/status handling, temporality, evidence grounding, and aggregation may\nmatter as much as the base model.\n\nThe project therefore evaluates architecture as an empirical variable. A\nCLINES-inspired modular pipeline is the main proposed architecture, but its\ncomponents should be tested through ablations and compared against direct LLM\nprompting and clinical NLP-style baselines.\n\n## Extraction Target\n\nThe system reads an epilepsy clinic letter and extracts structured fields for:\n\n- seizure frequency and seizure freedom;\n- current anti-seizure medications;\n- investigations and investigation results;\n- seizure types, semiology features, and pattern modifiers;\n- epilepsy type and epilepsy syndrome;\n- evidence spans, confidence, warnings, and citations.\n\nThe target is structured, evidence-grounded clinical extraction. It is not\nfree-text summarisation.\n\n## Hypotheses\n\n### H1: Modular Clinical Architecture May Improve Evidence-Supported Extraction\n\nA CLINES-inspired architecture may improve evidence support, status handling,\ntemporality, normalization, and auditability compared with direct prompting.\nThis is a hypothesis, not a premise.\n\n### H2: Architecture Components Have Uneven Value\n\nChunking, candidate-span retrieval, field-specific extraction, assertion/status\nclassification, temporality resolution, evidence verification, and aggregation\nshould be evaluated as separable interventions. Some modules may improve one\nfield family while harming another through information loss or additional error\npropagation.\n\n### H3: Strong Direct Prompting Is A Necessary Comparator\n\nDirect full-letter prompting may remain competitive, especially for shorter\nletters and fields with simple surface forms. The direct baseline must use the\nsame final schema, evidence requirements, decoding controls, parse validation,\nand adjudication rubric as modular pipelines.\n\n### H4: Clinical NLP Baselines Establish The Real Floor\n\nThe alternative to LLM extraction is not \"no system.\" ExECTv2, ExECT-inspired\nclean-room rules, deterministic medication/date/frequency extractors, and\npossibly machine-reading seizure-frequency baselines should be used to show\nwhere LLMs genuinely add value and where conventional clinical NLP remains\ncompetitive.\n\n### H5: Model Capacity And Harness Complexity Trade Off\n\nLarger or closed frontier models may reduce the need for complex harnesses,\nwhile smaller open models may become competitive when supported by retrieval,\nverification, and stricter schemas. Cost, token use, latency, parse stability,\nand harness complexity are therefore outcomes, not footnotes.\n\n### H6: Field Difficulty Is Uneven\n\nMedication and investigation extraction may be less architecture-sensitive than\nseizure-frequency temporality or seizure-type normalization. Results should be\nreported by field family rather than only in aggregate.\n\n## Core Comparisons\n\n| Comparison | Purpose |\n| --- | --- |\n| Deterministic and ExECT-style baselines vs LLM systems | Establish reproducible clinical NLP floors. |\n| Full-contract direct prompt vs evidence-required direct prompt | Tests whether an evidence contract alone changes output quality. |\n| Direct prompt vs retrieval-plus-field extraction | Tests candidate-span selection and local-context extraction. |\n| Direct prompt vs CLINES-inspired modular pipeline | Tests the full clinical modular architecture. |\n| Modular pipeline with and without verifier | Tests whether explicit evidence/status verification adds value. |\n| Architecture ladder across model families and sizes | Tests whether harness complexity or model capacity drives performance. |\n| Self-consistency variants | Measures costed reliability gains, if budget allows. |\n\n## Claims This Repo Should Support\n\n- CLINES-inspired modularization did or did not improve field-level correctness,\n  evidence support, status handling, temporality, or normalization compared with\n  strong direct prompting.\n- Specific architecture components helped, harmed, or had no measurable effect.\n- ExECTv2 or ExECT-inspired baselines remain competitive for some structured\n  epilepsy fields.\n- Evidence support must be clinically adjudicated; evidence presence alone is\n  insufficient.\n- Reliability varies by clinical field family.\n- Model family, model scale, cost, latency, token use, and harness complexity\n  jointly influence the best practical system.\n- Synthetic-only or closed-model sensitivity results are bounded evidence and\n  do not prove clinical deployment readiness.\n\n## Claims To Avoid\n\n- Multi-agent or modular systems are categorically better than direct prompts.\n- A stronger model makes architecture irrelevant.\n- Schema-valid JSON implies clinical correctness.\n- A quoted span automatically supports the extracted value.\n- Synthetic-only frontier-model results prove real-clinical deployment\n  readiness.\n- A CLINES-inspired implementation is a direct CLINES replication unless the\n  original code, prompts, and evaluation scripts are public and used.\n- Visibility tooling is the dissertation contribution.\n\n## Success Criteria\n\nAnother researcher should be able to:\n\n1. run deterministic and ExECT-style clinical NLP baselines;\n2. run fixed-slice direct-prompt LLM baselines;\n3. run fixed-slice CLINES-inspired modular pipelines and ablations;\n4. inspect intermediate artifacts for chunking, candidate spans, field outputs,\n   verification, normalization, and aggregation;\n5. evaluate outputs under the shared field contract;\n6. adjudicate matched subsets using the clinical rubric;\n7. compare model families and size tiers under frozen model registry entries;\n8. reproduce result tables for correctness, evidence support, budget, latency,\n   token use, and harness complexity;\n9. understand which claims are supported, uncertain, or out of scope.\n"
+  },
+  "field_families": [
+    "seizure_frequency",
+    "seizure_classification",
+    "epilepsy_classification",
+    "current_medications",
+    "investigations",
+    "associated_symptoms",
+    "comorbidities",
+    "rescue_medication",
+    "other_therapies"
+  ],
+  "generated_at": "2026-05-03T08:36:41.373354+00:00",
+  "harness_manifests": [],
+  "model_registry": {
+    "candidate": {
+      "created": "2026-05-02",
+      "frozen_at": "",
+      "models": [
+        {
+          "context_window": 200000,
+          "cost_per_1k_input": 0.003,
+          "cost_per_1k_output": 0.015,
+          "display_name": "Claude 3.5 Sonnet (Oct 2024)",
+          "family": "claude-3",
+          "model_id": "claude-3-5-sonnet-20241022",
+          "notes": "Stable frontier model; preferred for canonical runs requiring strong instruction following.",
+          "provider": "anthropic",
+          "tier": "frontier"
+        },
+        {
+          "context_window": 200000,
+          "cost_per_1k_input": 0.0008,
+          "cost_per_1k_output": 0.004,
+          "display_name": "Claude 3.5 Haiku (Oct 2024)",
+          "family": "claude-3",
+          "model_id": "claude-3-5-haiku-20241022",
+          "notes": "Fast medium-tier model; use for cost-sensitive sweeps.",
+          "provider": "anthropic",
+          "tier": "medium"
+        },
+        {
+          "context_window": 200000,
+          "cost_per_1k_input": 0.00025,
+          "cost_per_1k_output": 0.00125,
+          "display_name": "Claude 3 Haiku (Mar 2024)",
+          "family": "claude-3",
+          "model_id": "claude-3-haiku-20240307",
+          "notes": "Small-tier baseline for model-capacity ablation.",
+          "provider": "anthropic",
+          "tier": "small"
+        },
+        {
+          "context_window": 128000,
+          "cost_per_1k_input": 0.0025,
+          "cost_per_1k_output": 0.01,
+          "display_name": "GPT-4o (Nov 2024)",
+          "family": "gpt-4o",
+          "model_id": "gpt-4o-2024-11-20",
+          "notes": "Cross-provider frontier comparator.",
+          "provider": "openai",
+          "tier": "frontier"
+        },
+        {
+          "context_window": 128000,
+          "cost_per_1k_input": 0.00015,
+          "cost_per_1k_output": 0.0006,
+          "display_name": "GPT-4o mini (Jul 2024)",
+          "family": "gpt-4o",
+          "model_id": "gpt-4o-mini-2024-07-18",
+          "notes": "Cross-provider medium comparator.",
+          "provider": "openai",
+          "tier": "medium"
+        },
+        {
+          "context_window": 131072,
+          "cost_per_1k_input": 0.0,
+          "cost_per_1k_output": 0.0,
+          "display_name": "Llama 3.1 70B Instruct",
+          "family": "llama-3.1",
+          "model_id": "meta-llama/Llama-3.1-70B-Instruct",
+          "notes": "Open frontier; run locally or via inference API. Zero cost when self-hosted.",
+          "provider": "meta",
+          "tier": "open_frontier"
+        },
+        {
+          "context_window": 131072,
+          "cost_per_1k_input": 0.0,
+          "cost_per_1k_output": 0.0,
+          "display_name": "Llama 3.1 8B Instruct",
+          "family": "llama-3.1",
+          "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+          "notes": "Open small-tier; use to assess model-capacity floor for modular pipeline.",
+          "provider": "meta",
+          "tier": "open_small"
+        }
+      ],
+      "registry_version": "0.1"
+    },
+    "frozen": {
+      "_source": "model_registry.2026-05-02.yaml",
+      "created": "2026-05-02",
+      "frozen_at": "2026-05-02",
+      "models": [
+        {
+          "context_window": 200000,
+          "cost_per_1k_input": 0.003,
+          "cost_per_1k_output": 0.015,
+          "display_name": "Claude 3.5 Sonnet (Oct 2024)",
+          "family": "claude-3",
+          "model_id": "claude-3-5-sonnet-20241022",
+          "notes": "Stable frontier model; preferred for canonical runs requiring strong instruction following.",
+          "provider": "anthropic",
+          "tier": "frontier"
+        },
+        {
+          "context_window": 200000,
+          "cost_per_1k_input": 0.0008,
+          "cost_per_1k_output": 0.004,
+          "display_name": "Claude 3.5 Haiku (Oct 2024)",
+          "family": "claude-3",
+          "model_id": "claude-3-5-haiku-20241022",
+          "notes": "Fast medium-tier model; use for cost-sensitive sweeps.",
+          "provider": "anthropic",
+          "tier": "medium"
+        },
+        {
+          "context_window": 200000,
+          "cost_per_1k_input": 0.00025,
+          "cost_per_1k_output": 0.00125,
+          "display_name": "Claude 3 Haiku (Mar 2024)",
+          "family": "claude-3",
+          "model_id": "claude-3-haiku-20240307",
+          "notes": "Small-tier baseline for model-capacity ablation.",
+          "provider": "anthropic",
+          "tier": "small"
+        },
+        {
+          "context_window": 128000,
+          "cost_per_1k_input": 0.0025,
+          "cost_per_1k_output": 0.01,
+          "display_name": "GPT-4o (Nov 2024)",
+          "family": "gpt-4o",
+          "model_id": "gpt-4o-2024-11-20",
+          "notes": "Cross-provider frontier comparator.",
+          "provider": "openai",
+          "tier": "frontier"
+        },
+        {
+          "context_window": 128000,
+          "cost_per_1k_input": 0.00015,
+          "cost_per_1k_output": 0.0006,
+          "display_name": "GPT-4o mini (Jul 2024)",
+          "family": "gpt-4o",
+          "model_id": "gpt-4o-mini-2024-07-18",
+          "notes": "Cross-provider medium comparator.",
+          "provider": "openai",
+          "tier": "medium"
+        },
+        {
+          "context_window": 131072,
+          "cost_per_1k_input": 0.0,
+          "cost_per_1k_output": 0.0,
+          "display_name": "Llama 3.1 70B Instruct",
+          "family": "llama-3.1",
+          "model_id": "meta-llama/Llama-3.1-70B-Instruct",
+          "notes": "Open frontier; run locally or via inference API. Zero cost when self-hosted.",
+          "provider": "meta",
+          "tier": "open_frontier"
+        },
+        {
+          "context_window": 131072,
+          "cost_per_1k_input": 0.0,
+          "cost_per_1k_output": 0.0,
+          "display_name": "Llama 3.1 8B Instruct",
+          "family": "llama-3.1",
+          "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+          "notes": "Open small-tier; use to assess model-capacity floor for modular pipeline.",
+          "provider": "meta",
+          "tier": "open_small"
+        }
+      ],
+      "registry_version": "0.1"
+    }
+  },
+  "result_tables": {
+    "architecture_ablation": {
+      "headers": [
+        "dataset_id",
+        "model_registry_entry",
+        "baseline_run_id",
+        "comparison_run_id",
+        "baseline_harness",
+        "comparison_harness",
+        "matched_rows",
+        "exact_label_accuracy_delta",
+        "monthly_rate_accuracy_delta",
+        "cost_delta_usd",
+        "total_token_delta",
+        "parse_validity_delta"
+      ],
+      "rows": []
+    },
+    "architecture_harness_coverage": {
+      "headers": [
+        "run_id",
+        "harness",
+        "architecture_family",
+        "status",
+        "dataset_id",
+        "dataset_n",
+        "field_family",
+        "coverage_status",
+        "partial_contract"
+      ],
+      "rows": [
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "coverage_status": "implemented",
+          "dataset_id": "synthetic_subset_fixture",
+          "dataset_n": "2",
+          "field_family": "seizure_frequency",
+          "harness": "exect_lite_cleanroom_baseline",
+          "partial_contract": "true",
+          "run_id": "exect_lite_smoke",
+          "status": "smoke"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "coverage_status": "partial",
+          "dataset_id": "synthetic_subset_fixture",
+          "dataset_n": "2",
+          "field_family": "current_medications",
+          "harness": "exect_lite_cleanroom_baseline",
+          "partial_contract": "true",
+          "run_id": "exect_lite_smoke",
+          "status": "smoke"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "coverage_status": "partial",
+          "dataset_id": "synthetic_subset_fixture",
+          "dataset_n": "2",
+          "field_family": "investigations",
+          "harness": "exect_lite_cleanroom_baseline",
+          "partial_contract": "true",
+          "run_id": "exect_lite_smoke",
+          "status": "smoke"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "coverage_status": "partial",
+          "dataset_id": "synthetic_subset_fixture",
+          "dataset_n": "2",
+          "field_family": "seizure_classification",
+          "harness": "exect_lite_cleanroom_baseline",
+          "partial_contract": "true",
+          "run_id": "exect_lite_smoke",
+          "status": "smoke"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "coverage_status": "partial",
+          "dataset_id": "synthetic_subset_fixture",
+          "dataset_n": "2",
+          "field_family": "epilepsy_classification",
+          "harness": "exect_lite_cleanroom_baseline",
+          "partial_contract": "true",
+          "run_id": "exect_lite_smoke",
+          "status": "smoke"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "coverage_status": "not_attempted",
+          "dataset_id": "synthetic_subset_fixture",
+          "dataset_n": "2",
+          "field_family": "rescue_medication",
+          "harness": "exect_lite_cleanroom_baseline",
+          "partial_contract": "true",
+          "run_id": "exect_lite_smoke",
+          "status": "smoke"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "coverage_status": "not_attempted",
+          "dataset_id": "synthetic_subset_fixture",
+          "dataset_n": "2",
+          "field_family": "other_therapies",
+          "harness": "exect_lite_cleanroom_baseline",
+          "partial_contract": "true",
+          "run_id": "exect_lite_smoke",
+          "status": "smoke"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "coverage_status": "not_attempted",
+          "dataset_id": "synthetic_subset_fixture",
+          "dataset_n": "2",
+          "field_family": "comorbidities",
+          "harness": "exect_lite_cleanroom_baseline",
+          "partial_contract": "true",
+          "run_id": "exect_lite_smoke",
+          "status": "smoke"
+        },
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "coverage_status": "not_attempted",
+          "dataset_id": "synthetic_subset_fixture",
+          "dataset_n": "2",
+          "field_family": "associated_symptoms",
+          "harness": "exect_lite_cleanroom_baseline",
+          "partial_contract": "true",
+          "run_id": "exect_lite_smoke",
+          "status": "smoke"
+        }
+      ]
+    },
+    "baseline_comparability": {
+      "headers": [
+        "run_id",
+        "harness",
+        "external_baseline",
+        "mapping_version",
+        "field_family",
+        "coverage_status",
+        "evidence_available",
+        "comparability_notes"
+      ],
+      "rows": [
+        {
+          "comparability_notes": "",
+          "coverage_status": "implemented",
+          "evidence_available": "available_when_span_extracted",
+          "external_baseline": "false",
+          "field_family": "seizure_frequency",
+          "harness": "exect_lite_cleanroom_baseline",
+          "mapping_version": "exect_lite_v1",
+          "run_id": "exect_lite_smoke"
+        },
+        {
+          "comparability_notes": "partial_mapping",
+          "coverage_status": "partial",
+          "evidence_available": "available_when_span_extracted",
+          "external_baseline": "false",
+          "field_family": "current_medications",
+          "harness": "exect_lite_cleanroom_baseline",
+          "mapping_version": "exect_lite_v1",
+          "run_id": "exect_lite_smoke"
+        },
+        {
+          "comparability_notes": "partial_mapping",
+          "coverage_status": "partial",
+          "evidence_available": "available_when_span_extracted",
+          "external_baseline": "false",
+          "field_family": "investigations",
+          "harness": "exect_lite_cleanroom_baseline",
+          "mapping_version": "exect_lite_v1",
+          "run_id": "exect_lite_smoke"
+        },
+        {
+          "comparability_notes": "partial_mapping",
+          "coverage_status": "partial",
+          "evidence_available": "available_when_span_extracted",
+          "external_baseline": "false",
+          "field_family": "seizure_classification",
+          "harness": "exect_lite_cleanroom_baseline",
+          "mapping_version": "exect_lite_v1",
+          "run_id": "exect_lite_smoke"
+        },
+        {
+          "comparability_notes": "partial_mapping",
+          "coverage_status": "partial",
+          "evidence_available": "available_when_span_extracted",
+          "external_baseline": "false",
+          "field_family": "epilepsy_classification",
+          "harness": "exect_lite_cleanroom_baseline",
+          "mapping_version": "exect_lite_v1",
+          "run_id": "exect_lite_smoke"
+        },
+        {
+          "comparability_notes": "field_not_attempted",
+          "coverage_status": "not_attempted",
+          "evidence_available": "not_applicable",
+          "external_baseline": "false",
+          "field_family": "rescue_medication",
+          "harness": "exect_lite_cleanroom_baseline",
+          "mapping_version": "exect_lite_v1",
+          "run_id": "exect_lite_smoke"
+        },
+        {
+          "comparability_notes": "field_not_attempted",
+          "coverage_status": "not_attempted",
+          "evidence_available": "not_applicable",
+          "external_baseline": "false",
+          "field_family": "other_therapies",
+          "harness": "exect_lite_cleanroom_baseline",
+          "mapping_version": "exect_lite_v1",
+          "run_id": "exect_lite_smoke"
+        },
+        {
+          "comparability_notes": "field_not_attempted",
+          "coverage_status": "not_attempted",
+          "evidence_available": "not_applicable",
+          "external_baseline": "false",
+          "field_family": "comorbidities",
+          "harness": "exect_lite_cleanroom_baseline",
+          "mapping_version": "exect_lite_v1",
+          "run_id": "exect_lite_smoke"
+        },
+        {
+          "comparability_notes": "field_not_attempted",
+          "coverage_status": "not_attempted",
+          "evidence_available": "not_applicable",
+          "external_baseline": "false",
+          "field_family": "associated_symptoms",
+          "harness": "exect_lite_cleanroom_baseline",
+          "mapping_version": "exect_lite_v1",
+          "run_id": "exect_lite_smoke"
+        }
+      ]
+    },
+    "budget_complexity": {
+      "headers": [
+        "run_id",
+        "harness",
+        "architecture_family",
+        "provider",
+        "model",
+        "temperature",
+        "prompt_version",
+        "schema_version",
+        "mapping_version",
+        "dataset_n",
+        "llm_calls_per_row",
+        "mean_input_tokens",
+        "mean_output_tokens",
+        "mean_total_tokens",
+        "latency_ms",
+        "estimated_cost_usd",
+        "modules_invoked",
+        "intermediate_artifacts",
+        "external_tools"
+      ],
+      "rows": [
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "dataset_n": "2",
+          "estimated_cost_usd": "0.0",
+          "external_tools": "",
+          "harness": "exect_lite_cleanroom_baseline",
+          "intermediate_artifacts": "0",
+          "latency_ms": "0",
+          "llm_calls_per_row": "0",
+          "mapping_version": "exect_lite_v1",
+          "mean_input_tokens": "0.0",
+          "mean_output_tokens": "0.0",
+          "mean_total_tokens": "0.0",
+          "model": "none",
+          "modules_invoked": "0",
+          "prompt_version": "exect_lite_rules_v1",
+          "provider": "deterministic",
+          "run_id": "exect_lite_smoke",
+          "schema_version": "1.0.0",
+          "temperature": "0.0"
+        },
+        {
+          "architecture_family": "",
+          "dataset_n": "5",
+          "estimated_cost_usd": "0.0",
+          "external_tools": "",
+          "harness": "metadata_smoke",
+          "intermediate_artifacts": "0",
+          "latency_ms": "0",
+          "llm_calls_per_row": "0",
+          "mapping_version": "",
+          "mean_input_tokens": "0.0",
+          "mean_output_tokens": "0.0",
+          "mean_total_tokens": "0.0",
+          "model": "none",
+          "modules_invoked": "0",
+          "prompt_version": "none",
+          "provider": "deterministic",
+          "run_id": "metadata_smoke_n5",
+          "schema_version": "1.0.0",
+          "temperature": "0.0"
+        }
+      ]
+    },
+    "evidence_support": {
+      "headers": [
+        "run_id",
+        "harness",
+        "architecture_family",
+        "total_citations",
+        "supported_citations",
+        "unsupported_citations",
+        "evidence_supported_rate",
+        "evidence_status"
+      ],
+      "rows": [
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "evidence_status": "not_reported",
+          "evidence_supported_rate": "",
+          "harness": "exect_lite_cleanroom_baseline",
+          "run_id": "exect_lite_smoke",
+          "supported_citations": "",
+          "total_citations": "",
+          "unsupported_citations": ""
+        },
+        {
+          "architecture_family": "",
+          "evidence_status": "not_reported",
+          "evidence_supported_rate": "",
+          "harness": "metadata_smoke",
+          "run_id": "metadata_smoke_n5",
+          "supported_citations": "",
+          "total_citations": "",
+          "unsupported_citations": ""
+        }
+      ]
+    },
+    "field_level_correctness": {
+      "headers": [
+        "run_id",
+        "harness",
+        "field_family",
+        "n",
+        "exact_label_accuracy",
+        "monthly_rate_accuracy_tolerance_15pct",
+        "pragmatic_macro_f1",
+        "pragmatic_weighted_f1",
+        "purist_macro_f1",
+        "purist_weighted_f1",
+        "adjudication_status"
+      ],
+      "rows": [
+        {
+          "adjudication_status": "not_adjudicated",
+          "exact_label_accuracy": "1.0",
+          "field_family": "seizure_frequency",
+          "harness": "exect_lite_cleanroom_baseline",
+          "monthly_rate_accuracy_tolerance_15pct": "1.0",
+          "n": "2",
+          "pragmatic_macro_f1": "1.0",
+          "pragmatic_weighted_f1": "1.0",
+          "purist_macro_f1": "1.0",
+          "purist_weighted_f1": "1.0",
+          "run_id": "exect_lite_smoke"
+        }
+      ]
+    },
+    "harness_complexity": {
+      "headers": [
+        "run_id",
+        "harness",
+        "architecture_family",
+        "manifest_id",
+        "manifest_hash",
+        "dataset_n",
+        "llm_calls_per_row",
+        "modules_invoked",
+        "workflow_units",
+        "provider_calls",
+        "event_count",
+        "parse_repair_attempts",
+        "verifier_passes",
+        "escalation_decisions",
+        "intermediate_artifacts",
+        "raw_artifact_paths",
+        "complexity_status"
+      ],
+      "rows": [
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "complexity_status": "legacy_or_not_reported",
+          "dataset_n": "2",
+          "escalation_decisions": "0",
+          "event_count": "0",
+          "harness": "exect_lite_cleanroom_baseline",
+          "intermediate_artifacts": "0",
+          "llm_calls_per_row": "0",
+          "manifest_hash": "",
+          "manifest_id": "",
+          "modules_invoked": "",
+          "parse_repair_attempts": "0",
+          "provider_calls": "0",
+          "raw_artifact_paths": "0",
+          "run_id": "exect_lite_smoke",
+          "verifier_passes": "0",
+          "workflow_units": ""
+        },
+        {
+          "architecture_family": "",
+          "complexity_status": "legacy_or_not_reported",
+          "dataset_n": "5",
+          "escalation_decisions": "0",
+          "event_count": "0",
+          "harness": "metadata_smoke",
+          "intermediate_artifacts": "0",
+          "llm_calls_per_row": "0",
+          "manifest_hash": "",
+          "manifest_id": "",
+          "modules_invoked": "",
+          "parse_repair_attempts": "0",
+          "provider_calls": "0",
+          "raw_artifact_paths": "0",
+          "run_id": "metadata_smoke_n5",
+          "verifier_passes": "0",
+          "workflow_units": ""
+        }
+      ]
+    },
+    "model_family": {
+      "headers": [
+        "run_id",
+        "harness",
+        "architecture_family",
+        "model_registry_entry",
+        "model_id",
+        "provider",
+        "family",
+        "tier",
+        "dataset_n",
+        "exact_label_accuracy",
+        "evidence_supported_rate",
+        "parse_valid_rate",
+        "estimated_cost_usd",
+        "latency_ms"
+      ],
+      "rows": [
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "dataset_n": "2",
+          "estimated_cost_usd": "0.0",
+          "evidence_supported_rate": "",
+          "exact_label_accuracy": "1.0",
+          "family": "",
+          "harness": "exect_lite_cleanroom_baseline",
+          "latency_ms": "0",
+          "model_id": "none",
+          "model_registry_entry": "",
+          "parse_valid_rate": "1.0",
+          "provider": "deterministic",
+          "run_id": "exect_lite_smoke",
+          "tier": ""
+        },
+        {
+          "architecture_family": "",
+          "dataset_n": "5",
+          "estimated_cost_usd": "0.0",
+          "evidence_supported_rate": "",
+          "exact_label_accuracy": "",
+          "family": "",
+          "harness": "metadata_smoke",
+          "latency_ms": "0",
+          "model_id": "none",
+          "model_registry_entry": "",
+          "parse_valid_rate": "0.0",
+          "provider": "deterministic",
+          "run_id": "metadata_smoke_n5",
+          "tier": ""
+        }
+      ]
+    },
+    "model_registry": {
+      "headers": [
+        "model_registry_entry",
+        "model_id",
+        "display_name",
+        "provider",
+        "family",
+        "tier",
+        "context_window",
+        "frozen_at",
+        "used_in_runs",
+        "notes"
+      ],
+      "rows": [
+        {
+          "context_window": "200000",
+          "display_name": "Claude 3.5 Sonnet (Oct 2024)",
+          "family": "claude-3",
+          "frozen_at": "",
+          "model_id": "claude-3-5-sonnet-20241022",
+          "model_registry_entry": "claude-3-5-sonnet-20241022",
+          "notes": "Stable frontier model; preferred for canonical runs requiring strong instruction following.",
+          "provider": "anthropic",
+          "tier": "frontier",
+          "used_in_runs": ""
+        },
+        {
+          "context_window": "200000",
+          "display_name": "Claude 3.5 Haiku (Oct 2024)",
+          "family": "claude-3",
+          "frozen_at": "",
+          "model_id": "claude-3-5-haiku-20241022",
+          "model_registry_entry": "claude-3-5-haiku-20241022",
+          "notes": "Fast medium-tier model; use for cost-sensitive sweeps.",
+          "provider": "anthropic",
+          "tier": "medium",
+          "used_in_runs": ""
+        },
+        {
+          "context_window": "200000",
+          "display_name": "Claude 3 Haiku (Mar 2024)",
+          "family": "claude-3",
+          "frozen_at": "",
+          "model_id": "claude-3-haiku-20240307",
+          "model_registry_entry": "claude-3-haiku-20240307",
+          "notes": "Small-tier baseline for model-capacity ablation.",
+          "provider": "anthropic",
+          "tier": "small",
+          "used_in_runs": ""
+        },
+        {
+          "context_window": "128000",
+          "display_name": "GPT-4o (Nov 2024)",
+          "family": "gpt-4o",
+          "frozen_at": "",
+          "model_id": "gpt-4o-2024-11-20",
+          "model_registry_entry": "gpt-4o-2024-11-20",
+          "notes": "Cross-provider frontier comparator.",
+          "provider": "openai",
+          "tier": "frontier",
+          "used_in_runs": ""
+        },
+        {
+          "context_window": "128000",
+          "display_name": "GPT-4o mini (Jul 2024)",
+          "family": "gpt-4o",
+          "frozen_at": "",
+          "model_id": "gpt-4o-mini-2024-07-18",
+          "model_registry_entry": "gpt-4o-mini-2024-07-18",
+          "notes": "Cross-provider medium comparator.",
+          "provider": "openai",
+          "tier": "medium",
+          "used_in_runs": ""
+        },
+        {
+          "context_window": "131072",
+          "display_name": "Llama 3.1 70B Instruct",
+          "family": "llama-3.1",
+          "frozen_at": "",
+          "model_id": "meta-llama/Llama-3.1-70B-Instruct",
+          "model_registry_entry": "meta-llama/Llama-3.1-70B-Instruct",
+          "notes": "Open frontier; run locally or via inference API. Zero cost when self-hosted.",
+          "provider": "meta",
+          "tier": "open_frontier",
+          "used_in_runs": ""
+        },
+        {
+          "context_window": "131072",
+          "display_name": "Llama 3.1 8B Instruct",
+          "family": "llama-3.1",
+          "frozen_at": "",
+          "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+          "model_registry_entry": "meta-llama/Llama-3.1-8B-Instruct",
+          "notes": "Open small-tier; use to assess model-capacity floor for modular pipeline.",
+          "provider": "meta",
+          "tier": "open_small",
+          "used_in_runs": ""
+        }
+      ]
+    },
+    "parse_validity": {
+      "headers": [
+        "run_id",
+        "harness",
+        "architecture_family",
+        "component",
+        "valid",
+        "invalid",
+        "total",
+        "valid_rate",
+        "invalid_rate"
+      ],
+      "rows": [
+        {
+          "architecture_family": "clinical_nlp_baseline",
+          "component": "seizure_frequency",
+          "harness": "exect_lite_cleanroom_baseline",
+          "invalid": "0",
+          "invalid_rate": "0.0",
+          "run_id": "exect_lite_smoke",
+          "total": "2",
+          "valid": "2",
+          "valid_rate": "1.0"
+        }
+      ]
+    },
+    "seizure_frequency_anchor": {
+      "headers": [
+        "run_id",
+        "harness",
+        "architecture_family",
+        "model",
+        "dataset_n",
+        "exact_label_accuracy",
+        "monthly_rate_accuracy_tolerance_15pct",
+        "pragmatic_macro_f1",
+        "purist_macro_f1",
+        "warnings"
+      ],
+      "rows": []
+    },
+    "self_consistency_cost": {
+      "headers": [
+        "run_id",
+        "harness",
+        "base_harness",
+        "self_consistency_samples",
+        "dataset_n",
+        "llm_calls_per_row",
+        "mean_total_tokens",
+        "estimated_cost_usd",
+        "exact_label_accuracy",
+        "monthly_rate_accuracy_tolerance_15pct"
+      ],
+      "rows": []
+    }
+  },
+  "run_register": [
+    {
+      "architecture_family": "clinical_nlp_baseline",
+      "budget": {
+        "input_tokens": 0,
+        "latency_ms": 0,
+        "llm_calls_per_row": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
+      },
+      "code_version": "test",
+      "created_at": "2026-05-02T12:20:46.358752+00:00",
+      "dataset_id": "synthetic_subset_fixture",
+      "dataset_n": 2,
+      "escalation": {},
+      "external_baseline": false,
+      "field_coverage": {
+        "associated_symptoms": "not_attempted",
+        "comorbidities": "not_attempted",
+        "current_medications": "partial",
+        "epilepsy_classification": "partial",
+        "investigations": "partial",
+        "other_therapies": "not_attempted",
+        "rescue_medication": "not_attempted",
+        "seizure_classification": "partial",
+        "seizure_frequency": "implemented"
+      },
+      "field_coverage_counts": {
+        "implemented": 1,
+        "not_attempted": 4,
+        "partial": 4
+      },
+      "harness": "exect_lite_cleanroom_baseline",
+      "harness_complexity": {
+        "escalation_decisions": 0,
+        "event_count": 0,
+        "intermediate_artifacts": 0,
+        "modules_invoked": "",
+        "parse_repair_attempts": 0,
+        "provider_calls": 0,
+        "status": "legacy_or_not_reported",
+        "verifier_passes": 0,
+        "workflow_units": 0
+      },
+      "harness_events": {
+        "escalation_decisions": 0,
+        "event_count": 0,
+        "event_type_counts": {},
+        "parse_repair_attempts": 0,
+        "provider_calls": 0,
+        "verifier_passes": 0
+      },
+      "harness_manifest": {
+        "hash": "",
+        "id": "",
+        "source": ""
+      },
+      "ladder_step": 1,
+      "mapping_version": "exect_lite_v1",
+      "metrics": {
+        "exact_label_accuracy": 1.0,
+        "monthly_rate_accuracy": 1.0,
+        "n": 2
+      },
+      "model": "none",
+      "model_registry_entry": null,
+      "parse_validity": {
+        "seizure_frequency": {
+          "invalid": 0,
+          "total": 2,
+          "valid": 2,
+          "valid_rate": 1.0
+        }
+      },
+      "prompt_version": "exect_lite_rules_v1",
+      "provider": "deterministic",
+      "run_id": "exect_lite_smoke",
+      "schema_version": "1.0.0",
+      "status": "smoke",
+      "verifier_gates": {},
+      "warnings": [
+        "exect_lite_cleanroom_independently_authored"
+      ],
+      "workflow_units": []
+    },
+    {
+      "architecture_family": "",
+      "budget": {
+        "input_tokens": 0,
+        "latency_ms": 0,
+        "llm_calls_per_row": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
+      },
+      "code_version": "uncommitted",
+      "created_at": "2026-05-01T18:32:28.174457+00:00",
+      "dataset_id": "synthetic_data_subset_1500",
+      "dataset_n": 5,
+      "escalation": {},
+      "external_baseline": false,
+      "field_coverage": {},
+      "field_coverage_counts": {
+        "implemented": 0,
+        "not_attempted": 0,
+        "partial": 0
+      },
+      "harness": "metadata_smoke",
+      "harness_complexity": {
+        "escalation_decisions": 0,
+        "event_count": 0,
+        "intermediate_artifacts": 0,
+        "modules_invoked": "",
+        "parse_repair_attempts": 0,
+        "provider_calls": 0,
+        "status": "legacy_or_not_reported",
+        "verifier_passes": 0,
+        "workflow_units": 0
+      },
+      "harness_events": {
+        "escalation_decisions": 0,
+        "event_count": 0,
+        "event_type_counts": {},
+        "parse_repair_attempts": 0,
+        "provider_calls": 0,
+        "verifier_passes": 0
+      },
+      "harness_manifest": {
+        "hash": "",
+        "id": "",
+        "source": ""
+      },
+      "ladder_step": null,
+      "mapping_version": null,
+      "metrics": {
+        "exact_label_accuracy": null,
+        "monthly_rate_accuracy": null,
+        "n": null
+      },
+      "model": "none",
+      "model_registry_entry": null,
+      "parse_validity": {},
+      "prompt_version": "none",
+      "provider": "deterministic",
+      "run_id": "metadata_smoke_n5",
+      "schema_version": "1.0.0",
+      "status": "smoke",
+      "verifier_gates": {},
+      "warnings": [
+        "metadata_only_run_no_extraction"
+      ],
+      "workflow_units": []
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+run_id,harness,architecture_family,manifest_id,manifest_hash,dataset_n,llm_calls_per_row,modules_invoked,workflow_units,provider_calls,event_count,parse_repair_attempts,verifier_passes,escalation_decisions,intermediate_artifacts,raw_artifact_paths,complexity_status
+exect_lite_smoke,exect_lite_cleanroom_baseline,clinical_nlp_baseline,,,2,0,,,0,0,0,0,0,0,0,legacy_or_not_reported
+metadata_smoke_n5,metadata_smoke,,,,5,0,,,0,0,0,0,0,0,0,legacy_or_not_reported

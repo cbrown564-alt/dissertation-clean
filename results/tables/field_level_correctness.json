@@ -1,0 +1,15 @@
+[
+  {
+    "adjudication_status": "not_adjudicated",
+    "exact_label_accuracy": 1.0,
+    "field_family": "seizure_frequency",
+    "harness": "exect_lite_cleanroom_baseline",
+    "monthly_rate_accuracy_tolerance_15pct": 1.0,
+    "n": 2,
+    "pragmatic_macro_f1": 1.0,
+    "pragmatic_weighted_f1": 1.0,
+    "purist_macro_f1": 1.0,
+    "purist_weighted_f1": 1.0,
+    "run_id": "exect_lite_smoke"
+  }
+]

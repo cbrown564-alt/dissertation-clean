@@ -1,0 +1,2 @@
+run_id,harness,field_family,n,exact_label_accuracy,monthly_rate_accuracy_tolerance_15pct,pragmatic_macro_f1,pragmatic_weighted_f1,purist_macro_f1,purist_weighted_f1,adjudication_status
+exect_lite_smoke,exect_lite_cleanroom_baseline,seizure_frequency,2,1.0,1.0,1.0,1.0,1.0,1.0,not_adjudicated

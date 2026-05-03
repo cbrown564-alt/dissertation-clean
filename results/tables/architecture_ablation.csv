@@ -1,0 +1,1 @@
+dataset_id,model_registry_entry,baseline_run_id,comparison_run_id,baseline_harness,comparison_harness,matched_rows,exact_label_accuracy_delta,monthly_rate_accuracy_delta,cost_delta_usd,total_token_delta,parse_validity_delta

@@ -1,0 +1,2 @@
+run_id,harness,architecture_family,component,valid,invalid,total,valid_rate,invalid_rate
+exect_lite_smoke,exect_lite_cleanroom_baseline,clinical_nlp_baseline,seizure_frequency,2,0,2,1.0,0.0

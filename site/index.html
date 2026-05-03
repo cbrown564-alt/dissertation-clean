@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Epilepsy Extraction Research Cockpit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper:     #f4f0e2;
+  --paper-2:   #ede9d8;
+  --paper-3:   #e5e0cc;
+  --ink:       #1a1411;
+  --ink-body:  #2d2520;
+  --muted:     #7a6a5c;
+  --faint:     #b4a898;
+  --rule-hvy:  #1a1411;
+  --rule-mid:  #8a7a6a;
+  --rule-lt:   #cfc4b4;
+  --gold:      #8a6820;
+  --gold-lt:   #c4a048;
+  --gold-bg:   #f0e4bc;
+  --red:       #8b1a1a;
+  --green:     #1e5c30;
+  --serif:     'Playfair Display', Georgia, serif;
+  --body-f:    'Libre Baskerville', Georgia, serif;
+  --mono:      'Courier Prime', 'Courier New', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink-body);
+  font-family: var(--body-f);
+  font-size: 15px;
+  line-height: 1.72;
+}
+
+/* ── Page wrapper ──────────────────────────────────── */
+.page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 44px 96px;
+}
+
+/* ── Masthead ──────────────────────────────────────── */
+.masthead {
+  padding-top: 28px;
+  animation: pressFade 0.8s ease both;
+}
+@keyframes pressFade {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.mh-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 7px;
+  border-bottom: 1px solid var(--rule-lt);
+  margin-bottom: 0;
+  font-size: 10.5px;
+  font-family: var(--body-f);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.mh-double {
+  border-top: 4px solid var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+  padding: 3px 0;
+  margin: 6px 0 14px;
+}
+
+.mh-title {
+  font-family: var(--serif);
+  font-size: clamp(54px, 7.5vw, 96px);
+  font-weight: 900;
+  line-height: 0.9;
+  text-align: center;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  text-transform: uppercase;
+  padding: 6px 0 10px;
+}
+
+.mh-rule-thin {
+  border-top: 1px solid var(--ink);
+  margin-bottom: 8px;
+}
+
+.mh-sub {
+  text-align: center;
+  font-size: 12.5px;
+  font-style: italic;
+  color: var(--ink-body);
+  letter-spacing: 0.03em;
+  padding-bottom: 12px;
+}
+
+.mh-warning {
+  width: calc(100% + 88px);
+  margin-left: -44px;
+  background: var(--ink);
+  color: var(--paper);
+  text-align: center;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 5px 0;
+  font-family: var(--body-f);
+}
+
+/* ── Nav strip ─────────────────────────────────────── */
+.nav-strip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--rule-lt);
+  margin-bottom: 36px;
+}
+.nav-strip a {
+  font-size: 10.5px;
+  font-family: var(--body-f);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 2px 9px;
+  transition: color 0.12s;
+}
+.nav-strip a:hover { color: var(--ink); }
+.nav-sep { color: var(--rule-lt); font-size: 14px; line-height: 1; }
+
+/* ── 3-column front page ───────────────────────────── */
+.front {
+  display: grid;
+  grid-template-columns: 1fr 324px 212px;
+  gap: 0;
+  margin-bottom: 60px;
+  animation: pressFade 0.6s ease 0.1s both;
+}
+.fcol { padding: 0 26px; }
+.fcol:first-child { padding-left: 0; }
+.fcol:last-child  { padding-right: 0; }
+.fcol + .fcol { border-left: 1px solid var(--rule-lt); }
+
+/* ── Article typography ────────────────────────────── */
+.kicker {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-family: var(--body-f);
+  margin-bottom: 7px;
+}
+.hed-lg {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+.hed-md {
+  font-family: var(--serif);
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+.byline {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid var(--rule-lt);
+  padding-bottom: 7px;
+  margin-bottom: 14px;
+  font-family: var(--body-f);
+}
+.body-text {
+  font-size: 14px;
+  line-height: 1.78;
+  color: var(--ink-body);
+}
+.body-text p + p { margin-top: 11px; }
+
+/* Drop cap */
+.body-text.drop-cap > p:first-child::first-letter {
+  float: left;
+  font-family: var(--serif);
+  font-size: 66px;
+  font-weight: 900;
+  line-height: 0.82;
+  padding-right: 9px;
+  padding-top: 5px;
+  color: var(--ink);
+}
+
+.pullquote {
+  font-family: var(--serif);
+  font-size: 16.5px;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--ink);
+  border-top: 2px solid var(--rule-hvy);
+  border-bottom: 1px solid var(--rule-lt);
+  padding: 13px 6px;
+  margin: 20px 0;
+}
+
+/* ── Briefs column stats ───────────────────────────── */
+.brief {
+  border-bottom: 1px solid var(--rule-lt);
+  padding: 11px 0;
+}
+.brief:last-child { border-bottom: none; }
+.brief-label {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-family: var(--body-f);
+  margin-bottom: 3px;
+}
+.brief-value {
+  font-family: var(--serif);
+  font-size: 38px;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--ink);
+}
+.brief-sub {
+  font-size: 12px;
+  color: var(--muted);
+  font-style: italic;
+  margin-top: 3px;
+}
+
+/* ── Compact ladder (front col 2) ──────────────────── */
+.ladder-compact { list-style: none; }
+.lc-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rule-lt);
+}
+.lc-item:last-child { border-bottom: none; }
+.lc-num {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--rule-lt);
+  min-width: 22px;
+  flex-shrink: 0;
+  transition: color 0.2s;
+}
+.lc-item.live .lc-num { color: var(--ink); }
+.lc-label {
+  font-family: var(--serif);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--muted);
+  margin-bottom: 2px;
+  transition: color 0.2s;
+}
+.lc-item.live .lc-label { color: var(--ink); }
+.lc-status {
+  font-size: 11px;
+  font-style: italic;
+  color: var(--faint);
+  font-family: var(--body-f);
+}
+.lc-status.live-status { color: var(--gold); }
+
+/* ── Section banners ───────────────────────────────── */
+.s-banner {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 60px 0 28px;
+}
+.s-banner::before, .s-banner::after {
+  content: '';
+  flex: 1;
+  border-top: 1px solid var(--rule-hvy);
+}
+.s-banner-text {
+  font-family: var(--serif);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+/* ── Architecture ladder infographic ───────────────── */
+.ladder-infographic {
+  position: relative;
+  display: flex;
+  padding: 24px 0 40px;
+  align-items: flex-start;
+}
+.ladder-infographic::before {
+  content: '';
+  position: absolute;
+  top: 44px;
+  left: calc(100% / 10);
+  right: calc(100% / 10);
+  height: 1px;
+  background: var(--rule-mid);
+}
+.lnode {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  padding: 0 10px;
+}
+.lnode-ring {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--rule-mid);
+  background: var(--paper);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--faint);
+  margin-bottom: 14px;
+  transition: all 0.25s;
+}
+.lnode.live .lnode-ring {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+}
+.lnode-name {
+  font-family: var(--serif);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--muted);
+  margin-bottom: 7px;
+  transition: color 0.2s;
+}
+.lnode.live .lnode-name { color: var(--ink); }
+.lnode-harnesses {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  color: var(--faint);
+  line-height: 1.6;
+}
+.lnode-runs {
+  font-family: var(--body-f);
+  font-size: 11px;
+  font-style: italic;
+  color: var(--gold);
+  margin-top: 7px;
+}
+.lnode-pending {
+  font-family: var(--body-f);
+  font-size: 11px;
+  font-style: italic;
+  color: var(--rule-lt);
+  margin-top: 7px;
+}
+
+/* ── Evidence register cards ───────────────────────── */
+.register-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 18px;
+}
+.run-card {
+  border: 1px solid var(--rule-lt);
+  padding: 17px 19px;
+  background: var(--paper);
+  transition: border-color 0.15s;
+}
+.run-card:hover { border-color: var(--rule-mid); }
+.rc-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 3px;
+}
+.rc-id {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  word-break: break-all;
+}
+.rc-family {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-family: var(--body-f);
+  margin-bottom: 9px;
+}
+.rc-rule { border-top: 1px solid var(--rule-lt); margin: 9px 0; }
+.rc-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 12px;
+  margin-bottom: 4px;
+  gap: 8px;
+}
+.rc-lbl {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+.rc-val {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--ink-body);
+  text-align: right;
+  word-break: break-all;
+}
+.rc-coverage {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--ink-body);
+  margin-top: 10px;
+  line-height: 1.7;
+  border-top: 1px solid var(--rule-lt);
+  padding-top: 9px;
+}
+
+/* ── Status stamps ─────────────────────────────────── */
+.stamp {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border: 1px solid;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.s-smoke     { color: var(--muted);   border-color: var(--rule-lt); }
+.s-canonical { color: var(--gold);    border-color: var(--gold); }
+.s-supporting{ color: var(--ink);     border-color: var(--ink); }
+.s-archive   { color: var(--faint);   border-color: var(--rule-lt); }
+.s-tier-frontier      { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.s-tier-medium        { color: var(--muted);    border-color: var(--rule-mid); }
+.s-tier-small         { color: var(--faint);    border-color: var(--rule-lt); }
+.s-tier-open_frontier { color: var(--green);    border-color: var(--green); }
+.s-tier-open_small    { color: var(--muted);    border-color: var(--rule-lt); }
+
+/* ── Coverage table ────────────────────────────────── */
+.cov-wrap { overflow-x: auto; }
+.cov-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--body-f);
+  font-size: 13px;
+}
+.cov-table th {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 8px 10px;
+  border-bottom: 2px solid var(--ink);
+  text-align: left;
+  white-space: nowrap;
+}
+.cov-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--rule-lt);
+  vertical-align: middle;
+}
+.cov-table tr:hover td { background: var(--paper-2); }
+.cv-y { color: var(--green);   font-weight: 700; text-align: center; }
+.cv-p { color: var(--gold-lt); text-align: center; }
+.cv-n { color: var(--faint);   text-align: center; }
+.cv-x { color: var(--rule-lt); text-align: center; }
+.cov-legend {
+  display: flex;
+  gap: 24px;
+  margin-top: 13px;
+  font-size: 12px;
+  font-style: italic;
+  color: var(--muted);
+}
+
+/* ── Model registry ────────────────────────────────── */
+.provider-hdg {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid var(--rule-lt);
+  padding-bottom: 7px;
+  margin: 28px 0 13px;
+}
+.provider-hdg:first-of-type { margin-top: 0; }
+.model-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 13px;
+}
+.model-card {
+  border: 1px solid var(--rule-lt);
+  padding: 14px 17px;
+  transition: border-color 0.15s;
+}
+.model-card:hover { border-color: var(--rule-mid); }
+.mc-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.mc-name {
+  font-family: var(--body-f);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.mc-id {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.mc-note {
+  font-size: 12px;
+  font-style: italic;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.mc-costs {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+/* ── Research documents ────────────────────────────── */
+.doc-card { border-bottom: 1px solid var(--rule-lt); }
+.doc-card:first-child { border-top: 1px solid var(--rule-lt); }
+.doc-trigger {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 15px 0;
+  cursor: pointer;
+  user-select: none;
+  gap: 16px;
+  transition: opacity 0.15s;
+}
+.doc-trigger:hover { opacity: 0.75; }
+.doc-hed {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.doc-meta {
+  font-size: 10.5px;
+  font-family: var(--body-f);
+  color: var(--muted);
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  flex-shrink: 0;
+}
+.doc-body { display: none; padding-bottom: 22px; }
+.doc-card.open .doc-body { display: block; }
+.doc-text {
+  font-family: var(--body-f);
+  font-size: 13px;
+  line-height: 1.82;
+  color: var(--ink-body);
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 520px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+.doc-text::-webkit-scrollbar { width: 3px; }
+.doc-text::-webkit-scrollbar-thumb { background: var(--rule-lt); }
+
+/* ── Budget table ──────────────────────────────────── */
+.data-table-wrap { overflow-x: auto; }
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--body-f);
+  font-size: 13px;
+}
+.data-table th {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 8px 12px;
+  border-bottom: 2px solid var(--ink);
+  text-align: left;
+  white-space: nowrap;
+}
+.data-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--rule-lt);
+  font-family: var(--mono);
+  font-size: 12px;
+  vertical-align: middle;
+}
+.data-table tr:hover td { background: var(--paper-2); }
+
+/* ── Empty / error / loading ───────────────────────── */
+.empty {
+  padding: 36px 0;
+  color: var(--muted);
+  font-style: italic;
+  font-size: 13px;
+  text-align: center;
+}
+#loading {
+  text-align: center;
+  padding: 140px 0;
+  font-family: var(--serif);
+  font-size: 20px;
+  font-style: italic;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+#err {
+  display: none;
+  max-width: 540px;
+  margin: 80px auto;
+  text-align: center;
+}
+#err h2 {
+  font-family: var(--serif);
+  font-size: 30px;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+#err p { color: var(--muted); margin-bottom: 14px; line-height: 1.7; font-size: 14px; }
+#err pre {
+  background: var(--paper-2);
+  border: 1px solid var(--rule-lt);
+  padding: 16px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink);
+  text-align: left;
+}
+
+/* ── Responsive ────────────────────────────────────── */
+@media (max-width: 960px) {
+  .page { padding: 0 20px 60px; }
+  .mh-title { font-size: 40px; }
+  .mh-warning { width: calc(100% + 40px); margin-left: -20px; }
+  .front { grid-template-columns: 1fr; }
+  .fcol + .fcol { border-left: none; border-top: 1px solid var(--rule-lt); padding-left: 0; padding-top: 26px; margin-top: 26px; }
+  .model-grid { grid-template-columns: 1fr; }
+  .ladder-infographic { flex-wrap: wrap; gap: 20px; }
+  .ladder-infographic::before { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div id="loading">Composing edition&hellip;</div>
+  <div id="err">
+    <h2>Edition not found</h2>
+    <p>Build the data file first, then serve this directory:</p>
+    <pre>python scripts/build_cockpit_data.py
+cd site
+python -m http.server 8000</pre>
+    <p style="font-size:11px;color:var(--faint)">Opening as a file:// URL blocks fetch requests.</p>
+  </div>
+  <div id="cockpit" style="display:none"></div>
+</div>
+
+<script>
+'use strict';
+
+/* ── Utilities ──────────────────────────────────────── */
+
+function esc(s) {
+  return String(s ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+function fmtDateLong(iso) {
+  if (!iso) return '—';
+  try { return new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }); }
+  catch { return iso; }
+}
+function fmtDateShort(iso) {
+  if (!iso) return '—';
+  try { return new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }); }
+  catch { return iso; }
+}
+function fmtPct(n) {
+  if (n == null || n === '') return '—';
+  const v = Number(n); if (isNaN(v)) return '—';
+  return (v * 100).toFixed(1) + '%';
+}
+function fmtNum(n) {
+  if (n == null || n === '' || Number(n) === 0) return '—';
+  const v = Number(n); if (isNaN(v) || v === 0) return '—';
+  return v.toLocaleString('en-GB');
+}
+function statusStamp(s) {
+  const map = { canonical: 's-canonical', supporting: 's-supporting', archive: 's-archive', smoke: 's-smoke' };
+  return `<span class="stamp ${map[s] ?? 's-smoke'}">${esc(s || '—')}</span>`;
+}
+function familyLabel(f) {
+  return { clinical_nlp_baseline: 'Clinical NLP Baseline', direct: 'Direct LLM Baseline', retrieval: 'Retrieval + Fields', clines_inspired_modular: 'CLINES-Inspired Modular', anchor: 'Seizure-Frequency Anchor' }[f] ?? (f ? esc(f) : '—');
+}
+function extractMd(text, heading) {
+  const re = new RegExp(`##\\s+${heading}[^\\n]*\\n([\\s\\S]+?)(?=\\n##|$)`, 'i');
+  const m = text.match(re);
+  return m ? m[1].trim() : '';
+}
+
+
+/* ── Masthead ───────────────────────────────────────── */
+
+function renderMasthead(data) {
+  const nRuns = (data.run_register ?? []).length;
+  const gen = fmtDateLong(data.generated_at);
+  const year = data.generated_at ? new Date(data.generated_at).getFullYear() : new Date().getFullYear();
+  return `
+<header class="masthead">
+  <div class="mh-top">
+    <span>Vol.&nbsp;I &nbsp;&middot;&nbsp; Dissertation Research Evidence</span>
+    <span>${nRuns} run record${nRuns !== 1 ? 's' : ''} loaded</span>
+    <span>Generated ${gen}</span>
+  </div>
+  <div class="mh-double"></div>
+  <h1 class="mh-title">The Epilepsy Extraction<br>Research Cockpit</h1>
+  <div class="mh-rule-thin"></div>
+  <div class="mh-sub">CLINES-Inspired Clinical NLP Pipeline &nbsp;&bull;&nbsp; Architecture Ladder &nbsp;&bull;&nbsp; Model Registry &nbsp;&bull;&nbsp; Evidence Register &nbsp;&bull;&nbsp; ${year}</div>
+  <div class="mh-warning">&#9888;&ensp;Synthetic Data Only &mdash; Not for Clinical Deployment&ensp;&#9888;</div>
+</header>
+
+<nav class="nav-strip">
+  <a href="#front">Overview</a><span class="nav-sep">&middot;</span>
+  <a href="#ladder">Architecture</a><span class="nav-sep">&middot;</span>
+  <a href="#register">Evidence Register</a><span class="nav-sep">&middot;</span>
+  <a href="#coverage">Field Coverage</a><span class="nav-sep">&middot;</span>
+  <a href="#budget">Budget &amp; Performance</a><span class="nav-sep">&middot;</span>
+  <a href="#harness">Harness Trace</a><span class="nav-sep">&middot;</span>
+  <a href="#models">Model Registry</a><span class="nav-sep">&middot;</span>
+  <a href="#docs">Research Documents</a>
+</nav>`;
+}
+
+
+/* ── Front page ─────────────────────────────────────── */
+
+function renderFront(data) {
+  const rq    = data.docs?.research_question ?? '';
+  const runs  = data.run_register ?? [];
+  const ladder = data.architecture_ladder ?? [];
+
+  const primaryQ = extractMd(rq, 'Primary Question') ||
+    'How do CLINES-inspired modular architecture, clinical extraction baselines, and model capacity affect clinical correctness, evidence support, auditability, cost, latency, token use, and harness complexity in epilepsy clinic-letter extraction?';
+
+  const studyPos = extractMd(rq, 'Study Position');
+  const bodyP2 = studyPos.split('\n').filter(l => l.trim()).slice(0, 3).join(' ') ||
+    'The project evaluates architecture as an empirical variable. A CLINES-inspired modular pipeline is the main proposed architecture, tested through ablations and compared against direct LLM prompting and clinical NLP-style baselines.';
+
+  // Pull quote: first sentence of H1
+  const h1raw = rq.match(/###\s+H1[^\n]*\n([\s\S]+?)(?=\n###|\n##|$)/i);
+  const pq = h1raw ? h1raw[1].trim().split(/\.\s/)[0] + '.' : 'A CLINES-inspired architecture may improve evidence support, status handling, temporality, and auditability compared with direct prompting.';
+
+  const nRuns      = runs.length;
+  const nCanonical = runs.filter(r => r.status === 'canonical').length;
+  const nFamilies  = [...new Set(runs.map(r => r.architecture_family).filter(Boolean))].length;
+  const nModels    = (data.model_registry?.frozen?.models ?? []).length;
+  const nFields    = (data.field_families ?? []).length;
+
+  // Left col — lead article
+  const colLead = `
+<div class="fcol">
+  <div class="kicker">Lead Research</div>
+  <h2 class="hed-lg">Architecture as an Empirical Variable in Epilepsy Extraction</h2>
+  <div class="byline">Dissertation Research &nbsp;&middot;&nbsp; Clinical NLP Pipeline Study &nbsp;&middot;&nbsp; ${new Date().getFullYear()}</div>
+  <div class="body-text drop-cap">
+    <p>${esc(primaryQ)}</p>
+    <p>${esc(bodyP2)}</p>
+  </div>
+  <div class="pullquote">${esc(pq)}</div>
+  <div class="body-text">
+    <p>Seven architecture rungs are under evaluation, from deterministic clinical NLP baselines through to a CLINES-inspired modular pipeline with assertion handling, temporality resolution, evidence verification, and cross-chunk aggregation. Results are reported by field family, not only in aggregate.</p>
+  </div>
+</div>`;
+
+  // Middle col — compact ladder
+  const ladderItems = ladder.map(step => {
+    const stepRuns = runs.filter(r => r.architecture_family === step.family);
+    const live = stepRuns.length > 0;
+    const statusText = live
+      ? `${stepRuns.length} run${stepRuns.length !== 1 ? 's' : ''} &mdash; ${stepRuns[0].status}`
+      : 'pending';
+    return `<li class="lc-item${live ? ' live' : ''}">
+      <span class="lc-num">${step.step}</span>
+      <div>
+        <div class="lc-label">${esc(step.label)}</div>
+        <div class="lc-status${live ? ' live-status' : ''}">${statusText}</div>
+      </div>
+    </li>`;
+  }).join('');
+
+  const colMid = `
+<div class="fcol">
+  <div class="kicker">Architecture Ladder</div>
+  <h3 class="hed-md">Five Rungs from Clinical NLP to Modular Pipeline</h3>
+  <div class="byline">Harness Families &nbsp;&middot;&nbsp; Current Status</div>
+  <ul class="ladder-compact">${ladderItems}</ul>
+</div>`;
+
+  // Right col — briefs
+  const colBriefs = `
+<div class="fcol">
+  <div class="kicker">At a Glance</div>
+  <div class="brief">
+    <div class="brief-label">Run Records</div>
+    <div class="brief-value">${nRuns}</div>
+    <div class="brief-sub">${nCanonical > 0 ? nCanonical + ' canonical' : 'smoke / development'}</div>
+  </div>
+  <div class="brief">
+    <div class="brief-label">Architecture Families</div>
+    <div class="brief-value">${nFamilies || ladder.length}</div>
+    <div class="brief-sub">rungs on the ladder</div>
+  </div>
+  <div class="brief">
+    <div class="brief-label">Field Families</div>
+    <div class="brief-value">${nFields}</div>
+    <div class="brief-sub">extraction targets</div>
+  </div>
+  <div class="brief">
+    <div class="brief-label">Frozen Models</div>
+    <div class="brief-value">${nModels}</div>
+    <div class="brief-sub">in registry</div>
+  </div>
+</div>`;
+
+  return `<div class="front" id="front">${colLead}${colMid}${colBriefs}</div>`;
+}
+
+
+/* ── Architecture Ladder (full infographic) ─────────── */
+
+function renderLadder(data) {
+  const ladder = data.architecture_ladder ?? [];
+  const runs   = data.run_register ?? [];
+
+  const nodes = ladder.map(step => {
+    const stepRuns = runs.filter(r => r.architecture_family === step.family);
+    const live = stepRuns.length > 0;
+    const harnessList = (step.harnesses ?? []).join('\n');
+    const runsEl = live
+      ? `<div class="lnode-runs">${stepRuns.length} run${stepRuns.length !== 1 ? 's' : ''}</div>`
+      : `<div class="lnode-pending">pending</div>`;
+    return `<div class="lnode${live ? ' live' : ''}">
+      <div class="lnode-ring">${step.step}</div>
+      <div class="lnode-name">${esc(step.label)}</div>
+      <div class="lnode-harnesses">${esc(harnessList)}</div>
+      ${runsEl}
+    </div>`;
+  }).join('');
+
+  return `
+<div class="s-banner" id="ladder">
+  <span class="s-banner-text">&#10022; Architecture Ladder &#10022;</span>
+</div>
+<div class="ladder-infographic">${nodes || '<div class="empty">No ladder data.</div>'}</div>`;
+}
+
+
+/* ── Evidence Register ──────────────────────────────── */
+
+function renderRegister(data) {
+  const runs = data.run_register ?? [];
+
+  const abbrev = { seizure_frequency:'SF', seizure_classification:'SC', epilepsy_classification:'EC', current_medications:'med', investigations:'inv', associated_symptoms:'sym', comorbidities:'com', rescue_medication:'res', other_therapies:'oth' };
+
+  const cards = runs.map(r => {
+    const fc = r.field_coverage ?? {};
+    const cov = Object.entries(fc)
+      .filter(([,v]) => v !== 'not_attempted')
+      .map(([k,v]) => `${abbrev[k] ?? k}${v === 'implemented' ? '&#x2713;' : '&#x25D1;'}`)
+      .join(' &nbsp;');
+
+    const acc = r.metrics?.exact_label_accuracy;
+    return `<div class="run-card">
+      <div class="rc-head"><span class="rc-id">${esc(r.run_id)}</span>${statusStamp(r.status)}</div>
+      <div class="rc-family">${familyLabel(r.architecture_family)}</div>
+      <div class="rc-rule"></div>
+      <div class="rc-row"><span class="rc-lbl">Harness</span><span class="rc-val">${esc(r.harness)}</span></div>
+      <div class="rc-row"><span class="rc-lbl">Dataset</span><span class="rc-val">${esc(r.dataset_id)} (n=${r.dataset_n ?? '—'})</span></div>
+      ${acc != null ? `<div class="rc-row"><span class="rc-lbl">Accuracy</span><span class="rc-val">${fmtPct(acc)} (n=${r.metrics?.n ?? '—'})</span></div>` : ''}
+      <div class="rc-row"><span class="rc-lbl">Provider</span><span class="rc-val">${esc(r.provider || '—')}</span></div>
+      <div class="rc-row"><span class="rc-lbl">Date</span><span class="rc-val">${fmtDateShort(r.created_at)}</span></div>
+      ${cov ? `<div class="rc-coverage">${cov}</div>` : ''}
+    </div>`;
+  }).join('');
+
+  return `
+<div class="s-banner" id="register">
+  <span class="s-banner-text">&#10022; Evidence Register &#10022;</span>
+</div>
+${runs.length === 0
+  ? '<div class="empty">No run records in results/runs/.</div>'
+  : `<div class="register-grid">${cards}</div>`}`;
+}
+
+
+/* ── Field Coverage ─────────────────────────────────── */
+
+function renderCoverage(data) {
+  const runs   = data.run_register ?? [];
+  const fields = data.field_families ?? [];
+
+  const shortName = { seizure_frequency:'Sz Freq', seizure_classification:'Sz Class', epilepsy_classification:'Epil Class', current_medications:'Medications', investigations:'Investigations', associated_symptoms:'Assoc Symptoms', comorbidities:'Comorbidities', rescue_medication:'Rescue Med', other_therapies:'Other Rx' };
+
+  const ths = fields.map(f => `<th style="text-align:center;min-width:68px">${esc(shortName[f] ?? f)}</th>`).join('');
+
+  const rows = runs.map(r => {
+    const fc = r.field_coverage ?? {};
+    const cells = fields.map(f => {
+      const v = fc[f];
+      if (v === 'implemented') return `<td class="cv-y">&#x2713;</td>`;
+      if (v === 'partial')     return `<td class="cv-p">&#x25D1;</td>`;
+      if (v === 'not_attempted') return `<td class="cv-n">&middot;</td>`;
+      return `<td class="cv-x">&mdash;</td>`;
+    }).join('');
+    return `<tr>
+      <td style="font-family:var(--mono);font-size:11px;white-space:nowrap">${esc(r.run_id)}</td>
+      <td style="font-size:11px;white-space:nowrap;text-transform:uppercase;letter-spacing:0.04em;color:var(--muted)">${familyLabel(r.architecture_family)}</td>
+      ${cells}
+    </tr>`;
+  }).join('');
+
+  return `
+<div class="s-banner" id="coverage">
+  <span class="s-banner-text">&#10022; Field Coverage Map &#10022;</span>
+</div>
+<div class="cov-wrap">
+  <table class="cov-table">
+    <thead><tr><th>Run ID</th><th>Architecture</th>${ths}</tr></thead>
+    <tbody>${rows || '<tr><td colspan="100" class="empty">No runs.</td></tr>'}</tbody>
+  </table>
+</div>
+<div class="cov-legend">
+  <span>&#x2713; implemented</span>
+  <span>&#x25D1; partial</span>
+  <span>&middot; not attempted</span>
+</div>`;
+}
+
+
+/* ── Budget & Performance ───────────────────────────── */
+
+function renderBudget(data) {
+  const tables = data.result_tables ?? {};
+  const runs   = data.run_register ?? [];
+
+  // Pre-built table if available
+  const bt = tables.budget_complexity;
+  let main = '';
+  if (bt && bt.rows?.length > 0) {
+    const ths = bt.headers.map(h => `<th>${esc(h)}</th>`).join('');
+    const trs = bt.rows.map(row =>
+      `<tr>${bt.headers.map(h => `<td>${esc(row[h] ?? '—')}</td>`).join('')}</tr>`
+    ).join('');
+    main = `<div class="data-table-wrap"><table class="data-table"><thead><tr>${ths}</tr></thead><tbody>${trs}</tbody></table></div>`;
+  } else {
+    const llmRuns = runs.filter(r => (r.budget?.total_tokens ?? 0) > 0);
+    if (llmRuns.length > 0) {
+      const trs = llmRuns.map(r => {
+        const b = r.budget ?? {};
+        return `<tr>
+          <td>${esc(r.run_id)}</td>
+          <td>${familyLabel(r.architecture_family)}</td>
+          <td style="text-align:right">${fmtNum(b.input_tokens)}</td>
+          <td style="text-align:right">${fmtNum(b.output_tokens)}</td>
+          <td style="text-align:right">${fmtNum(b.total_tokens)}</td>
+          <td style="text-align:right">${fmtNum(b.latency_ms) !== '—' ? fmtNum(b.latency_ms) + ' ms' : '—'}</td>
+          <td style="text-align:right">${b.llm_calls_per_row ? Number(b.llm_calls_per_row).toFixed(1) : '—'}</td>
+        </tr>`;
+      }).join('');
+      main = `<div class="data-table-wrap"><table class="data-table"><thead><tr>
+        <th>Run ID</th><th>Architecture</th>
+        <th style="text-align:right">Input tokens</th><th style="text-align:right">Output tokens</th>
+        <th style="text-align:right">Total tokens</th><th style="text-align:right">Latency</th>
+        <th style="text-align:right">LLM calls/row</th>
+      </tr></thead><tbody>${trs}</tbody></table></div>`;
+    } else {
+      main = `<div class="empty">No LLM runs with token data yet. Run a harness with a live provider to populate this section.</div>`;
+    }
+  }
+
+  // Any other result tables
+  const extras = Object.entries(tables)
+    .filter(([k]) => k !== 'budget_complexity' && k !== 'harness_complexity')
+    .map(([k, t]) => {
+      if (!t.rows?.length) return '';
+      const ths = t.headers.map(h => `<th>${esc(h)}</th>`).join('');
+      const trs = t.rows.map(row => `<tr>${t.headers.map(h => `<td>${esc(row[h] ?? '—')}</td>`).join('')}</tr>`).join('');
+      return `<p style="font-family:var(--serif);font-size:15px;font-style:italic;color:var(--muted);margin:28px 0 10px">${esc(k.replace(/_/g,' '))}</p>
+        <div class="data-table-wrap"><table class="data-table"><thead><tr>${ths}</tr></thead><tbody>${trs}</tbody></table></div>`;
+    }).join('');
+
+  return `
+<div class="s-banner" id="budget">
+  <span class="s-banner-text">&#10022; Budget &amp; Performance &#10022;</span>
+</div>
+${main}${extras}`;
+}
+
+
+/* ── Harness-Native Trace ───────────────────────────── */
+
+function renderHarnessNative(data) {
+  const runs = data.run_register ?? [];
+  const manifests = data.harness_manifests ?? [];
+  const table = data.result_tables?.harness_complexity;
+
+  const cards = runs.map(r => {
+    const hc = r.harness_complexity ?? {};
+    const mf = r.harness_manifest ?? {};
+    const events = r.harness_events ?? {};
+    const status = hc.status ?? 'legacy_or_not_reported';
+    return `<div class="run-card">
+      <div class="rc-head"><span class="rc-id">${esc(r.run_id)}</span><span class="stamp">${esc(status)}</span></div>
+      <div class="rc-family">${familyLabel(r.architecture_family)}</div>
+      <div class="rc-rule"></div>
+      <div class="rc-row"><span class="rc-lbl">Manifest</span><span class="rc-val">${esc(mf.id || 'not recorded')}</span></div>
+      <div class="rc-row"><span class="rc-lbl">Events</span><span class="rc-val">${fmtNum(hc.event_count ?? events.event_count ?? 0)}</span></div>
+      <div class="rc-row"><span class="rc-lbl">Provider calls</span><span class="rc-val">${fmtNum(hc.provider_calls ?? events.provider_calls ?? 0)}</span></div>
+      <div class="rc-row"><span class="rc-lbl">Repairs</span><span class="rc-val">${fmtNum(hc.parse_repair_attempts ?? events.parse_repair_attempts ?? 0)}</span></div>
+      <div class="rc-row"><span class="rc-lbl">Verifier passes</span><span class="rc-val">${fmtNum(hc.verifier_passes ?? events.verifier_passes ?? 0)}</span></div>
+      <div class="rc-row"><span class="rc-lbl">Escalations</span><span class="rc-val">${fmtNum(hc.escalation_decisions ?? events.escalation_decisions ?? 0)}</span></div>
+    </div>`;
+  }).join('');
+
+  let complexityTable = '';
+  if (table && table.rows?.length > 0) {
+    const ths = table.headers.map(h => `<th>${esc(h)}</th>`).join('');
+    const trs = table.rows.map(row =>
+      `<tr>${table.headers.map(h => `<td>${esc(row[h] ?? '—')}</td>`).join('')}</tr>`
+    ).join('');
+    complexityTable = `<p style="font-family:var(--serif);font-size:15px;font-style:italic;color:var(--muted);margin:28px 0 10px">Harness complexity table</p>
+      <div class="data-table-wrap"><table class="data-table"><thead><tr>${ths}</tr></thead><tbody>${trs}</tbody></table></div>`;
+  }
+
+  const manifestRows = manifests.map(m => {
+    const id = m.id ?? m.manifest_id ?? m.harness_id ?? m._source ?? 'manifest';
+    const family = m.architecture_family ?? m.family ?? '';
+    const source = m._source ?? '';
+    return `<tr><td>${esc(id)}</td><td>${esc(family)}</td><td>${esc(source)}</td></tr>`;
+  }).join('');
+
+  const manifestTable = manifests.length
+    ? `<p style="font-family:var(--serif);font-size:15px;font-style:italic;color:var(--muted);margin:28px 0 10px">Harness manifest lineage</p>
+      <div class="data-table-wrap"><table class="data-table"><thead><tr><th>Manifest</th><th>Architecture</th><th>Source</th></tr></thead><tbody>${manifestRows}</tbody></table></div>`
+    : `<div class="empty" style="margin-top:18px">No harness manifests found yet. Phase 13 can add config/harnesses/*.yaml; this panel is already wired for them.</div>`;
+
+  return `
+<div class="s-banner" id="harness">
+  <span class="s-banner-text">&#10022; Harness Trace &amp; Complexity &#10022;</span>
+</div>
+<div class="body-text" style="margin-bottom:18px">
+  <p>This section is forward-compatible with the harness-native refactor: manifests, event summaries, verifier gates, escalation decisions, workflow versions, and complexity tables surface here when run records provide them.</p>
+</div>
+${runs.length === 0 ? '<div class="empty">No run records available for harness tracing.</div>' : `<div class="register-grid">${cards}</div>`}
+${complexityTable}
+${manifestTable}`;
+}
+
+
+/* ── Model Registry ─────────────────────────────────── */
+
+function renderModels(data) {
+  const frozen = data.model_registry?.frozen ?? {};
+  const models = frozen.models ?? [];
+  const frozenAt = frozen.frozen_at ? `Frozen ${fmtDateShort(frozen.frozen_at)}` : '';
+  const src = frozen._source ? ` &mdash; ${esc(frozen._source)}` : '';
+
+  if (models.length === 0) {
+    return `<div class="s-banner" id="models"><span class="s-banner-text">&#10022; Model Registry &#10022;</span></div>
+    <div class="empty">No model registry found. Add config/model_registry.YYYY-MM-DD.yaml and re-generate.</div>`;
+  }
+
+  const groups = {};
+  for (const m of models) { (groups[m.provider ?? 'other'] ??= []).push(m); }
+
+  const sections = Object.entries(groups).map(([provider, ms]) => {
+    const cards = ms.map(m => {
+      const tierCls = `s-tier-${m.tier ?? 'small'}`;
+      const costIn  = m.cost_per_1k_input  != null ? `in $${Number(m.cost_per_1k_input).toFixed(4)}/1k` : '';
+      const costOut = m.cost_per_1k_output != null ? `out $${Number(m.cost_per_1k_output).toFixed(4)}/1k` : '';
+      const ctx     = m.context_window ? `${Math.round(m.context_window / 1000)}k ctx` : '';
+      return `<div class="model-card">
+        <div class="mc-top"><div class="mc-name">${esc(m.display_name)}</div><span class="stamp ${tierCls}">${esc(m.tier ?? '—')}</span></div>
+        <div class="mc-id">${esc(m.model_id)}</div>
+        <div class="mc-note">${esc(m.notes ?? '')}</div>
+        <div class="mc-costs">${[costIn, costOut, ctx].filter(Boolean).join(' &nbsp;&middot;&nbsp; ')}</div>
+      </div>`;
+    }).join('');
+    return `<div class="provider-hdg">${esc(provider)}</div><div class="model-grid">${cards}</div>`;
+  }).join('');
+
+  return `
+<div class="s-banner" id="models">
+  <span class="s-banner-text">&#10022; Model Registry &#10022;</span>
+</div>
+<p style="font-size:12px;color:var(--muted);font-style:italic;margin-bottom:20px">${frozenAt}${src}</p>
+${sections}`;
+}
+
+
+/* ── Research Documents ─────────────────────────────── */
+
+function renderDocs(data) {
+  const docs = data.docs ?? {};
+  const LABELS = {
+    research_question:       'Research Question & Hypotheses',
+    architecture:            'Architecture & Harness Descriptions',
+    coding_agent_harness_literature_review: 'Coding-Agent Harness Literature Review',
+    evaluation_contract:     'Evaluation Contract',
+    adjudication_protocol:   'Adjudication Protocol',
+    experiment_protocol:     'Experiment Protocol',
+    model_registry_protocol: 'Model Registry Protocol',
+    implementation_plan:     'Implementation Plan',
+  };
+  const cards = Object.entries(LABELS).map(([key, label]) => {
+    const txt = docs[key];
+    const loaded = txt && txt.trim().length > 0;
+    const words = loaded ? Math.round(txt.trim().split(/\s+/).length).toLocaleString('en-GB') + ' words' : 'not loaded';
+    const body = loaded
+      ? `<div class="doc-text">${esc(txt)}</div>`
+      : `<div class="empty" style="padding:16px 0">Document not found.</div>`;
+    return `<div class="doc-card">
+      <div class="doc-trigger" onclick="this.closest('.doc-card').classList.toggle('open')">
+        <span class="doc-hed">${esc(label)}</span>
+        <span class="doc-meta">${esc(words)}</span>
+      </div>
+      <div class="doc-body">${body}</div>
+    </div>`;
+  }).join('');
+
+  return `
+<div class="s-banner" id="docs">
+  <span class="s-banner-text">&#10022; Research Documents &#10022;</span>
+</div>
+<div>${cards}</div>`;
+}
+
+
+/* ── Main ───────────────────────────────────────────── */
+
+async function boot() {
+  const loading = document.getElementById('loading');
+  const err     = document.getElementById('err');
+  const cockpit = document.getElementById('cockpit');
+
+  let data;
+  try {
+    const r = await fetch('./cockpit-data.json');
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    data = await r.json();
+  } catch {
+    loading.style.display = 'none';
+    err.style.display = 'block';
+    return;
+  }
+
+  loading.style.display = 'none';
+  cockpit.style.display = 'block';
+  cockpit.innerHTML = [
+    renderMasthead(data),
+    renderFront(data),
+    renderLadder(data),
+    renderRegister(data),
+    renderCoverage(data),
+    renderBudget(data),
+    renderHarnessNative(data),
+    renderModels(data),
+    renderDocs(data),
+  ].join('\n');
+}
+
+boot();
+</script>
+</body>
+</html>

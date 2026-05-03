@@ -1,0 +1,3 @@
+run_id,harness,architecture_family,total_citations,supported_citations,unsupported_citations,evidence_supported_rate,evidence_status
+exect_lite_smoke,exect_lite_cleanroom_baseline,clinical_nlp_baseline,,,,,not_reported
+metadata_smoke_n5,metadata_smoke,,,,,,not_reported

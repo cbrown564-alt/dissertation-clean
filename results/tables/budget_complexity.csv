@@ -1,0 +1,3 @@
+run_id,harness,architecture_family,provider,model,temperature,prompt_version,schema_version,mapping_version,dataset_n,llm_calls_per_row,mean_input_tokens,mean_output_tokens,mean_total_tokens,latency_ms,estimated_cost_usd,modules_invoked,intermediate_artifacts,external_tools
+exect_lite_smoke,exect_lite_cleanroom_baseline,clinical_nlp_baseline,deterministic,none,0.0,exect_lite_rules_v1,1.0.0,exect_lite_v1,2,0,0.0,0.0,0.0,0,0.0,0,0,
+metadata_smoke_n5,metadata_smoke,,deterministic,none,0.0,none,1.0.0,,5,0,0.0,0.0,0.0,0,0.0,0,0,

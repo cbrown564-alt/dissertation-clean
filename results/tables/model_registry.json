@@ -1,0 +1,86 @@
+[
+  {
+    "context_window": 200000,
+    "display_name": "Claude 3.5 Sonnet (Oct 2024)",
+    "family": "claude-3",
+    "frozen_at": "",
+    "model_id": "claude-3-5-sonnet-20241022",
+    "model_registry_entry": "claude-3-5-sonnet-20241022",
+    "notes": "Stable frontier model; preferred for canonical runs requiring strong instruction following.",
+    "provider": "anthropic",
+    "tier": "frontier",
+    "used_in_runs": ""
+  },
+  {
+    "context_window": 200000,
+    "display_name": "Claude 3.5 Haiku (Oct 2024)",
+    "family": "claude-3",
+    "frozen_at": "",
+    "model_id": "claude-3-5-haiku-20241022",
+    "model_registry_entry": "claude-3-5-haiku-20241022",
+    "notes": "Fast medium-tier model; use for cost-sensitive sweeps.",
+    "provider": "anthropic",
+    "tier": "medium",
+    "used_in_runs": ""
+  },
+  {
+    "context_window": 200000,
+    "display_name": "Claude 3 Haiku (Mar 2024)",
+    "family": "claude-3",
+    "frozen_at": "",
+    "model_id": "claude-3-haiku-20240307",
+    "model_registry_entry": "claude-3-haiku-20240307",
+    "notes": "Small-tier baseline for model-capacity ablation.",
+    "provider": "anthropic",
+    "tier": "small",
+    "used_in_runs": ""
+  },
+  {
+    "context_window": 128000,
+    "display_name": "GPT-4o (Nov 2024)",
+    "family": "gpt-4o",
+    "frozen_at": "",
+    "model_id": "gpt-4o-2024-11-20",
+    "model_registry_entry": "gpt-4o-2024-11-20",
+    "notes": "Cross-provider frontier comparator.",
+    "provider": "openai",
+    "tier": "frontier",
+    "used_in_runs": ""
+  },
+  {
+    "context_window": 128000,
+    "display_name": "GPT-4o mini (Jul 2024)",
+    "family": "gpt-4o",
+    "frozen_at": "",
+    "model_id": "gpt-4o-mini-2024-07-18",
+    "model_registry_entry": "gpt-4o-mini-2024-07-18",
+    "notes": "Cross-provider medium comparator.",
+    "provider": "openai",
+    "tier": "medium",
+    "used_in_runs": ""
+  },
+  {
+    "context_window": 131072,
+    "display_name": "Llama 3.1 70B Instruct",
+    "family": "llama-3.1",
+    "frozen_at": "",
+    "model_id": "meta-llama/Llama-3.1-70B-Instruct",
+    "model_registry_entry": "meta-llama/Llama-3.1-70B-Instruct",
+    "notes": "Open frontier; run locally or via inference API. Zero cost when self-hosted.",
+    "provider": "meta",
+    "tier": "open_frontier",
+    "used_in_runs": ""
+  },
+  {
+    "context_window": 131072,
+    "display_name": "Llama 3.1 8B Instruct",
+    "family": "llama-3.1",
+    "frozen_at": "",
+    "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+    "model_registry_entry": "meta-llama/Llama-3.1-8B-Instruct",
+    "notes": "Open small-tier; use to assess model-capacity floor for modular pipeline.",
+    "provider": "meta",
+    "tier": "open_small",
+    "used_in_runs": ""
+  }
+]

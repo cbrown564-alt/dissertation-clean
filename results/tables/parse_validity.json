@@ -1,0 +1,13 @@
+[
+  {
+    "architecture_family": "clinical_nlp_baseline",
+    "component": "seizure_frequency",
+    "harness": "exect_lite_cleanroom_baseline",
+    "invalid": 0,
+    "invalid_rate": 0.0,
+    "run_id": "exect_lite_smoke",
+    "total": 2,
+    "valid": 2,
+    "valid_rate": 1.0
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "architecture_family": "clinical_nlp_baseline",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "exect_lite_cleanroom_baseline",
+    "run_id": "exect_lite_smoke",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "metadata_smoke",
+    "run_id": "metadata_smoke_n5",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
+  }
+]

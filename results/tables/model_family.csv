@@ -1,0 +1,3 @@
+run_id,harness,architecture_family,model_registry_entry,model_id,provider,family,tier,dataset_n,exact_label_accuracy,evidence_supported_rate,parse_valid_rate,estimated_cost_usd,latency_ms
+exect_lite_smoke,exect_lite_cleanroom_baseline,clinical_nlp_baseline,,none,deterministic,,,2,1.0,,1.0,0.0,0
+metadata_smoke_n5,metadata_smoke,,,none,deterministic,,,5,,,0.0,0.0,0

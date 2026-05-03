@@ -54,6 +54,7 @@ Planned structure:
 ```text
 docs/
   literature_review.md
+  coding_agent_harness_literature_review.md
   research_question.md
   evaluation_contract.md
   adjudication_protocol.md

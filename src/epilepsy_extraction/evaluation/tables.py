@@ -15,6 +15,7 @@ TABLE_ORDER: tuple[str, ...] = (
     "baseline_comparability",
     "model_registry",
     "budget_complexity",
+    "harness_complexity",
     "parse_validity",
     "field_level_correctness",
     "evidence_support",
@@ -78,6 +79,25 @@ TABLE_HEADERS: dict[str, list[str]] = {
         "modules_invoked",
         "intermediate_artifacts",
         "external_tools",
+    ],
+    "harness_complexity": [
+        "run_id",
+        "harness",
+        "architecture_family",
+        "manifest_id",
+        "manifest_hash",
+        "dataset_n",
+        "llm_calls_per_row",
+        "modules_invoked",
+        "workflow_units",
+        "provider_calls",
+        "event_count",
+        "parse_repair_attempts",
+        "verifier_passes",
+        "escalation_decisions",
+        "intermediate_artifacts",
+        "raw_artifact_paths",
+        "complexity_status",
     ],
     "parse_validity": [
         "run_id",
@@ -187,6 +207,7 @@ def build_result_tables(
         "baseline_comparability": _baseline_comparability(runs),
         "model_registry": _model_registry_table(runs, registry_entries),
         "budget_complexity": _budget_complexity(runs),
+        "harness_complexity": _harness_complexity(runs),
         "parse_validity": _parse_validity(runs),
         "field_level_correctness": _field_level_correctness(runs),
         "evidence_support": _evidence_support(runs),
@@ -341,6 +362,60 @@ def _budget_complexity(runs: Sequence[Mapping[str, Any]]) -> list[dict[str, Any]
                     "external_tools": ";".join(external_tools) if isinstance(external_tools, list) else external_tools,
                 },
                 TABLE_HEADERS["budget_complexity"],
+            )
+        )
+    return rows
+
+
+def _harness_complexity(runs: Sequence[Mapping[str, Any]]) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for run in runs:
+        complexity = run.get("complexity") if isinstance(run.get("complexity"), Mapping) else {}
+        budget = _budget(run)
+        manifest = _manifest(run)
+        event_summary = _event_summary(run)
+        modules = _count_from(complexity, "modules", fallback_key="modules_invoked")
+        workflow_units = _count_from(complexity, "workflow_units", fallback_key="workflow_units_invoked")
+        provider_calls = event_summary.get("provider_calls", "")
+        if provider_calls == "":
+            provider_calls = _event_type_count(run, "provider_call_started")
+        event_count = event_summary.get("event_count", "")
+        if event_count == "":
+            event_count = len(_event_log(run))
+        parse_repairs = event_summary.get("parse_repair_attempts", "")
+        if parse_repairs == "":
+            parse_repairs = _event_type_count(run, "parse_repaired")
+        verifier_passes = event_summary.get("verifier_passes", "")
+        if verifier_passes == "":
+            verifier_passes = _event_type_count(run, "verification_completed")
+        escalation_decisions = event_summary.get("escalation_decisions", "")
+        if escalation_decisions == "":
+            escalation_decisions = _event_type_count(run, "escalation_decision")
+        raw_artifacts = run.get("raw_artifacts") or run.get("raw_artifact_paths") or {}
+        rows.append(
+            _select(
+                {
+                    "run_id": run.get("run_id", ""),
+                    "harness": run.get("harness", ""),
+                    "architecture_family": run.get("architecture_family", ""),
+                    "manifest_id": manifest.get("id", ""),
+                    "manifest_hash": manifest.get("hash", ""),
+                    "dataset_n": _dataset_n(run),
+                    "llm_calls_per_row": budget.get("llm_calls_per_row", 0),
+                    "modules_invoked": modules,
+                    "workflow_units": workflow_units,
+                    "provider_calls": provider_calls,
+                    "event_count": event_count,
+                    "parse_repair_attempts": parse_repairs,
+                    "verifier_passes": verifier_passes,
+                    "escalation_decisions": escalation_decisions,
+                    "intermediate_artifacts": len(run.get("artifact_paths", {}) or {}),
+                    "raw_artifact_paths": len(raw_artifacts)
+                    if isinstance(raw_artifacts, Mapping) or isinstance(raw_artifacts, list)
+                    else "",
+                    "complexity_status": _complexity_status(run),
+                },
+                TABLE_HEADERS["harness_complexity"],
             )
         )
     return rows
@@ -618,6 +693,57 @@ def _budget(run: Mapping[str, Any]) -> Mapping[str, Any]:
 def _metrics(run: Mapping[str, Any]) -> Mapping[str, Any]:
     metrics = run.get("metrics", {})
     return metrics if isinstance(metrics, Mapping) else {}
+
+
+def _manifest(run: Mapping[str, Any]) -> Mapping[str, Any]:
+    manifest = run.get("harness_manifest") or run.get("manifest") or {}
+    if isinstance(manifest, Mapping):
+        manifest_id = manifest.get("id") or manifest.get("manifest_id") or run.get("manifest_id", "")
+        manifest_hash = manifest.get("hash") or manifest.get("manifest_hash") or run.get("manifest_hash", "")
+        return {"id": manifest_id, "hash": manifest_hash}
+    return {
+        "id": run.get("manifest_id", ""),
+        "hash": run.get("manifest_hash", ""),
+    }
+
+
+def _event_log(run: Mapping[str, Any]) -> list[Mapping[str, Any]]:
+    events = run.get("harness_events") or run.get("event_log") or []
+    if not isinstance(events, list):
+        return []
+    return [event for event in events if isinstance(event, Mapping)]
+
+
+def _event_summary(run: Mapping[str, Any]) -> Mapping[str, Any]:
+    summary = run.get("event_summary") or run.get("harness_event_summary") or {}
+    return summary if isinstance(summary, Mapping) else {}
+
+
+def _event_type_count(run: Mapping[str, Any], event_type: str) -> int:
+    return sum(1 for event in _event_log(run) if event.get("event_type") == event_type or event.get("type") == event_type)
+
+
+def _count_from(data: Mapping[str, Any], key: str, fallback_key: str) -> int | str:
+    value = data.get(key)
+    if isinstance(value, list) or isinstance(value, tuple) or isinstance(value, set):
+        return len(value)
+    if isinstance(value, int | float):
+        return int(value)
+    fallback = data.get(fallback_key)
+    if isinstance(fallback, int | float):
+        return int(fallback)
+    return ""
+
+
+def _complexity_status(run: Mapping[str, Any]) -> str:
+    has_manifest = bool(_manifest(run).get("id"))
+    has_events = bool(_event_summary(run) or _event_log(run))
+    has_complexity = isinstance(run.get("complexity"), Mapping) and bool(run.get("complexity"))
+    if has_manifest and has_events:
+        return "harness_native"
+    if has_manifest or has_events or has_complexity:
+        return "partial"
+    return "legacy_or_not_reported"
 
 
 def _per_row(value: Any, run: Mapping[str, Any]) -> float:
