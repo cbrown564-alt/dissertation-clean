@@ -23,15 +23,18 @@ Use descriptive clean harness names rather than inheriting every exploratory
 | `deterministic_baseline` | `h001`/`h002` | Reproducible rule floor. |
 | `exect_v2_external_baseline` | new | Published epilepsy NLP comparator, run as external GATE baseline where feasible. |
 | `exect_lite_cleanroom_baseline` | new | Transparent local epilepsy-rule baseline written from published definitions. |
-| `direct_anchor` | `h003` | Seizure-frequency direct-prompt anchor. |
+| `single_prompt_anchor` | `h003` | Seizure-frequency direct-prompt anchor. |
 | `retrieval_anchor` | new / `h004` reference | Candidate-span seizure-frequency anchor. |
-| `anchor_sc3` | `h006` | Self-consistency k=3 on anchor task. |
-| `anchor_sc5` | `h007` | Self-consistency k=5 on anchor task. |
+| `multi_agent_anchor` | new | Compact separable anchor with extraction and verification roles. |
+| `multi_agent_anchor_sc3` | `h006` | Self-consistency k=3 on anchor task. |
+| `multi_agent_anchor_sc5` | `h007` | Self-consistency k=5 on anchor task. |
 | `direct_full_contract` | new | Full-schema direct-prompt comparator. |
+| `single_prompt_full_contract` | transitional alias | Alias around the same direct full-contract implementation. |
 | `direct_evidence_contract` | new | Full-schema direct prompt with stricter evidence and abstention contract. |
 | `retrieval_field_extractors` | new | Candidate retrieval plus field-specific extraction. |
 | `clines_epilepsy_modular` | `h013` reference | Main CLINES-inspired modular system. |
 | `clines_epilepsy_verified` | new | Modular system with explicit verifier/downgrade pass. |
+| `budgeted_escalation` | new | Costed reliability variant: cheap retrieval first, stronger direct evidence extraction when policy triggers. |
 | `model_family_sensitivity` | `h012` reference | Bounded model-family and model-capacity sensitivity runs. |
 
 ## Required Harness Families
@@ -108,9 +111,9 @@ prompts, annotations, and evaluation scripts are public and used.
 
 Keep the anchor-task line as a compact reliability microcosm:
 
-- direct anchor;
+- single-prompt anchor;
 - retrieval anchor;
-- CLINES-style anchor if separable;
+- compact multi-role anchor;
 - self-consistency k=3;
 - self-consistency k=5.
 
@@ -237,6 +240,31 @@ External harness outputs should first be replay fixtures through an
 `ExternalClinicalAgentAdapter`; live subprocess or framework-agent runs require
 separate sandbox approval and are non-canonical until promoted.
 
+## Evidence-Production Order
+
+After implementation, produce evidence in this order:
+
+1. Choose the dataset slice and confirm row IDs, data hash, and inclusion
+   criteria.
+2. Freeze or select the model registry snapshot for the run set.
+3. Run no-provider baselines first: `deterministic_baseline` and
+   `exect_lite_cleanroom_baseline`.
+4. Run anchor smoke checks against replay or mock providers before spending on
+   full-contract calls.
+5. Run the matched architecture ladder on the same rows and frozen model entry:
+   `direct_full_contract`, `direct_evidence_contract`,
+   `retrieval_field_extractors`, `clines_epilepsy_modular`, and
+   `clines_epilepsy_verified`.
+6. Run bounded costed reliability variants such as `multi_agent_anchor_sc3`,
+   `multi_agent_anchor_sc5`, and `budgeted_escalation` only as supporting
+   interventions.
+7. Run `scripts/summarize_results.py` with `--tables-dir` and the frozen model
+   registry.
+8. Export matched adjudication sheets for the architecture-ladder runs.
+9. Import/summarize adjudication after review.
+10. Regenerate cockpit data from the run records, tables, adjudication files,
+    manifests, and docs.
+
 ## Promotion Gates
 
 Before a harness becomes canonical:
@@ -265,7 +293,11 @@ The repo should produce:
 10. CLINES-inspired verified run;
 11. matched adjudication for the full-contract architecture ladder;
 12. model-family sensitivity runs across frozen open and closed model entries;
-13. optional frontier sensitivity run on synthetic data only.
+13. optional frontier sensitivity run on synthetic data only;
+14. optional costed reliability runs such as `budgeted_escalation`, clearly
+    reported as supporting variants;
+15. optional external-adapter replay runs, clearly labelled non-canonical
+    unless separately promoted.
 
 ## Result Families
 

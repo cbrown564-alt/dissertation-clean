@@ -69,41 +69,51 @@ Before canonical experiments:
 If a model changes behind a moving alias, either pin a dated snapshot or record
 the alias resolution date and provider documentation.
 
-## Registry Entry Schema
+## Implemented Registry Entry Schema
 
-Each model entry should include:
+The current loader in `src/epilepsy_extraction/models/registry.py` expects a
+compact schema:
 
 ```yaml
-- id: qwen_medium_YYYYMMDD
-  family: Qwen
-  tier: medium
-  model_id: provider-or-repo/model-name
-  provider: provider-name
-  access_route: local | hosted_api | provider_api
-  release_date: YYYY-MM-DD
-  freeze_date: YYYY-MM-DD
-  context_window_tokens: 0
-  input_modalities: [text]
-  output_modalities: [text]
-  parameters_total: null
-  parameters_active: null
-  quantization: null
-  inference_backend: vllm | llama_cpp | ollama | provider_api | other
-  hardware: null
-  pricing:
-    input_per_million_tokens_usd: null
-    output_per_million_tokens_usd: null
-    source_url: null
-    checked_date: YYYY-MM-DD
-  decoding_defaults:
-    temperature: 0
-    top_p: null
-    max_output_tokens: null
-    reasoning_effort: null
-  governance_notes: ""
-  source_urls: []
-  status: candidate | canonical | deprecated | unavailable
+registry_version: "0.1"
+created: "YYYY-MM-DD"
+frozen_at: "YYYY-MM-DD"  # blank only for candidate registries
+
+models:
+  - model_id: exact-provider-or-repo-model-id
+    display_name: Human-readable model name
+    provider: provider-name
+    family: model-family
+    tier: frontier | medium | small | open_frontier | open_medium | open_small
+    context_window: 128000
+    cost_per_1k_input: 0.0
+    cost_per_1k_output: 0.0
+    notes: ""
 ```
+
+Required keys are `model_id`, `display_name`, `provider`, `family`, `tier`,
+and `context_window`. Candidate and frozen registries should use this schema so
+`scripts/run_model_matrix.py` and result-table generation can load them without
+extra dependencies.
+
+## Extended Metadata To Preserve In Notes Or Future Schema
+
+When producing dissertation evidence, preserve the following information either
+in `notes`, a companion registry source note, or a future schema extension:
+
+```yaml
+- access route: local, hosted API, provider API;
+- release date or model-card snapshot date;
+- input and output modalities;
+- total and active parameters, where known;
+- quantization and inference backend for local/open runs;
+- hardware;
+- pricing source URL and checked date;
+- decoding defaults such as temperature, top-p, max output tokens, and
+  reasoning effort;
+- governance notes;
+- source URLs;
+- status: candidate, canonical, deprecated, or unavailable.
 
 ## Decoding Settings
 
@@ -193,5 +203,6 @@ Use:
 
 - `config/model_registry.candidate.yaml` for scouting;
 - `config/model_registry.YYYY-MM-DD.yaml` for frozen canonical entries;
-- `runs/*/model_registry_snapshot.yaml` copied into run artifacts;
+- run-record `model_registry_entry` fields plus the registry snapshot path used
+  for result-table generation;
 - `docs/model_registry_protocol.md` as the method description.

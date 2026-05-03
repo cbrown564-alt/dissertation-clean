@@ -179,7 +179,12 @@ Each adjudication sheet should include:
 - error tags;
 - adjudicator note.
 
-When available, include harness-native context as reviewer-facing metadata:
+Harness-native context should remain available to reviewers through linked run
+records and the generated cockpit. The current CSV sheet keeps a stable compact
+column set; if a review round needs more audit detail, add columns deliberately
+rather than changing historical sheets silently.
+
+Useful harness-native context includes:
 
 - manifest ID and manifest hash;
 - event-summary counts, especially repairs, verifier passes, and escalation

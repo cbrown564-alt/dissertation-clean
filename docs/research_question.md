@@ -91,6 +91,8 @@ reported by field family rather than only in aggregate.
 | Modular pipeline with and without verifier | Tests whether explicit evidence/status verification adds value. |
 | Architecture ladder across model families and sizes | Tests whether harness complexity or model capacity drives performance. |
 | Self-consistency variants | Measures costed reliability gains, if budget allows. |
+| Budgeted escalation variants | Measures whether selective stronger-model calls improve reliability enough to justify added cost. |
+| Harness-native traces across systems | Tests whether manifests, event summaries, workflow units, and document-interface artifacts improve auditability without being confused with correctness. |
 
 ## Claims This Repo Should Support
 
@@ -105,6 +107,8 @@ reported by field family rather than only in aggregate.
 - Reliability varies by clinical field family.
 - Model family, model scale, cost, latency, token use, and harness complexity
   jointly influence the best practical system.
+- Harness-native artifacts make extraction behavior more inspectable, but they
+  do not by themselves prove clinical correctness.
 - Synthetic-only or closed-model sensitivity results are bounded evidence and
   do not prove clinical deployment readiness.
 
@@ -134,4 +138,6 @@ Another researcher should be able to:
 7. compare model families and size tiers under frozen model registry entries;
 8. reproduce result tables for correctness, evidence support, budget, latency,
    token use, and harness complexity;
-9. understand which claims are supported, uncertain, or out of scope.
+9. inspect manifests, event summaries, document-interface locators,
+   workflow-unit versions, verifier gates, and escalation decisions;
+10. understand which claims are supported, uncertain, or out of scope.

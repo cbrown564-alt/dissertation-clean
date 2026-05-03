@@ -23,7 +23,7 @@ schema and evaluation contract.
 | Direct LLM baselines | `direct_full_contract`, `direct_evidence_contract` | Test strong full-letter prompting. |
 | Retrieval-field pipeline | `retrieval_field_extractors` | Test candidate-span retrieval and field-specific local-context extraction. |
 | CLINES-inspired modular pipeline | `clines_epilepsy_modular`, `clines_epilepsy_verified` | Test clinical modularization, normalization, temporality, evidence grading, and aggregation. |
-| Costed reliability variants | `*_sc3`, `*_sc5`, model escalation, stronger verifier | Test reliability gains against added cost and latency. |
+| Costed reliability variants | `multi_agent_anchor_sc3`, `multi_agent_anchor_sc5`, `budgeted_escalation` | Test reliability gains against added cost and latency. |
 
 All LLM-based systems should emit the same final payload shape, so architecture
 changes are evaluated without changing the target contract.
@@ -84,8 +84,10 @@ Candidate span groups:
 | Seizure classification | focal/generalized/absence/tonic-clonic/myoclonic terms, semiology phrases |
 | Epilepsy classification | epilepsy type, syndrome, diagnostic certainty |
 
-Retrieval must be evaluated as a possible source of recall loss. Direct
-full-letter baselines remain necessary.
+Retrieval must be evaluated as a possible source of recall loss. In the current
+implementation, retrieval and modular harnesses use the Clinical-Document
+Interface for deterministic section/span/locator operations where practical.
+Direct full-letter baselines remain necessary and may bypass that interface.
 
 ## Module 2: Field-Specific Extraction
 
@@ -110,6 +112,10 @@ Each extractor should:
 - abstain when unsupported;
 - preserve uncertainty rather than forcing normalization;
 - record parse validity and repair attempts.
+
+In the implemented harness-native refactor, these extractors are also recorded
+as versioned workflow units. Workflow-unit versions are method metadata, not
+clinical correctness scores.
 
 ## Module 3: Assertion, Status, And Temporality Enrichment
 
@@ -173,6 +179,11 @@ Verifier output should include:
 Unsupported items should remain inspectable in artifacts even if excluded or
 downgraded in the final output.
 
+The current verifier records gate summaries for value support, status support,
+temporality support, normalization support, field-family placement, and known
+epilepsy edge-case checks. Costed escalation remains a separate harness variant
+and does not replace canonical direct, retrieval, or modular baselines.
+
 ## Module 6: Aggregation And Schema Adaptation
 
 The aggregator produces the final structured extraction payload.
@@ -211,7 +222,6 @@ Every extraction run should produce:
 The `final` object should include:
 
 - `seizure_frequency`;
-- `seizure_freedom`;
 - `current_medications`;
 - `investigations`;
 - `seizure_types`;
@@ -222,6 +232,10 @@ The `final` object should include:
 - `citations`;
 - `confidence`;
 - `warnings`.
+
+Seizure freedom is represented inside the seizure-frequency object or future
+subfields when supported; it is not a separate required top-level key in the
+current `final_extraction_v1` schema.
 
 The `artifacts` object should include architecture-specific intermediate
 outputs where available:
@@ -258,7 +272,12 @@ Required metadata:
 - prompt version;
 - schema version;
 - code version or commit hash;
-- external baseline version or commit hash, where relevant.
+- external baseline version or commit hash, where relevant;
+- harness manifest ID and hash;
+- PHI-safe harness event summary;
+- workflow-unit names and versions, where applicable;
+- Clinical-Document Interface use, where applicable;
+- verifier-gate and escalation metadata for supporting variants.
 
 ## Baseline-Specific Notes
 
@@ -296,4 +315,7 @@ The architecture is implemented well enough when:
 6. run records contain budget, latency, token, cost, and reproducibility
    metadata;
 7. evaluation can compare field-level correctness across architecture families,
-   model families, and model size tiers.
+   model families, and model size tiers;
+8. cockpit and result-table generation can ingest manifest, event, workflow,
+   verifier, escalation, and external-adapter metadata without becoming a
+   second source of truth.

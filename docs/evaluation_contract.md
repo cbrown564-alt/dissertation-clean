@@ -92,7 +92,7 @@ Fields that prior systems did not attempt should be marked `not_attempted`.
 
 ## Evaluation Layers
 
-Evaluation happens in nine layers:
+Evaluation happens in ten layers:
 
 1. Architecture and field implementation coverage.
 2. Baseline output mapping and comparability.
@@ -103,6 +103,9 @@ Evaluation happens in nine layers:
 7. Architecture ablation effects.
 8. Model-family and model-tier effects.
 9. Budget, latency, token use, and harness complexity.
+10. Harness-native audit metadata: manifests, event summaries, workflow units,
+    document-interface use, verifier gates, escalation decisions, and external
+    adapter lineage.
 
 Layered reporting matters because schema-valid, evidence-present outputs can
 still be clinically wrong.
@@ -131,7 +134,8 @@ negative.
 Run artifacts should expose component validity separately:
 
 - `seizure_frequency_invalid_output_rate`;
-- `seizure_freedom_invalid_output_rate`;
+- `seizure_freedom_invalid_output_rate`, where seizure freedom is represented
+  explicitly rather than folded into the seizure-frequency object;
 - `current_medication_invalid_output_rate`;
 - `seizure_classification_invalid_output_rate`;
 - `investigations_invalid_output_rate`;
@@ -358,7 +362,7 @@ example, retrieval recall loss should be separable from field-extractor failure.
 
 ## Minimum Result Tables
 
-The clean repo should generate:
+The clean repo generates:
 
 - architecture and harness coverage table;
 - baseline comparability table;
@@ -371,7 +375,8 @@ The clean repo should generate:
 - model-family and model-tier table;
 - seizure-frequency anchor table;
 - self-consistency cost table;
-- adjudication error-category table.
+- adjudication sheet CSV and adjudication summary JSON when reviewer scores are
+  available.
 
 ## Reporting Order
 
@@ -388,4 +393,5 @@ Final result tables should be ordered as:
 9. architecture ablations;
 10. model-family and model-tier comparisons;
 11. seizure-frequency anchor metrics;
-12. failure categories and uncertainty.
+12. self-consistency and costed reliability variants;
+13. failure categories, adjudication summaries, and uncertainty.

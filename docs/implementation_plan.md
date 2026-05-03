@@ -206,10 +206,11 @@ ladder.
 
 Tasks:
 
-- Implement `direct_anchor`.
+- Implement `single_prompt_anchor`.
 - Implement `retrieval_anchor`.
 - Implement a separable CLINES-style anchor if useful.
-- Implement self-consistency variants `anchor_sc3` and `anchor_sc5`.
+- Implement self-consistency variants `multi_agent_anchor_sc3` and
+  `multi_agent_anchor_sc5`.
 - Reuse existing label parsing and metrics.
 - Emit row-level predictions, evidence spans, confidence, warnings, and budget.
 - Add replay/mock-provider tests for successful parse, invalid JSON, abstention,
