@@ -40,656 +40,420 @@ body {
   line-height: 1.72;
 }
 
-/* ── Page wrapper ──────────────────────────────────── */
 .page {
   max-width: 1180px;
   margin: 0 auto;
   padding: 0 44px 96px;
 }
 
-/* ── Masthead ──────────────────────────────────────── */
-.masthead {
-  padding-top: 28px;
-  animation: pressFade 0.8s ease both;
-}
+/* ── Masthead ── */
+.masthead { padding-top: 28px; animation: pressFade 0.8s ease both; }
 @keyframes pressFade {
   from { opacity: 0; transform: translateY(-6px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-
 .mh-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding-bottom: 7px;
-  border-bottom: 1px solid var(--rule-lt);
-  margin-bottom: 0;
-  font-size: 10.5px;
-  font-family: var(--body-f);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--muted);
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding-bottom: 7px; border-bottom: 1px solid var(--rule-lt);
+  font-size: 10.5px; font-family: var(--body-f);
+  text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted);
 }
-
 .mh-double {
-  border-top: 4px solid var(--ink);
-  border-bottom: 1.5px solid var(--ink);
-  padding: 3px 0;
-  margin: 6px 0 14px;
+  border-top: 4px solid var(--ink); border-bottom: 1.5px solid var(--ink);
+  padding: 3px 0; margin: 6px 0 14px;
 }
-
 .mh-title {
-  font-family: var(--serif);
-  font-size: clamp(54px, 7.5vw, 96px);
-  font-weight: 900;
-  line-height: 0.9;
-  text-align: center;
-  letter-spacing: -0.03em;
-  color: var(--ink);
-  text-transform: uppercase;
+  font-family: var(--serif); font-size: clamp(54px, 7.5vw, 96px);
+  font-weight: 900; line-height: 0.9; text-align: center;
+  letter-spacing: -0.03em; color: var(--ink); text-transform: uppercase;
   padding: 6px 0 10px;
 }
-
-.mh-rule-thin {
-  border-top: 1px solid var(--ink);
-  margin-bottom: 8px;
-}
-
+.mh-rule-thin { border-top: 1px solid var(--ink); margin-bottom: 8px; }
 .mh-sub {
-  text-align: center;
-  font-size: 12.5px;
-  font-style: italic;
-  color: var(--ink-body);
-  letter-spacing: 0.03em;
-  padding-bottom: 12px;
+  text-align: center; font-size: 12.5px; font-style: italic;
+  color: var(--ink-body); letter-spacing: 0.03em; padding-bottom: 12px;
 }
-
 .mh-warning {
-  width: calc(100% + 88px);
-  margin-left: -44px;
-  background: var(--ink);
-  color: var(--paper);
-  text-align: center;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  padding: 5px 0;
+  width: calc(100% + 88px); margin-left: -44px;
+  background: var(--ink); color: var(--paper);
+  text-align: center; font-size: 10px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase; padding: 5px 0;
   font-family: var(--body-f);
 }
 
-/* ── Nav strip ─────────────────────────────────────── */
+/* ── Nav strip ── */
 .nav-strip {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 4px;
-  padding: 9px 0;
-  border-bottom: 1px solid var(--rule-lt);
-  margin-bottom: 36px;
+  display: flex; justify-content: center; align-items: center;
+  gap: 4px; padding: 9px 0; border-bottom: 1px solid var(--rule-lt); margin-bottom: 36px;
 }
 .nav-strip a {
-  font-size: 10.5px;
-  font-family: var(--body-f);
-  text-transform: uppercase;
-  letter-spacing: 0.09em;
-  color: var(--muted);
-  text-decoration: none;
-  padding: 2px 9px;
-  transition: color 0.12s;
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 10.5px; font-family: var(--body-f);
+  text-transform: uppercase; letter-spacing: 0.09em; color: var(--muted);
+  text-decoration: none; padding: 2px 9px; transition: color 0.12s;
 }
 .nav-strip a:hover { color: var(--ink); }
+.nav-strip a svg { opacity: 0.55; transition: opacity 0.12s; }
+.nav-strip a:hover svg { opacity: 1; }
 .nav-sep { color: var(--rule-lt); font-size: 14px; line-height: 1; }
 
-/* ── 3-column front page ───────────────────────────── */
+/* ── 3-col front ── */
 .front {
-  display: grid;
-  grid-template-columns: 1fr 324px 212px;
-  gap: 0;
-  margin-bottom: 60px;
-  animation: pressFade 0.6s ease 0.1s both;
+  display: grid; grid-template-columns: 1fr 324px 212px;
+  gap: 0; margin-bottom: 60px; animation: pressFade 0.6s ease 0.1s both;
 }
 .fcol { padding: 0 26px; }
 .fcol:first-child { padding-left: 0; }
 .fcol:last-child  { padding-right: 0; }
 .fcol + .fcol { border-left: 1px solid var(--rule-lt); }
 
-/* ── Article typography ────────────────────────────── */
+/* ── Article typography ── */
 .kicker {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--gold);
-  font-family: var(--body-f);
-  margin-bottom: 7px;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gold); font-family: var(--body-f); margin-bottom: 7px;
 }
 .hed-lg {
-  font-family: var(--serif);
-  font-size: 28px;
-  font-weight: 800;
-  line-height: 1.1;
-  color: var(--ink);
-  letter-spacing: -0.02em;
-  margin-bottom: 10px;
+  font-family: var(--serif); font-size: 28px; font-weight: 800;
+  line-height: 1.1; color: var(--ink); letter-spacing: -0.02em; margin-bottom: 10px;
 }
 .hed-md {
-  font-family: var(--serif);
-  font-size: 19px;
-  font-weight: 700;
-  line-height: 1.2;
-  color: var(--ink);
-  letter-spacing: -0.01em;
-  margin-bottom: 8px;
+  font-family: var(--serif); font-size: 19px; font-weight: 700;
+  line-height: 1.2; color: var(--ink); letter-spacing: -0.01em; margin-bottom: 8px;
 }
 .byline {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-  border-bottom: 1px solid var(--rule-lt);
-  padding-bottom: 7px;
-  margin-bottom: 14px;
-  font-family: var(--body-f);
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted); border-bottom: 1px solid var(--rule-lt);
+  padding-bottom: 7px; margin-bottom: 14px; font-family: var(--body-f);
 }
-.body-text {
-  font-size: 14px;
-  line-height: 1.78;
-  color: var(--ink-body);
-}
+.body-text { font-size: 14px; line-height: 1.78; color: var(--ink-body); }
 .body-text p + p { margin-top: 11px; }
-
-/* Drop cap */
 .body-text.drop-cap > p:first-child::first-letter {
-  float: left;
-  font-family: var(--serif);
-  font-size: 66px;
-  font-weight: 900;
-  line-height: 0.82;
-  padding-right: 9px;
-  padding-top: 5px;
-  color: var(--ink);
+  float: left; font-family: var(--serif); font-size: 66px;
+  font-weight: 900; line-height: 0.82; padding-right: 9px; padding-top: 5px; color: var(--ink);
 }
-
 .pullquote {
-  font-family: var(--serif);
-  font-size: 16.5px;
-  font-style: italic;
-  line-height: 1.55;
-  color: var(--ink);
-  border-top: 2px solid var(--rule-hvy);
-  border-bottom: 1px solid var(--rule-lt);
-  padding: 13px 6px;
-  margin: 20px 0;
+  font-family: var(--serif); font-size: 16.5px; font-style: italic; line-height: 1.55;
+  color: var(--ink); border-top: 2px solid var(--rule-hvy);
+  border-bottom: 1px solid var(--rule-lt); padding: 13px 6px; margin: 20px 0;
 }
 
-/* ── Briefs column stats ───────────────────────────── */
-.brief {
-  border-bottom: 1px solid var(--rule-lt);
-  padding: 11px 0;
-}
+/* ── Briefs + pip bars ── */
+.brief { border-bottom: 1px solid var(--rule-lt); padding: 11px 0; }
 .brief:last-child { border-bottom: none; }
 .brief-label {
-  font-size: 9.5px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-  font-family: var(--body-f);
-  margin-bottom: 3px;
+  font-size: 9.5px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--muted); font-family: var(--body-f); margin-bottom: 3px;
 }
-.brief-value {
-  font-family: var(--serif);
-  font-size: 38px;
-  font-weight: 900;
-  line-height: 1;
-  color: var(--ink);
-}
-.brief-sub {
-  font-size: 12px;
-  color: var(--muted);
-  font-style: italic;
-  margin-top: 3px;
-}
+.brief-value { font-family: var(--serif); font-size: 38px; font-weight: 900; line-height: 1; color: var(--ink); }
+.brief-sub { font-size: 12px; color: var(--muted); font-style: italic; margin-top: 3px; }
+.brief-pips { display: flex; gap: 3px; margin-top: 8px; }
+.pip { height: 4px; flex: 1; background: var(--rule-lt); border-radius: 2px; transition: background 0.3s; }
 
-/* ── Compact ladder (front col 2) ──────────────────── */
+/* ── Compact ladder (front) ── */
 .ladder-compact { list-style: none; }
 .lc-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 13px;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--rule-lt);
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 0; border-bottom: 1px solid var(--rule-lt);
 }
 .lc-item:last-child { border-bottom: none; }
 .lc-num {
-  font-family: var(--serif);
-  font-size: 22px;
-  font-weight: 900;
-  line-height: 1;
-  color: var(--rule-lt);
-  min-width: 22px;
-  flex-shrink: 0;
-  transition: color 0.2s;
+  font-family: var(--serif); font-size: 22px; font-weight: 900; line-height: 1;
+  color: var(--rule-lt); min-width: 22px; flex-shrink: 0; transition: color 0.2s;
 }
 .lc-item.live .lc-num { color: var(--ink); }
+.lc-dot {
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 4px;
+}
 .lc-label {
-  font-family: var(--serif);
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 1.3;
-  color: var(--muted);
-  margin-bottom: 2px;
-  transition: color 0.2s;
+  font-family: var(--serif); font-size: 13px; font-weight: 700; line-height: 1.3;
+  color: var(--muted); margin-bottom: 2px; transition: color 0.2s;
 }
 .lc-item.live .lc-label { color: var(--ink); }
-.lc-status {
-  font-size: 11px;
-  font-style: italic;
-  color: var(--faint);
-  font-family: var(--body-f);
-}
+.lc-status { font-size: 11px; font-style: italic; color: var(--faint); font-family: var(--body-f); }
 .lc-status.live-status { color: var(--gold); }
 
-/* ── Section banners ───────────────────────────────── */
+/* ── Section banners — 5 variants ── */
+
+/* 1. Standard (Coverage, Models) */
 .s-banner {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  margin: 60px 0 28px;
+  display: flex; align-items: center; gap: 18px; margin: 60px 0 28px;
 }
-.s-banner::before, .s-banner::after {
-  content: '';
-  flex: 1;
-  border-top: 1px solid var(--rule-hvy);
-}
+.s-banner::before, .s-banner::after { content: ''; flex: 1; border-top: 1px solid var(--rule-hvy); }
 .s-banner-text {
-  font-family: var(--serif);
-  font-size: 12.5px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--ink);
-  white-space: nowrap;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--serif); font-size: 12.5px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink); white-space: nowrap;
 }
 
-/* ── Architecture ladder infographic ───────────────── */
+/* 2. Inverted full-bleed (Architecture) */
+.s-banner-inv {
+  background: var(--ink); color: var(--paper);
+  margin: 60px -44px 28px; padding: 15px 44px;
+  display: flex; align-items: center; gap: 14px;
+}
+.s-banner-inv .s-banner-text { color: var(--paper); font-size: 14px; letter-spacing: 0.22em; }
+.s-banner-inv .s-banner-dots { display: flex; gap: 7px; margin-left: auto; align-items: center; }
+
+/* 3. Gold top-rule (Evidence Register) */
+.s-banner-gold {
+  margin: 60px 0 28px; padding: 10px 0;
+  border-top: 3px solid var(--gold); border-bottom: 1px solid var(--rule-lt);
+  display: flex; align-items: baseline; gap: 14px;
+}
+.s-banner-gold .s-banner-text { font-size: 15px; letter-spacing: 0.12em; color: var(--gold); }
+.s-banner-gold .s-banner-count { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-left: auto; }
+
+/* 4. Ledger double-rule (Budget) */
+.s-banner-ledger {
+  margin: 60px 0 28px; padding: 8px 0;
+  border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink);
+  display: flex; align-items: center; gap: 0;
+}
+.s-banner-ledger .s-banner-text { font-size: 14px; letter-spacing: 0.15em; }
+.s-banner-ledger .s-banner-rule { flex: 1; border-top: 1px solid var(--rule-mid); margin: 0 18px; }
+
+/* 5. Monospace left-accent (Harness) */
+.s-banner-mono {
+  margin: 60px 0 28px; padding: 10px 14px;
+  background: var(--paper-2); border: 1px solid var(--rule-lt); border-left: 3px solid var(--ink);
+  display: flex; align-items: center; gap: 12px;
+}
+.s-banner-mono .s-banner-text {
+  font-family: var(--mono); font-size: 12px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+
+/* 6. Editorial italic (Research Docs) */
+.s-banner-ed {
+  margin: 60px 0 28px; text-align: center;
+  border-top: 1px solid var(--rule-lt); padding-top: 18px;
+}
+.s-banner-ed .s-banner-text {
+  display: block; font-family: var(--serif); font-size: 24px; font-weight: 700;
+  font-style: italic; letter-spacing: -0.01em; text-transform: none; color: var(--ink);
+}
+.s-banner-ed .s-banner-sub {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  margin-top: 5px; font-size: 11px; font-family: var(--body-f);
+  color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase;
+}
+
+/* ── Architecture ladder infographic ── */
 .ladder-infographic {
-  position: relative;
-  display: flex;
-  padding: 24px 0 40px;
-  align-items: flex-start;
+  position: relative; display: flex; padding: 28px 0 44px; align-items: flex-start;
 }
 .ladder-infographic::before {
-  content: '';
-  position: absolute;
-  top: 44px;
-  left: calc(100% / 10);
-  right: calc(100% / 10);
-  height: 1px;
-  background: var(--rule-mid);
+  content: ''; position: absolute; top: 49px;
+  left: calc(100% / 10); right: calc(100% / 10);
+  height: 1px; background: var(--rule-mid);
 }
 .lnode {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  position: relative;
-  z-index: 1;
-  padding: 0 10px;
+  flex: 1; display: flex; flex-direction: column; align-items: center;
+  text-align: center; position: relative; z-index: 1; padding: 0 8px;
 }
 .lnode-ring {
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  border: 2px solid var(--rule-mid);
-  background: var(--paper);
+  width: 46px; height: 46px; border-radius: 50%;
+  border: 2px solid var(--rule-lt); background: var(--paper);
   display: flex; align-items: center; justify-content: center;
-  font-family: var(--serif);
-  font-size: 17px;
-  font-weight: 800;
-  color: var(--faint);
-  margin-bottom: 14px;
-  transition: all 0.25s;
-}
-.lnode.live .lnode-ring {
-  border-color: var(--ink);
-  background: var(--ink);
-  color: var(--paper);
+  font-family: var(--serif); font-size: 17px; font-weight: 800; color: var(--faint);
+  margin-bottom: 12px; transition: all 0.25s;
+  box-shadow: 0 0 0 4px var(--paper);
 }
 .lnode-name {
-  font-family: var(--serif);
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 1.3;
-  color: var(--muted);
-  margin-bottom: 7px;
-  transition: color 0.2s;
+  font-family: var(--serif); font-size: 11.5px; font-weight: 700;
+  line-height: 1.3; color: var(--muted); margin-bottom: 6px; transition: color 0.2s;
 }
 .lnode.live .lnode-name { color: var(--ink); }
-.lnode-harnesses {
-  font-family: var(--mono);
-  font-size: 9.5px;
-  color: var(--faint);
-  line-height: 1.6;
-}
-.lnode-runs {
-  font-family: var(--body-f);
-  font-size: 11px;
-  font-style: italic;
-  color: var(--gold);
-  margin-top: 7px;
-}
-.lnode-pending {
-  font-family: var(--body-f);
-  font-size: 11px;
-  font-style: italic;
-  color: var(--rule-lt);
-  margin-top: 7px;
+.lnode-harnesses { font-family: var(--mono); font-size: 9px; color: var(--faint); line-height: 1.65; }
+.lnode.live .lnode-harnesses { color: var(--muted); }
+.lnode-runs { font-family: var(--body-f); font-size: 11px; font-style: italic; margin-top: 7px; }
+.lnode-pending { font-family: var(--body-f); font-size: 11px; font-style: italic; color: var(--rule-lt); margin-top: 7px; }
+.lnode-desc {
+  font-family: var(--body-f); font-size: 9.5px; color: var(--muted); line-height: 1.55;
+  margin-top: 9px; font-style: italic; max-width: 115px;
 }
 
-/* ── Evidence register cards ───────────────────────── */
+/* ── Evidence register cards (collapsed/expand) ── */
 .register-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-  gap: 18px;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 18px;
 }
 .run-card {
-  border: 1px solid var(--rule-lt);
-  padding: 17px 19px;
-  background: var(--paper);
-  transition: border-color 0.15s;
+  border: 1px solid var(--rule-lt); background: var(--paper);
+  transition: border-color 0.15s, box-shadow 0.15s;
+  cursor: pointer; overflow: hidden;
 }
-.run-card:hover { border-color: var(--rule-mid); }
+.run-card:hover { border-color: var(--rule-mid); box-shadow: 0 2px 8px rgba(26,20,17,0.06); }
+.rc-arch-bar { height: 3px; width: 100%; }
+.rc-summary { padding: 14px 17px 12px; }
 .rc-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 8px;
-  margin-bottom: 3px;
+  display: flex; justify-content: space-between; align-items: flex-start;
+  gap: 8px; margin-bottom: 3px;
 }
-.rc-id {
-  font-family: var(--mono);
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--ink);
-  word-break: break-all;
-}
+.rc-id { font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--ink); word-break: break-all; }
 .rc-family {
-  font-size: 9.5px;
-  font-weight: 700;
-  letter-spacing: 0.11em;
-  text-transform: uppercase;
-  color: var(--gold);
-  font-family: var(--body-f);
-  margin-bottom: 9px;
+  font-size: 9.5px; font-weight: 700; letter-spacing: 0.11em;
+  text-transform: uppercase; font-family: var(--body-f); margin-bottom: 6px;
 }
-.rc-rule { border-top: 1px solid var(--rule-lt); margin: 9px 0; }
-.rc-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  font-size: 12px;
-  margin-bottom: 4px;
-  gap: 8px;
-}
-.rc-lbl {
-  font-size: 9.5px;
-  font-weight: 700;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  color: var(--muted);
-  flex-shrink: 0;
-}
-.rc-val {
-  font-family: var(--mono);
-  font-size: 11.5px;
-  color: var(--ink-body);
-  text-align: right;
-  word-break: break-all;
-}
-.rc-coverage {
-  font-family: var(--mono);
-  font-size: 10.5px;
-  color: var(--ink-body);
-  margin-top: 10px;
-  line-height: 1.7;
-  border-top: 1px solid var(--rule-lt);
-  padding-top: 9px;
+.rc-accuracy { display: flex; align-items: baseline; gap: 6px; margin-top: 8px; margin-bottom: 2px; }
+.rc-acc-value { font-family: var(--serif); font-size: 26px; font-weight: 900; line-height: 1; color: var(--ink); }
+.rc-acc-label {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--muted); font-family: var(--body-f); line-height: 1.4;
 }
 
-/* ── Status stamps ─────────────────────────────────── */
-.stamp {
-  display: inline-block;
-  font-family: var(--mono);
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  padding: 2px 7px;
-  border: 1px solid;
-  white-space: nowrap;
-  flex-shrink: 0;
+/* Coverage dot grid in cards */
+.rc-dotgrid { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 10px; }
+.dg-item { display: flex; flex-direction: column; align-items: center; gap: 3px; width: 26px; }
+.dg-dot { width: 20px; height: 20px; border-radius: 3px; }
+.dg-dot-y { background: var(--green); }
+.dg-dot-p { background: var(--gold-lt); }
+.dg-dot-n { background: var(--paper-3); border: 1px solid var(--rule-lt); }
+.dg-label { font-family: var(--mono); font-size: 7px; color: var(--muted); text-transform: uppercase; }
+
+.rc-expand-hint {
+  font-size: 9.5px; color: var(--faint); font-family: var(--body-f);
+  letter-spacing: 0.06em; text-transform: uppercase; margin-top: 10px;
+  display: flex; align-items: center; gap: 4px;
 }
-.s-smoke     { color: var(--muted);   border-color: var(--rule-lt); }
-.s-canonical { color: var(--gold);    border-color: var(--gold); }
-.s-supporting{ color: var(--ink);     border-color: var(--ink); }
-.s-archive   { color: var(--faint);   border-color: var(--rule-lt); }
+.chevron { display: inline-block; transition: transform 0.2s; line-height: 1; }
+.run-card.expanded .chevron { transform: rotate(180deg); }
+
+.rc-detail {
+  display: none; border-top: 1px solid var(--rule-lt); padding: 12px 17px 14px;
+}
+.run-card.expanded .rc-detail { display: block; }
+.rc-rule { border-top: 1px solid var(--rule-lt); margin: 9px 0; }
+.rc-row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-size: 12px; margin-bottom: 4px; gap: 8px;
+}
+.rc-lbl {
+  font-size: 9.5px; font-weight: 700; letter-spacing: 0.07em;
+  text-transform: uppercase; color: var(--muted); flex-shrink: 0;
+}
+.rc-val { font-family: var(--mono); font-size: 11.5px; color: var(--ink-body); text-align: right; word-break: break-all; }
+
+/* ── Status stamps ── */
+.stamp {
+  display: inline-block; font-family: var(--mono); font-size: 9px; font-weight: 700;
+  letter-spacing: 0.07em; text-transform: uppercase; padding: 2px 7px;
+  border: 1px solid; white-space: nowrap; flex-shrink: 0;
+}
+.s-smoke      { color: var(--muted);   border-color: var(--rule-lt); }
+.s-canonical  { color: var(--gold);    border-color: var(--gold); }
+.s-supporting { color: var(--ink);     border-color: var(--ink); }
+.s-archive    { color: var(--faint);   border-color: var(--rule-lt); }
 .s-tier-frontier      { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 .s-tier-medium        { color: var(--muted);    border-color: var(--rule-mid); }
 .s-tier-small         { color: var(--faint);    border-color: var(--rule-lt); }
 .s-tier-open_frontier { color: var(--green);    border-color: var(--green); }
 .s-tier-open_small    { color: var(--muted);    border-color: var(--rule-lt); }
 
-/* ── Coverage table ────────────────────────────────── */
+/* ── Coverage heatmap ── */
 .cov-wrap { overflow-x: auto; }
-.cov-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: var(--body-f);
-  font-size: 13px;
+.cov-heatmap {
+  width: 100%; border-collapse: collapse; font-family: var(--body-f); font-size: 13px;
 }
-.cov-table th {
-  font-size: 9.5px;
-  font-weight: 700;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  color: var(--muted);
-  padding: 8px 10px;
-  border-bottom: 2px solid var(--ink);
-  text-align: left;
-  white-space: nowrap;
+.cov-heatmap th {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--muted); padding: 7px 4px; border-bottom: 2px solid var(--ink);
+  text-align: center; white-space: nowrap;
 }
-.cov-table td {
-  padding: 8px 10px;
-  border-bottom: 1px solid var(--rule-lt);
-  vertical-align: middle;
+.cov-heatmap th.col-l { text-align: left; padding-left: 8px; }
+.cov-heatmap td { padding: 4px; border-bottom: 1px solid var(--rule-lt); vertical-align: middle; }
+.cov-heatmap td.col-id { font-family: var(--mono); font-size: 10px; padding: 4px 8px; white-space: nowrap; }
+.cov-heatmap td.col-arch { font-size: 9.5px; padding: 4px 8px; white-space: nowrap; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+.cov-heatmap tr:hover td { background: var(--paper-2); }
+.cv-cell {
+  width: 30px; height: 22px; border-radius: 3px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 700;
 }
-.cov-table tr:hover td { background: var(--paper-2); }
-.cv-y { color: var(--green);   font-weight: 700; text-align: center; }
-.cv-p { color: var(--gold-lt); text-align: center; }
-.cv-n { color: var(--faint);   text-align: center; }
-.cv-x { color: var(--rule-lt); text-align: center; }
+.cv-y { background: var(--green);    color: white; }
+.cv-p { background: var(--gold-lt);  color: var(--ink); }
+.cv-n { background: var(--paper-3);  color: var(--faint); border: 1px solid var(--rule-lt); }
+.cv-x { background: transparent;     color: var(--rule-lt); }
 .cov-legend {
-  display: flex;
-  gap: 24px;
-  margin-top: 13px;
-  font-size: 12px;
-  font-style: italic;
-  color: var(--muted);
+  display: flex; align-items: center; gap: 20px; margin-top: 14px; font-size: 11px; color: var(--muted);
 }
+.cov-leg-item { display: flex; align-items: center; gap: 7px; }
+.cov-leg-sw { width: 14px; height: 14px; border-radius: 2px; }
 
-/* ── Model registry ────────────────────────────────── */
+/* ── Budget & token bars ── */
+.data-table-wrap { overflow-x: auto; }
+.data-table { width: 100%; border-collapse: collapse; font-family: var(--body-f); font-size: 13px; }
+.data-table th {
+  font-size: 9.5px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+  color: var(--muted); padding: 8px 12px; border-bottom: 2px solid var(--ink);
+  text-align: left; white-space: nowrap;
+}
+.data-table td {
+  padding: 8px 12px; border-bottom: 1px solid var(--rule-lt);
+  font-family: var(--mono); font-size: 12px; vertical-align: middle;
+}
+.data-table tr:hover td { background: var(--paper-2); }
+.tok-cell { min-width: 140px; }
+.tok-wrap { display: flex; align-items: center; gap: 8px; }
+.tok-track {
+  flex: 1; height: 5px; background: var(--paper-3); border-radius: 2px;
+  overflow: hidden; min-width: 50px;
+}
+.tok-fill { height: 100%; border-radius: 2px; background: var(--ink); }
+.tok-fill-lat { background: var(--gold); }
+.tok-val { font-family: var(--mono); font-size: 10.5px; color: var(--ink-body); white-space: nowrap; min-width: 50px; text-align: right; }
+
+/* ── Model registry ── */
 .provider-hdg {
-  font-size: 10.5px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-  border-bottom: 1px solid var(--rule-lt);
-  padding-bottom: 7px;
-  margin: 28px 0 13px;
+  font-size: 10.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted); border-bottom: 1px solid var(--rule-lt); padding-bottom: 7px; margin: 28px 0 13px;
 }
 .provider-hdg:first-of-type { margin-top: 0; }
-.model-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 13px;
-}
-.model-card {
-  border: 1px solid var(--rule-lt);
-  padding: 14px 17px;
-  transition: border-color 0.15s;
-}
+.model-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+.model-card { border: 1px solid var(--rule-lt); padding: 14px 17px; transition: border-color 0.15s; }
 .model-card:hover { border-color: var(--rule-mid); }
-.mc-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 8px;
-  margin-bottom: 4px;
-}
-.mc-name {
-  font-family: var(--body-f);
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--ink);
-  line-height: 1.3;
-}
-.mc-id {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--muted);
-  margin-bottom: 8px;
-}
-.mc-note {
-  font-size: 12px;
-  font-style: italic;
-  color: var(--muted);
-  line-height: 1.5;
-}
-.mc-costs {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--muted);
-  margin-top: 8px;
-}
+.mc-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 4px; }
+.mc-name { font-family: var(--body-f); font-size: 14px; font-weight: 700; color: var(--ink); line-height: 1.3; }
+.mc-id { font-family: var(--mono); font-size: 10px; color: var(--muted); margin-bottom: 8px; }
+.mc-note { font-size: 12px; font-style: italic; color: var(--muted); line-height: 1.5; }
+.mc-costs { font-family: var(--mono); font-size: 10px; color: var(--muted); margin-top: 8px; }
 
-/* ── Research documents ────────────────────────────── */
+/* ── Research documents ── */
 .doc-card { border-bottom: 1px solid var(--rule-lt); }
 .doc-card:first-child { border-top: 1px solid var(--rule-lt); }
 .doc-trigger {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  padding: 15px 0;
-  cursor: pointer;
-  user-select: none;
-  gap: 16px;
-  transition: opacity 0.15s;
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding: 15px 0; cursor: pointer; user-select: none; gap: 16px; transition: opacity 0.15s;
 }
 .doc-trigger:hover { opacity: 0.75; }
-.doc-hed {
-  font-family: var(--serif);
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--ink);
-}
+.doc-hed { font-family: var(--serif); font-size: 17px; font-weight: 700; color: var(--ink); }
 .doc-meta {
-  font-size: 10.5px;
-  font-family: var(--body-f);
-  color: var(--muted);
-  white-space: nowrap;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-  flex-shrink: 0;
+  font-size: 10.5px; font-family: var(--body-f); color: var(--muted);
+  white-space: nowrap; text-transform: uppercase; letter-spacing: 0.07em; flex-shrink: 0;
 }
 .doc-body { display: none; padding-bottom: 22px; }
 .doc-card.open .doc-body { display: block; }
 .doc-text {
-  font-family: var(--body-f);
-  font-size: 13px;
-  line-height: 1.82;
-  color: var(--ink-body);
-  white-space: pre-wrap;
-  word-break: break-word;
-  max-height: 520px;
-  overflow-y: auto;
-  padding-right: 6px;
+  font-family: var(--body-f); font-size: 13px; line-height: 1.82; color: var(--ink-body);
+  white-space: pre-wrap; word-break: break-word; max-height: 520px; overflow-y: auto; padding-right: 6px;
 }
 .doc-text::-webkit-scrollbar { width: 3px; }
 .doc-text::-webkit-scrollbar-thumb { background: var(--rule-lt); }
 
-/* ── Budget table ──────────────────────────────────── */
-.data-table-wrap { overflow-x: auto; }
-.data-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: var(--body-f);
-  font-size: 13px;
-}
-.data-table th {
-  font-size: 9.5px;
-  font-weight: 700;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  color: var(--muted);
-  padding: 8px 12px;
-  border-bottom: 2px solid var(--ink);
-  text-align: left;
-  white-space: nowrap;
-}
-.data-table td {
-  padding: 8px 12px;
-  border-bottom: 1px solid var(--rule-lt);
-  font-family: var(--mono);
-  font-size: 12px;
-  vertical-align: middle;
-}
-.data-table tr:hover td { background: var(--paper-2); }
-
-/* ── Empty / error / loading ───────────────────────── */
-.empty {
-  padding: 36px 0;
-  color: var(--muted);
-  font-style: italic;
-  font-size: 13px;
-  text-align: center;
-}
+/* ── Empty / error / loading ── */
+.empty { padding: 36px 0; color: var(--muted); font-style: italic; font-size: 13px; text-align: center; }
 #loading {
-  text-align: center;
-  padding: 140px 0;
-  font-family: var(--serif);
-  font-size: 20px;
-  font-style: italic;
-  color: var(--muted);
-  letter-spacing: 0.04em;
+  text-align: center; padding: 140px 0; font-family: var(--serif);
+  font-size: 20px; font-style: italic; color: var(--muted); letter-spacing: 0.04em;
 }
-#err {
-  display: none;
-  max-width: 540px;
-  margin: 80px auto;
-  text-align: center;
-}
-#err h2 {
-  font-family: var(--serif);
-  font-size: 30px;
-  color: var(--ink);
-  margin-bottom: 16px;
-}
+#err { display: none; max-width: 540px; margin: 80px auto; text-align: center; }
+#err h2 { font-family: var(--serif); font-size: 30px; color: var(--ink); margin-bottom: 16px; }
 #err p { color: var(--muted); margin-bottom: 14px; line-height: 1.7; font-size: 14px; }
 #err pre {
-  background: var(--paper-2);
-  border: 1px solid var(--rule-lt);
-  padding: 16px;
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--ink);
-  text-align: left;
+  background: var(--paper-2); border: 1px solid var(--rule-lt); padding: 16px;
+  font-family: var(--mono); font-size: 12px; color: var(--ink); text-align: left;
 }
 
-/* ── Responsive ────────────────────────────────────── */
+/* ── Responsive ── */
 @media (max-width: 960px) {
   .page { padding: 0 20px 60px; }
   .mh-title { font-size: 40px; }
@@ -699,6 +463,7 @@ body {
   .model-grid { grid-template-columns: 1fr; }
   .ladder-infographic { flex-wrap: wrap; gap: 20px; }
   .ladder-infographic::before { display: none; }
+  .s-banner-inv { margin: 60px -20px 28px; padding: 15px 20px; }
 }
 </style>
 </head>
@@ -719,14 +484,46 @@ python -m http.server 8000</pre>
 <script>
 'use strict';
 
+/* ── Architecture colour system ─────────────────────── */
+
+const COLOUR_MAP = {
+  teal:   { fg: '#1a6b72', bg: '#ddf1f3' },
+  blue:   { fg: '#1c3a6e', bg: '#e3eaf6' },
+  purple: { fg: '#5c2a7a', bg: '#f0eaf7' },
+  amber:  { fg: '#8a5f18', bg: '#f4ecdc' },
+  green:  { fg: '#1e5c30', bg: '#e4f0e7' },
+};
+
+let ARCH_FG = {};
+let ARCH_BG = {};
+
+function initColors(ladder) {
+  for (const step of (ladder ?? [])) {
+    const c = COLOUR_MAP[step.colour] ?? { fg: '#7a6a5c', bg: '#ede9d8' };
+    ARCH_FG[step.family] = c.fg;
+    ARCH_BG[step.family] = c.bg;
+  }
+}
+
+function fg(family) { return ARCH_FG[family] ?? '#7a6a5c'; }
+
+/* ── SVG icons ──────────────────────────────────────── */
+
+const IC = {
+  ladder:  `<svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><line x1="3" y1="1" x2="3" y2="12"/><line x1="10" y1="1" x2="10" y2="12"/><line x1="3" y1="3" x2="10" y2="3"/><line x1="3" y1="6.5" x2="10" y2="6.5"/><line x1="3" y1="10" x2="10" y2="10"/></svg>`,
+  archive: `<svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3.5" width="11" height="8" rx="0.5"/><path d="M1 3.5L2 1h9l1 2.5"/><line x1="4.5" y1="7" x2="8.5" y2="7"/></svg>`,
+  grid:    `<svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="1" y="1" width="4.5" height="4.5" rx="0.5"/><rect x="7.5" y="1" width="4.5" height="4.5" rx="0.5"/><rect x="1" y="7.5" width="4.5" height="4.5" rx="0.5"/><rect x="7.5" y="7.5" width="4.5" height="4.5" rx="0.5"/></svg>`,
+  chart:   `<svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="11.5" x2="11.5" y2="11.5"/><rect x="2" y="7" width="2.5" height="4.5"/><rect x="5.25" y="4" width="2.5" height="7.5"/><rect x="8.5" y="1.5" width="2.5" height="10"/></svg>`,
+  circuit: `<svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="2.5" cy="6.5" r="1.2"/><circle cx="10.5" cy="6.5" r="1.2"/><circle cx="6.5" cy="2.5" r="1.2"/><circle cx="6.5" cy="10.5" r="1.2"/><line x1="3.7" y1="6.5" x2="5.3" y2="6.5"/><line x1="7.7" y1="6.5" x2="9.3" y2="6.5"/><line x1="6.5" y1="3.7" x2="6.5" y2="5.3"/><line x1="6.5" y1="7.7" x2="6.5" y2="9.3"/></svg>`,
+  stack:   `<svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="6.5" cy="3" rx="5" ry="1.7"/><path d="M1.5 3v3c0 .94 2.24 1.7 5 1.7s5-.76 5-1.7V3"/><path d="M1.5 6v3c0 .94 2.24 1.7 5 1.7s5-.76 5-1.7V6"/></svg>`,
+  book:    `<svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 11V2.5S5 1.5 2.5 1.5H1v9h1.5C5 10.5 6.5 11 6.5 11z"/><path d="M6.5 11V2.5S8 1.5 10.5 1.5H12v9h-1.5C8 10.5 6.5 11 6.5 11z"/></svg>`,
+};
+
 /* ── Utilities ──────────────────────────────────────── */
 
 function esc(s) {
   return String(s ?? '')
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 function fmtDateLong(iso) {
   if (!iso) return '—';
@@ -744,7 +541,7 @@ function fmtPct(n) {
   return (v * 100).toFixed(1) + '%';
 }
 function fmtNum(n) {
-  if (n == null || n === '' || Number(n) === 0) return '—';
+  if (n == null || n === '') return '—';
   const v = Number(n); if (isNaN(v) || v === 0) return '—';
   return v.toLocaleString('en-GB');
 }
@@ -753,7 +550,13 @@ function statusStamp(s) {
   return `<span class="stamp ${map[s] ?? 's-smoke'}">${esc(s || '—')}</span>`;
 }
 function familyLabel(f) {
-  return { clinical_nlp_baseline: 'Clinical NLP Baseline', direct: 'Direct LLM Baseline', retrieval: 'Retrieval + Fields', clines_inspired_modular: 'CLINES-Inspired Modular', anchor: 'Seizure-Frequency Anchor' }[f] ?? (f ? esc(f) : '—');
+  return {
+    clinical_nlp_baseline: 'Clinical NLP Baseline',
+    direct: 'Direct LLM Baseline',
+    retrieval: 'Retrieval + Fields',
+    clines_inspired_modular: 'CLINES-Inspired Modular',
+    anchor: 'Seizure-Frequency Anchor',
+  }[f] ?? (f ? esc(f) : '—');
 }
 function extractMd(text, heading) {
   const re = new RegExp(`##\\s+${heading}[^\\n]*\\n([\\s\\S]+?)(?=\\n##|$)`, 'i');
@@ -761,13 +564,12 @@ function extractMd(text, heading) {
   return m ? m[1].trim() : '';
 }
 
-
 /* ── Masthead ───────────────────────────────────────── */
 
 function renderMasthead(data) {
   const nRuns = (data.run_register ?? []).length;
-  const gen = fmtDateLong(data.generated_at);
-  const year = data.generated_at ? new Date(data.generated_at).getFullYear() : new Date().getFullYear();
+  const gen   = fmtDateLong(data.generated_at);
+  const year  = data.generated_at ? new Date(data.generated_at).getFullYear() : new Date().getFullYear();
   return `
 <header class="masthead">
   <div class="mh-top">
@@ -783,35 +585,32 @@ function renderMasthead(data) {
 </header>
 
 <nav class="nav-strip">
-  <a href="#front">Overview</a><span class="nav-sep">&middot;</span>
-  <a href="#ladder">Architecture</a><span class="nav-sep">&middot;</span>
-  <a href="#register">Evidence Register</a><span class="nav-sep">&middot;</span>
-  <a href="#coverage">Field Coverage</a><span class="nav-sep">&middot;</span>
-  <a href="#budget">Budget &amp; Performance</a><span class="nav-sep">&middot;</span>
-  <a href="#harness">Harness Trace</a><span class="nav-sep">&middot;</span>
-  <a href="#models">Model Registry</a><span class="nav-sep">&middot;</span>
-  <a href="#docs">Research Documents</a>
+  <a href="#front">${IC.grid} Overview</a><span class="nav-sep">&middot;</span>
+  <a href="#ladder">${IC.ladder} Architecture</a><span class="nav-sep">&middot;</span>
+  <a href="#register">${IC.archive} Evidence</a><span class="nav-sep">&middot;</span>
+  <a href="#coverage">${IC.grid} Coverage</a><span class="nav-sep">&middot;</span>
+  <a href="#budget">${IC.chart} Budget</a><span class="nav-sep">&middot;</span>
+  <a href="#harness">${IC.circuit} Harness</a><span class="nav-sep">&middot;</span>
+  <a href="#models">${IC.stack} Models</a><span class="nav-sep">&middot;</span>
+  <a href="#docs">${IC.book} Documents</a>
 </nav>`;
 }
-
 
 /* ── Front page ─────────────────────────────────────── */
 
 function renderFront(data) {
-  const rq    = data.docs?.research_question ?? '';
-  const runs  = data.run_register ?? [];
+  const rq     = data.docs?.research_question ?? '';
+  const runs   = data.run_register ?? [];
   const ladder = data.architecture_ladder ?? [];
 
   const primaryQ = extractMd(rq, 'Primary Question') ||
     'How do CLINES-inspired modular architecture, clinical extraction baselines, and model capacity affect clinical correctness, evidence support, auditability, cost, latency, token use, and harness complexity in epilepsy clinic-letter extraction?';
-
   const studyPos = extractMd(rq, 'Study Position');
   const bodyP2 = studyPos.split('\n').filter(l => l.trim()).slice(0, 3).join(' ') ||
     'The project evaluates architecture as an empirical variable. A CLINES-inspired modular pipeline is the main proposed architecture, tested through ablations and compared against direct LLM prompting and clinical NLP-style baselines.';
-
-  // Pull quote: first sentence of H1
   const h1raw = rq.match(/###\s+H1[^\n]*\n([\s\S]+?)(?=\n###|\n##|$)/i);
-  const pq = h1raw ? h1raw[1].trim().split(/\.\s/)[0] + '.' : 'A CLINES-inspired architecture may improve evidence support, status handling, temporality, and auditability compared with direct prompting.';
+  const pq = h1raw ? h1raw[1].trim().split(/\.\s/)[0] + '.' :
+    'A CLINES-inspired architecture may improve evidence support, status handling, temporality, and auditability compared with direct prompting.';
 
   const nRuns      = runs.length;
   const nCanonical = runs.filter(r => r.status === 'canonical').length;
@@ -819,7 +618,6 @@ function renderFront(data) {
   const nModels    = (data.model_registry?.frozen?.models ?? []).length;
   const nFields    = (data.field_families ?? []).length;
 
-  // Left col — lead article
   const colLead = `
 <div class="fcol">
   <div class="kicker">Lead Research</div>
@@ -835,16 +633,17 @@ function renderFront(data) {
   </div>
 </div>`;
 
-  // Middle col — compact ladder
   const ladderItems = ladder.map(step => {
     const stepRuns = runs.filter(r => r.architecture_family === step.family);
     const live = stepRuns.length > 0;
+    const dotColor = fg(step.family);
     const statusText = live
       ? `${stepRuns.length} run${stepRuns.length !== 1 ? 's' : ''} &mdash; ${stepRuns[0].status}`
       : 'pending';
     return `<li class="lc-item${live ? ' live' : ''}">
       <span class="lc-num">${step.step}</span>
-      <div>
+      <div class="lc-dot" style="background:${dotColor};opacity:${live ? '1' : '0.25'}"></div>
+      <div style="flex:1">
         <div class="lc-label">${esc(step.label)}</div>
         <div class="lc-status${live ? ' live-status' : ''}">${statusText}</div>
       </div>
@@ -859,7 +658,17 @@ function renderFront(data) {
   <ul class="ladder-compact">${ladderItems}</ul>
 </div>`;
 
-  // Right col — briefs
+  // Pip bars for runs (one pip per ladder step, coloured by arch)
+  const pipRuns = ladder.map(step => {
+    const stepRuns = runs.filter(r => r.architecture_family === step.family);
+    const hasCanon = stepRuns.some(r => r.status === 'canonical');
+    const hasAny   = stepRuns.length > 0;
+    const col = fg(step.family);
+    if (hasCanon) return `<div class="pip" style="background:${col}"></div>`;
+    if (hasAny)   return `<div class="pip" style="background:${col};opacity:0.45"></div>`;
+    return `<div class="pip"></div>`;
+  }).join('');
+
   const colBriefs = `
 <div class="fcol">
   <div class="kicker">At a Glance</div>
@@ -871,12 +680,14 @@ function renderFront(data) {
   <div class="brief">
     <div class="brief-label">Architecture Families</div>
     <div class="brief-value">${nFamilies || ladder.length}</div>
-    <div class="brief-sub">rungs on the ladder</div>
+    <div class="brief-sub">${nFamilies} of ${ladder.length} rungs active</div>
+    <div class="brief-pips">${pipRuns}</div>
   </div>
   <div class="brief">
     <div class="brief-label">Field Families</div>
     <div class="brief-value">${nFields}</div>
     <div class="brief-sub">extraction targets</div>
+    <div class="brief-pips">${Array(nFields).fill('<div class="pip" style="background:var(--ink)"></div>').join('')}</div>
   </div>
   <div class="brief">
     <div class="brief-label">Frozen Models</div>
@@ -888,117 +699,158 @@ function renderFront(data) {
   return `<div class="front" id="front">${colLead}${colMid}${colBriefs}</div>`;
 }
 
-
-/* ── Architecture Ladder (full infographic) ─────────── */
+/* ── Architecture Ladder ────────────────────────────── */
 
 function renderLadder(data) {
   const ladder = data.architecture_ladder ?? [];
   const runs   = data.run_register ?? [];
 
+  const dots = ladder.map(step => {
+    const live = runs.some(r => r.architecture_family === step.family);
+    return `<div title="${esc(step.label)}" style="width:9px;height:9px;border-radius:50%;background:${fg(step.family)};opacity:${live ? '1' : '0.22'}"></div>`;
+  }).join('');
+
   const nodes = ladder.map(step => {
     const stepRuns = runs.filter(r => r.architecture_family === step.family);
     const live = stepRuns.length > 0;
-    const harnessList = (step.harnesses ?? []).join('\n');
+    const archFg = fg(step.family);
+    const ringStyle = live
+      ? `background:${archFg};border-color:${archFg};color:white;box-shadow:0 0 0 4px var(--paper),0 0 0 6px ${archFg}44`
+      : '';
     const runsEl = live
-      ? `<div class="lnode-runs">${stepRuns.length} run${stepRuns.length !== 1 ? 's' : ''}</div>`
+      ? `<div class="lnode-runs" style="color:${archFg}">${stepRuns.length} run${stepRuns.length !== 1 ? 's' : ''}</div>`
       : `<div class="lnode-pending">pending</div>`;
     return `<div class="lnode${live ? ' live' : ''}">
-      <div class="lnode-ring">${step.step}</div>
+      <div class="lnode-ring" style="${ringStyle}">${step.step}</div>
       <div class="lnode-name">${esc(step.label)}</div>
-      <div class="lnode-harnesses">${esc(harnessList)}</div>
+      <div class="lnode-harnesses">${esc((step.harnesses ?? []).join('\n'))}</div>
       ${runsEl}
+      ${step.description ? `<div class="lnode-desc">${esc(step.description)}</div>` : ''}
     </div>`;
   }).join('');
 
   return `
-<div class="s-banner" id="ladder">
-  <span class="s-banner-text">&#10022; Architecture Ladder &#10022;</span>
+<div class="s-banner-inv" id="ladder">
+  <span style="opacity:0.55">${IC.ladder}</span>
+  <span class="s-banner-text">Architecture Ladder</span>
+  <div class="s-banner-dots">${dots}</div>
 </div>
 <div class="ladder-infographic">${nodes || '<div class="empty">No ladder data.</div>'}</div>`;
 }
 
-
 /* ── Evidence Register ──────────────────────────────── */
 
 function renderRegister(data) {
-  const runs = data.run_register ?? [];
+  const runs   = data.run_register ?? [];
+  const fields = data.field_families ?? [];
 
-  const abbrev = { seizure_frequency:'SF', seizure_classification:'SC', epilepsy_classification:'EC', current_medications:'med', investigations:'inv', associated_symptoms:'sym', comorbidities:'com', rescue_medication:'res', other_therapies:'oth' };
+  const ABBR = {
+    seizure_frequency: 'SF', seizure_classification: 'SC', epilepsy_classification: 'EC',
+    current_medications: 'med', investigations: 'inv', associated_symptoms: 'sym',
+    comorbidities: 'com', rescue_medication: 'res', other_therapies: 'oth',
+  };
 
   const cards = runs.map(r => {
-    const fc = r.field_coverage ?? {};
-    const cov = Object.entries(fc)
-      .filter(([,v]) => v !== 'not_attempted')
-      .map(([k,v]) => `${abbrev[k] ?? k}${v === 'implemented' ? '&#x2713;' : '&#x25D1;'}`)
-      .join(' &nbsp;');
+    const fc     = r.field_coverage ?? {};
+    const archFg = fg(r.architecture_family);
+    const acc    = r.metrics?.exact_label_accuracy;
 
-    const acc = r.metrics?.exact_label_accuracy;
-    return `<div class="run-card">
-      <div class="rc-head"><span class="rc-id">${esc(r.run_id)}</span>${statusStamp(r.status)}</div>
-      <div class="rc-family">${familyLabel(r.architecture_family)}</div>
-      <div class="rc-rule"></div>
-      <div class="rc-row"><span class="rc-lbl">Harness</span><span class="rc-val">${esc(r.harness)}</span></div>
-      <div class="rc-row"><span class="rc-lbl">Dataset</span><span class="rc-val">${esc(r.dataset_id)} (n=${r.dataset_n ?? '—'})</span></div>
-      ${acc != null ? `<div class="rc-row"><span class="rc-lbl">Accuracy</span><span class="rc-val">${fmtPct(acc)} (n=${r.metrics?.n ?? '—'})</span></div>` : ''}
-      <div class="rc-row"><span class="rc-lbl">Provider</span><span class="rc-val">${esc(r.provider || '—')}</span></div>
-      <div class="rc-row"><span class="rc-lbl">Date</span><span class="rc-val">${fmtDateShort(r.created_at)}</span></div>
-      ${cov ? `<div class="rc-coverage">${cov}</div>` : ''}
+    const accEl = acc != null ? `
+      <div class="rc-accuracy">
+        <span class="rc-acc-value">${(Number(acc) * 100).toFixed(0)}<span style="font-size:15px">%</span></span>
+        <span class="rc-acc-label">Accuracy<br>n=${r.metrics?.n ?? '—'}</span>
+      </div>` : '';
+
+    // Dot grid — use field_families if available, else keys from field_coverage
+    const dotKeys = fields.length > 0 ? fields : Object.keys(fc).filter(k => fc[k] !== 'not_attempted');
+    const dotGrid = dotKeys.length > 0 ? `
+      <div class="rc-dotgrid">
+        ${dotKeys.map(f => {
+          const v = fc[f];
+          const cls = v === 'implemented' ? 'dg-dot-y' : v === 'partial' ? 'dg-dot-p' : 'dg-dot-n';
+          return `<div class="dg-item">
+            <div class="dg-dot ${cls}"></div>
+            <div class="dg-label">${esc(ABBR[f] ?? f.slice(0, 3))}</div>
+          </div>`;
+        }).join('')}
+      </div>` : '';
+
+    return `<div class="run-card" onclick="this.classList.toggle('expanded')">
+      <div class="rc-arch-bar" style="background:${archFg}"></div>
+      <div class="rc-summary">
+        <div class="rc-head"><span class="rc-id">${esc(r.run_id)}</span>${statusStamp(r.status)}</div>
+        <div class="rc-family" style="color:${archFg}">${familyLabel(r.architecture_family)}</div>
+        ${accEl}
+        ${dotGrid}
+        <div class="rc-expand-hint">Details <span class="chevron">&#8964;</span></div>
+      </div>
+      <div class="rc-detail">
+        <div class="rc-row"><span class="rc-lbl">Harness</span><span class="rc-val">${esc(r.harness)}</span></div>
+        <div class="rc-row"><span class="rc-lbl">Dataset</span><span class="rc-val">${esc(r.dataset_id)} (n=${r.dataset_n ?? '—'})</span></div>
+        <div class="rc-row"><span class="rc-lbl">Provider</span><span class="rc-val">${esc(r.provider || '—')}</span></div>
+        <div class="rc-row"><span class="rc-lbl">Date</span><span class="rc-val">${fmtDateShort(r.created_at)}</span></div>
+      </div>
     </div>`;
   }).join('');
 
   return `
-<div class="s-banner" id="register">
-  <span class="s-banner-text">&#10022; Evidence Register &#10022;</span>
+<div class="s-banner-gold" id="register">
+  <span class="s-banner-text">${IC.archive}&nbsp; Evidence Register</span>
+  <span class="s-banner-count">${runs.length} record${runs.length !== 1 ? 's' : ''}</span>
 </div>
 ${runs.length === 0
   ? '<div class="empty">No run records in results/runs/.</div>'
   : `<div class="register-grid">${cards}</div>`}`;
 }
 
-
-/* ── Field Coverage ─────────────────────────────────── */
+/* ── Field Coverage Heatmap ─────────────────────────── */
 
 function renderCoverage(data) {
   const runs   = data.run_register ?? [];
   const fields = data.field_families ?? [];
 
-  const shortName = { seizure_frequency:'Sz Freq', seizure_classification:'Sz Class', epilepsy_classification:'Epil Class', current_medications:'Medications', investigations:'Investigations', associated_symptoms:'Assoc Symptoms', comorbidities:'Comorbidities', rescue_medication:'Rescue Med', other_therapies:'Other Rx' };
+  const SHORT = {
+    seizure_frequency: 'Sz Freq', seizure_classification: 'Sz Class',
+    epilepsy_classification: 'Epil Class', current_medications: 'Medications',
+    investigations: 'Investig.', associated_symptoms: 'Assoc Sx',
+    comorbidities: 'Comorbid', rescue_medication: 'Rescue', other_therapies: 'Other Rx',
+  };
 
-  const ths = fields.map(f => `<th style="text-align:center;min-width:68px">${esc(shortName[f] ?? f)}</th>`).join('');
+  const ths = fields.map(f => `<th style="min-width:52px">${esc(SHORT[f] ?? f)}</th>`).join('');
 
   const rows = runs.map(r => {
-    const fc = r.field_coverage ?? {};
+    const fc    = r.field_coverage ?? {};
+    const archFg = fg(r.architecture_family);
     const cells = fields.map(f => {
       const v = fc[f];
-      if (v === 'implemented') return `<td class="cv-y">&#x2713;</td>`;
-      if (v === 'partial')     return `<td class="cv-p">&#x25D1;</td>`;
-      if (v === 'not_attempted') return `<td class="cv-n">&middot;</td>`;
-      return `<td class="cv-x">&mdash;</td>`;
+      if (v === 'implemented')  return `<td><div class="cv-cell cv-y">&#x2713;</div></td>`;
+      if (v === 'partial')      return `<td><div class="cv-cell cv-p">&#x25D1;</div></td>`;
+      if (v === 'not_attempted') return `<td><div class="cv-cell cv-n">&middot;</div></td>`;
+      return `<td><div class="cv-cell cv-x">&mdash;</div></td>`;
     }).join('');
     return `<tr>
-      <td style="font-family:var(--mono);font-size:11px;white-space:nowrap">${esc(r.run_id)}</td>
-      <td style="font-size:11px;white-space:nowrap;text-transform:uppercase;letter-spacing:0.04em;color:var(--muted)">${familyLabel(r.architecture_family)}</td>
+      <td class="col-id">${esc(r.run_id)}</td>
+      <td class="col-arch"><span style="color:${archFg};font-weight:700">&bull;</span> ${familyLabel(r.architecture_family)}</td>
       ${cells}
     </tr>`;
   }).join('');
 
   return `
 <div class="s-banner" id="coverage">
-  <span class="s-banner-text">&#10022; Field Coverage Map &#10022;</span>
+  <span class="s-banner-text">${IC.grid}&nbsp; Field Coverage Map</span>
 </div>
 <div class="cov-wrap">
-  <table class="cov-table">
-    <thead><tr><th>Run ID</th><th>Architecture</th>${ths}</tr></thead>
+  <table class="cov-heatmap">
+    <thead><tr><th class="col-l">Run ID</th><th class="col-l">Architecture</th>${ths}</tr></thead>
     <tbody>${rows || '<tr><td colspan="100" class="empty">No runs.</td></tr>'}</tbody>
   </table>
 </div>
 <div class="cov-legend">
-  <span>&#x2713; implemented</span>
-  <span>&#x25D1; partial</span>
-  <span>&middot; not attempted</span>
+  <div class="cov-leg-item"><div class="cov-leg-sw" style="background:var(--green)"></div>Implemented</div>
+  <div class="cov-leg-item"><div class="cov-leg-sw" style="background:var(--gold-lt)"></div>Partial</div>
+  <div class="cov-leg-item"><div class="cov-leg-sw" style="background:var(--paper-3);border:1px solid var(--rule-lt)"></div>Not attempted</div>
 </div>`;
 }
-
 
 /* ── Budget & Performance ───────────────────────────── */
 
@@ -1006,42 +858,52 @@ function renderBudget(data) {
   const tables = data.result_tables ?? {};
   const runs   = data.run_register ?? [];
 
-  // Pre-built table if available
-  const bt = tables.budget_complexity;
+  const llmRuns = runs.filter(r => (r.budget?.total_tokens ?? 0) > 0);
+  const maxTok  = llmRuns.length ? Math.max(...llmRuns.map(r => r.budget?.total_tokens ?? 0)) : 1;
+  const maxLat  = llmRuns.length ? Math.max(...llmRuns.map(r => r.budget?.latency_ms   ?? 0)) : 1;
+
+  function tokBar(val, max, latency = false) {
+    if (!val) return `<div class="tok-val">—</div>`;
+    const pct = Math.max(4, (val / max) * 100).toFixed(1);
+    const cls = latency ? 'tok-fill tok-fill-lat' : 'tok-fill';
+    return `<div class="tok-wrap">
+      <div class="tok-track"><div class="${cls}" style="width:${pct}%"></div></div>
+      <div class="tok-val">${Number(val).toLocaleString('en-GB')}</div>
+    </div>`;
+  }
+
   let main = '';
+  const bt = tables.budget_complexity;
   if (bt && bt.rows?.length > 0) {
     const ths = bt.headers.map(h => `<th>${esc(h)}</th>`).join('');
     const trs = bt.rows.map(row =>
       `<tr>${bt.headers.map(h => `<td>${esc(row[h] ?? '—')}</td>`).join('')}</tr>`
     ).join('');
     main = `<div class="data-table-wrap"><table class="data-table"><thead><tr>${ths}</tr></thead><tbody>${trs}</tbody></table></div>`;
+  } else if (llmRuns.length > 0) {
+    const trs = llmRuns.map(r => {
+      const b    = r.budget ?? {};
+      const archFg = fg(r.architecture_family);
+      return `<tr>
+        <td>${esc(r.run_id)}</td>
+        <td><span style="color:${archFg};font-weight:700">&bull;</span> ${familyLabel(r.architecture_family)}</td>
+        <td class="tok-cell">${tokBar(b.input_tokens,  maxTok)}</td>
+        <td class="tok-cell">${tokBar(b.output_tokens, maxTok)}</td>
+        <td class="tok-cell">${tokBar(b.total_tokens,  maxTok)}</td>
+        <td class="tok-cell">${tokBar(b.latency_ms,    maxLat, true)}</td>
+        <td style="text-align:right">${b.llm_calls_per_row ? Number(b.llm_calls_per_row).toFixed(1) : '—'}</td>
+      </tr>`;
+    }).join('');
+    main = `<div class="data-table-wrap"><table class="data-table"><thead><tr>
+      <th>Run ID</th><th>Architecture</th>
+      <th>Input tokens</th><th>Output tokens</th>
+      <th>Total tokens</th><th>Latency</th>
+      <th style="text-align:right">LLM calls/row</th>
+    </tr></thead><tbody>${trs}</tbody></table></div>`;
   } else {
-    const llmRuns = runs.filter(r => (r.budget?.total_tokens ?? 0) > 0);
-    if (llmRuns.length > 0) {
-      const trs = llmRuns.map(r => {
-        const b = r.budget ?? {};
-        return `<tr>
-          <td>${esc(r.run_id)}</td>
-          <td>${familyLabel(r.architecture_family)}</td>
-          <td style="text-align:right">${fmtNum(b.input_tokens)}</td>
-          <td style="text-align:right">${fmtNum(b.output_tokens)}</td>
-          <td style="text-align:right">${fmtNum(b.total_tokens)}</td>
-          <td style="text-align:right">${fmtNum(b.latency_ms) !== '—' ? fmtNum(b.latency_ms) + ' ms' : '—'}</td>
-          <td style="text-align:right">${b.llm_calls_per_row ? Number(b.llm_calls_per_row).toFixed(1) : '—'}</td>
-        </tr>`;
-      }).join('');
-      main = `<div class="data-table-wrap"><table class="data-table"><thead><tr>
-        <th>Run ID</th><th>Architecture</th>
-        <th style="text-align:right">Input tokens</th><th style="text-align:right">Output tokens</th>
-        <th style="text-align:right">Total tokens</th><th style="text-align:right">Latency</th>
-        <th style="text-align:right">LLM calls/row</th>
-      </tr></thead><tbody>${trs}</tbody></table></div>`;
-    } else {
-      main = `<div class="empty">No LLM runs with token data yet. Run a harness with a live provider to populate this section.</div>`;
-    }
+    main = `<div class="empty">No LLM runs with token data yet. Run a harness with a live provider to populate this section.</div>`;
   }
 
-  // Any other result tables
   const extras = Object.entries(tables)
     .filter(([k]) => k !== 'budget_complexity' && k !== 'harness_complexity')
     .map(([k, t]) => {
@@ -1053,35 +915,41 @@ function renderBudget(data) {
     }).join('');
 
   return `
-<div class="s-banner" id="budget">
-  <span class="s-banner-text">&#10022; Budget &amp; Performance &#10022;</span>
+<div class="s-banner-ledger" id="budget">
+  <span class="s-banner-text">${IC.chart}&nbsp; Budget &amp; Performance</span>
+  <div class="s-banner-rule"></div>
 </div>
 ${main}${extras}`;
 }
 
-
-/* ── Harness-Native Trace ───────────────────────────── */
+/* ── Harness Trace ──────────────────────────────────── */
 
 function renderHarnessNative(data) {
-  const runs = data.run_register ?? [];
+  const runs      = data.run_register ?? [];
   const manifests = data.harness_manifests ?? [];
-  const table = data.result_tables?.harness_complexity;
+  const table     = data.result_tables?.harness_complexity;
 
   const cards = runs.map(r => {
-    const hc = r.harness_complexity ?? {};
-    const mf = r.harness_manifest ?? {};
-    const events = r.harness_events ?? {};
+    const hc     = r.harness_complexity ?? {};
+    const mf     = r.harness_manifest   ?? {};
+    const events = r.harness_events     ?? {};
     const status = hc.status ?? 'legacy_or_not_reported';
-    return `<div class="run-card">
-      <div class="rc-head"><span class="rc-id">${esc(r.run_id)}</span><span class="stamp">${esc(status)}</span></div>
-      <div class="rc-family">${familyLabel(r.architecture_family)}</div>
-      <div class="rc-rule"></div>
-      <div class="rc-row"><span class="rc-lbl">Manifest</span><span class="rc-val">${esc(mf.id || 'not recorded')}</span></div>
-      <div class="rc-row"><span class="rc-lbl">Events</span><span class="rc-val">${fmtNum(hc.event_count ?? events.event_count ?? 0)}</span></div>
-      <div class="rc-row"><span class="rc-lbl">Provider calls</span><span class="rc-val">${fmtNum(hc.provider_calls ?? events.provider_calls ?? 0)}</span></div>
-      <div class="rc-row"><span class="rc-lbl">Repairs</span><span class="rc-val">${fmtNum(hc.parse_repair_attempts ?? events.parse_repair_attempts ?? 0)}</span></div>
-      <div class="rc-row"><span class="rc-lbl">Verifier passes</span><span class="rc-val">${fmtNum(hc.verifier_passes ?? events.verifier_passes ?? 0)}</span></div>
-      <div class="rc-row"><span class="rc-lbl">Escalations</span><span class="rc-val">${fmtNum(hc.escalation_decisions ?? events.escalation_decisions ?? 0)}</span></div>
+    const archFg = fg(r.architecture_family);
+    return `<div class="run-card" onclick="this.classList.toggle('expanded')">
+      <div class="rc-arch-bar" style="background:${archFg}"></div>
+      <div class="rc-summary">
+        <div class="rc-head"><span class="rc-id">${esc(r.run_id)}</span><span class="stamp">${esc(status)}</span></div>
+        <div class="rc-family" style="color:${archFg}">${familyLabel(r.architecture_family)}</div>
+        <div class="rc-expand-hint">Details <span class="chevron">&#8964;</span></div>
+      </div>
+      <div class="rc-detail">
+        <div class="rc-row"><span class="rc-lbl">Manifest</span><span class="rc-val">${esc(mf.id || 'not recorded')}</span></div>
+        <div class="rc-row"><span class="rc-lbl">Events</span><span class="rc-val">${fmtNum(hc.event_count ?? events.event_count ?? 0)}</span></div>
+        <div class="rc-row"><span class="rc-lbl">Provider calls</span><span class="rc-val">${fmtNum(hc.provider_calls ?? events.provider_calls ?? 0)}</span></div>
+        <div class="rc-row"><span class="rc-lbl">Repairs</span><span class="rc-val">${fmtNum(hc.parse_repair_attempts ?? events.parse_repair_attempts ?? 0)}</span></div>
+        <div class="rc-row"><span class="rc-lbl">Verifier passes</span><span class="rc-val">${fmtNum(hc.verifier_passes ?? events.verifier_passes ?? 0)}</span></div>
+        <div class="rc-row"><span class="rc-lbl">Escalations</span><span class="rc-val">${fmtNum(hc.escalation_decisions ?? events.escalation_decisions ?? 0)}</span></div>
+      </div>
     </div>`;
   }).join('');
 
@@ -1096,10 +964,14 @@ function renderHarnessNative(data) {
   }
 
   const manifestRows = manifests.map(m => {
-    const id = m.id ?? m.manifest_id ?? m.harness_id ?? m._source ?? 'manifest';
+    const id     = m.id ?? m.manifest_id ?? m.harness_id ?? m._source ?? 'manifest';
     const family = m.architecture_family ?? m.family ?? '';
     const source = m._source ?? '';
-    return `<tr><td>${esc(id)}</td><td>${esc(family)}</td><td>${esc(source)}</td></tr>`;
+    return `<tr>
+      <td>${esc(id)}</td>
+      <td><span style="color:${fg(family)};font-weight:700">&bull;</span> ${esc(family)}</td>
+      <td>${esc(source)}</td>
+    </tr>`;
   }).join('');
 
   const manifestTable = manifests.length
@@ -1108,8 +980,9 @@ function renderHarnessNative(data) {
     : `<div class="empty" style="margin-top:18px">No harness manifests found yet. Phase 13 can add config/harnesses/*.yaml; this panel is already wired for them.</div>`;
 
   return `
-<div class="s-banner" id="harness">
-  <span class="s-banner-text">&#10022; Harness Trace &amp; Complexity &#10022;</span>
+<div class="s-banner-mono" id="harness">
+  ${IC.circuit}
+  <span class="s-banner-text">Harness Trace &amp; Complexity</span>
 </div>
 <div class="body-text" style="margin-bottom:18px">
   <p>This section is forward-compatible with the harness-native refactor: manifests, event summaries, verifier gates, escalation decisions, workflow versions, and complexity tables surface here when run records provide them.</p>
@@ -1118,7 +991,6 @@ ${runs.length === 0 ? '<div class="empty">No run records available for harness t
 ${complexityTable}
 ${manifestTable}`;
 }
-
 
 /* ── Model Registry ─────────────────────────────────── */
 
@@ -1129,8 +1001,11 @@ function renderModels(data) {
   const src = frozen._source ? ` &mdash; ${esc(frozen._source)}` : '';
 
   if (models.length === 0) {
-    return `<div class="s-banner" id="models"><span class="s-banner-text">&#10022; Model Registry &#10022;</span></div>
-    <div class="empty">No model registry found. Add config/model_registry.YYYY-MM-DD.yaml and re-generate.</div>`;
+    return `
+<div class="s-banner" id="models">
+  <span class="s-banner-text">${IC.stack}&nbsp; Model Registry</span>
+</div>
+<div class="empty">No model registry found. Add config/model_registry.YYYY-MM-DD.yaml and re-generate.</div>`;
   }
 
   const groups = {};
@@ -1139,7 +1014,7 @@ function renderModels(data) {
   const sections = Object.entries(groups).map(([provider, ms]) => {
     const cards = ms.map(m => {
       const tierCls = `s-tier-${m.tier ?? 'small'}`;
-      const costIn  = m.cost_per_1k_input  != null ? `in $${Number(m.cost_per_1k_input).toFixed(4)}/1k` : '';
+      const costIn  = m.cost_per_1k_input  != null ? `in $${Number(m.cost_per_1k_input).toFixed(4)}/1k`  : '';
       const costOut = m.cost_per_1k_output != null ? `out $${Number(m.cost_per_1k_output).toFixed(4)}/1k` : '';
       const ctx     = m.context_window ? `${Math.round(m.context_window / 1000)}k ctx` : '';
       return `<div class="model-card">
@@ -1154,12 +1029,11 @@ function renderModels(data) {
 
   return `
 <div class="s-banner" id="models">
-  <span class="s-banner-text">&#10022; Model Registry &#10022;</span>
+  <span class="s-banner-text">${IC.stack}&nbsp; Model Registry</span>
 </div>
 <p style="font-size:12px;color:var(--muted);font-style:italic;margin-bottom:20px">${frozenAt}${src}</p>
 ${sections}`;
 }
-
 
 /* ── Research Documents ─────────────────────────────── */
 
@@ -1176,10 +1050,10 @@ function renderDocs(data) {
     implementation_plan:     'Implementation Plan',
   };
   const cards = Object.entries(LABELS).map(([key, label]) => {
-    const txt = docs[key];
+    const txt    = docs[key];
     const loaded = txt && txt.trim().length > 0;
-    const words = loaded ? Math.round(txt.trim().split(/\s+/).length).toLocaleString('en-GB') + ' words' : 'not loaded';
-    const body = loaded
+    const words  = loaded ? Math.round(txt.trim().split(/\s+/).length).toLocaleString('en-GB') + ' words' : 'not loaded';
+    const body   = loaded
       ? `<div class="doc-text">${esc(txt)}</div>`
       : `<div class="empty" style="padding:16px 0">Document not found.</div>`;
     return `<div class="doc-card">
@@ -1192,14 +1066,14 @@ function renderDocs(data) {
   }).join('');
 
   return `
-<div class="s-banner" id="docs">
-  <span class="s-banner-text">&#10022; Research Documents &#10022;</span>
+<div class="s-banner-ed" id="docs">
+  <div class="s-banner-text">Research Documents</div>
+  <div class="s-banner-sub">${IC.book}&nbsp; Primary Sources &nbsp;&middot;&nbsp; Eight Volumes</div>
 </div>
 <div>${cards}</div>`;
 }
 
-
-/* ── Main ───────────────────────────────────────────── */
+/* ── Boot ───────────────────────────────────────────── */
 
 async function boot() {
   const loading = document.getElementById('loading');
@@ -1216,6 +1090,8 @@ async function boot() {
     err.style.display = 'block';
     return;
   }
+
+  initColors(data.architecture_ladder ?? []);
 
   loading.style.display = 'none';
   cockpit.style.display = 'block';
