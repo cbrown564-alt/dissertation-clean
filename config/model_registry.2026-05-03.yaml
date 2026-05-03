@@ -1,0 +1,110 @@
+# Candidate model registry — freeze a dated copy before canonical experiment runs.
+# Format: see docs/model_registry_protocol.md
+# Tiers: frontier, medium, small, open_frontier, open_medium, open_small
+# Costs: USD per 1,000 tokens (input/output) as of registry creation date.
+# frozen_at: leave blank until the registry is frozen for a canonical run.
+
+registry_version: "0.2"
+created: "2026-05-03"
+frozen_at: "2026-05-03"
+
+models:
+  - model_id: gpt-5.5-2026-04
+    display_name: GPT-5.5 (Apr 2026)
+    provider: openai
+    family: gpt-5
+    tier: frontier
+    context_window: 128000
+    cost_per_1k_input: 0.005
+    cost_per_1k_output: 0.015
+    notes: "Flagship model for work execution; heavily positioned for agentic coding and knowledge work."
+
+  - model_id: claude-4-7-opus-20260415
+    display_name: Claude 4.7 Opus (Apr 2026)
+    provider: anthropic
+    family: claude-4
+    tier: frontier
+    context_window: 200000
+    cost_per_1k_input: 0.010
+    cost_per_1k_output: 0.030
+    notes: "Highly capable, safer model; excels at complex instruction following and advanced software engineering."
+
+  - model_id: gemini-3.1-pro
+    display_name: Gemini 3.1 Pro
+    provider: google
+    family: gemini-3
+    tier: frontier
+    context_window: 2000000
+    cost_per_1k_input: 0.0025
+    cost_per_1k_output: 0.010
+    notes: "Native multimodal frontier model; massive context window and embedded workflow capabilities."
+
+  - model_id: deepseek-v4-pro
+    display_name: DeepSeek V4 Pro
+    provider: deepseek
+    family: deepseek-v4
+    tier: open_frontier
+    context_window: 1000000
+    cost_per_1k_input: 0.0005
+    cost_per_1k_output: 0.0015
+    notes: "Leading 1.6T MoE open-weight model with 1M context; aggressive pricing and high efficiency. Access route: Provider API (too large for local execution)."
+
+  - model_id: deepseek-v4-flash
+    display_name: DeepSeek V4 Flash
+    provider: deepseek
+    family: deepseek-v4
+    tier: open_medium
+    context_window: 1000000
+    cost_per_1k_input: 0.0001
+    cost_per_1k_output: 0.0003
+    notes: "Highly efficient open-weight model for cost-sensitive, high-volume tasks. Access route: Provider API."
+
+  - model_id: claude-3-5-sonnet-20241022
+    display_name: Claude 3.5 Sonnet (Oct 2024)
+    provider: anthropic
+    family: claude-3
+    tier: medium
+    context_window: 200000
+    cost_per_1k_input: 0.003
+    cost_per_1k_output: 0.015
+    notes: "Former frontier model, now serving as a strong medium-tier comparator for cost-sensitive sweeps."
+
+  - model_id: gpt-4o-mini-2024-07-18
+    display_name: GPT-4o mini (Jul 2024)
+    provider: openai
+    family: gpt-4o
+    tier: small
+    context_window: 128000
+    cost_per_1k_input: 0.00015
+    cost_per_1k_output: 0.0006
+    notes: "Small-tier baseline for model-capacity ablation and high-volume basic tasks."
+
+  - model_id: Qwen/Qwen3.6-35B-A3B-Instruct
+    display_name: Qwen 3.6 35B MoE
+    provider: alibaba
+    family: qwen-3.6
+    tier: open_medium
+    context_window: 128000
+    cost_per_1k_input: 0.0
+    cost_per_1k_output: 0.0
+    notes: "Latest sparse MoE from Alibaba (Apr 2026); highly optimized for agentic coding and reasoning. Access route: Cloud hosted (e.g., Kaggle/Colab) or heavy quantization for local 8GB VRAM."
+
+  - model_id: google/gemma-4-26b-moe-it
+    display_name: Gemma 4 26B MoE
+    provider: google
+    family: gemma-4
+    tier: open_medium
+    context_window: 256000
+    cost_per_1k_input: 0.0
+    cost_per_1k_output: 0.0
+    notes: "Latest Google open-weights model (Apr 2026); multimodal support with 256K context. Access route: Cloud hosted (e.g., Kaggle/Colab) or heavy quantization for local 8GB VRAM."
+
+  - model_id: meta-llama/Llama-4-8B-Instruct
+    display_name: Llama 4 8B Instruct
+    provider: meta
+    family: llama-4
+    tier: open_small
+    context_window: 131072
+    cost_per_1k_input: 0.0
+    cost_per_1k_output: 0.0
+    notes: "Open small-tier baseline; runs on consumer hardware to assess model-capacity floor. Access route: Local inference (fits 8GB VRAM with 4-bit/8-bit quantization)."
