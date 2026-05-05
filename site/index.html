@@ -1000,6 +1000,30 @@ function renderResultTables(data) {
     </div>`;
   }
 
+  // Shared heatmap colouring: #e8f2ea → #1e5c30
+  function heatCell(acc, maxAcc) {
+    if (acc === null || acc === '' || isNaN(Number(acc))) return { bg: null, fg: null };
+    const a = Number(acc);
+    const t = maxAcc > 0 ? a / maxAcc : 0;
+    const r = Math.round(232 + (30  - 232) * t);
+    const g = Math.round(242 + (92  - 242) * t);
+    const b = Math.round(234 + (48  - 234) * t);
+    return { bg: `rgb(${r},${g},${b})`, fg: t > 0.52 ? 'white' : 'var(--ink)', pct: (a * 100).toFixed(0) + '%' };
+  }
+
+  // Human-readable model names
+  const MODEL_SHORT = {
+    'claude-3-5-haiku-20241022':          'Claude 3.5 Haiku',
+    'claude-3-5-sonnet-20241022':         'Claude 3.5 Sonnet',
+    'claude-3-haiku-20240307':            'Claude 3 Haiku',
+    'gpt-4o-2024-11-20':                  'GPT-4o',
+    'gpt-4o-mini-2024-07-18':             'GPT-4o Mini',
+    'meta-llama/Llama-3.1-70B-Instruct':  'Llama 3.1 70B',
+    'meta-llama/Llama-3.1-8B-Instruct':   'Llama 3.1 8B',
+    'mock-model':                          'mock-model',
+  };
+  function shortModel(m) { return MODEL_SHORT[m] ?? m; }
+
   /* ── Tab 1: Field Accuracy — pivot heatmap ── */
   function renderFieldAccuracy() {
     const t = tables.field_level_correctness;
@@ -1110,96 +1134,202 @@ function renderResultTables(data) {
 </div>`;
   }
 
-  /* ── Tab 2: Anchor Comparison ── */
+  /* ── Tab 2: Anchor Comparison — pivot (models × harnesses) ── */
   function renderAnchorComparison() {
     const t = tables.seizure_frequency_anchor;
     if (!t || !t.rows?.length) return `<div class="empty">No seizure_frequency_anchor.csv data found.</div>`;
-    const SHOW_COLS = ['model', 'harness', 'dataset_n', 'exact_label_accuracy', 'monthly_rate_accuracy_tolerance_15pct', 'pragmatic_macro_f1'];
-    const COL_LABELS = {
-      model: 'Model', harness: 'Harness', dataset_n: 'N',
-      exact_label_accuracy: 'Exact Acc', monthly_rate_accuracy_tolerance_15pct: 'Monthly Rate Acc (±15%)',
-      pragmatic_macro_f1: 'Pragmatic F1',
+
+    // Exclude mock-model; keep real models only
+    const rows = t.rows.filter(r => r.model && r.model !== 'mock-model' && r.model !== 'none');
+
+    const HARNESS_SHORT = {
+      'multi_agent_anchor':     'MA Anchor',
+      'multi_agent_anchor_sc3': 'MA SC3',
+      'multi_agent_anchor_sc5': 'MA SC5',
+      'retrieval_anchor':       'Retr. Anchor',
+      'single_prompt_anchor':   'SP Anchor',
     };
-    // Filter to only the columns that exist
-    const availCols = SHOW_COLS.filter(c => t.headers.includes(c));
-    const ths = availCols.map(h => `<th>${esc(COL_LABELS[h] ?? h)}</th>`).join('');
-    const trs = t.rows.map(row => {
-      const cells = availCols.map(h => {
-        const v = row[h];
-        if (['exact_label_accuracy', 'monthly_rate_accuracy_tolerance_15pct', 'pragmatic_macro_f1'].includes(h)) {
-          return `<td>${fmtPct(v)}</td>`;
-        }
-        if (h === 'harness') {
-          const fam = harnessToFamily[v ?? ''] ?? (row.architecture_family ?? '');
-          return `<td><span style="color:${fg(fam)};font-weight:700">&bull;</span> ${esc(v ?? '—')}</td>`;
-        }
-        return `<td>${esc(v ?? '—')}</td>`;
+
+    const harnesses = [...new Set(rows.map(r => r.harness))].sort();
+    const models    = [...new Set(rows.map(r => r.model))].sort();
+
+    // Pivot: model → harness → acc
+    const pivot = {};
+    for (const row of rows) {
+      if (!pivot[row.model]) pivot[row.model] = {};
+      const acc = row.exact_label_accuracy !== '' && row.exact_label_accuracy != null
+        ? Number(row.exact_label_accuracy) : null;
+      if (acc !== null) pivot[row.model][row.harness] = acc;
+    }
+
+    let maxAcc = 0;
+    for (const m of models) for (const h of harnesses)
+      if ((pivot[m]?.[h] ?? 0) > maxAcc) maxAcc = pivot[m][h];
+    if (maxAcc === 0) maxAcc = 1;
+
+    const ths = harnesses.map(h =>
+      `<th title="${esc(h)}">${esc(HARNESS_SHORT[h] ?? h)}</th>`
+    ).join('');
+
+    const trs = models.map(model => {
+      const cells = harnesses.map(h => {
+        const acc = pivot[model]?.[h] ?? null;
+        if (acc === null) return `<td class="pivot-cell pivot-empty">—</td>`;
+        const { bg, fg: fc, pct } = heatCell(acc, maxAcc);
+        return `<td class="pivot-cell" style="background:${bg};color:${fc}" title="${esc(h)}: ${pct}">${pct}</td>`;
       }).join('');
-      return `<tr>${cells}</tr>`;
+      const fam   = harnessToFamily[harnesses[0]] ?? '';
+      return `<tr>
+        <td class="pivot-harness-td">${esc(shortModel(model))}</td>
+        ${cells}
+      </tr>`;
     }).join('');
-    return `<div class="data-table-wrap"><table class="data-table"><thead><tr>${ths}</tr></thead><tbody>${trs}</tbody></table></div>`;
+
+    return `
+<p class="pivot-note">Rows = models (mock excluded); columns = anchor harnesses. Exact accuracy on the seizure-frequency anchor task.</p>
+<div class="pivot-wrap" style="max-height:none">
+  <table class="pivot-table">
+    <thead><tr><th class="pivot-harness-th">Model</th>${ths}</tr></thead>
+    <tbody>${trs}</tbody>
+  </table>
+</div>
+<div class="pivot-legend">
+  <div class="pivot-legend-scale">
+    <span>0%</span><div class="pivot-legend-grad"></div><span>${(maxAcc*100).toFixed(0)}%</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:6px">
+    <div class="pivot-legend-swatch" style="background:var(--paper-3)"></div><span>no data</span>
+  </div>
+</div>`;
   }
 
-  /* ── Tab 3: Self-Consistency Cost ── */
+  /* ── Tab 3: Self-Consistency — model × SC level side-by-side ── */
   function renderSelfConsistency() {
     const t = tables.self_consistency_cost;
     if (!t || !t.rows?.length) return `<div class="empty">No self_consistency_cost.csv data found.</div>`;
-    const maxTok = Math.max(...t.rows.map(r => Number(r.mean_total_tokens ?? 0)).filter(v => !isNaN(v)), 1);
-    const ths = t.headers.map(h => `<th>${esc(h.replace(/_/g,' '))}</th>`).join('');
-    const trs = t.rows.map(row => {
-      const cells = t.headers.map(h => {
-        const v = row[h];
-        if (h === 'mean_total_tokens') {
-          return `<td class="tok-cell">${tokBar(v, maxTok)}</td>`;
-        }
-        if (['exact_label_accuracy', 'monthly_rate_accuracy_tolerance_15pct'].includes(h)) {
-          return `<td>${fmtPct(v)}</td>`;
-        }
-        return `<td>${esc(v ?? '—')}</td>`;
-      }).join('');
-      return `<tr>${cells}</tr>`;
+
+    // Extract model id from matrix run_id: "matrix_<model>_<harness>"
+    function extractModel(runId, harness) {
+      const prefix = 'matrix_';
+      if (!String(runId).startsWith(prefix)) return null;
+      const withoutPrefix = String(runId).slice(prefix.length);
+      const suffix = '_' + harness;
+      return withoutPrefix.endsWith(suffix)
+        ? withoutPrefix.slice(0, -suffix.length) : withoutPrefix;
+    }
+
+    const sc3Rows = t.rows.filter(r => r.harness === 'multi_agent_anchor_sc3');
+    const sc5Rows = t.rows.filter(r => r.harness === 'multi_agent_anchor_sc5');
+
+    // Build lookup: model → row, for matrix runs only
+    const sc3 = {}, sc5 = {};
+    for (const r of sc3Rows) { const m = extractModel(r.run_id, r.harness); if (m) sc3[m] = r; }
+    for (const r of sc5Rows) { const m = extractModel(r.run_id, r.harness); if (m) sc5[m] = r; }
+
+    const models = [...new Set([...Object.keys(sc3), ...Object.keys(sc5)])].sort();
+    if (!models.length) return `<div class="empty">No matrix self-consistency runs found.</div>`;
+
+    const maxTok = Math.max(
+      ...Object.values(sc3).map(r => Number(r.mean_total_tokens || 0)),
+      ...Object.values(sc5).map(r => Number(r.mean_total_tokens || 0)), 1
+    );
+
+    const trs = models.map(model => {
+      const r3 = sc3[model], r5 = sc5[model];
+      const acc3  = r3 ? fmtPct(r3.exact_label_accuracy) : '—';
+      const acc5  = r5 ? fmtPct(r5.exact_label_accuracy) : '—';
+      const tok3  = r3 ? Number(r3.mean_total_tokens || 0) : null;
+      const tok5  = r5 ? Number(r5.mean_total_tokens || 0) : null;
+      const delta = (tok3 !== null && tok5 !== null) ? '+' + (tok5 - tok3).toLocaleString('en-GB') : '—';
+      return `<tr>
+        <td style="font-family:var(--body-f);font-size:12px;white-space:nowrap">${esc(shortModel(model))}</td>
+        <td style="text-align:center;font-weight:700">${acc3}</td>
+        <td class="tok-cell" style="border-right:1px solid var(--rule-lt)">${tok3 !== null ? tokBar(tok3, maxTok) : '<div class="tok-val">—</div>'}</td>
+        <td style="text-align:center;font-weight:700">${acc5}</td>
+        <td class="tok-cell" style="border-right:1px solid var(--rule-lt)">${tok5 !== null ? tokBar(tok5, maxTok) : '<div class="tok-val">—</div>'}</td>
+        <td style="text-align:right;font-family:var(--mono);font-size:11px;color:var(--muted)">${delta}</td>
+      </tr>`;
     }).join('');
-    return `<div class="data-table-wrap"><table class="data-table"><thead><tr>${ths}</tr></thead><tbody>${trs}</tbody></table></div>`;
+
+    return `
+<p class="pivot-note">SC3 = 3-sample majority vote; SC5 = 5-sample. Token bars scale to the largest single value. Δ tokens = additional cost of SC5 over SC3 per row.</p>
+<div class="data-table-wrap"><table class="data-table">
+  <thead>
+    <tr>
+      <th rowspan="2" style="vertical-align:bottom">Model</th>
+      <th colspan="2" style="text-align:center;border-right:1px solid var(--rule-lt);padding-bottom:2px">SC3 &mdash; 3 samples</th>
+      <th colspan="2" style="text-align:center;border-right:1px solid var(--rule-lt);padding-bottom:2px">SC5 &mdash; 5 samples</th>
+      <th rowspan="2" style="text-align:right;vertical-align:bottom">Δ Tokens</th>
+    </tr>
+    <tr>
+      <th style="text-align:center;font-size:8.5px">Accuracy</th>
+      <th style="text-align:right;border-right:1px solid var(--rule-lt);font-size:8.5px">Mean Tokens</th>
+      <th style="text-align:center;font-size:8.5px">Accuracy</th>
+      <th style="text-align:right;border-right:1px solid var(--rule-lt);font-size:8.5px">Mean Tokens</th>
+    </tr>
+  </thead>
+  <tbody>${trs}</tbody>
+</table></div>`;
   }
 
-  /* ── Tab 4: Budget (filtered to display_register) ── */
+  /* ── Tab 4: Budget (filtered to display_register, sorted by ladder step) ── */
   function renderBudgetFiltered() {
     const t = tables.budget_complexity;
     if (!t || !t.rows?.length) return `<div class="empty">No budget_complexity.csv data found.</div>`;
+
     const displayIds = new Set(display.map(r => r.run_id));
     const filtered = t.rows.filter(row => displayIds.has(row.run_id));
     if (!filtered.length) return `<div class="empty">No budget rows match display register run IDs.</div>`;
-    const SHOW_COLS = ['run_id', 'architecture_family', 'llm_calls_per_row', 'mean_total_tokens', 'latency_ms', 'estimated_cost_usd'];
-    const COL_LABELS = {
-      run_id: 'Run ID', architecture_family: 'Architecture', llm_calls_per_row: 'LLM Calls/Row',
-      mean_total_tokens: 'Mean Tokens', latency_ms: 'Latency (ms)', estimated_cost_usd: 'Est. Cost (USD)',
-    };
-    const availCols = SHOW_COLS.filter(c => t.headers.includes(c));
-    const maxTok = Math.max(...filtered.map(r => Number(r.mean_total_tokens ?? 0)).filter(v => !isNaN(v)), 1);
-    const maxLat = Math.max(...filtered.map(r => Number(r.latency_ms ?? 0)).filter(v => !isNaN(v)), 1);
-    const ths = availCols.map(h => `<th>${esc(COL_LABELS[h] ?? h)}</th>`).join('');
-    const trs = filtered.map(row => {
-      const cells = availCols.map(h => {
-        const v = row[h];
-        if (h === 'run_id') {
-          const short = String(v ?? '').length > 36 ? String(v).slice(0, 33) + '...' : String(v ?? '');
-          return `<td><span style="font-family:var(--mono);font-size:10px">${esc(short)}</span></td>`;
-        }
-        if (h === 'architecture_family') {
-          const fam = v ?? '';
-          return `<td><span style="color:${fg(fam)};font-weight:700">&bull;</span> ${esc(familyLabel(fam))}</td>`;
-        }
-        if (h === 'mean_total_tokens') {
-          return `<td class="tok-cell">${tokBar(v, maxTok)}</td>`;
-        }
-        if (h === 'latency_ms') {
-          return `<td class="tok-cell">${tokBar(v, maxLat, true)}</td>`;
-        }
-        return `<td>${esc(v ?? '—')}</td>`;
-      }).join('');
-      return `<tr>${cells}</tr>`;
+
+    // Normalise family via harness lookup, sort by ladder step then harness
+    const stepOf = {};
+    for (const step of ladder) stepOf[step.family] = step.step;
+
+    const enriched = filtered.map(row => ({
+      ...row,
+      _fam: harnessToFamily[row.harness] ?? row.architecture_family ?? '',
+    })).sort((a, b) => {
+      const sa = stepOf[a._fam] ?? 99, sb = stepOf[b._fam] ?? 99;
+      return sa !== sb ? sa - sb : String(a.harness).localeCompare(String(b.harness));
+    });
+
+    const maxTok = Math.max(...enriched.map(r => Number(r.mean_total_tokens || 0)), 1);
+    const maxLat = Math.max(...enriched.map(r => Number(r.latency_ms || 0)), 1);
+
+    const trs = enriched.map(row => {
+      const fam  = row._fam;
+      const archFg = fg(fam);
+      const isLLM  = Number(row.llm_calls_per_row || 0) > 0;
+      const tok    = isLLM ? tokBar(row.mean_total_tokens, maxTok) : `<div class="tok-val" style="color:var(--faint)">det.</div>`;
+      const lat    = Number(row.latency_ms || 0) > 0 ? tokBar(row.latency_ms, maxLat, true) : `<div class="tok-val" style="color:var(--faint)">det.</div>`;
+      const mods   = row.modules_invoked || '—';
+      const calls  = row.llm_calls_per_row || '0';
+      const n      = row.dataset_n || '—';
+      return `<tr>
+        <td style="font-family:var(--mono);font-size:10.5px;white-space:nowrap">${esc(row.harness)}</td>
+        <td><span style="color:${archFg};font-weight:700">&bull;</span> ${esc(familyLabel(fam))}</td>
+        <td style="text-align:center;font-family:var(--mono);font-size:11px">${esc(n)}</td>
+        <td style="text-align:center;font-family:var(--mono);font-size:11px">${esc(calls)}</td>
+        <td class="tok-cell">${tok}</td>
+        <td class="tok-cell">${lat}</td>
+        <td style="text-align:center;font-family:var(--mono);font-size:11px">${esc(mods)}</td>
+      </tr>`;
     }).join('');
-    return `<div class="data-table-wrap"><table class="data-table"><thead><tr>${ths}</tr></thead><tbody>${trs}</tbody></table></div>`;
+
+    return `
+<p class="pivot-note">Non-smoke primary runs only. Token and latency bars scale to the maximum across shown runs. "det." = deterministic (no LLM calls). Modules invoked = pipeline stages executed.</p>
+<div class="data-table-wrap"><table class="data-table">
+  <thead><tr>
+    <th>Harness</th>
+    <th>Architecture</th>
+    <th style="text-align:center">N</th>
+    <th style="text-align:center">LLM Calls/Row</th>
+    <th>Mean Tokens</th>
+    <th>Latency</th>
+    <th style="text-align:center">Modules</th>
+  </tr></thead>
+  <tbody>${trs}</tbody>
+</table></div>`;
   }
 
   const tabNav = `
