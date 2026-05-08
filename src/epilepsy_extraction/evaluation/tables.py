@@ -456,9 +456,9 @@ def _parse_validity(runs: Sequence[Mapping[str, Any]]) -> list[dict[str, Any]]:
 def _field_level_correctness(runs: Sequence[Mapping[str, Any]]) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     for run in runs:
-        metrics = _metrics(run)
-        if not metrics:
+        if run.get("status") == "smoke":
             continue
+        metrics = _metrics(run)
         rows.append(
             _select(
                 {
@@ -474,7 +474,7 @@ def _field_level_correctness(runs: Sequence[Mapping[str, Any]]) -> list[dict[str
                     "pragmatic_weighted_f1": _nested(metrics, "pragmatic", "weighted_f1"),
                     "purist_macro_f1": _nested(metrics, "purist", "macro_f1"),
                     "purist_weighted_f1": _nested(metrics, "purist", "weighted_f1"),
-                    "adjudication_status": "not_adjudicated",
+                    "adjudication_status": "not_adjudicated" if not metrics else "not_adjudicated",
                 },
                 TABLE_HEADERS["field_level_correctness"],
             )
