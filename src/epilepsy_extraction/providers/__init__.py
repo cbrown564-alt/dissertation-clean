@@ -9,11 +9,13 @@ from .base import (
     timed_response,
 )
 from .mock import MockProvider
+from .openai_provider import OpenAIProvider
 from .replay import ReplayProvider
 
 __all__ = [
     "ChatProvider",
     "MockProvider",
+    "OpenAIProvider",
     "ProviderError",
     "ProviderMessage",
     "ProviderRequest",

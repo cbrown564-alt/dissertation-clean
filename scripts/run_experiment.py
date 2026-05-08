@@ -24,7 +24,7 @@ from epilepsy_extraction.harnesses import (
     run_retrieval_field_extractors,
     run_single_prompt_full_contract,
 )
-from epilepsy_extraction.providers import ReplayProvider
+from epilepsy_extraction.providers import OpenAIProvider, ReplayProvider
 from epilepsy_extraction.schemas import BudgetMetadata, DatasetSlice, RunRecord, RunStatus, resolve_code_version, write_run_record
 
 
@@ -67,6 +67,12 @@ def main() -> None:
     )
     parser.add_argument("--replay", type=Path, default=None)
     parser.add_argument(
+        "--provider",
+        choices=["replay", "openai"],
+        default="replay",
+        help="Live provider for LLM calls. 'replay' requires --replay; 'openai' uses OPENAI_API_KEY.",
+    )
+    parser.add_argument(
         "--exect-v2-output",
         type=Path,
         default=None,
@@ -98,6 +104,13 @@ def main() -> None:
         )
     model = args.model or (manifest.model_registry_entry if manifest and manifest.model_registry_entry else "mock-model")
 
+    def make_provider():
+        if args.provider == "openai":
+            return OpenAIProvider()
+        if args.replay is None:
+            raise SystemExit("--replay is required when --provider=replay")
+        return ReplayProvider(args.replay)
+
     records = load_synthetic_subset(args.dataset)
     selected = select_fixed_slice(records, limit=args.limit)
     row_ids = [record.row_id for record in selected]
@@ -128,87 +141,71 @@ def main() -> None:
     elif args.harness == "deterministic_baseline":
         record = run_deterministic_baseline(selected, dataset, args.run_id, code_version)
     elif args.harness.endswith("_anchor") or "_anchor_sc" in args.harness:
-        if args.replay is None:
-            raise SystemExit("--replay is required for provider-backed anchor harnesses")
         record = run_anchor_harness(
             selected,
             dataset,
             args.run_id,
             code_version,
-            ReplayProvider(args.replay),
+            make_provider(),
             harness=args.harness,
             model=model,
         )
     elif args.harness == "direct_full_contract":
-        if args.replay is None:
-            raise SystemExit("--replay is required for provider-backed full-contract harnesses")
         record = run_direct_full_contract(
             selected,
             dataset,
             args.run_id,
             code_version,
-            ReplayProvider(args.replay),
+            make_provider(),
             model=model,
         )
     elif args.harness == "single_prompt_full_contract":
-        if args.replay is None:
-            raise SystemExit("--replay is required for provider-backed full-contract harnesses")
         record = run_single_prompt_full_contract(
             selected,
             dataset,
             args.run_id,
             code_version,
-            ReplayProvider(args.replay),
+            make_provider(),
             model=model,
         )
     elif args.harness == "direct_evidence_contract":
-        if args.replay is None:
-            raise SystemExit("--replay is required for provider-backed harnesses")
         record = run_direct_evidence_contract(
             selected,
             dataset,
             args.run_id,
             code_version,
-            ReplayProvider(args.replay),
+            make_provider(),
             model=model,
         )
     elif args.harness == "retrieval_field_extractors":
-        if args.replay is None:
-            raise SystemExit("--replay is required for provider-backed harnesses")
         record = run_retrieval_field_extractors(
             selected,
             dataset,
             args.run_id,
             code_version,
-            ReplayProvider(args.replay),
+            make_provider(),
             model=model,
         )
     elif args.harness == "clines_epilepsy_modular":
-        if args.replay is None:
-            raise SystemExit("--replay is required for provider-backed harnesses")
         record = run_clines_epilepsy_modular(
             selected,
             dataset,
             args.run_id,
             code_version,
-            ReplayProvider(args.replay),
+            make_provider(),
             model=model,
         )
     elif args.harness == "clines_epilepsy_verified":
-        if args.replay is None:
-            raise SystemExit("--replay is required for provider-backed harnesses")
         record = run_clines_epilepsy_verified(
             selected,
             dataset,
             args.run_id,
             code_version,
-            ReplayProvider(args.replay),
+            make_provider(),
             model=model,
         )
     elif args.harness == "budgeted_escalation":
-        if args.replay is None:
-            raise SystemExit("--replay is required for provider-backed harnesses")
-        provider = ReplayProvider(args.replay)
+        provider = make_provider()
         record = run_budgeted_escalation_harness(
             selected,
             dataset,

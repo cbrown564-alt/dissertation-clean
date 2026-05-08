@@ -48,7 +48,7 @@ from epilepsy_extraction.harnesses import (
 )
 from epilepsy_extraction.harnesses.manifest import HarnessManifest
 from epilepsy_extraction.models.registry import ModelRegistryEntry, load_registry, validate_registry
-from epilepsy_extraction.providers import MockProvider, ReplayProvider
+from epilepsy_extraction.providers import MockProvider, OpenAIProvider, ReplayProvider
 from epilepsy_extraction.schemas import DatasetSlice, RunRecord, resolve_code_version, write_run_record
 
 
@@ -98,9 +98,9 @@ def main() -> None:
     )
     parser.add_argument(
         "--provider",
-        choices=["mock", "replay"],
+        choices=["mock", "replay", "openai"],
         default="mock",
-        help="Provider type for LLM calls (default: mock)",
+        help="Provider type for LLM calls (default: mock). 'openai' uses OPENAI_API_KEY.",
     )
     parser.add_argument("--replay", type=Path, default=None, help="Replay file (required if --provider=replay)")
     parser.add_argument("--dry-run", action="store_true", help="Print the run plan and exit without executing")
@@ -110,6 +110,12 @@ def main() -> None:
         help="Proceed even if the registry frozen_at field is not set",
     )
     parser.add_argument("--code-version", default=None, help="Override code version string")
+    parser.add_argument(
+        "--status",
+        choices=["canonical", "supporting", "archive", "smoke"],
+        default="smoke",
+        help="Evidence status label written to every run record (default: smoke).",
+    )
     parser.add_argument(
         "--manifest-dir",
         type=Path,
@@ -159,6 +165,8 @@ def main() -> None:
         if entry is not None and not record.model_registry_entry:
             record = replace(record, model_registry_entry=entry.model_id)
         record = attach_manifest_to_run(record, manifests.get(harness))
+        from epilepsy_extraction.schemas import RunStatus
+        record = replace(record, status=RunStatus(args.status))
         write_run_record(record, output_path)
         results.append({
             "run_id": run_id,
@@ -263,6 +271,8 @@ def _make_provider(provider_name: str, replay_path: Path | None):
         if replay_path is None:
             raise SystemExit("--replay PATH is required when --provider=replay")
         return ReplayProvider(replay_path)
+    if provider_name == "openai":
+        return OpenAIProvider()
     return MockProvider(responses=[_MOCK_ANCHOR_RESPONSE] * 500)
 
 

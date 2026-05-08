@@ -9,6 +9,9 @@ dependencies = []
 dev = [
     "pytest>=9.0.3",
 ]
+openai = [
+    "openai>=1.0",
+]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]
