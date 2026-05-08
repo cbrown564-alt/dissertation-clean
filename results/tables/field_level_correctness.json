@@ -104,8 +104,8 @@
     "run_id": "clines_epilepsy_verified_n25_gold_seeded_2026_05_03"
   },
   {
-    "adjudication_status": "not_adjudicated",
-    "exact_label_accuracy": "",
+    "adjudication_status": "auto_adjudicated",
+    "exact_label_accuracy": 0.36,
     "field_family": "seizure_frequency",
     "harness": "direct_full_contract",
     "monthly_rate_accuracy_tolerance_15pct": "",
@@ -117,8 +117,8 @@
     "run_id": "matrix_gpt-5_4-mini-2026-03-17_direct_full_contract"
   },
   {
-    "adjudication_status": "not_adjudicated",
-    "exact_label_accuracy": "",
+    "adjudication_status": "auto_adjudicated",
+    "exact_label_accuracy": 0.36,
     "field_family": "seizure_frequency",
     "harness": "direct_evidence_contract",
     "monthly_rate_accuracy_tolerance_15pct": "",
@@ -130,8 +130,8 @@
     "run_id": "matrix_gpt-5_4-mini-2026-03-17_direct_evidence_contract"
   },
   {
-    "adjudication_status": "not_adjudicated",
-    "exact_label_accuracy": "",
+    "adjudication_status": "auto_adjudicated",
+    "exact_label_accuracy": 0.32,
     "field_family": "seizure_frequency",
     "harness": "retrieval_field_extractors",
     "monthly_rate_accuracy_tolerance_15pct": "",
@@ -143,8 +143,8 @@
     "run_id": "matrix_gpt-5_4-mini-2026-03-17_retrieval_field_extractors"
   },
   {
-    "adjudication_status": "not_adjudicated",
-    "exact_label_accuracy": "",
+    "adjudication_status": "auto_adjudicated",
+    "exact_label_accuracy": 0.36,
     "field_family": "seizure_frequency",
     "harness": "clines_epilepsy_modular",
     "monthly_rate_accuracy_tolerance_15pct": "",
@@ -156,8 +156,8 @@
     "run_id": "matrix_gpt-5_4-mini-2026-03-17_clines_epilepsy_modular"
   },
   {
-    "adjudication_status": "not_adjudicated",
-    "exact_label_accuracy": "",
+    "adjudication_status": "auto_adjudicated",
+    "exact_label_accuracy": 0.4,
     "field_family": "seizure_frequency",
     "harness": "clines_epilepsy_verified",
     "monthly_rate_accuracy_tolerance_15pct": "",
@@ -169,8 +169,8 @@
     "run_id": "matrix_gpt-5_4-mini-2026-03-17_clines_epilepsy_verified"
   },
   {
-    "adjudication_status": "not_adjudicated",
-    "exact_label_accuracy": "",
+    "adjudication_status": "auto_adjudicated",
+    "exact_label_accuracy": 0.0,
     "field_family": "seizure_frequency",
     "harness": "direct_full_contract",
     "monthly_rate_accuracy_tolerance_15pct": "",
@@ -182,8 +182,8 @@
     "run_id": "matrix_gpt-5_5-2026-04-23_direct_full_contract"
   },
   {
-    "adjudication_status": "not_adjudicated",
-    "exact_label_accuracy": "",
+    "adjudication_status": "auto_adjudicated",
+    "exact_label_accuracy": 0.08,
     "field_family": "seizure_frequency",
     "harness": "direct_evidence_contract",
     "monthly_rate_accuracy_tolerance_15pct": "",
@@ -195,8 +195,8 @@
     "run_id": "matrix_gpt-5_5-2026-04-23_direct_evidence_contract"
   },
   {
-    "adjudication_status": "not_adjudicated",
-    "exact_label_accuracy": "",
+    "adjudication_status": "auto_adjudicated",
+    "exact_label_accuracy": 0.68,
     "field_family": "seizure_frequency",
     "harness": "retrieval_field_extractors",
     "monthly_rate_accuracy_tolerance_15pct": "",
@@ -208,8 +208,8 @@
     "run_id": "matrix_gpt-5_5-2026-04-23_retrieval_field_extractors"
   },
   {
-    "adjudication_status": "not_adjudicated",
-    "exact_label_accuracy": "",
+    "adjudication_status": "auto_adjudicated",
+    "exact_label_accuracy": 0.4,
     "field_family": "seizure_frequency",
     "harness": "clines_epilepsy_modular",
     "monthly_rate_accuracy_tolerance_15pct": "",
