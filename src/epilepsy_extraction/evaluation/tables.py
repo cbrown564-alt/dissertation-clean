@@ -453,32 +453,44 @@ def _parse_validity(runs: Sequence[Mapping[str, Any]]) -> list[dict[str, Any]]:
     return rows
 
 
+_CORE_FIELD_FAMILIES = (
+    "seizure_frequency",
+    "current_medications",
+    "investigations",
+    "seizure_classification",
+    "epilepsy_classification",
+)
+
+
 def _field_level_correctness(runs: Sequence[Mapping[str, Any]]) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     for run in runs:
         if run.get("status") == "smoke":
             continue
         metrics = _metrics(run)
-        rows.append(
-            _select(
-                {
-                    "run_id": run.get("run_id", ""),
-                    "harness": run.get("harness", ""),
-                    "field_family": "seizure_frequency",
-                    "n": metrics.get("n", _dataset_n(run)),
-                    "exact_label_accuracy": metrics.get("exact_label_accuracy", ""),
-                    "monthly_rate_accuracy_tolerance_15pct": metrics.get(
-                        "monthly_rate_accuracy_tolerance_15pct", ""
-                    ),
-                    "pragmatic_macro_f1": _nested(metrics, "pragmatic", "macro_f1"),
-                    "pragmatic_weighted_f1": _nested(metrics, "pragmatic", "weighted_f1"),
-                    "purist_macro_f1": _nested(metrics, "purist", "macro_f1"),
-                    "purist_weighted_f1": _nested(metrics, "purist", "weighted_f1"),
-                    "adjudication_status": "not_adjudicated" if not metrics else "not_adjudicated",
-                },
-                TABLE_HEADERS["field_level_correctness"],
+        # One row per field family so the cockpit heatmap has all columns
+        for fam in _CORE_FIELD_FAMILIES:
+            fam_metrics = metrics if fam == "seizure_frequency" else {}
+            rows.append(
+                _select(
+                    {
+                        "run_id": run.get("run_id", ""),
+                        "harness": run.get("harness", ""),
+                        "field_family": fam,
+                        "n": fam_metrics.get("n", _dataset_n(run)),
+                        "exact_label_accuracy": fam_metrics.get("exact_label_accuracy", ""),
+                        "monthly_rate_accuracy_tolerance_15pct": fam_metrics.get(
+                            "monthly_rate_accuracy_tolerance_15pct", ""
+                        ),
+                        "pragmatic_macro_f1": _nested(fam_metrics, "pragmatic", "macro_f1"),
+                        "pragmatic_weighted_f1": _nested(fam_metrics, "pragmatic", "weighted_f1"),
+                        "purist_macro_f1": _nested(fam_metrics, "purist", "macro_f1"),
+                        "purist_weighted_f1": _nested(fam_metrics, "purist", "weighted_f1"),
+                        "adjudication_status": "not_adjudicated",
+                    },
+                    TABLE_HEADERS["field_level_correctness"],
+                )
             )
-        )
     return rows
 
 
