@@ -311,8 +311,16 @@ def main() -> None:
 
     run_records = primary_runs + matrix_runs
 
-    # Non-smoke primary runs for the cockpit register
-    display_register = [r for r in primary_runs if r.get("status") not in ("smoke",)]
+    # Non-smoke primary runs + real-data supporting matrix runs for the cockpit register
+    def _is_display(r: dict[str, Any]) -> bool:
+        if r.get("status") in ("smoke",):
+            return False
+        if r.get("is_matrix_run"):
+            bud = r.get("budget") or {}
+            return isinstance(bud, dict) and int(bud.get("total_tokens", 0)) > 0
+        return True
+
+    display_register = [r for r in run_records if _is_display(r)]
 
     # Per-family aggregated summaries
     family_summaries: dict[str, Any] = {}
