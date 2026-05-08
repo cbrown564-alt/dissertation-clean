@@ -270,5 +270,21 @@
     "provider": "openai",
     "run_id": "matrix_gpt-5_5-2026-04-23_clines_epilepsy_modular",
     "tier": "frontier"
+  },
+  {
+    "architecture_family": "clines_inspired_modular",
+    "dataset_n": 25,
+    "estimated_cost_usd": 2.5059,
+    "evidence_supported_rate": "",
+    "exact_label_accuracy": "",
+    "family": "gpt-5",
+    "harness": "clines_epilepsy_verified",
+    "latency_ms": 1852758,
+    "model_id": "gpt-5.5-2026-04-23",
+    "model_registry_entry": "gpt-5.5-2026-04-23",
+    "parse_valid_rate": 1.0,
+    "provider": "openai",
+    "run_id": "matrix_gpt-5_5-2026-04-23_clines_epilepsy_verified",
+    "tier": "frontier"
   }
 ]

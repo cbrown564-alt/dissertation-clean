@@ -168,5 +168,15 @@
     "supported_citations": "",
     "total_citations": "",
     "unsupported_citations": ""
+  },
+  {
+    "architecture_family": "clines_inspired_modular",
+    "evidence_status": "not_reported",
+    "evidence_supported_rate": "",
+    "harness": "clines_epilepsy_verified",
+    "run_id": "matrix_gpt-5_5-2026-04-23_clines_epilepsy_verified",
+    "supported_citations": "",
+    "total_citations": "",
+    "unsupported_citations": ""
   }
 ]

@@ -64,19 +64,25 @@ def main() -> None:
     parser.add_argument(
         "--adjudication",
         type=Path,
+        action="append",
         default=None,
-        help="Completed adjudication CSV to merge accuracy scores into field_level_correctness.",
+        help="Completed adjudication CSV(s) to merge into field_level_correctness. Repeat for multiple files; later files override earlier ones for the same run/field.",
     )
     args = parser.parse_args()
 
     records = load_run_records(args.run_record)
     if args.tables_dir is not None:
         tables = build_result_tables(records, model_registry_path=args.model_registry)
-        if args.adjudication and args.adjudication.exists():
-            accuracy = _load_adjudication_accuracy(args.adjudication)
-            tables["field_level_correctness"] = _patch_field_level_correctness(
-                tables["field_level_correctness"], accuracy
-            )
+        if args.adjudication:
+            merged: dict[str, dict[str, float]] = {}
+            for adj_path in args.adjudication:
+                if adj_path.exists():
+                    for run_id, fams in _load_adjudication_accuracy(adj_path).items():
+                        merged.setdefault(run_id, {}).update(fams)
+            if merged:
+                tables["field_level_correctness"] = _patch_field_level_correctness(
+                    tables["field_level_correctness"], merged
+                )
         written = write_result_tables(tables, args.tables_dir)
         summary = {
             "run_records": len(records),

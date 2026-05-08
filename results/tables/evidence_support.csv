@@ -16,3 +16,4 @@ matrix_gpt-5_5-2026-04-23_direct_full_contract,direct_full_contract,direct_llm,,
 matrix_gpt-5_5-2026-04-23_direct_evidence_contract,direct_evidence_contract,direct_llm,448,434,14,0.96875,reported
 matrix_gpt-5_5-2026-04-23_retrieval_field_extractors,retrieval_field_extractors,retrieval_field_pipeline,,,,,not_reported
 matrix_gpt-5_5-2026-04-23_clines_epilepsy_modular,clines_epilepsy_modular,clines_inspired_modular,,,,,not_reported
+matrix_gpt-5_5-2026-04-23_clines_epilepsy_verified,clines_epilepsy_verified,clines_inspired_modular,,,,,not_reported

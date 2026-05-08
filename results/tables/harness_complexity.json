@@ -321,5 +321,24 @@
     "run_id": "matrix_gpt-5_5-2026-04-23_clines_epilepsy_modular",
     "verifier_passes": 125,
     "workflow_units": 8
+  },
+  {
+    "architecture_family": "clines_inspired_modular",
+    "complexity_status": "harness_native",
+    "dataset_n": 25,
+    "escalation_decisions": 0,
+    "event_count": 897,
+    "harness": "clines_epilepsy_verified",
+    "intermediate_artifacts": 4,
+    "llm_calls_per_row": 6,
+    "manifest_hash": "44bb1ee6204b8eb7881f93d7938900cb3038491ca2fc3ee9881b372b2afee5ed",
+    "manifest_id": "clines_epilepsy_verified.v1",
+    "modules_invoked": 7,
+    "parse_repair_attempts": 0,
+    "provider_calls": 150,
+    "raw_artifact_paths": 0,
+    "run_id": "matrix_gpt-5_5-2026-04-23_clines_epilepsy_verified",
+    "verifier_passes": 150,
+    "workflow_units": 8
   }
 ]

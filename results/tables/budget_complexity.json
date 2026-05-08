@@ -355,5 +355,26 @@
     "run_id": "matrix_gpt-5_5-2026-04-23_clines_epilepsy_modular",
     "schema_version": "final_extraction_v1",
     "temperature": 0.0
+  },
+  {
+    "architecture_family": "clines_inspired_modular",
+    "dataset_n": 25,
+    "estimated_cost_usd": 2.5059,
+    "external_tools": "",
+    "harness": "clines_epilepsy_verified",
+    "intermediate_artifacts": 4,
+    "latency_ms": 1852758,
+    "llm_calls_per_row": 6,
+    "mapping_version": "",
+    "mean_input_tokens": 5890.68,
+    "mean_output_tokens": 4718.84,
+    "mean_total_tokens": 10609.52,
+    "model": "gpt-5.5-2026-04-23",
+    "modules_invoked": 7,
+    "prompt_version": "clines_inspired_field_extractor_v1",
+    "provider": "openai",
+    "run_id": "matrix_gpt-5_5-2026-04-23_clines_epilepsy_verified",
+    "schema_version": "final_extraction_v1",
+    "temperature": 0.0
   }
 ]

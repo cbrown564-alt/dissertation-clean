@@ -9,7 +9,7 @@
     "notes": "Flagship OpenAI frontier model for work execution and agentic tasks.",
     "provider": "openai",
     "tier": "frontier",
-    "used_in_runs": "matrix_gpt-5_5-2026-04-23_clines_epilepsy_modular;matrix_gpt-5_5-2026-04-23_direct_evidence_contract;matrix_gpt-5_5-2026-04-23_direct_full_contract;matrix_gpt-5_5-2026-04-23_retrieval_field_extractors"
+    "used_in_runs": "matrix_gpt-5_5-2026-04-23_clines_epilepsy_modular;matrix_gpt-5_5-2026-04-23_clines_epilepsy_verified;matrix_gpt-5_5-2026-04-23_direct_evidence_contract;matrix_gpt-5_5-2026-04-23_direct_full_contract;matrix_gpt-5_5-2026-04-23_retrieval_field_extractors"
   },
   {
     "context_window": 128000,

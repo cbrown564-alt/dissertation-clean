@@ -1103,5 +1103,70 @@
     "purist_macro_f1": "",
     "purist_weighted_f1": "",
     "run_id": "matrix_gpt-5_5-2026-04-23_clines_epilepsy_modular"
+  },
+  {
+    "adjudication_status": "auto_adjudicated",
+    "exact_label_accuracy": 0.4583,
+    "field_family": "seizure_frequency",
+    "harness": "clines_epilepsy_verified",
+    "monthly_rate_accuracy_tolerance_15pct": "",
+    "n": 25,
+    "pragmatic_macro_f1": "",
+    "pragmatic_weighted_f1": "",
+    "purist_macro_f1": "",
+    "purist_weighted_f1": "",
+    "run_id": "matrix_gpt-5_5-2026-04-23_clines_epilepsy_verified"
+  },
+  {
+    "adjudication_status": "auto_adjudicated",
+    "exact_label_accuracy": 1.0,
+    "field_family": "current_medications",
+    "harness": "clines_epilepsy_verified",
+    "monthly_rate_accuracy_tolerance_15pct": "",
+    "n": 25,
+    "pragmatic_macro_f1": "",
+    "pragmatic_weighted_f1": "",
+    "purist_macro_f1": "",
+    "purist_weighted_f1": "",
+    "run_id": "matrix_gpt-5_5-2026-04-23_clines_epilepsy_verified"
+  },
+  {
+    "adjudication_status": "auto_adjudicated",
+    "exact_label_accuracy": 0.9836,
+    "field_family": "investigations",
+    "harness": "clines_epilepsy_verified",
+    "monthly_rate_accuracy_tolerance_15pct": "",
+    "n": 25,
+    "pragmatic_macro_f1": "",
+    "pragmatic_weighted_f1": "",
+    "purist_macro_f1": "",
+    "purist_weighted_f1": "",
+    "run_id": "matrix_gpt-5_5-2026-04-23_clines_epilepsy_verified"
+  },
+  {
+    "adjudication_status": "auto_adjudicated",
+    "exact_label_accuracy": 0.9895,
+    "field_family": "seizure_classification",
+    "harness": "clines_epilepsy_verified",
+    "monthly_rate_accuracy_tolerance_15pct": "",
+    "n": 25,
+    "pragmatic_macro_f1": "",
+    "pragmatic_weighted_f1": "",
+    "purist_macro_f1": "",
+    "purist_weighted_f1": "",
+    "run_id": "matrix_gpt-5_5-2026-04-23_clines_epilepsy_verified"
+  },
+  {
+    "adjudication_status": "auto_adjudicated",
+    "exact_label_accuracy": 0.8421,
+    "field_family": "epilepsy_classification",
+    "harness": "clines_epilepsy_verified",
+    "monthly_rate_accuracy_tolerance_15pct": "",
+    "n": 25,
+    "pragmatic_macro_f1": "",
+    "pragmatic_weighted_f1": "",
+    "purist_macro_f1": "",
+    "purist_weighted_f1": "",
+    "run_id": "matrix_gpt-5_5-2026-04-23_clines_epilepsy_verified"
   }
 ]

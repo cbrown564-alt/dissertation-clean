@@ -1681,5 +1681,104 @@
     "partial_contract": false,
     "run_id": "matrix_gpt-5_5-2026-04-23_clines_epilepsy_modular",
     "status": "supporting"
+  },
+  {
+    "architecture_family": "clines_inspired_modular",
+    "coverage_status": "implemented",
+    "dataset_id": "synthetic_data_subset_1500",
+    "dataset_n": 25,
+    "field_family": "seizure_frequency",
+    "harness": "clines_epilepsy_verified",
+    "partial_contract": false,
+    "run_id": "matrix_gpt-5_5-2026-04-23_clines_epilepsy_verified",
+    "status": "supporting"
+  },
+  {
+    "architecture_family": "clines_inspired_modular",
+    "coverage_status": "implemented",
+    "dataset_id": "synthetic_data_subset_1500",
+    "dataset_n": 25,
+    "field_family": "current_medications",
+    "harness": "clines_epilepsy_verified",
+    "partial_contract": false,
+    "run_id": "matrix_gpt-5_5-2026-04-23_clines_epilepsy_verified",
+    "status": "supporting"
+  },
+  {
+    "architecture_family": "clines_inspired_modular",
+    "coverage_status": "implemented",
+    "dataset_id": "synthetic_data_subset_1500",
+    "dataset_n": 25,
+    "field_family": "investigations",
+    "harness": "clines_epilepsy_verified",
+    "partial_contract": false,
+    "run_id": "matrix_gpt-5_5-2026-04-23_clines_epilepsy_verified",
+    "status": "supporting"
+  },
+  {
+    "architecture_family": "clines_inspired_modular",
+    "coverage_status": "implemented",
+    "dataset_id": "synthetic_data_subset_1500",
+    "dataset_n": 25,
+    "field_family": "seizure_classification",
+    "harness": "clines_epilepsy_verified",
+    "partial_contract": false,
+    "run_id": "matrix_gpt-5_5-2026-04-23_clines_epilepsy_verified",
+    "status": "supporting"
+  },
+  {
+    "architecture_family": "clines_inspired_modular",
+    "coverage_status": "implemented",
+    "dataset_id": "synthetic_data_subset_1500",
+    "dataset_n": 25,
+    "field_family": "epilepsy_classification",
+    "harness": "clines_epilepsy_verified",
+    "partial_contract": false,
+    "run_id": "matrix_gpt-5_5-2026-04-23_clines_epilepsy_verified",
+    "status": "supporting"
+  },
+  {
+    "architecture_family": "clines_inspired_modular",
+    "coverage_status": "not_implemented",
+    "dataset_id": "synthetic_data_subset_1500",
+    "dataset_n": 25,
+    "field_family": "rescue_medication",
+    "harness": "clines_epilepsy_verified",
+    "partial_contract": false,
+    "run_id": "matrix_gpt-5_5-2026-04-23_clines_epilepsy_verified",
+    "status": "supporting"
+  },
+  {
+    "architecture_family": "clines_inspired_modular",
+    "coverage_status": "not_implemented",
+    "dataset_id": "synthetic_data_subset_1500",
+    "dataset_n": 25,
+    "field_family": "other_therapies",
+    "harness": "clines_epilepsy_verified",
+    "partial_contract": false,
+    "run_id": "matrix_gpt-5_5-2026-04-23_clines_epilepsy_verified",
+    "status": "supporting"
+  },
+  {
+    "architecture_family": "clines_inspired_modular",
+    "coverage_status": "not_implemented",
+    "dataset_id": "synthetic_data_subset_1500",
+    "dataset_n": 25,
+    "field_family": "comorbidities",
+    "harness": "clines_epilepsy_verified",
+    "partial_contract": false,
+    "run_id": "matrix_gpt-5_5-2026-04-23_clines_epilepsy_verified",
+    "status": "supporting"
+  },
+  {
+    "architecture_family": "clines_inspired_modular",
+    "coverage_status": "not_implemented",
+    "dataset_id": "synthetic_data_subset_1500",
+    "dataset_n": 25,
+    "field_family": "associated_symptoms",
+    "harness": "clines_epilepsy_verified",
+    "partial_contract": false,
+    "run_id": "matrix_gpt-5_5-2026-04-23_clines_epilepsy_verified",
+    "status": "supporting"
   }
 ]

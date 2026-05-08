@@ -84,3 +84,8 @@ matrix_gpt-5_5-2026-04-23_clines_epilepsy_modular,clines_epilepsy_modular,curren
 matrix_gpt-5_5-2026-04-23_clines_epilepsy_modular,clines_epilepsy_modular,investigations,25,0.9385,,,,,,auto_adjudicated
 matrix_gpt-5_5-2026-04-23_clines_epilepsy_modular,clines_epilepsy_modular,seizure_classification,25,0.9377,,,,,,auto_adjudicated
 matrix_gpt-5_5-2026-04-23_clines_epilepsy_modular,clines_epilepsy_modular,epilepsy_classification,25,0.8,,,,,,auto_adjudicated
+matrix_gpt-5_5-2026-04-23_clines_epilepsy_verified,clines_epilepsy_verified,seizure_frequency,25,0.4583,,,,,,auto_adjudicated
+matrix_gpt-5_5-2026-04-23_clines_epilepsy_verified,clines_epilepsy_verified,current_medications,25,1.0,,,,,,auto_adjudicated
+matrix_gpt-5_5-2026-04-23_clines_epilepsy_verified,clines_epilepsy_verified,investigations,25,0.9836,,,,,,auto_adjudicated
+matrix_gpt-5_5-2026-04-23_clines_epilepsy_verified,clines_epilepsy_verified,seizure_classification,25,0.9895,,,,,,auto_adjudicated
+matrix_gpt-5_5-2026-04-23_clines_epilepsy_verified,clines_epilepsy_verified,epilepsy_classification,25,0.8421,,,,,,auto_adjudicated

@@ -889,5 +889,71 @@
     "total": 25,
     "valid": 25,
     "valid_rate": 1.0
+  },
+  {
+    "architecture_family": "clines_inspired_modular",
+    "component": "current_medications",
+    "harness": "clines_epilepsy_verified",
+    "invalid": 0,
+    "invalid_rate": 0.0,
+    "run_id": "matrix_gpt-5_5-2026-04-23_clines_epilepsy_verified",
+    "total": 25,
+    "valid": 25,
+    "valid_rate": 1.0
+  },
+  {
+    "architecture_family": "clines_inspired_modular",
+    "component": "epilepsy_classification",
+    "harness": "clines_epilepsy_verified",
+    "invalid": 0,
+    "invalid_rate": 0.0,
+    "run_id": "matrix_gpt-5_5-2026-04-23_clines_epilepsy_verified",
+    "total": 25,
+    "valid": 25,
+    "valid_rate": 1.0
+  },
+  {
+    "architecture_family": "clines_inspired_modular",
+    "component": "investigations",
+    "harness": "clines_epilepsy_verified",
+    "invalid": 0,
+    "invalid_rate": 0.0,
+    "run_id": "matrix_gpt-5_5-2026-04-23_clines_epilepsy_verified",
+    "total": 25,
+    "valid": 25,
+    "valid_rate": 1.0
+  },
+  {
+    "architecture_family": "clines_inspired_modular",
+    "component": "seizure_classification",
+    "harness": "clines_epilepsy_verified",
+    "invalid": 0,
+    "invalid_rate": 0.0,
+    "run_id": "matrix_gpt-5_5-2026-04-23_clines_epilepsy_verified",
+    "total": 25,
+    "valid": 25,
+    "valid_rate": 1.0
+  },
+  {
+    "architecture_family": "clines_inspired_modular",
+    "component": "seizure_frequency",
+    "harness": "clines_epilepsy_verified",
+    "invalid": 0,
+    "invalid_rate": 0.0,
+    "run_id": "matrix_gpt-5_5-2026-04-23_clines_epilepsy_verified",
+    "total": 25,
+    "valid": 25,
+    "valid_rate": 1.0
+  },
+  {
+    "architecture_family": "clines_inspired_modular",
+    "component": "verification",
+    "harness": "clines_epilepsy_verified",
+    "invalid": 0,
+    "invalid_rate": 0.0,
+    "run_id": "matrix_gpt-5_5-2026-04-23_clines_epilepsy_verified",
+    "total": 25,
+    "valid": 25,
+    "valid_rate": 1.0
   }
 ]

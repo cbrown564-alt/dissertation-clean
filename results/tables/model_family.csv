@@ -16,3 +16,4 @@ matrix_gpt-5_5-2026-04-23_direct_full_contract,direct_full_contract,direct_llm,g
 matrix_gpt-5_5-2026-04-23_direct_evidence_contract,direct_evidence_contract,direct_llm,gpt-5.5-2026-04-23,gpt-5.5-2026-04-23,openai,gpt-5,frontier,25,,0.96875,0.8333333333333334,0.99653,704476
 matrix_gpt-5_5-2026-04-23_retrieval_field_extractors,retrieval_field_extractors,retrieval_field_pipeline,gpt-5.5-2026-04-23,gpt-5.5-2026-04-23,openai,gpt-5,frontier,25,,,1.0,1.53332,958895
 matrix_gpt-5_5-2026-04-23_clines_epilepsy_modular,clines_epilepsy_modular,clines_inspired_modular,gpt-5.5-2026-04-23,gpt-5.5-2026-04-23,openai,gpt-5,frontier,25,,,1.0,1.25776,882583
+matrix_gpt-5_5-2026-04-23_clines_epilepsy_verified,clines_epilepsy_verified,clines_inspired_modular,gpt-5.5-2026-04-23,gpt-5.5-2026-04-23,openai,gpt-5,frontier,25,,,1.0,2.5059,1852758
