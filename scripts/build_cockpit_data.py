@@ -322,6 +322,31 @@ def main() -> None:
 
     display_register = [r for r in run_records if _is_display(r)]
 
+    # Build harness→family map and load adjudicated accuracy from result table
+    _harness_to_family: dict[str, str] = {}
+    for step in ARCHITECTURE_LADDER:
+        for h in step.get("harnesses", []):
+            _harness_to_family[h] = step["family"]
+
+    _table_accs: dict[str, list[float]] = {}  # family → list of accuracies from table
+    _flc_path = root / "results" / "tables" / "field_level_correctness.csv"
+    if _flc_path.exists():
+        for row in _load_csv(_flc_path).get("rows", []):
+            # Only use SF accuracy so best_accuracy reflects the primary outcome field
+            if str(row.get("field_family", "")) != "seizure_frequency":
+                continue
+            acc_str = str(row.get("exact_label_accuracy") or "").strip()
+            if not acc_str:
+                continue
+            try:
+                acc = float(acc_str)
+            except ValueError:
+                continue
+            harness = str(row.get("harness", ""))
+            fam_key = _harness_to_family.get(harness) or str(row.get("architecture_family", ""))
+            if fam_key:
+                _table_accs.setdefault(fam_key, []).append(acc)
+
     # Per-family aggregated summaries
     family_summaries: dict[str, Any] = {}
     for step in ARCHITECTURE_LADDER:
@@ -333,7 +358,10 @@ def main() -> None:
             r["metrics"]["exact_label_accuracy"]
             for r in non_smoke
             if (r.get("metrics") or {}).get("exact_label_accuracy") is not None
+            and r.get("status") != "archive"
         ]
+        # Supplement with adjudicated accuracies from result tables
+        accs = accs + _table_accs.get(fam, [])
         agg_cov: dict[str, Any] = {}
         for field in FIELD_FAMILIES:
             statuses = [r["field_coverage"].get(field) for r in non_smoke if r.get("field_coverage")]
