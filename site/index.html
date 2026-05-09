@@ -1621,11 +1621,12 @@ function _lexPipelineIcon(stage) {
   return ['lex-stage-info', '·'];
 }
 
-function renderLetterExplorer(lexData) {
-  if (!lexData || !lexData.runs || !lexData.runs.length) {
+function renderLetterExplorer(allLexData) {
+  const lexArr = Array.isArray(allLexData) ? allLexData : (allLexData ? [allLexData] : []);
+  if (!lexArr.length) {
     return `<div class="lex-empty">Letter explorer data not available.</div>`;
   }
-
+  const lexData = lexArr[0];
   const runs = lexData.runs;
   const fieldOrder = lexData.field_order || [];
   const fieldLabels = lexData.field_labels || {};
@@ -1739,6 +1740,7 @@ function renderLetterExplorer(lexData) {
 </div>
 <div class="lex-wrap">
   <div class="lex-bar">
+    ${lexArr.length > 1 ? `<select class="lex-select" id="lex-letter-picker" style="background:var(--paper-2)">${lexArr.map((d,i)=>`<option value="${i}">${esc(d._label||'Letter '+i)}</option>`).join('')}</select>` : ''}
     <select class="lex-select" id="${pickerId}">${opts}</select>
     <div class="lex-meta" id="lex-meta">${init.metaHtml}</div>
   </div>
@@ -1755,11 +1757,27 @@ function renderLetterExplorer(lexData) {
 </div>`;
 }
 
-function initLetterExplorer(lexData) {
-  if (!lexData) return;
-  const runs = lexData.runs || [];
+function initLetterExplorer(allLexData) {
+  const lexArr = Array.isArray(allLexData) ? allLexData : (allLexData ? [allLexData] : []);
+  if (!lexArr.length) return;
+
+  let lexData = lexArr[0];
+  let runs = lexData.runs || [];
+
   const picker = document.getElementById('lex-run-picker');
   if (!picker) return;
+
+  // Letter switcher — rebuilds harness options and resets to run 0
+  const letterPicker = document.getElementById('lex-letter-picker');
+  if (letterPicker) {
+    letterPicker.addEventListener('change', e => {
+      lexData = lexArr[Number(e.target.value)] || lexArr[0];
+      runs = lexData.runs || [];
+      // Rebuild harness picker options
+      picker.innerHTML = runs.map((r,i) => `<option value="${i}">${r.picker_label||r.harness}</option>`).join('');
+      swap(0);
+    });
+  }
 
   const displayTypes = new Set(['context_built','candidate_spans_selected',
     'provider_call_finished','verification_completed','field_extraction_completed',
@@ -1893,11 +1911,20 @@ async function boot() {
     return;
   }
 
-  // Load letter explorer data in parallel (non-fatal if missing)
-  try {
-    const lr = await fetch('./letter-explorer-data.json');
-    if (lr.ok) lexData = await lr.json();
-  } catch { /* optional */ }
+  // Load letter explorer data (both letters, non-fatal if missing)
+  const _lexFiles = [
+    { file: './letter-explorer-data.json',  label: 'Row 11118 — Generalised epilepsy, cluster pattern' },
+    { file: './letter-explorer-9278.json',  label: 'Row 9278 — Uncertain seizure classification' },
+  ];
+  const allLexData = [];
+  await Promise.all(_lexFiles.map(async ({ file, label }, i) => {
+    try {
+      const lr = await fetch(file);
+      if (lr.ok) { const d = await lr.json(); d._label = label; allLexData[i] = d; }
+    } catch { /* optional */ }
+  }));
+  const validLex = allLexData.filter(Boolean);
+  lexData = validLex[0] || null;
 
   initColors(data.architecture_ladder ?? []);
 
@@ -1909,12 +1936,12 @@ async function boot() {
     renderLadder(data),
     renderFamilyRegister(data),
     renderResultTables(data),
-    renderLetterExplorer(lexData || null),
+    renderLetterExplorer(validLex.length ? validLex : null),
     renderModels(data),
     renderDocs(data),
   ].join('\n');
 
-  initLetterExplorer(lexData || null);
+  initLetterExplorer(validLex.length ? validLex : null);
 }
 
 boot();
