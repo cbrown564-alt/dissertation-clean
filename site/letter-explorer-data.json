@@ -1,0 +1,2910 @@
+{
+  "row_id": "11118",
+  "letter": "Department of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Eleanor Matthews  \nSt Bartholomew's Hospital  \nDepartment of Neurology, West Smithfield, London EC1A 7BE  \n\nDear Dr Eleanor Matthews,  \n\nMichael Turner, DOB: 14-03-1989, Hospital No: H392745 NHS No. 9034512786  \nFlat 3, Willow Supported Living, 22 Brook Lane, London, SE15 4JG \n\nDiagnoses:  \n\nGeneralised epilepsy with documented generalised spike-and-wave activity on prior EEG (2017) \n\nCurrent Medication:  \n\nSodium valproate 500 mg bd  \nClobazam 10 mg nocte (as rescue on cluster days) \n\nPlan:  \n\n- Continue sodium valproate 500 mg twice daily  \n- Maintain clobazam 10 mg at night for up to 3 nights during cluster periods, as per existing protocol  \n- Continue seizure charting by supported accommodation staff and share monthly summaries  \n- Consider ambulatory EEG if frequency or pattern worsens  \n- Safety advice reinforced; SUDEP risk discussed; emphasis on sleep regularity and alcohol avoidance  \n\nI reviewed Michael Turner in my clinic today. He lives in supported accommodation where rotating staff maintain daily seizure charts; these charts, which I reviewed, are used as our primary source of frequency data. Over the last four weeks, the records note: \"Cluster days twice this month; typically six seizures in 24 h.\" These events are brief generalised convulsions with rapid recovery, no new focal features, and no injuries reported. Staff have been consistent in logging times, witnessed features, and rescue medication use. \n\nHe describes a prodrome of diffuse head pressure and photophobia on days preceding clusters, occasionally with poor sleep the night before. There is no clear relation to intercurrent illness, but stress and missed meals were mentioned as possible triggers. He reports good adherence to sodium valproate, and staff confirm administration records align. Where rescue has been needed, clobazam 10 mg nocte has been used for up to three consecutive nights with good effect and without excessive daytime sedation. \n\nNeurologically he is unchanged on examination. Weight stable, no tremor, and no rash. Liver function tests in August were within normal limits; we will repeat monitoring at the usual interval. He remains seizure‑free between clusters for prolonged stretches, and there have been no emergency department attendances this year. \n\nWe discussed options. Given the current balance of efficacy and tolerability, I recommend continuing sodium valproate at the present dose, with staff continuing meticulous charting. If clusters increase in frequency or if daytime sedation from clobazam becomes problematic, we can consider either a small valproate titration or introducing lamotrigine as adjunct. For now, no immediate changes are required. \n\nI have provided updated written guidance for staff regarding when to initiate clobazam on cluster days, thresholds for calling 999, and parameters for documenting duration and post‑ictal recovery (Ã‚Â· please file in the medication folder). Standard safety advice was reiterated, including supervision when bathing, avoiding heights, and maintaining sleep hygiene. We also reviewed SUDEP information briefly and gave a leaflet for the team and key worker. \n\nFollow‑up: I will review him in six months, sooner if the pattern shifts (e.g. more than two cluster days per month or any prolonged seizure >5 minutes). The team will continue to email monthly seizure chart summaries to our clinic address. \n\nWith best wishes,  \n\nYours sincerely",
+  "gold_label_sf": "2 cluster per month, 6 per cluster",
+  "field_order": [
+    "seizure_frequency",
+    "current_medications",
+    "investigations",
+    "seizure_classification",
+    "epilepsy_classification"
+  ],
+  "field_labels": {
+    "seizure_frequency": "Seizure Frequency",
+    "current_medications": "Current Medications",
+    "investigations": "Investigations",
+    "seizure_classification": "Seizure Classification",
+    "epilepsy_classification": "Epilepsy Classification"
+  },
+  "runs": [
+    {
+      "run_id": "matrix_gpt-5_5-2026-04-23_direct_full_contract",
+      "harness": "direct_full_contract",
+      "harness_label": "Direct (full contract)",
+      "model": "gpt-5.5-2026-04-23",
+      "model_short": "GPT-5.5",
+      "picker_label": "GPT-5.5 — Direct (full contract)",
+      "budget": {
+        "llm_calls_per_row": 1,
+        "total_tokens": 91283,
+        "latency_ms": 859157,
+        "estimated_cost_usd": 1.120095
+      },
+      "fields": [
+        {
+          "family": "seizure_frequency",
+          "value": null,
+          "evidence": "",
+          "confidence": null,
+          "warnings": [],
+          "score": "0"
+        },
+        {
+          "family": "current_medications",
+          "value": null,
+          "evidence": "Sodium valproate 500 mg bd",
+          "confidence": null,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "current_medications",
+          "value": null,
+          "evidence": "Clobazam 10 mg nocte (as rescue on cluster days)",
+          "confidence": null,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "investigations",
+          "value": null,
+          "evidence": "Generalised epilepsy with documented generalised spike-and-wave activity on prior EEG (2017)",
+          "confidence": null,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "investigations",
+          "value": null,
+          "evidence": "Liver function tests in August were within normal limits",
+          "confidence": null,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "investigations",
+          "value": null,
+          "evidence": "Neurologically he is unchanged on examination.",
+          "confidence": null,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": "Brief generalised convulsions",
+          "evidence": "These events are brief generalised convulsions with rapid recovery, no new focal features, and no injuries reported.",
+          "confidence": null,
+          "warnings": [],
+          "score": "0"
+        },
+        {
+          "family": "seizure_classification",
+          "value": null,
+          "evidence": "These events are brief generalised convulsions with rapid recovery, no new focal features, and no injuries reported.",
+          "confidence": null,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": null,
+          "evidence": "These events are brief generalised convulsions with rapid recovery",
+          "confidence": null,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": null,
+          "evidence": "no new focal features",
+          "confidence": null,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": null,
+          "evidence": "no injuries reported",
+          "confidence": null,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": null,
+          "evidence": "He describes a prodrome of diffuse head pressure and photophobia on days preceding clusters",
+          "confidence": null,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": null,
+          "evidence": "occasionally with poor sleep the night before",
+          "confidence": null,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": "pattern",
+          "evidence": "Cluster days twice this month; typically six seizures in 24 h.",
+          "confidence": null,
+          "warnings": [],
+          "score": ""
+        },
+        {
+          "family": "seizure_classification",
+          "value": "possible precipitant / associated factor",
+          "evidence": "occasionally with poor sleep the night before",
+          "confidence": null,
+          "warnings": [],
+          "score": ""
+        },
+        {
+          "family": "seizure_classification",
+          "value": "possible trigger",
+          "evidence": "stress and missed meals were mentioned as possible triggers",
+          "confidence": null,
+          "warnings": [],
+          "score": ""
+        },
+        {
+          "family": "seizure_classification",
+          "value": "possible trigger",
+          "evidence": "stress and missed meals were mentioned as possible triggers",
+          "confidence": null,
+          "warnings": [],
+          "score": ""
+        },
+        {
+          "family": "seizure_classification",
+          "value": "not clearly related",
+          "evidence": "There is no clear relation to intercurrent illness",
+          "confidence": null,
+          "warnings": [],
+          "score": ""
+        },
+        {
+          "family": "seizure_classification",
+          "value": "treatment response",
+          "evidence": "Where rescue has been needed, clobazam 10 mg nocte has been used for up to three consecutive nights with good effect and without excessive daytime sedation.",
+          "confidence": null,
+          "warnings": [],
+          "score": ""
+        },
+        {
+          "family": "seizure_classification",
+          "value": "safety/lifestyle advice",
+          "evidence": "Safety advice reinforced; SUDEP risk discussed; emphasis on sleep regularity and alcohol avoidance",
+          "confidence": null,
+          "warnings": [],
+          "score": ""
+        },
+        {
+          "family": "epilepsy_classification",
+          "value": "generalised epilepsy",
+          "evidence": "Diagnoses: Generalised epilepsy with documented generalised spike-and-wave activity on prior EEG (2017)",
+          "confidence": null,
+          "warnings": [],
+          "score": "1"
+        }
+      ],
+      "pipeline": [
+        {
+          "type": "context_built",
+          "label": "Context built",
+          "component": "full_contract_prompt",
+          "summary": "Full letter and final schema assembled for direct extraction",
+          "metrics": {},
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_started",
+          "label": "LLM call started",
+          "component": "direct_full_contract",
+          "summary": "Provider call requested final extraction payload",
+          "metrics": {},
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_finished",
+          "label": "LLM call finished",
+          "component": "direct_full_contract",
+          "summary": "Provider call completed",
+          "metrics": {
+            "input_tokens": 1121,
+            "latency_ms": 34955,
+            "ok": true,
+            "output_tokens": 2479
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "parse_attempted",
+          "label": "Output parsed",
+          "component": "final_output",
+          "summary": "Provider JSON parsed into final extraction payload",
+          "metrics": {
+            "valid": false
+          },
+          "error": "",
+          "warnings": [
+            "No named epilepsy syndrome is provided in the letter; epilepsy_syndrome is therefore null.",
+            "The letter describes 'brief generalised convulsions' but does not explicitly label the seizure type as tonic-clonic.",
+            "Exact individual seizure durations are not provided.",
+            "Trigger information for stress and missed meals is uncertain because they were only 'mentioned as possible triggers'."
+          ]
+        },
+        {
+          "type": "warning_emitted",
+          "label": "Warning",
+          "component": "final_output",
+          "summary": "Direct full-contract payload was invalid or incomplete",
+          "metrics": {},
+          "error": "",
+          "warnings": [
+            "No named epilepsy syndrome is provided in the letter; epilepsy_syndrome is therefore null.",
+            "The letter describes 'brief generalised convulsions' but does not explicitly label the seizure type as tonic-clonic.",
+            "Exact individual seizure durations are not provided.",
+            "Trigger information for stress and missed meals is uncertain because they were only 'mentioned as possible triggers'."
+          ]
+        }
+      ]
+    },
+    {
+      "run_id": "matrix_gpt-5_5-2026-04-23_direct_evidence_contract",
+      "harness": "direct_evidence_contract",
+      "harness_label": "Direct (evidence contract)",
+      "model": "gpt-5.5-2026-04-23",
+      "model_short": "GPT-5.5",
+      "picker_label": "GPT-5.5 — Direct (evidence contract)",
+      "budget": {
+        "llm_calls_per_row": 1,
+        "total_tokens": 83762,
+        "latency_ms": 704476,
+        "estimated_cost_usd": 0.99653
+      },
+      "fields": [
+        {
+          "family": "seizure_frequency",
+          "value": null,
+          "evidence": "",
+          "confidence": null,
+          "warnings": [],
+          "score": "0"
+        },
+        {
+          "family": "current_medications",
+          "value": null,
+          "evidence": "",
+          "confidence": null,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "current_medications",
+          "value": null,
+          "evidence": "",
+          "confidence": null,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "investigations",
+          "value": null,
+          "evidence": "",
+          "confidence": null,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "investigations",
+          "value": null,
+          "evidence": "",
+          "confidence": null,
+          "warnings": [],
+          "score": "0"
+        },
+        {
+          "family": "seizure_classification",
+          "value": "generalised convulsions",
+          "evidence": "",
+          "confidence": null,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": null,
+          "evidence": "",
+          "confidence": null,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": null,
+          "evidence": "",
+          "confidence": null,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": null,
+          "evidence": "",
+          "confidence": null,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": null,
+          "evidence": "",
+          "confidence": null,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": null,
+          "evidence": "",
+          "confidence": null,
+          "warnings": [],
+          "score": ""
+        },
+        {
+          "family": "seizure_classification",
+          "value": null,
+          "evidence": "",
+          "confidence": null,
+          "warnings": [],
+          "score": ""
+        },
+        {
+          "family": "seizure_classification",
+          "value": null,
+          "evidence": "",
+          "confidence": null,
+          "warnings": [],
+          "score": ""
+        },
+        {
+          "family": "seizure_classification",
+          "value": null,
+          "evidence": "",
+          "confidence": null,
+          "warnings": [],
+          "score": ""
+        },
+        {
+          "family": "seizure_classification",
+          "value": null,
+          "evidence": "",
+          "confidence": null,
+          "warnings": [],
+          "score": ""
+        },
+        {
+          "family": "epilepsy_classification",
+          "value": "Generalised epilepsy",
+          "evidence": "",
+          "confidence": null,
+          "warnings": [],
+          "score": "1"
+        }
+      ],
+      "pipeline": [
+        {
+          "type": "context_built",
+          "label": "Context built",
+          "component": "evidence_contract_prompt",
+          "summary": "Full letter and evidence contract assembled",
+          "metrics": {},
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_started",
+          "label": "LLM call started",
+          "component": "direct_evidence_contract",
+          "summary": "Provider call requested evidence-bearing final payload",
+          "metrics": {},
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_finished",
+          "label": "LLM call finished",
+          "component": "direct_evidence_contract",
+          "summary": "Provider call completed",
+          "metrics": {
+            "input_tokens": 1164,
+            "latency_ms": 27683,
+            "ok": true,
+            "output_tokens": 2351
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "parse_attempted",
+          "label": "Output parsed",
+          "component": "final_output",
+          "summary": "Provider JSON parsed into evidence-contract payload",
+          "metrics": {
+            "valid": false
+          },
+          "error": "",
+          "warnings": [
+            "epilepsy_syndrome: no specific epilepsy syndrome is stated in the letter."
+          ]
+        },
+        {
+          "type": "verification_completed",
+          "label": "Verification",
+          "component": "evidence_support",
+          "summary": "Evidence quotes checked against source letter",
+          "metrics": {
+            "evidence_supported_rate": 1.0,
+            "supported_citations": 17,
+            "total_citations": 17,
+            "unsupported_citations": 0
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "warning_emitted",
+          "label": "Warning",
+          "component": "direct_evidence_contract",
+          "summary": "Evidence-contract run emitted warnings",
+          "metrics": {},
+          "error": "",
+          "warnings": [
+            "epilepsy_syndrome: no specific epilepsy syndrome is stated in the letter."
+          ]
+        }
+      ]
+    },
+    {
+      "run_id": "matrix_gpt-5_5-2026-04-23_retrieval_field_extractors",
+      "harness": "retrieval_field_extractors",
+      "harness_label": "Retrieval + field extraction",
+      "model": "gpt-5.5-2026-04-23",
+      "model_short": "GPT-5.5",
+      "picker_label": "GPT-5.5 — Retrieval + field extraction",
+      "budget": {
+        "llm_calls_per_row": 5,
+        "total_tokens": 188432,
+        "latency_ms": 958895,
+        "estimated_cost_usd": 1.53332
+      },
+      "fields": [
+        {
+          "family": "seizure_frequency",
+          "value": "Over the last four weeks: two cluster days in the month, typically six seizures within 24 hours on cluster days; seizure-free between clusters for prolonged stretches.",
+          "evidence": "Over the last four weeks, the records note: \"Cluster days twice this month; typically six seizures in 24 h.\"",
+          "confidence": 0.95,
+          "warnings": [
+            "Frequency is derived from supported accommodation staff seizure charts reviewed in clinic.",
+            "The pattern is reported as cluster days rather than a simple average number of seizures per week or month."
+          ],
+          "score": "1"
+        },
+        {
+          "family": "current_medications",
+          "value": "Sodium valproate 500 mg bd",
+          "evidence": "Sodium valproate 500 mg bd",
+          "confidence": 1.0,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "current_medications",
+          "value": "Clobazam 10 mg nocte (as rescue on cluster days)",
+          "evidence": "Clobazam 10 mg nocte (as rescue on cluster days)",
+          "confidence": 1.0,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "investigations",
+          "value": "Prior EEG in 2017 showed documented generalised spike-and-wave activity.",
+          "evidence": "Generalised epilepsy with documented generalised spike-and-wave activity on prior EEG (2017)",
+          "confidence": 0.98,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "investigations",
+          "value": "Liver function tests in August were within normal limits; repeat monitoring planned at the usual interval.",
+          "evidence": "Liver function tests in August were within normal limits; we will repeat monitoring at the usual interval.",
+          "confidence": 0.98,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "investigations",
+          "value": "Ambulatory EEG to be considered if seizure frequency or pattern worsens.",
+          "evidence": "Consider ambulatory EEG if frequency or pattern worsens",
+          "confidence": 0.95,
+          "warnings": [
+            "This is a planned/conditional investigation, not one already performed."
+          ],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": "Generalised epilepsy",
+          "evidence": "Generalised epilepsy with documented generalised spike-and-wave activity on prior EEG (2017)",
+          "confidence": 0.98,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": "Brief generalised convulsions",
+          "evidence": "These events are brief generalised convulsions with rapid recovery, no new focal features, and no injuries reported.",
+          "confidence": 0.95,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": "Rapid recovery after events",
+          "evidence": "These events are brief generalised convulsions with rapid recovery, no new focal features, and no injuries reported.",
+          "confidence": 0.95,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": "No new focal features",
+          "evidence": "These events are brief generalised convulsions with rapid recovery, no new focal features, and no injuries reported.",
+          "confidence": 0.95,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": "No injuries reported",
+          "evidence": "These events are brief generalised convulsions with rapid recovery, no new focal features, and no injuries reported.",
+          "confidence": 0.95,
+          "warnings": [],
+          "score": ""
+        },
+        {
+          "family": "seizure_classification",
+          "value": "Prodrome of diffuse head pressure",
+          "evidence": "He describes a prodrome of diffuse head pressure and ph",
+          "confidence": 0.7,
+          "warnings": [
+            "Retrieved context is truncated after 'ph', so any additional prodromal feature cannot be reliably extracted from the retrieved passage."
+          ],
+          "score": ""
+        },
+        {
+          "family": "seizure_classification",
+          "value": "Cluster days twice this month",
+          "evidence": "Over the last four weeks, the records note: \"Cluster days twice this month; typically six seizures in 24 h.\"",
+          "confidence": 0.98,
+          "warnings": [],
+          "score": ""
+        },
+        {
+          "family": "seizure_classification",
+          "value": "Typically six seizures in 24 hours during cluster days",
+          "evidence": "Over the last four weeks, the records note: \"Cluster days twice this month; typically six seizures in 24 h.\"",
+          "confidence": 0.98,
+          "warnings": [],
+          "score": ""
+        },
+        {
+          "family": "epilepsy_classification",
+          "value": "Generalised epilepsy",
+          "evidence": "Generalised epilepsy with documented generalised spike-and-wave activity on prior EEG (2017)",
+          "confidence": 0.98,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "epilepsy_classification",
+          "value": null,
+          "evidence": "",
+          "confidence": 0,
+          "warnings": [
+            "No specific epilepsy syndrome is stated in the retrieved context."
+          ],
+          "score": "0"
+        }
+      ],
+      "pipeline": [
+        {
+          "type": "context_built",
+          "label": "Context built",
+          "component": "retrieval_field_extractors",
+          "summary": "Full letter prepared for candidate-span retrieval",
+          "metrics": {},
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "candidate_spans_selected",
+          "label": "Candidate spans selected",
+          "component": "seizure_frequency",
+          "summary": "Candidate spans selected for field-family extraction",
+          "metrics": {
+            "candidate_spans": 3,
+            "context_chars": 1214
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_started",
+          "label": "LLM call started",
+          "component": "seizure_frequency",
+          "summary": "Provider call requested field-family extraction",
+          "metrics": {},
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_finished",
+          "label": "LLM call finished",
+          "component": "seizure_frequency",
+          "summary": "Provider call completed",
+          "metrics": {
+            "input_tokens": 1139,
+            "latency_ms": 6404,
+            "ok": true,
+            "output_tokens": 328
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "parse_attempted",
+          "label": "Output parsed",
+          "component": "seizure_frequency",
+          "summary": "Provider JSON parsed into field-family result",
+          "metrics": {
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "field_extraction_completed",
+          "label": "Field extraction done",
+          "component": "seizure_frequency",
+          "summary": "Field-family extraction completed",
+          "metrics": {
+            "fields": 1,
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "candidate_spans_selected",
+          "label": "Candidate spans selected",
+          "component": "current_medications",
+          "summary": "Candidate spans selected for field-family extraction",
+          "metrics": {
+            "candidate_spans": 3,
+            "context_chars": 1164
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_started",
+          "label": "LLM call started",
+          "component": "current_medications",
+          "summary": "Provider call requested field-family extraction",
+          "metrics": {},
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_finished",
+          "label": "LLM call finished",
+          "component": "current_medications",
+          "summary": "Provider call completed",
+          "metrics": {
+            "input_tokens": 1165,
+            "latency_ms": 3377,
+            "ok": true,
+            "output_tokens": 174
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "parse_attempted",
+          "label": "Output parsed",
+          "component": "current_medications",
+          "summary": "Provider JSON parsed into field-family result",
+          "metrics": {
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "field_extraction_completed",
+          "label": "Field extraction done",
+          "component": "current_medications",
+          "summary": "Field-family extraction completed",
+          "metrics": {
+            "fields": 1,
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "candidate_spans_selected",
+          "label": "Candidate spans selected",
+          "component": "investigations",
+          "summary": "Candidate spans selected for field-family extraction",
+          "metrics": {
+            "candidate_spans": 2,
+            "context_chars": 753
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_started",
+          "label": "LLM call started",
+          "component": "investigations",
+          "summary": "Provider call requested field-family extraction",
+          "metrics": {},
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_finished",
+          "label": "LLM call finished",
+          "component": "investigations",
+          "summary": "Provider call completed",
+          "metrics": {
+            "input_tokens": 1070,
+            "latency_ms": 6959,
+            "ok": true,
+            "output_tokens": 418
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "parse_attempted",
+          "label": "Output parsed",
+          "component": "investigations",
+          "summary": "Provider JSON parsed into field-family result",
+          "metrics": {
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "field_extraction_completed",
+          "label": "Field extraction done",
+          "component": "investigations",
+          "summary": "Field-family extraction completed",
+          "metrics": {
+            "fields": 1,
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "candidate_spans_selected",
+          "label": "Candidate spans selected",
+          "component": "seizure_classification",
+          "summary": "Candidate spans selected for field-family extraction",
+          "metrics": {
+            "candidate_spans": 2,
+            "context_chars": 922
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_started",
+          "label": "LLM call started",
+          "component": "seizure_classification",
+          "summary": "Provider call requested field-family extraction",
+          "metrics": {},
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_finished",
+          "label": "LLM call finished",
+          "component": "seizure_classification",
+          "summary": "Provider call completed",
+          "metrics": {
+            "input_tokens": 1137,
+            "latency_ms": 15664,
+            "ok": true,
+            "output_tokens": 1041
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "parse_attempted",
+          "label": "Output parsed",
+          "component": "seizure_classification",
+          "summary": "Provider JSON parsed into field-family result",
+          "metrics": {
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "field_extraction_completed",
+          "label": "Field extraction done",
+          "component": "seizure_classification",
+          "summary": "Field-family extraction completed",
+          "metrics": {
+            "fields": 3,
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "candidate_spans_selected",
+          "label": "Candidate spans selected",
+          "component": "epilepsy_classification",
+          "summary": "Candidate spans selected for field-family extraction",
+          "metrics": {
+            "candidate_spans": 1,
+            "context_chars": 392
+          },
+          "error": "",
+          "warnings": [
+            "retrieval_context_sparse"
+          ]
+        },
+        {
+          "type": "provider_call_started",
+          "label": "LLM call started",
+          "component": "epilepsy_classification",
+          "summary": "Provider call requested field-family extraction",
+          "metrics": {},
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_finished",
+          "label": "LLM call finished",
+          "component": "epilepsy_classification",
+          "summary": "Provider call completed",
+          "metrics": {
+            "input_tokens": 1022,
+            "latency_ms": 5015,
+            "ok": true,
+            "output_tokens": 194
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "parse_attempted",
+          "label": "Output parsed",
+          "component": "epilepsy_classification",
+          "summary": "Provider JSON parsed into field-family result",
+          "metrics": {
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "field_extraction_completed",
+          "label": "Field extraction done",
+          "component": "epilepsy_classification",
+          "summary": "Field-family extraction completed",
+          "metrics": {
+            "fields": 2,
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "aggregation_completed",
+          "label": "Aggregation",
+          "component": "aggregation",
+          "summary": "Field-family outputs aggregated into final payload",
+          "metrics": {
+            "valid": true
+          },
+          "error": "",
+          "warnings": [
+            "retrieval_context_sparse"
+          ]
+        },
+        {
+          "type": "warning_emitted",
+          "label": "Warning",
+          "component": "retrieval",
+          "summary": "Retrieval field extractor emitted warnings",
+          "metrics": {},
+          "error": "",
+          "warnings": [
+            "retrieval_context_sparse"
+          ]
+        }
+      ]
+    },
+    {
+      "run_id": "matrix_gpt-5_5-2026-04-23_clines_epilepsy_modular",
+      "harness": "clines_epilepsy_modular",
+      "harness_label": "Modular pipeline",
+      "model": "gpt-5.5-2026-04-23",
+      "model_short": "GPT-5.5",
+      "picker_label": "GPT-5.5 — Modular pipeline",
+      "budget": {
+        "llm_calls_per_row": 5,
+        "total_tokens": 135036,
+        "latency_ms": 882583,
+        "estimated_cost_usd": 1.25776
+      },
+      "fields": [
+        {
+          "family": "current_medications",
+          "value": "Sodium valproate 500 mg bd",
+          "evidence": "Sodium valproate 500 mg bd",
+          "confidence": 0.98,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "current_medications",
+          "value": "Clobazam 10 mg nocte (as rescue on cluster days)",
+          "evidence": "Clobazam 10 mg nocte (as rescue on cluster days)",
+          "confidence": 0.98,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "investigations",
+          "value": "Prior EEG in 2017 showed generalised spike-and-wave activity",
+          "evidence": "documented generalised spike-and-wave activity on prior EEG (2017)",
+          "confidence": 0.98,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "investigations",
+          "value": "Daily seizure charts reviewed and used as primary source of seizure frequency data",
+          "evidence": "rotating staff maintain daily seizure charts; these charts, which I reviewed, are used as our primary source of frequency data",
+          "confidence": 0.9,
+          "warnings": [
+            "Seizure charts are monitoring records rather than a conventional diagnostic investigation."
+          ],
+          "score": "1"
+        },
+        {
+          "family": "investigations",
+          "value": "Ambulatory EEG to be considered if seizure frequency or pattern worsens",
+          "evidence": "Consider ambulatory EEG if frequency or pattern worsens",
+          "confidence": 0.85,
+          "warnings": [
+            "This is a conditional future investigation plan, not evidence that ambulatory EEG has been performed."
+          ],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": "Generalised epilepsy",
+          "evidence": "Generalised epilepsy with documented generalised spike-and-wave activity on prior EEG (2017)",
+          "confidence": 0.95,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": "Brief generalised convulsions",
+          "evidence": "These events are brief generalised convulsions",
+          "confidence": 0.95,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": "Rapid recovery",
+          "evidence": "brief generalised convulsions with rapid recovery",
+          "confidence": 0.95,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": "No new focal features",
+          "evidence": "no new focal features",
+          "confidence": 0.9,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": "No injuries reported",
+          "evidence": "no injuries reported",
+          "confidence": 0.9,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": "Prodrome of diffuse head pressure and photophobia on days preceding clusters",
+          "evidence": "He describes a prodrome of diffuse head pressure and photophobia on days preceding clusters",
+          "confidence": 0.95,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": "Cluster days twice this month",
+          "evidence": "Cluster days twice this month",
+          "confidence": 0.95,
+          "warnings": [],
+          "score": ""
+        },
+        {
+          "family": "seizure_classification",
+          "value": "Typically six seizures in 24 hours",
+          "evidence": "typically six seizures in 24 h",
+          "confidence": 0.95,
+          "warnings": [],
+          "score": ""
+        },
+        {
+          "family": "seizure_classification",
+          "value": "Poor sleep occasionally the night before clusters",
+          "evidence": "occasionally with poor sleep the night before",
+          "confidence": 0.8,
+          "warnings": [
+            "Stated in relation to days preceding clusters, but not explicitly confirmed as a trigger."
+          ],
+          "score": ""
+        },
+        {
+          "family": "seizure_classification",
+          "value": "No clear relation to intercurrent illness",
+          "evidence": "There is no clear relation to intercurrent illness",
+          "confidence": 0.9,
+          "warnings": [],
+          "score": ""
+        },
+        {
+          "family": "seizure_classification",
+          "value": "Stress mentioned as a possible trigger",
+          "evidence": "stress and missed meals were mentioned as possible triggers",
+          "confidence": 0.8,
+          "warnings": [
+            "Only described as a possible trigger, not confirmed."
+          ],
+          "score": ""
+        },
+        {
+          "family": "seizure_classification",
+          "value": "Missed meals mentioned as a possible trigger",
+          "evidence": "stress and missed meals were mentioned as possible triggers",
+          "confidence": 0.8,
+          "warnings": [
+            "Only described as a possible trigger, not confirmed."
+          ],
+          "score": ""
+        },
+        {
+          "family": "epilepsy_classification",
+          "value": "Generalised epilepsy",
+          "evidence": "Generalised epilepsy with documented generalised spike-and-wave activity on prior EEG (2017)",
+          "confidence": 0.95,
+          "warnings": [],
+          "score": "1"
+        }
+      ],
+      "pipeline": [
+        {
+          "type": "context_built",
+          "label": "Context built",
+          "component": "chunking",
+          "summary": "Letter normalized and chunked for modular extraction",
+          "metrics": {
+            "chunks": 7
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "candidate_spans_selected",
+          "label": "Candidate spans selected",
+          "component": "seizure_frequency",
+          "summary": "Chunks selected for field-family extraction",
+          "metrics": {
+            "context_chars": 1578,
+            "selected_chunks": 3
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_started",
+          "label": "LLM call started",
+          "component": "seizure_frequency",
+          "summary": "Provider call requested modular field extraction",
+          "metrics": {},
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_finished",
+          "label": "LLM call finished",
+          "component": "seizure_frequency",
+          "summary": "Provider call completed",
+          "metrics": {
+            "input_tokens": 587,
+            "latency_ms": 6932,
+            "ok": true,
+            "output_tokens": 299
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "parse_attempted",
+          "label": "Output parsed",
+          "component": "seizure_frequency",
+          "summary": "Provider JSON parsed into modular field result",
+          "metrics": {
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "verification_completed",
+          "label": "Verification",
+          "component": "seizure_frequency",
+          "summary": "Deterministic evidence verification completed",
+          "metrics": {
+            "parse_valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "field_extraction_completed",
+          "label": "Field extraction done",
+          "component": "seizure_frequency",
+          "summary": "Modular field-family extraction and enrichment completed",
+          "metrics": {
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "candidate_spans_selected",
+          "label": "Candidate spans selected",
+          "component": "current_medications",
+          "summary": "Chunks selected for field-family extraction",
+          "metrics": {
+            "context_chars": 76,
+            "selected_chunks": 1
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_started",
+          "label": "LLM call started",
+          "component": "current_medications",
+          "summary": "Provider call requested modular field extraction",
+          "metrics": {},
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_finished",
+          "label": "LLM call finished",
+          "component": "current_medications",
+          "summary": "Provider call completed",
+          "metrics": {
+            "input_tokens": 316,
+            "latency_ms": 3620,
+            "ok": true,
+            "output_tokens": 192
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "parse_attempted",
+          "label": "Output parsed",
+          "component": "current_medications",
+          "summary": "Provider JSON parsed into modular field result",
+          "metrics": {
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "verification_completed",
+          "label": "Verification",
+          "component": "current_medications",
+          "summary": "Deterministic evidence verification completed",
+          "metrics": {
+            "parse_valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "field_extraction_completed",
+          "label": "Field extraction done",
+          "component": "current_medications",
+          "summary": "Modular field-family extraction and enrichment completed",
+          "metrics": {
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "candidate_spans_selected",
+          "label": "Candidate spans selected",
+          "component": "investigations",
+          "summary": "Chunks selected for field-family extraction",
+          "metrics": {
+            "context_chars": 1057,
+            "selected_chunks": 2
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_started",
+          "label": "LLM call started",
+          "component": "investigations",
+          "summary": "Provider call requested modular field extraction",
+          "metrics": {},
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_finished",
+          "label": "LLM call finished",
+          "component": "investigations",
+          "summary": "Provider call completed",
+          "metrics": {
+            "input_tokens": 525,
+            "latency_ms": 9622,
+            "ok": true,
+            "output_tokens": 544
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "parse_attempted",
+          "label": "Output parsed",
+          "component": "investigations",
+          "summary": "Provider JSON parsed into modular field result",
+          "metrics": {
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "verification_completed",
+          "label": "Verification",
+          "component": "investigations",
+          "summary": "Deterministic evidence verification completed",
+          "metrics": {
+            "parse_valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "field_extraction_completed",
+          "label": "Field extraction done",
+          "component": "investigations",
+          "summary": "Modular field-family extraction and enrichment completed",
+          "metrics": {
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "candidate_spans_selected",
+          "label": "Candidate spans selected",
+          "component": "seizure_classification",
+          "summary": "Chunks selected for field-family extraction",
+          "metrics": {
+            "context_chars": 1113,
+            "selected_chunks": 2
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_started",
+          "label": "LLM call started",
+          "component": "seizure_classification",
+          "summary": "Provider call requested modular field extraction",
+          "metrics": {},
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_finished",
+          "label": "LLM call finished",
+          "component": "seizure_classification",
+          "summary": "Provider call completed",
+          "metrics": {
+            "input_tokens": 592,
+            "latency_ms": 11006,
+            "ok": true,
+            "output_tokens": 948
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "parse_attempted",
+          "label": "Output parsed",
+          "component": "seizure_classification",
+          "summary": "Provider JSON parsed into modular field result",
+          "metrics": {
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "verification_completed",
+          "label": "Verification",
+          "component": "seizure_classification",
+          "summary": "Deterministic evidence verification completed",
+          "metrics": {
+            "parse_valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "field_extraction_completed",
+          "label": "Field extraction done",
+          "component": "seizure_classification",
+          "summary": "Modular field-family extraction and enrichment completed",
+          "metrics": {
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "candidate_spans_selected",
+          "label": "Candidate spans selected",
+          "component": "epilepsy_classification",
+          "summary": "Chunks selected for field-family extraction",
+          "metrics": {
+            "context_chars": 439,
+            "selected_chunks": 1
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_started",
+          "label": "LLM call started",
+          "component": "epilepsy_classification",
+          "summary": "Provider call requested modular field extraction",
+          "metrics": {},
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_finished",
+          "label": "LLM call finished",
+          "component": "epilepsy_classification",
+          "summary": "Provider call completed",
+          "metrics": {
+            "input_tokens": 429,
+            "latency_ms": 3832,
+            "ok": true,
+            "output_tokens": 155
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "parse_attempted",
+          "label": "Output parsed",
+          "component": "epilepsy_classification",
+          "summary": "Provider JSON parsed into modular field result",
+          "metrics": {
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "verification_completed",
+          "label": "Verification",
+          "component": "epilepsy_classification",
+          "summary": "Deterministic evidence verification completed",
+          "metrics": {
+            "parse_valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "field_extraction_completed",
+          "label": "Field extraction done",
+          "component": "epilepsy_classification",
+          "summary": "Modular field-family extraction and enrichment completed",
+          "metrics": {
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "aggregation_completed",
+          "label": "Aggregation",
+          "component": "aggregation",
+          "summary": "Verified field-family outputs aggregated into final payload",
+          "metrics": {
+            "conflicts": 0,
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "run_id": "matrix_gpt-5_5-2026-04-23_clines_epilepsy_verified",
+      "harness": "clines_epilepsy_verified",
+      "harness_label": "Modular + LLM verifier",
+      "model": "gpt-5.5-2026-04-23",
+      "model_short": "GPT-5.5",
+      "picker_label": "GPT-5.5 — Modular + LLM verifier",
+      "budget": {
+        "llm_calls_per_row": 6,
+        "total_tokens": 265238,
+        "latency_ms": 1852758,
+        "estimated_cost_usd": 2.5059
+      },
+      "fields": [
+        {
+          "family": "current_medications",
+          "value": "Sodium valproate 500 mg bd",
+          "evidence": "Sodium valproate 500 mg bd",
+          "confidence": 0.95,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "current_medications",
+          "value": "Clobazam 10 mg nocte (as rescue on cluster days)",
+          "evidence": "Clobazam 10 mg nocte (as rescue on cluster days)",
+          "confidence": 0.95,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "investigations",
+          "value": "Prior EEG in 2017 showed generalised spike-and-wave activity",
+          "evidence": "Generalised epilepsy with documented generalised spike-and-wave activity on prior EEG (2017)",
+          "confidence": 0.98,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "investigations",
+          "value": "Ambulatory EEG to be considered if seizure frequency or pattern worsens",
+          "evidence": "Consider ambulatory EEG if frequency or pattern worsens",
+          "confidence": 0.9,
+          "warnings": [
+            "This is a conditional future investigation recommendation, not evidence that ambulatory EEG has been performed."
+          ],
+          "score": "1"
+        },
+        {
+          "family": "investigations",
+          "value": "Daily seizure charts reviewed and used as primary source of frequency data",
+          "evidence": "rotating staff maintain daily seizure charts; these charts, which I reviewed, are used as our primary source of frequency data",
+          "confidence": 0.85,
+          "warnings": [
+            "Seizure charting is monitoring rather than a formal diagnostic investigation."
+          ],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": "Generalised epilepsy",
+          "evidence": "Generalised epilepsy with documented generalised spike-and-wave activity on prior EEG (2017)",
+          "confidence": 0.95,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": "Brief generalised convulsions",
+          "evidence": "These events are brief generalised convulsions",
+          "confidence": 0.95,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": "Rapid recovery",
+          "evidence": "with rapid recovery",
+          "confidence": 0.95,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": "No new focal features",
+          "evidence": "no new focal features",
+          "confidence": 0.95,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": "No injuries reported",
+          "evidence": "no injuries reported",
+          "confidence": 0.95,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": "Prodrome of diffuse head pressure and photophobia on days preceding clusters",
+          "evidence": "He describes a prodrome of diffuse head pressure and photophobia on days preceding clusters",
+          "confidence": 0.9,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": "Cluster days twice this month",
+          "evidence": "Cluster days twice this month",
+          "confidence": 0.95,
+          "warnings": [],
+          "score": ""
+        },
+        {
+          "family": "seizure_classification",
+          "value": "Typically six seizures in 24 h",
+          "evidence": "typically six seizures in 24 h",
+          "confidence": 0.95,
+          "warnings": [],
+          "score": ""
+        },
+        {
+          "family": "seizure_classification",
+          "value": "Poor sleep occasionally occurred the night before clusters",
+          "evidence": "occasionally with poor sleep the night before",
+          "confidence": 0.85,
+          "warnings": [
+            "The text states this occurs occasionally and does not establish a definite causal relationship."
+          ],
+          "score": ""
+        },
+        {
+          "family": "seizure_classification",
+          "value": "No clear relation to intercurrent illness",
+          "evidence": "There is no clear relation to intercurrent illness",
+          "confidence": 0.9,
+          "warnings": [],
+          "score": ""
+        },
+        {
+          "family": "seizure_classification",
+          "value": "Stress mentioned as a possible trigger",
+          "evidence": "stress and missed meals were mentioned as possible triggers",
+          "confidence": 0.8,
+          "warnings": [
+            "Listed as a possible trigger, not confirmed."
+          ],
+          "score": ""
+        },
+        {
+          "family": "seizure_classification",
+          "value": "Missed meals mentioned as a possible trigger",
+          "evidence": "stress and missed meals were mentioned as possible triggers",
+          "confidence": 0.8,
+          "warnings": [
+            "Listed as a possible trigger, not confirmed."
+          ],
+          "score": ""
+        },
+        {
+          "family": "epilepsy_classification",
+          "value": "Generalised epilepsy",
+          "evidence": "Generalised epilepsy with documented generalised spike-and-wave activity on prior EEG (2017)",
+          "confidence": 0.95,
+          "warnings": [],
+          "score": "1"
+        }
+      ],
+      "pipeline": [
+        {
+          "type": "context_built",
+          "label": "Context built",
+          "component": "chunking",
+          "summary": "Letter normalized and chunked for verified modular extraction",
+          "metrics": {
+            "chunks": 7
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "candidate_spans_selected",
+          "label": "Candidate spans selected",
+          "component": "seizure_frequency",
+          "summary": "Chunks selected for field-family extraction",
+          "metrics": {
+            "context_chars": 1578,
+            "selected_chunks": 3
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_started",
+          "label": "LLM call started",
+          "component": "seizure_frequency",
+          "summary": "Provider call requested modular field extraction",
+          "metrics": {},
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_finished",
+          "label": "LLM call finished",
+          "component": "seizure_frequency",
+          "summary": "Provider call completed",
+          "metrics": {
+            "input_tokens": 587,
+            "latency_ms": 5633,
+            "ok": true,
+            "output_tokens": 231
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "parse_attempted",
+          "label": "Output parsed",
+          "component": "seizure_frequency",
+          "summary": "Provider JSON parsed into modular field result",
+          "metrics": {
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "verification_completed",
+          "label": "Verification",
+          "component": "seizure_frequency",
+          "summary": "Deterministic field verification completed",
+          "metrics": {
+            "parse_valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "field_extraction_completed",
+          "label": "Field extraction done",
+          "component": "seizure_frequency",
+          "summary": "Verified modular field-family extraction and enrichment completed",
+          "metrics": {
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "candidate_spans_selected",
+          "label": "Candidate spans selected",
+          "component": "current_medications",
+          "summary": "Chunks selected for field-family extraction",
+          "metrics": {
+            "context_chars": 76,
+            "selected_chunks": 1
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_started",
+          "label": "LLM call started",
+          "component": "current_medications",
+          "summary": "Provider call requested modular field extraction",
+          "metrics": {},
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_finished",
+          "label": "LLM call finished",
+          "component": "current_medications",
+          "summary": "Provider call completed",
+          "metrics": {
+            "input_tokens": 316,
+            "latency_ms": 5826,
+            "ok": true,
+            "output_tokens": 243
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "parse_attempted",
+          "label": "Output parsed",
+          "component": "current_medications",
+          "summary": "Provider JSON parsed into modular field result",
+          "metrics": {
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "verification_completed",
+          "label": "Verification",
+          "component": "current_medications",
+          "summary": "Deterministic field verification completed",
+          "metrics": {
+            "parse_valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "field_extraction_completed",
+          "label": "Field extraction done",
+          "component": "current_medications",
+          "summary": "Verified modular field-family extraction and enrichment completed",
+          "metrics": {
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "candidate_spans_selected",
+          "label": "Candidate spans selected",
+          "component": "investigations",
+          "summary": "Chunks selected for field-family extraction",
+          "metrics": {
+            "context_chars": 1057,
+            "selected_chunks": 2
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_started",
+          "label": "LLM call started",
+          "component": "investigations",
+          "summary": "Provider call requested modular field extraction",
+          "metrics": {},
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_finished",
+          "label": "LLM call finished",
+          "component": "investigations",
+          "summary": "Provider call completed",
+          "metrics": {
+            "input_tokens": 525,
+            "latency_ms": 7803,
+            "ok": true,
+            "output_tokens": 444
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "parse_attempted",
+          "label": "Output parsed",
+          "component": "investigations",
+          "summary": "Provider JSON parsed into modular field result",
+          "metrics": {
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "verification_completed",
+          "label": "Verification",
+          "component": "investigations",
+          "summary": "Deterministic field verification completed",
+          "metrics": {
+            "parse_valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "field_extraction_completed",
+          "label": "Field extraction done",
+          "component": "investigations",
+          "summary": "Verified modular field-family extraction and enrichment completed",
+          "metrics": {
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "candidate_spans_selected",
+          "label": "Candidate spans selected",
+          "component": "seizure_classification",
+          "summary": "Chunks selected for field-family extraction",
+          "metrics": {
+            "context_chars": 1113,
+            "selected_chunks": 2
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_started",
+          "label": "LLM call started",
+          "component": "seizure_classification",
+          "summary": "Provider call requested modular field extraction",
+          "metrics": {},
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_finished",
+          "label": "LLM call finished",
+          "component": "seizure_classification",
+          "summary": "Provider call completed",
+          "metrics": {
+            "input_tokens": 592,
+            "latency_ms": 12002,
+            "ok": true,
+            "output_tokens": 939
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "parse_attempted",
+          "label": "Output parsed",
+          "component": "seizure_classification",
+          "summary": "Provider JSON parsed into modular field result",
+          "metrics": {
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "verification_completed",
+          "label": "Verification",
+          "component": "seizure_classification",
+          "summary": "Deterministic field verification completed",
+          "metrics": {
+            "parse_valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "field_extraction_completed",
+          "label": "Field extraction done",
+          "component": "seizure_classification",
+          "summary": "Verified modular field-family extraction and enrichment completed",
+          "metrics": {
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "candidate_spans_selected",
+          "label": "Candidate spans selected",
+          "component": "epilepsy_classification",
+          "summary": "Chunks selected for field-family extraction",
+          "metrics": {
+            "context_chars": 439,
+            "selected_chunks": 1
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_started",
+          "label": "LLM call started",
+          "component": "epilepsy_classification",
+          "summary": "Provider call requested modular field extraction",
+          "metrics": {},
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_finished",
+          "label": "LLM call finished",
+          "component": "epilepsy_classification",
+          "summary": "Provider call completed",
+          "metrics": {
+            "input_tokens": 429,
+            "latency_ms": 3965,
+            "ok": true,
+            "output_tokens": 163
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "parse_attempted",
+          "label": "Output parsed",
+          "component": "epilepsy_classification",
+          "summary": "Provider JSON parsed into modular field result",
+          "metrics": {
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "verification_completed",
+          "label": "Verification",
+          "component": "epilepsy_classification",
+          "summary": "Deterministic field verification completed",
+          "metrics": {
+            "parse_valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "field_extraction_completed",
+          "label": "Field extraction done",
+          "component": "epilepsy_classification",
+          "summary": "Verified modular field-family extraction and enrichment completed",
+          "metrics": {
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "aggregation_completed",
+          "label": "Aggregation",
+          "component": "aggregation",
+          "summary": "Field-family outputs aggregated before provider verification",
+          "metrics": {
+            "conflicts": 0,
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_started",
+          "label": "LLM call started",
+          "component": "provider_verification",
+          "summary": "Provider call requested evidence verification",
+          "metrics": {},
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_finished",
+          "label": "LLM call finished",
+          "component": "provider_verification",
+          "summary": "Provider verification call completed",
+          "metrics": {
+            "input_tokens": 2756,
+            "latency_ms": 38915,
+            "ok": true,
+            "output_tokens": 2448
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "verification_completed",
+          "label": "Verification",
+          "component": "provider_verification",
+          "summary": "Provider-backed evidence verification completed",
+          "metrics": {
+            "overall_confidence": 0.97,
+            "parse_valid": true
+          },
+          "error": "",
+          "warnings": [
+            "The evidence for seizure_types[0] supports a diagnosis/epilepsy type rather than a specific seizure type, although the quoted phrase is present verbatim.",
+            "The evidence for investigations[2] supports seizure chart monitoring rather than a formal diagnostic investigation."
+          ]
+        },
+        {
+          "type": "warning_emitted",
+          "label": "Warning",
+          "component": "clines_epilepsy_verified",
+          "summary": "Verified modular run emitted warnings",
+          "metrics": {},
+          "error": "",
+          "warnings": [
+            "The evidence for seizure_types[0] supports a diagnosis/epilepsy type rather than a specific seizure type, although the quoted phrase is present verbatim.",
+            "The evidence for investigations[2] supports seizure chart monitoring rather than a formal diagnostic investigation."
+          ]
+        }
+      ]
+    },
+    {
+      "run_id": "matrix_gpt-5_4-mini-2026-03-17_direct_full_contract",
+      "harness": "direct_full_contract",
+      "harness_label": "Direct (full contract)",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "model_short": "GPT-5.4 mini",
+      "picker_label": "GPT-5.4 mini — Direct (full contract)",
+      "budget": {
+        "llm_calls_per_row": 1,
+        "total_tokens": 56152,
+        "latency_ms": 176280,
+        "estimated_cost_usd": 0.2247945
+      },
+      "fields": [
+        {
+          "family": "seizure_frequency",
+          "value": "Cluster days twice this month; typically six seizures in 24 h",
+          "evidence": "Over the last four weeks, the records note: \"Cluster days twice this month; typically six seizures in 24 h.\"",
+          "confidence": null,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "current_medications",
+          "value": "Sodium valproate",
+          "evidence": "Sodium valproate 500 mg bd; Continue sodium valproate 500 mg twice daily",
+          "confidence": null,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "current_medications",
+          "value": "Clobazam",
+          "evidence": "Clobazam 10 mg nocte (as rescue on cluster days); Maintain clobazam 10 mg at night for up to 3 nights during cluster periods",
+          "confidence": null,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "investigations",
+          "value": "EEG",
+          "evidence": "documented generalised spike-and-wave activity on prior EEG (2017)",
+          "confidence": null,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "investigations",
+          "value": "Liver function tests",
+          "evidence": "Liver function tests in August were within normal limits",
+          "confidence": null,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "investigations",
+          "value": "Ambulatory EEG",
+          "evidence": "Consider ambulatory EEG if frequency or pattern worsens",
+          "confidence": null,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": "generalised convulsion",
+          "evidence": "These events are brief generalised convulsions with rapid recovery, no new focal features, and no injuries reported.",
+          "confidence": null,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": null,
+          "evidence": "These events are brief generalised convulsions",
+          "confidence": null,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": null,
+          "evidence": "with rapid recovery",
+          "confidence": null,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": null,
+          "evidence": "no new focal features",
+          "confidence": null,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": null,
+          "evidence": "and no injuries reported",
+          "confidence": null,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": null,
+          "evidence": "He describes a prodrome of diffuse head pressure and photophobia on days preceding clusters",
+          "confidence": null,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": null,
+          "evidence": "He describes a prodrome of diffuse head pressure and photophobia on days preceding clusters",
+          "confidence": null,
+          "warnings": [],
+          "score": ""
+        },
+        {
+          "family": "seizure_classification",
+          "value": null,
+          "evidence": "Cluster days twice this month; typically six seizures in 24 h",
+          "confidence": null,
+          "warnings": [],
+          "score": ""
+        },
+        {
+          "family": "seizure_classification",
+          "value": null,
+          "evidence": "occasionally with poor sleep the night before",
+          "confidence": null,
+          "warnings": [],
+          "score": ""
+        },
+        {
+          "family": "seizure_classification",
+          "value": null,
+          "evidence": "stress and missed meals were mentioned as possible triggers",
+          "confidence": null,
+          "warnings": [],
+          "score": ""
+        },
+        {
+          "family": "seizure_classification",
+          "value": null,
+          "evidence": "stress and missed meals were mentioned as possible triggers",
+          "confidence": null,
+          "warnings": [],
+          "score": ""
+        },
+        {
+          "family": "seizure_classification",
+          "value": null,
+          "evidence": "He reports good adherence to sodium valproate, and staff confirm administration records align",
+          "confidence": null,
+          "warnings": [],
+          "score": ""
+        },
+        {
+          "family": "seizure_classification",
+          "value": null,
+          "evidence": "clobazam 10 mg nocte has been used for up to three consecutive nights with good effect",
+          "confidence": null,
+          "warnings": [],
+          "score": ""
+        },
+        {
+          "family": "epilepsy_classification",
+          "value": "Generalised epilepsy",
+          "evidence": "Generalised epilepsy with documented generalised spike-and-wave activity on prior EEG (2017)",
+          "confidence": null,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "epilepsy_classification",
+          "value": "Generalised epilepsy with documented generalised spike-and-wave activity on prior EEG (2017)",
+          "evidence": "Generalised epilepsy with documented generalised spike-and-wave activity on prior EEG (2017)",
+          "confidence": null,
+          "warnings": [],
+          "score": "1"
+        }
+      ],
+      "pipeline": [
+        {
+          "type": "context_built",
+          "label": "Context built",
+          "component": "full_contract_prompt",
+          "summary": "Full letter and final schema assembled for direct extraction",
+          "metrics": {},
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_started",
+          "label": "LLM call started",
+          "component": "direct_full_contract",
+          "summary": "Provider call requested final extraction payload",
+          "metrics": {},
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_finished",
+          "label": "LLM call finished",
+          "component": "direct_full_contract",
+          "summary": "Provider call completed",
+          "metrics": {
+            "input_tokens": 1121,
+            "latency_ms": 7108,
+            "ok": true,
+            "output_tokens": 1210
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "parse_attempted",
+          "label": "Output parsed",
+          "component": "final_output",
+          "summary": "Provider JSON parsed into final extraction payload",
+          "metrics": {
+            "valid": false
+          },
+          "error": "",
+          "warnings": [
+            "Do not infer focal epilepsy; letter explicitly describes generalised epilepsy and no new focal features.",
+            "Seizure frequency is based on staff charting over the last four weeks and may not represent lifetime baseline.",
+            "Ambulatory EEG is only suggested if frequency or pattern worsens; it has not yet been performed.",
+            "Clobazam is described as rescue on cluster days, not continuous daily therapy."
+          ]
+        },
+        {
+          "type": "warning_emitted",
+          "label": "Warning",
+          "component": "final_output",
+          "summary": "Direct full-contract payload was invalid or incomplete",
+          "metrics": {},
+          "error": "",
+          "warnings": [
+            "Do not infer focal epilepsy; letter explicitly describes generalised epilepsy and no new focal features.",
+            "Seizure frequency is based on staff charting over the last four weeks and may not represent lifetime baseline.",
+            "Ambulatory EEG is only suggested if frequency or pattern worsens; it has not yet been performed.",
+            "Clobazam is described as rescue on cluster days, not continuous daily therapy."
+          ]
+        }
+      ]
+    },
+    {
+      "run_id": "matrix_gpt-5_4-mini-2026-03-17_clines_epilepsy_verified",
+      "harness": "clines_epilepsy_verified",
+      "harness_label": "Modular + LLM verifier",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "model_short": "GPT-5.4 mini",
+      "picker_label": "GPT-5.4 mini — Modular + LLM verifier",
+      "budget": {
+        "llm_calls_per_row": 6,
+        "total_tokens": 177902,
+        "latency_ms": 321484,
+        "estimated_cost_usd": 0.420411
+      },
+      "fields": [
+        {
+          "family": "seizure_frequency",
+          "value": null,
+          "evidence": "",
+          "confidence": 0.0,
+          "warnings": [
+            "No explicit seizure frequency value is stated in the provided context.",
+            "Context mentions seizure charts and cluster periods, but not a numeric frequency or clear frequency descriptor for seizures overall."
+          ],
+          "score": "0"
+        },
+        {
+          "family": "current_medications",
+          "value": "Sodium valproate 500 mg bd",
+          "evidence": "Sodium valproate 500 mg bd",
+          "confidence": 0.99,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "current_medications",
+          "value": "Clobazam 10 mg nocte (as rescue on cluster days)",
+          "evidence": "Clobazam 10 mg nocte (as rescue on cluster days)",
+          "confidence": 0.99,
+          "warnings": [
+            "Includes note about rescue use on cluster days; no separate indication of whether this is regular vs PRN beyond the stated text."
+          ],
+          "score": "1"
+        },
+        {
+          "family": "investigations",
+          "value": "prior EEG (2017)",
+          "evidence": "documented generalised spike-and-wave activity on prior EEG (2017)",
+          "confidence": 0.98,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "investigations",
+          "value": "daily seizure charts",
+          "evidence": "rotating staff maintain daily seizure charts; these charts, which I reviewed, are used as our primary source of frequency data",
+          "confidence": 0.95,
+          "warnings": [
+            "This is a monitoring record rather than a diagnostic investigation.",
+            "No formal result is provided in the context."
+          ],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": "generalised convulsions",
+          "evidence": "These events are brief generalised convulsions with rapid recovery",
+          "confidence": 0.98,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": "brief",
+          "evidence": "These events are brief generalised convulsions with rapid recovery",
+          "confidence": 0.95,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": "rapid recovery",
+          "evidence": "These events are brief generalised convulsions with rapid recovery",
+          "confidence": 0.95,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": "no new focal features",
+          "evidence": "no new focal features",
+          "confidence": 0.97,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": "no injuries reported",
+          "evidence": "no injuries reported",
+          "confidence": 0.97,
+          "warnings": [],
+          "score": "1"
+        },
+        {
+          "family": "seizure_classification",
+          "value": "prodrome of diffuse head pressure and photophobia",
+          "evidence": "He describes a prodrome of diffuse head pressure and photophobia on days preceding clusters",
+          "confidence": 0.93,
+          "warnings": [],
+          "score": ""
+        },
+        {
+          "family": "seizure_classification",
+          "value": "Cluster days twice this month",
+          "evidence": "Cluster days twice this month; typically six seizures in 24 h.",
+          "confidence": 0.98,
+          "warnings": [],
+          "score": ""
+        },
+        {
+          "family": "seizure_classification",
+          "value": "typically six seizures in 24 h",
+          "evidence": "typically six seizures in 24 h.",
+          "confidence": 0.98,
+          "warnings": [],
+          "score": ""
+        },
+        {
+          "family": "seizure_classification",
+          "value": "poor sleep the night before",
+          "evidence": "occasionally with poor sleep the night before",
+          "confidence": 0.9,
+          "warnings": [],
+          "score": ""
+        },
+        {
+          "family": "seizure_classification",
+          "value": "stress",
+          "evidence": "stress and missed meals were mentioned as possible triggers",
+          "confidence": 0.88,
+          "warnings": [
+            "Described as a possible trigger, not confirmed."
+          ],
+          "score": ""
+        },
+        {
+          "family": "seizure_classification",
+          "value": "missed meals",
+          "evidence": "stress and missed meals were mentioned as possible triggers",
+          "confidence": 0.88,
+          "warnings": [
+            "Described as a possible trigger, not confirmed."
+          ],
+          "score": ""
+        },
+        {
+          "family": "epilepsy_classification",
+          "value": "Generalised epilepsy",
+          "evidence": "Generalised epilepsy with documented generalised spike-and-wave activity on prior EEG (2017)",
+          "confidence": 0.98,
+          "warnings": [],
+          "score": "1"
+        }
+      ],
+      "pipeline": [
+        {
+          "type": "context_built",
+          "label": "Context built",
+          "component": "chunking",
+          "summary": "Letter normalized and chunked for verified modular extraction",
+          "metrics": {
+            "chunks": 7
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "candidate_spans_selected",
+          "label": "Candidate spans selected",
+          "component": "seizure_frequency",
+          "summary": "Chunks selected for field-family extraction",
+          "metrics": {
+            "context_chars": 1578,
+            "selected_chunks": 3
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_started",
+          "label": "LLM call started",
+          "component": "seizure_frequency",
+          "summary": "Provider call requested modular field extraction",
+          "metrics": {},
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_finished",
+          "label": "LLM call finished",
+          "component": "seizure_frequency",
+          "summary": "Provider call completed",
+          "metrics": {
+            "input_tokens": 587,
+            "latency_ms": 1405,
+            "ok": true,
+            "output_tokens": 71
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "parse_attempted",
+          "label": "Output parsed",
+          "component": "seizure_frequency",
+          "summary": "Provider JSON parsed into modular field result",
+          "metrics": {
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "verification_completed",
+          "label": "Verification",
+          "component": "seizure_frequency",
+          "summary": "Deterministic field verification completed",
+          "metrics": {
+            "parse_valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "field_extraction_completed",
+          "label": "Field extraction done",
+          "component": "seizure_frequency",
+          "summary": "Verified modular field-family extraction and enrichment completed",
+          "metrics": {
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "candidate_spans_selected",
+          "label": "Candidate spans selected",
+          "component": "current_medications",
+          "summary": "Chunks selected for field-family extraction",
+          "metrics": {
+            "context_chars": 76,
+            "selected_chunks": 1
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_started",
+          "label": "LLM call started",
+          "component": "current_medications",
+          "summary": "Provider call requested modular field extraction",
+          "metrics": {},
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_finished",
+          "label": "LLM call finished",
+          "component": "current_medications",
+          "summary": "Provider call completed",
+          "metrics": {
+            "input_tokens": 316,
+            "latency_ms": 1547,
+            "ok": true,
+            "output_tokens": 127
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "parse_attempted",
+          "label": "Output parsed",
+          "component": "current_medications",
+          "summary": "Provider JSON parsed into modular field result",
+          "metrics": {
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "verification_completed",
+          "label": "Verification",
+          "component": "current_medications",
+          "summary": "Deterministic field verification completed",
+          "metrics": {
+            "parse_valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "field_extraction_completed",
+          "label": "Field extraction done",
+          "component": "current_medications",
+          "summary": "Verified modular field-family extraction and enrichment completed",
+          "metrics": {
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "candidate_spans_selected",
+          "label": "Candidate spans selected",
+          "component": "investigations",
+          "summary": "Chunks selected for field-family extraction",
+          "metrics": {
+            "context_chars": 1057,
+            "selected_chunks": 2
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_started",
+          "label": "LLM call started",
+          "component": "investigations",
+          "summary": "Provider call requested modular field extraction",
+          "metrics": {},
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_finished",
+          "label": "LLM call finished",
+          "component": "investigations",
+          "summary": "Provider call completed",
+          "metrics": {
+            "input_tokens": 525,
+            "latency_ms": 1737,
+            "ok": true,
+            "output_tokens": 123
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "parse_attempted",
+          "label": "Output parsed",
+          "component": "investigations",
+          "summary": "Provider JSON parsed into modular field result",
+          "metrics": {
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "verification_completed",
+          "label": "Verification",
+          "component": "investigations",
+          "summary": "Deterministic field verification completed",
+          "metrics": {
+            "parse_valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "field_extraction_completed",
+          "label": "Field extraction done",
+          "component": "investigations",
+          "summary": "Verified modular field-family extraction and enrichment completed",
+          "metrics": {
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "candidate_spans_selected",
+          "label": "Candidate spans selected",
+          "component": "seizure_classification",
+          "summary": "Chunks selected for field-family extraction",
+          "metrics": {
+            "context_chars": 1113,
+            "selected_chunks": 2
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_started",
+          "label": "LLM call started",
+          "component": "seizure_classification",
+          "summary": "Provider call requested modular field extraction",
+          "metrics": {},
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_finished",
+          "label": "LLM call finished",
+          "component": "seizure_classification",
+          "summary": "Provider call completed",
+          "metrics": {
+            "input_tokens": 592,
+            "latency_ms": 3345,
+            "ok": true,
+            "output_tokens": 636
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "parse_attempted",
+          "label": "Output parsed",
+          "component": "seizure_classification",
+          "summary": "Provider JSON parsed into modular field result",
+          "metrics": {
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "verification_completed",
+          "label": "Verification",
+          "component": "seizure_classification",
+          "summary": "Deterministic field verification completed",
+          "metrics": {
+            "parse_valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "field_extraction_completed",
+          "label": "Field extraction done",
+          "component": "seizure_classification",
+          "summary": "Verified modular field-family extraction and enrichment completed",
+          "metrics": {
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "candidate_spans_selected",
+          "label": "Candidate spans selected",
+          "component": "epilepsy_classification",
+          "summary": "Chunks selected for field-family extraction",
+          "metrics": {
+            "context_chars": 439,
+            "selected_chunks": 1
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_started",
+          "label": "LLM call started",
+          "component": "epilepsy_classification",
+          "summary": "Provider call requested modular field extraction",
+          "metrics": {},
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_finished",
+          "label": "LLM call finished",
+          "component": "epilepsy_classification",
+          "summary": "Provider call completed",
+          "metrics": {
+            "input_tokens": 429,
+            "latency_ms": 1562,
+            "ok": true,
+            "output_tokens": 63
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "parse_attempted",
+          "label": "Output parsed",
+          "component": "epilepsy_classification",
+          "summary": "Provider JSON parsed into modular field result",
+          "metrics": {
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "verification_completed",
+          "label": "Verification",
+          "component": "epilepsy_classification",
+          "summary": "Deterministic field verification completed",
+          "metrics": {
+            "parse_valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "field_extraction_completed",
+          "label": "Field extraction done",
+          "component": "epilepsy_classification",
+          "summary": "Verified modular field-family extraction and enrichment completed",
+          "metrics": {
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "aggregation_completed",
+          "label": "Aggregation",
+          "component": "aggregation",
+          "summary": "Field-family outputs aggregated before provider verification",
+          "metrics": {
+            "conflicts": 0,
+            "valid": true
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_started",
+          "label": "LLM call started",
+          "component": "provider_verification",
+          "summary": "Provider call requested evidence verification",
+          "metrics": {},
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "provider_call_finished",
+          "label": "LLM call finished",
+          "component": "provider_verification",
+          "summary": "Provider verification call completed",
+          "metrics": {
+            "input_tokens": 2612,
+            "latency_ms": 2865,
+            "ok": true,
+            "output_tokens": 323
+          },
+          "error": "",
+          "warnings": []
+        },
+        {
+          "type": "verification_completed",
+          "label": "Verification",
+          "component": "provider_verification",
+          "summary": "Provider-backed evidence verification completed",
+          "metrics": {
+            "overall_confidence": 0.99,
+            "parse_valid": true
+          },
+          "error": "",
+          "warnings": [
+            "Multiple extracted fields share the same supporting quote; this is acceptable where the letter states the combined clinical description in one sentence."
+          ]
+        },
+        {
+          "type": "warning_emitted",
+          "label": "Warning",
+          "component": "clines_epilepsy_verified",
+          "summary": "Verified modular run emitted warnings",
+          "metrics": {},
+          "error": "",
+          "warnings": [
+            "Multiple extracted fields share the same supporting quote; this is acceptable where the letter states the combined clinical description in one sentence."
+          ]
+        }
+      ]
+    }
+  ]
+}
