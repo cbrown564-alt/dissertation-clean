@@ -1712,7 +1712,7 @@ function renderLetterExplorer(lexData) {
 
   return `
 <div class="s-banner" id="letter-explorer">
-  <span class="s-banner-text">✉&nbsp; Letter Explorer</span>
+  <span class="s-banner-text">&#9993;&nbsp; Letter Explorer</span>
 </div>
 <div style="padding:0 44px 12px;max-width:1240px;margin:0 auto;font-family:var(--body-f);font-size:13px;color:var(--muted);line-height:1.6">
   Sample letter (row 11118) shown with evidence spans highlighted by field family.
@@ -1733,89 +1733,116 @@ function renderLetterExplorer(lexData) {
     <div class="lex-pipeline-title">Pipeline trace</div>
     <div class="lex-stages" id="lex-pipeline-body">${init.stageRows}</div>
   </div>
-</div>
-<script>
-(function(){
-  const _runs = ${JSON.stringify(runs)};
-  const _lexData = ${JSON.stringify(lexData)};
+</div>`;
+}
 
-  function _lexHighlight(letter, items) {
+function initLetterExplorer(lexData) {
+  if (!lexData) return;
+  const runs = lexData.runs || [];
+  const picker = document.getElementById('lex-run-picker');
+  if (!picker) return;
+
+  const displayTypes = new Set(['context_built','candidate_spans_selected',
+    'provider_call_finished','verification_completed','field_extraction_completed',
+    'aggregation_completed','warning_emitted','budget_limit_hit']);
+
+  const stageLbls = _STAGE_LABELS;
+  const cols = _LEX_FIELD_COLORS;
+  const bgs  = _LEX_FIELD_BG;
+
+  function highlight(letter, items) {
     let html = letter.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-    const quotes = [];
-    for (const item of items) {
-      if (item.evidence && item.evidence.trim().length > 8)
-        quotes.push({ text: item.evidence.trim(), family: item.family });
-    }
+    const quotes = items
+      .filter(i => i.evidence && i.evidence.trim().length > 8)
+      .map(i => ({ text: i.evidence.trim(), family: i.family }));
     quotes.sort((a,b) => b.text.length - a.text.length);
     const seen = new Set();
-    const _cols = ${JSON.stringify(_LEX_FIELD_COLORS)};
-    const _bgs  = ${JSON.stringify(_LEX_FIELD_BG)};
     for (const q of quotes) {
       const escaped = q.text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
       if (seen.has(escaped)) continue; seen.add(escaped);
-      const col = _cols[q.family]||'#555', bg = _bgs[q.family]||'rgba(0,0,0,0.08)';
+      const col = cols[q.family]||'#555', bg = bgs[q.family]||'rgba(0,0,0,0.08)';
       const idx = html.indexOf(escaped);
       if (idx === -1) continue;
-      const w = `<mark class="lex-highlight" data-family="${q.family}" style="background:${bg};border-bottom:2px solid ${col}" title="${q.family.replace(/_/g,' ')}">${escaped}</mark>`;
-      html = html.slice(0,idx) + w + html.slice(idx+escaped.length);
+      const mark = '<mark class="lex-highlight" data-family="'+q.family+'" '
+        +'style="background:'+bg+';border-bottom:2px solid '+col+'" '
+        +'title="'+q.family.replace(/_/g,' ')+'">'+escaped+'</mark>';
+      html = html.slice(0,idx) + mark + html.slice(idx+escaped.length);
     }
     return html;
   }
 
-  function _scoreClass(s){ return s==='1'?'lex-score-1':s==='0'?'lex-score-0':s==='0.5'?'lex-score-05':'lex-score-na'; }
-  function _scoreLabel(s){ return s==='1'?'✓ correct':s==='0'?'✗ wrong':s==='0.5'?'~ partial':'— unscored'; }
+  function scoreClass(s){ return s==='1'?'lex-score-1':s==='0'?'lex-score-0':s==='0.5'?'lex-score-05':'lex-score-na'; }
+  function scoreLbl(s){ return s==='1'?'✓ correct':s==='0'?'✗ wrong':s==='0.5'?'~ partial':'— unscored'; }
+  function xe(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
   function swap(idx) {
-    const run = _runs[idx];
+    const run = runs[idx];
     if (!run) return;
-    const fieldOrder = _lexData.field_order || [];
-    const fieldLabels = _lexData.field_labels || {};
-    const _cols = ${JSON.stringify(_LEX_FIELD_COLORS)};
-    const b = run.budget||{};
+    const fieldOrder = lexData.field_order || [];
+    const fieldLabels = lexData.field_labels || {};
+    const b = run.budget || {};
 
     document.getElementById('lex-meta').innerHTML = [
       b.llm_calls_per_row ? b.llm_calls_per_row+' LLM call'+(b.llm_calls_per_row!==1?'s':'') : '',
-      b.total_tokens ? Number(b.total_tokens).toLocaleString()+' tokens' : '',
-      b.latency_ms ? (b.latency_ms/1000).toFixed(1)+'s' : '',
+      b.total_tokens       ? Number(b.total_tokens).toLocaleString()+' tokens' : '',
+      b.latency_ms         ? (b.latency_ms/1000).toFixed(1)+'s' : '',
       b.estimated_cost_usd ? '$'+Number(b.estimated_cost_usd).toFixed(3) : '',
     ].filter(Boolean).map(s=>'<span>'+s+'</span>').join('');
 
-    document.getElementById('lex-letter-body').innerHTML = _lexHighlight(_lexData.letter, run.fields);
+    document.getElementById('lex-letter-body').innerHTML = highlight(lexData.letter, run.fields);
 
     const byFamily = {};
-    for (const item of run.fields) (byFamily[item.family]=byFamily[item.family]||[]).push(item);
+    for (const item of run.fields) (byFamily[item.family] = byFamily[item.family]||[]).push(item);
     document.getElementById('lex-fields-body').innerHTML = fieldOrder.map(fam => {
       const items = byFamily[fam]||[];
-      const col = _cols[fam]||'#555';
-      const anyScore = (items.map(i=>i.score).find(s=>s)||'');
-      let itemsHtml = !items.length ? '<div class="lex-item-null">Not extracted</div>'
+      const col = cols[fam]||'#555';
+      const anyScore = items.map(i=>i.score).find(s=>s) || '';
+      const itemsHtml = !items.length
+        ? '<div class="lex-item-null">Not extracted</div>'
         : items.map(item => {
             const val = item.value, ev = item.evidence;
-            if (!val||val==='null'||val==='None') return '<div class="lex-item"><span class="lex-item-null">null / not found</span></div>';
-            return '<div class="lex-item"><div class="lex-item-val">'+val.replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</div>'+(ev?'<div class="lex-item-ev">'+(ev.length>160?ev.slice(0,160)+'…':ev).replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</div>':'')+'</div>';
+            if (!val||val==='null'||val==='None')
+              return '<div class="lex-item"><span class="lex-item-null">null / not found</span></div>';
+            return '<div class="lex-item"><div class="lex-item-val">'+xe(val)+'</div>'
+              +(ev?'<div class="lex-item-ev">'+xe(ev.length>160?ev.slice(0,160)+'…':ev)+'</div>':'')
+              +'</div>';
           }).join('');
-      return '<div class="lex-field"><div class="lex-field-head"><div class="lex-field-dot" style="background:'+col+'"></div><div class="lex-field-name">'+(fieldLabels[fam]||fam)+'</div><div class="lex-field-score '+_scoreClass(anyScore)+'">'+_scoreLabel(anyScore)+'</div></div><div class="lex-field-items">'+itemsHtml+'</div></div>';
+      return '<div class="lex-field"><div class="lex-field-head">'
+        +'<div class="lex-field-dot" style="background:'+col+'"></div>'
+        +'<div class="lex-field-name">'+(fieldLabels[fam]||fam)+'</div>'
+        +'<div class="lex-field-score '+scoreClass(anyScore)+'">'+scoreLbl(anyScore)+'</div>'
+        +'</div><div class="lex-field-items">'+itemsHtml+'</div></div>';
     }).join('');
 
-    const displayTypes = new Set(['context_built','candidate_spans_selected','provider_call_finished','verification_completed','field_extraction_completed','aggregation_completed','warning_emitted','budget_limit_hit']);
     const pipeline = run.pipeline.filter(s=>displayTypes.has(s.type));
-    const stageLabels = ${JSON.stringify(_STAGE_LABELS)};
     document.getElementById('lex-pipeline-body').innerHTML = pipeline.map(stage => {
-      const err = stage.error;
-      const t = stage.type;
-      const iclass = err?'lex-stage-err':t==='provider_call_finished'||t==='verification_completed'||t==='aggregation_completed'?'lex-stage-ok':'lex-stage-info';
-      const ichar = err?'✗':t==='provider_call_finished'?'↵':t==='verification_completed'?'✓':t==='aggregation_completed'?'⊕':t==='warning_emitted'?'!':'·';
-      const metrics = Object.entries(stage.metrics||{}).filter(([,v])=>v!==false&&v!==true&&v!==null).map(([k,v])=>k.replace(/_/g,' ')+': '+v).join('  ·  ');
-      const warns = (stage.warnings||[]).map(w=>'<div class="lex-stage-warn">⚠ '+w+'</div>').join('');
-      const errHtml = err?'<div class="lex-stage-warn">✗ '+err+'</div>':'';
-      const label = stageLabels[stage.type]||stage.type;
-      return '<div class="lex-stage"><div class="lex-stage-icon '+iclass+'">'+ichar+'</div><div class="lex-stage-body"><div class="lex-stage-label">'+label+(stage.summary?' <span style="font-weight:400;color:var(--muted);font-size:10.5px">— '+stage.summary.slice(0,80)+'</span>':'')+'</div>'+(stage.component&&stage.component!==label?'<div class="lex-stage-comp">'+stage.component+'</div>':'')+(metrics?'<div class="lex-stage-metrics">'+metrics+'</div>':'')+(warns+errHtml)+'</div></div>';
+      const err = stage.error, t = stage.type;
+      const iclass = err ? 'lex-stage-err'
+        : (t==='provider_call_finished'||t==='verification_completed'||t==='aggregation_completed')
+          ? 'lex-stage-ok' : 'lex-stage-info';
+      const ichar = err?'✗':t==='provider_call_finished'?'↵'
+        :t==='verification_completed'?'✓':t==='aggregation_completed'?'⊕'
+        :t==='warning_emitted'?'!':'·';
+      const metrics = Object.entries(stage.metrics||{})
+        .filter(([,v])=>v!==false&&v!==true&&v!==null)
+        .map(([k,v])=>k.replace(/_/g,' ')+': '+v).join('  ·  ');
+      const warns = (stage.warnings||[]).map(w=>'<div class="lex-stage-warn">⚠ '+xe(w)+'</div>').join('');
+      const errHtml = err?'<div class="lex-stage-warn">✗ '+xe(err)+'</div>':'';
+      const label = stageLbls[t]||t;
+      return '<div class="lex-stage">'
+        +'<div class="lex-stage-icon '+iclass+'">'+ichar+'</div>'
+        +'<div class="lex-stage-body">'
+        +'<div class="lex-stage-label">'+xe(label)+(stage.summary
+          ?' <span style="font-weight:400;color:var(--muted);font-size:10.5px">— '+xe(stage.summary.slice(0,80))+'</span>':''
+        )+'</div>'
+        +(stage.component&&stage.component!==label?'<div class="lex-stage-comp">'+xe(stage.component)+'</div>':'')
+        +(metrics?'<div class="lex-stage-metrics">'+metrics+'</div>':'')
+        +(warns+errHtml)
+        +'</div></div>';
     }).join('');
   }
 
-  document.getElementById('${pickerId}').addEventListener('change', e => swap(Number(e.target.value)));
-})();
-</script>`;
+  picker.addEventListener('change', e => swap(Number(e.target.value)));
 }
 
 /* ── Boot ───────────────────────────────────────────── */
@@ -1856,6 +1883,8 @@ async function boot() {
     renderModels(data),
     renderDocs(data),
   ].join('\n');
+
+  initLetterExplorer(lexData || null);
 }
 
 boot();
