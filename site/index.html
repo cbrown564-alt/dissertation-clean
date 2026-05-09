@@ -1552,6 +1552,19 @@ const _LEX_FIELD_BG = {
   epilepsy_classification:'rgba(160,31,90,0.15)',
 };
 
+const _STAGE_LABELS = {
+  context_built:            'Context built',
+  candidate_spans_selected: 'Candidate spans selected',
+  provider_call_started:    'LLM call started',
+  provider_call_finished:   'LLM call finished',
+  parse_attempted:          'Output parsed',
+  verification_completed:   'Verification',
+  field_extraction_completed:'Field extraction done',
+  aggregation_completed:    'Aggregation',
+  warning_emitted:          'Warning',
+  budget_limit_hit:         'Budget limit hit',
+};
+
 function _lexScoreClass(score) {
   if (score === '1') return 'lex-score-1';
   if (score === '0') return 'lex-score-0';
@@ -1632,28 +1645,31 @@ function renderLetterExplorer(lexData) {
       (byFamily[item.family] = byFamily[item.family] || []).push(item);
     }
 
+    const MAX_ITEMS = fam => fam === 'seizure_classification' ? 4 : 6;
     const fieldCards = fieldOrder.map(fam => {
-      const items = byFamily[fam] || [];
+      const allItems = byFamily[fam] || [];
       const col = _LEX_FIELD_COLORS[fam] || '#555';
-      const anyScore = items.map(i => i.score).find(s => s) || '';
+      const scoredItems = allItems.filter(i => i.score);
+      const anyScore = scoredItems.length ? (scoredItems.find(i=>i.score==='1')||scoredItems[0]).score : '';
       const scoreClass = _lexScoreClass(anyScore);
       const scoreLabel = _lexScoreLabel(anyScore);
+      const validItems = allItems.filter(i => i.value && i.value !== 'null' && i.value !== 'None');
+      const shown = validItems.slice(0, MAX_ITEMS(fam));
+      const overflow = validItems.length - shown.length;
 
       let itemsHtml;
-      if (!items.length) {
-        itemsHtml = `<div class="lex-item-null">Not extracted</div>`;
+      if (!validItems.length) {
+        itemsHtml = `<div class="lex-item-null" style="padding:6px 0">Not extracted</div>`;
       } else {
-        itemsHtml = items.map(item => {
-          const val = item.value;
-          const ev  = item.evidence;
-          if (!val || val === 'null' || val === 'None') {
-            return `<div class="lex-item"><span class="lex-item-null">null / not found</span></div>`;
-          }
-          return `<div class="lex-item">
-            <div class="lex-item-val">${esc(String(val))}</div>
-            ${ev ? `<div class="lex-item-ev">${esc(ev.slice(0,160))}${ev.length>160?'…':''}</div>` : ''}
+        itemsHtml = shown.map(item => {
+          const ev = item.evidence;
+          return `<div class="lex-item" style="padding:4px 0;border-bottom:1px solid var(--rule-lt)">
+            <div class="lex-item-val">${esc(String(item.value))}</div>
+            ${ev ? `<div class="lex-item-ev">${esc(ev.slice(0,120))}${ev.length>120?'…':''}</div>` : ''}
           </div>`;
         }).join('');
+        if (overflow > 0)
+          itemsHtml += `<div style="font-size:10.5px;color:var(--muted);padding:4px 0">+ ${overflow} more</div>`;
       }
 
       return `<div class="lex-field">
@@ -1794,19 +1810,30 @@ function initLetterExplorer(lexData) {
     const byFamily = {};
     for (const item of run.fields) (byFamily[item.family] = byFamily[item.family]||[]).push(item);
     document.getElementById('lex-fields-body').innerHTML = fieldOrder.map(fam => {
-      const items = byFamily[fam]||[];
+      const allItems = byFamily[fam]||[];
       const col = cols[fam]||'#555';
-      const anyScore = items.map(i=>i.score).find(s=>s) || '';
-      const itemsHtml = !items.length
-        ? '<div class="lex-item-null">Not extracted</div>'
-        : items.map(item => {
-            const val = item.value, ev = item.evidence;
-            if (!val||val==='null'||val==='None')
-              return '<div class="lex-item"><span class="lex-item-null">null / not found</span></div>';
-            return '<div class="lex-item"><div class="lex-item-val">'+xe(val)+'</div>'
-              +(ev?'<div class="lex-item-ev">'+xe(ev.length>160?ev.slice(0,160)+'…':ev)+'</div>':'')
-              +'</div>';
-          }).join('');
+      // Use best score among items that have one
+      const scoredItems = allItems.filter(i => i.score);
+      const anyScore = scoredItems.length ? (scoredItems.find(i=>i.score==='1')||scoredItems[0]).score : '';
+      // Filter to items with a real value
+      const validItems = allItems.filter(i => i.value && i.value!=='null' && i.value!=='None');
+      const MAX_SHOW = fam === 'seizure_classification' ? 4 : 6;
+      const shown = validItems.slice(0, MAX_SHOW);
+      const overflow = validItems.length - shown.length;
+      let itemsHtml;
+      if (!validItems.length) {
+        itemsHtml = '<div class="lex-item-null" style="padding:6px 0">Not extracted</div>';
+      } else {
+        itemsHtml = shown.map(item => {
+          const ev = item.evidence;
+          return '<div class="lex-item" style="padding:4px 0;border-bottom:1px solid var(--rule-lt)">'
+            +'<div class="lex-item-val">'+xe(item.value)+'</div>'
+            +(ev?'<div class="lex-item-ev">'+xe(ev.length>120?ev.slice(0,120)+'…':ev)+'</div>':'')
+            +'</div>';
+        }).join('');
+        if (overflow > 0)
+          itemsHtml += '<div style="font-size:10.5px;color:var(--muted);padding:4px 0">+ '+overflow+' more</div>';
+      }
       return '<div class="lex-field"><div class="lex-field-head">'
         +'<div class="lex-field-dot" style="background:'+col+'"></div>'
         +'<div class="lex-field-name">'+(fieldLabels[fam]||fam)+'</div>'
